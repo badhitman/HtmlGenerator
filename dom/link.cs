@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 namespace DataViewHtml.dom
 {
+    /// <summary>
+    ///  Устанавливает связь с внешним документом вроде файла со стилями или со шрифтами. В отличие от тега "a", тег "link" размещается всегда внутри
+    ///  контейнера "head" и не создает ссылку.
+    /// </summary>
     public class link : basic_html_dom
     {
         public link(Dictionary<string, string> in_custom_atributes = null)

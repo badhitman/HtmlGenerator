@@ -1,6 +1,8 @@
-﻿using System;
+﻿////////////////////////////////////////////////
+// © https://github.com/badhitman
+////////////////////////////////////////////////
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DataViewHtml
 {
