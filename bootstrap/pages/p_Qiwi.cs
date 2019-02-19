@@ -2,7 +2,7 @@
 // © https://github.com/badhitman 
 ////////////////////////////////////////////////
 
-namespace DataViewHtml.bootstrap.pages
+namespace HtmlGenerator.bootstrap.pages
 {
     class p_Qiwi : base_page_tmpl
     {

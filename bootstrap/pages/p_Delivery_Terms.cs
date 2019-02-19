@@ -2,7 +2,7 @@
 // © https://github.com/badhitman 
 ////////////////////////////////////////////////
 
-namespace DataViewHtml.bootstrap.pages
+namespace HtmlGenerator.bootstrap.pages
 {
     public class p_Delivery_Terms : base_page_tmpl
     {

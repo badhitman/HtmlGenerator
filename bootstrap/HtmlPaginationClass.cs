@@ -1,13 +1,13 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman 
 ////////////////////////////////////////////////
-using DataViewHtml.dom;
+using HtmlGenerator.dom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace DataViewHtml.bootstrap
+namespace HtmlGenerator.bootstrap
 {
     public enum Alignment { Left, Center, Right }
     public enum Sizing { Small, Medium, Big }

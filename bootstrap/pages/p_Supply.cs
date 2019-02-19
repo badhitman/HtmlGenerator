@@ -2,7 +2,7 @@
 // © https://github.com/badhitman 
 ////////////////////////////////////////////////
 
-namespace DataViewHtml.bootstrap.pages
+namespace HtmlGenerator.bootstrap.pages
 {
     public class p_Supply : base_page_tmpl
     {

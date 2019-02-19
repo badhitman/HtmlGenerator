@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using System.Collections.Generic;
 
-namespace DataViewHtml.dom
+namespace HtmlGenerator.dom
 {
     /// <summary>
     /// "meta" определяет метатеги, которые используются для хранения информации предназначенной для браузеров и поисковых систем.

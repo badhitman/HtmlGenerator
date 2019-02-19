@@ -2,7 +2,7 @@
 // © https://github.com/badhitman
 ////////////////////////////////////////////////
 
-namespace DataViewHtml.dom
+namespace HtmlGenerator.dom
 {
     /// <summary>
     /// Доступные типа input

@@ -2,7 +2,7 @@
 // © https://github.com/badhitman
 ////////////////////////////////////////////////
 ///
-namespace DataViewHtml.dom
+namespace HtmlGenerator.dom
 {
     public class h2 : h1
     {

@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman 
 ////////////////////////////////////////////////
-using DataViewHtml.dom;
+using HtmlGenerator.dom;
 using System.Collections.Generic;
 
-namespace DataViewHtml.bootstrap
+namespace HtmlGenerator.bootstrap
 {
     public class BreadcrumbClass
     {

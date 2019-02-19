@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace DataViewHtml.bootstrap.pages
+namespace HtmlGenerator.bootstrap.pages
 {
     public abstract class base_page_tmpl
     {

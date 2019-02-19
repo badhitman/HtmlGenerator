@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace DataViewHtml.dom
+namespace HtmlGenerator.dom
 {
     public class textarea : basic_html_dom
     {

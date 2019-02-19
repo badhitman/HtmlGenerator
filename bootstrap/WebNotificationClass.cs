@@ -1,9 +1,9 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman 
 ////////////////////////////////////////////////
-using DataViewHtml.dom;
+using HtmlGenerator.dom;
 
-namespace DataViewHtml.bootstrap
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Статусы уведомлений

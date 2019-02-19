@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DataViewHtml
+namespace HtmlGenerator
 {
     /// <summary>
     /// События HTML.DOM
