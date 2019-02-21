@@ -59,16 +59,15 @@ namespace HtmlGenerator.dom
             public int maxlength = 0;
 
             /// <summary>
-            /// Имя поля, предназначено для того, чтобы обработчик формы мог его идентифицировать.
-            /// Определяет уникальное имя элемента "textarea". Как правило, это имя используется при отправке данных на сервер или для доступа к полю через скрипты.
-            /// </summary>
-            public string name = null;
-
-            /// <summary>
             /// Указывает замещающийся текст.
             /// Выводит текст внутри текстового поля, который исчезает при получении фокуса.
             /// </summary>
             public string placeholder = null;
+
+            /// <summary>
+            /// Значение input-а
+            /// </summary>
+            public string TextValue = null;
 
             /// <summary>
             /// Параметры переноса строк.
@@ -113,8 +112,8 @@ namespace HtmlGenerator.dom
                 if (set.maxlength > 0)
                     SetAtribute("maxlength", set.maxlength.ToString());
 
-                if (!string.IsNullOrEmpty(set.name))
-                    SetAtribute("name", set.name);
+                if (!string.IsNullOrEmpty(set.TextValue))
+                    inner_html = set.TextValue;
 
                 if (!string.IsNullOrEmpty(set.placeholder))
                     SetAtribute("placeholder", set.placeholder);

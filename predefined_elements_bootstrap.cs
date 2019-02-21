@@ -98,7 +98,7 @@ namespace HtmlGenerator
             input.input_set input_set = new input.input_set();
             input_set.type_input = InputTypes.text;
             input_set.value = value_input;
-            
+
             input ret_input = new input(input_set) { css_class = input_css_class };
 
             if (required)
@@ -106,7 +106,7 @@ namespace HtmlGenerator
 
             if (input_readonly)
                 ret_input.set.i_readonly = true;
-            
+
             ret_input.Id_DOM = Id_DOM;
             ret_input.Name_DOM = Id_DOM;
             ret_input.inline = true;
@@ -114,7 +114,7 @@ namespace HtmlGenerator
 
             if (!string.IsNullOrEmpty(placeholder))
                 ret_input.SetAtribute("placeholder", placeholder);
-            
+
             //
             returned_input.Childs.Add(ret_input);
             if (required)
@@ -130,84 +130,84 @@ namespace HtmlGenerator
             return returned_input;
         }
 
-        /*public static HtmlDomGenerator[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
+        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
         {
-            HtmlDomGenerator valid_element = new HtmlDomGenerator() { css_class = "valid-tooltip", text = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            HtmlDomGenerator invalid_element = new HtmlDomGenerator() { css_class = "invalid-tooltip", text = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
+            div valid_element = new div() { css_class = "valid-tooltip", inner_html = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
+            div invalid_element = new div() { css_class = "invalid-tooltip", inner_html = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
             // 
             if (!string.IsNullOrEmpty(valid_text))
-                return new HtmlDomGenerator[] { valid_element, invalid_element };
+                return new div[] { valid_element, invalid_element };
             else
-                return new HtmlDomGenerator[] { invalid_element };
-        }*/
+                return new div[] { invalid_element };
+        }
 
-        //public static HtmlDomGenerator[] GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
-        //{
-        //    HtmlDomGenerator[] ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, false, input_info, null, null, null, true);
-        //    foreach (HtmlDomGenerator _e in ret_val)
-        //        foreach (HtmlDomGenerator e in _e.Childs)
-        //            if (e.TypeHtmlDom == TypesHtmlDom.input)
-        //                e.obj_type = "password";
-        //    return ret_val;
-        //}
-
-        /*public static HtmlDomGenerator GetSecondTextInput(string label_text, string value_input, string Id_DOM, string placeholder, bool input_readonly, string class_div_group_wrap = null, bool required = false)
+        public static div GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
         {
-            HtmlDomGenerator input_group_text = new HtmlDomGenerator(TypesHtmlDom.span) { css_class = "input-group-text", text = label_text };
-            HtmlDomGenerator input_group_prepend = new HtmlDomGenerator() { css_class = "input-group-prepend" };
-            input_group_prepend.Childs.Add(input_group_text);
-            HtmlDomGenerator input_group = new HtmlDomGenerator() { css_class = ("input-group " + class_div_group_wrap).Trim() };
-            input_group.Childs.Add(input_group_prepend);
-            HtmlDomGenerator input = new HtmlDomGenerator(TypesHtmlDom.input) { obj_type = "text", css_class = "form-control" };
-            if (required)
-                input.CustomAtributes.Add("required", null);
+            div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, false, input_info, null, null, null, true);
+            foreach (basic_html_dom e in ret_val.Childs)
+                if (e is input)
+                {
+                    ((input)e).set.type_input = InputTypes.password;
+                    break;
+                }
+            return ret_val;
+        }
 
-            input.CustomAtributes.Add("value", value_input);
+        public static div GetSecondTextInput(string label_text, string value_input, string Id_DOM, string placeholder, bool input_readonly, string class_div_group_wrap = null, bool required = false)
+        {
+            span input_group_text = new span(label_text) { css_class = "input-group-text" };
+            div input_group_prepend = new div() { css_class = "input-group-prepend" };
+            input_group_prepend.Childs.Add(input_group_text);
+            div input_group = new div() { css_class = ("input-group " + class_div_group_wrap).Trim() };
+            input_group.Childs.Add(input_group_prepend);
+
+            input.input_set input_set = new input.input_set();
+            input_set.type_input = InputTypes.text;
+            input_set.i_required = required;
+            input_set.value = value_input;
+            input_set.i_readonly = input_readonly;
+            input ret_input = new input(input_set) { css_class = "form-control" };
 
             if (!string.IsNullOrEmpty(Id_DOM))
-                input.Id_DOM = Id_DOM;
+                ret_input.Id_DOM = Id_DOM;
 
             if (!string.IsNullOrEmpty(placeholder))
-                input.CustomAtributes.Add("placeholder", placeholder);
+                ret_input.SetAtribute("placeholder", placeholder);
 
-            if (input_readonly)
-                input.CustomAtributes.Add("readonly", "");
-
-            input_group.Childs.Add(input);
+            input_group.Childs.Add(ret_input);
             if (required)
                 input_group.Childs.AddRange(GetValidationAlerts(Id_DOM));
 
             return input_group;
-        }*/
+        }
 
-        /*public static HtmlDomGenerator GetTextarea(string label_text, string value_input, string Id_DOM, bool input_readonly, int rows = 2, bool required = false)
+        public static div GetTextarea(string label_text, string value_input, string Id_DOM, bool input_readonly, int rows = 2, bool required = false)
         {
-            HtmlDomGenerator returned_input = new HtmlDomGenerator() { css_class = "form-group" };
+            div returned_input = new div() { css_class = "form-group" };
             if (!string.IsNullOrEmpty(label_text))
-                returned_input.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.label) { text = label_text, _for = Id_DOM });
+                returned_input.Childs.Add(new label(label_text, Id_DOM));
 
-
-            HtmlDomGenerator input = new HtmlDomGenerator(TypesHtmlDom.textarea) { css_class = "form-control" };
-            if (required)
-                input.CustomAtributes.Add("required", null);
-
-            if (input_readonly)
-                input.CustomAtributes.Add("readonly", null);
+            textarea.set_textarea set_textarea = new textarea.set_textarea();
+            set_textarea.required = required;
+            set_textarea.Readonly = input_readonly;
 
             if (rows > 0)
-                input.CustomAtributes.Add("rows", rows.ToString());
+                set_textarea.rows = rows;
+
+            textarea ret_textarea = new textarea(value_input, set_textarea) { css_class = "form-control" };
 
             if (!string.IsNullOrEmpty(value_input))
-                input.text = value_input;
+                ret_textarea.inner_html = value_input;
 
-            input.Id_DOM = Id_DOM;
-            input.Name_DOM = Id_DOM;
 
-            returned_input.Childs.Add(input);
-            if (required)
-                returned_input.Childs.AddRange(GetValidationAlerts(Id_DOM));
+
+            ret_textarea.Id_DOM = Id_DOM;
+            ret_textarea.Name_DOM = Id_DOM;
+
+            returned_input.Childs.Add(ret_textarea);
+
             return returned_input;
-        }*/
+        }
 
 
         /*public static HtmlDomGenerator GetButton(string href, string text, StylesElements style = StylesElements.Primary)
