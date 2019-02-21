@@ -4,6 +4,7 @@
 ////////////////////////////////////////////////
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HtmlGenerator.dom
 {
@@ -63,6 +64,20 @@ namespace HtmlGenerator.dom
         public List<option> Options = new List<option>();
 
         public select_set set;
+
+        public List<option> GetSelectedOption
+        {
+            get
+            {
+                List<option> ret_options = new List<option>();
+                if(Options is null || Options.Count == 0)
+                    return ret_options;
+
+                ret_options.AddRange(Options.Where(x=>x.set.Selected));
+
+                return ret_options;
+            }
+        }
 
         public select(select_set in_set)
         {

@@ -15,14 +15,12 @@ namespace HtmlGenerator.dom
     {
         public class option_set : optgroup_set
         {
-            public new string label_text;
-            public string value_option;
-            public bool selected = false;
-            public new bool disabled = false;
+            public string Value;
+            public bool Selected = false;
         }
         public new option_set set;
 
-        public option(option_set in_set) : base(new optgroup_set() { label_text = in_set.label_text, disabled = in_set.disabled })
+        public option(option_set in_set) : base(new optgroup_set() { TitleText = in_set.TitleText, Disabled = in_set.Disabled })
         {
             set = in_set;
             inline = true;
@@ -32,13 +30,13 @@ namespace HtmlGenerator.dom
         {
             if (!(set is null))
             {
-                SetAtribute("label", set.label_text);
-                SetAtribute("value", set.value_option);
+                SetAtribute("label", set.TitleText);
+                SetAtribute("value", set.Value);
 
-                if (set.selected)
+                if (set.Selected)
                     SetAtribute("selected", null);
 
-                if (set.disabled)
+                if (set.Disabled)
                     SetAtribute("disabled", null);
             }
             return base.HTML(deep);

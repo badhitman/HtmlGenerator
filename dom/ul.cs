@@ -43,7 +43,7 @@ namespace HtmlGenerator.dom
         {
             li ret_val = new li();
             ret_val.Name_DOM = name;
-            ret_val.title = desc;
+            ret_val.Tooltip = desc;
             ret_val.SetAtribute("type", TypeUL.ToString("g"));
             ret_val.SetAtribute("value", value);
 

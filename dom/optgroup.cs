@@ -12,12 +12,12 @@ namespace HtmlGenerator.dom
             /// <summary>
             /// Заголовок
             /// </summary>
-            public string label_text;
+            public string TitleText;
 
             /// <summary>
             /// Признак. Отключён
             /// </summary>
-            public bool disabled = false;
+            public bool Disabled = false;
         }
 
         public optgroup_set set;
@@ -37,9 +37,9 @@ namespace HtmlGenerator.dom
         {
             if (!(set is null))
             {
-                SetAtribute("label", set.label_text);
+                SetAtribute("label", set.TitleText);
 
-                if (set.disabled)
+                if (set.Disabled)
                     SetAtribute("disabled", null);
             }
             return base.HTML(deep);
