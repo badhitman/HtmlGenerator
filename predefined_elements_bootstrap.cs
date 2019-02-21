@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace HtmlGenerator
 {
+    public enum StylesElements { Primary, Secondary, Success, Danger, Warning, Info, Light, Dark }
     public static class predefined_elements_bootstrap
     {
         public static div GetBootstrapSelectList(string label, select select_body, string Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
@@ -209,62 +210,54 @@ namespace HtmlGenerator
             return returned_input;
         }
 
-
-        /*public static HtmlDomGenerator GetButton(string href, string text, StylesElements style = StylesElements.Primary)
+        public static button GetButton(string href, string text, StylesElements style = StylesElements.Primary)
         {
-            return new HtmlDomGenerator(TypesHtmlDom.button)
-            {
-                href = href,
-                css_class = "btn btn-" + style.ToString("g").ToLower() + " btn-lg btn-block active",
-                text = text,
-                CustomAtributes = new Dictionary<string, string>()
-                {
-                    { "role", "button" },
-                    { "aria-pressed", "true" }
-                }
-            };
-        }*/
+            button ret_button = new button(text) { css_class = "btn btn-" + style.ToString("g").ToLower() + " btn-lg btn-block active" };
+            ret_button.SetAtribute("href", href);
+            ret_button.SetAtribute("role", "button");
+            ret_button.SetAtribute("aria-pressed", "true");
 
-        /*public static HtmlDomGenerator GetButtonAsLink(string href, string text, StylesElements style = StylesElements.Primary)
-        {
-            HtmlDomGenerator ret_button = GetButton(href, text, style);
-            ret_button.TypeHtmlDom = TypesHtmlDom.a;
-            return new HtmlDomGenerator(TypesHtmlDom.a)
-            {
-                href = href,
-                css_class = "btn btn-" + style.ToString("g").ToLower() + " btn-lg btn-block active",
-                text = text,
-                CustomAtributes = new Dictionary<string, string>()
-                {
-                    { "role", "button" },
-                    { "target", "_blank" },
-                    { "aria-pressed", "true" }
-                }
-            };
-        }*/
+            return ret_button;
+        }
 
-        /*public static HtmlDomGenerator GetModalDialog(string title, string text_ok_button, string text_cansel_button, HtmlDomGenerator body_html, string id_modal_dialog = "exampleModal")
+        public static a GetButtonAsLink(string href, string text, StylesElements style = StylesElements.Primary)
         {
-            HtmlDomGenerator span_close_modal_header = new HtmlDomGenerator(TypesHtmlDom.span) { text = "&times;" };
-            span_close_modal_header.CustomAtributes.Add("aria-hidden", "true");
+            a.a_set a_set = new a.a_set();
+            a_set.href = href;
+            a_set.target = Targets._self;
+            a_set.text = text;
+            a ret_button = new a(a_set);
+            ret_button.SetAtribute("role", "button");
+            ret_button.SetAtribute("aria-pressed", "true");
+            ret_button.css_class = "btn btn-" + style.ToString("g").ToLower() + " btn-lg btn-block active";
+            return ret_button;
+        }
+
+        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_create_document_id")
+        {
+            span span_close_modal_header = new span("&times;");
+            span_close_modal_header.SetAtribute("aria-hidden", "true");
             //
-            HtmlDomGenerator button_close_modal_header = new HtmlDomGenerator(TypesHtmlDom.button) { obj_type = "button", css_class = "close" };
-            button_close_modal_header.CustomAtributes.Add("data-dismiss", "modal");
-            button_close_modal_header.CustomAtributes.Add("aria-label", "Close");
+            button button_close_modal_header = new button(null) { css_class = "close" };
+            button_close_modal_header.SetAtribute("data-dismiss", "modal");
+            button_close_modal_header.SetAtribute("aria-label", "Close");
             button_close_modal_header.Childs.Add(span_close_modal_header);
             //
-            HtmlDomGenerator h5_modal_header = new HtmlDomGenerator(TypesHtmlDom.h5) { text = title, css_class = "modal-title" };
-            HtmlDomGenerator div_modal_header = new HtmlDomGenerator() { css_class = "modal-header" };
+            h5 h5_modal_header = new h5(title) { css_class = "modal-title" };
+            div div_modal_header = new div() { css_class = "modal-header" };
             div_modal_header.Childs.Add(h5_modal_header);
             div_modal_header.Childs.Add(button_close_modal_header);
 
             //
-            HtmlDomGenerator button_close_modal_footer = new HtmlDomGenerator(TypesHtmlDom.button) { obj_type = "button", css_class = "btn btn-secondary", text = text_cansel_button };
-            button_close_modal_footer.CustomAtributes.Add("data-dismiss", "modal");
+            button button_close_modal_footer = new button(text_cansel_button) { css_class = "btn btn-secondary" };
+            button_close_modal_footer.SetAtribute("data-dismiss", "modal");
             //
-            HtmlDomGenerator button_send_modal_footer = new HtmlDomGenerator(TypesHtmlDom.a) { obj_type = "button", css_class = "btn btn-primary", text = text_ok_button, Id_DOM = GetPostParamsMetaClass.button_try_create_document_id };
+            a.a_set a_set = new a.a_set();
+            a_set.text = text_ok_button;
+            a button_send_modal_footer = new a(a_set) { css_class = "btn btn-primary", Id_DOM = id_ok_button };
+            button_send_modal_footer.SetAtribute("type", "button");
             //
-            HtmlDomGenerator modal_footer = new HtmlDomGenerator() { css_class = "modal-footer" };
+            div modal_footer = new div() { css_class = "modal-footer" };
 
             if (!string.IsNullOrEmpty(text_cansel_button))
                 modal_footer.Childs.Add(button_close_modal_footer);
@@ -272,22 +265,22 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(text_ok_button))
                 modal_footer.Childs.Add(button_send_modal_footer);
             //
-            HtmlDomGenerator modal_content = new HtmlDomGenerator() { css_class = "modal-content" };
+            div modal_content = new div() { css_class = "modal-content" };
             modal_content.Childs.Add(div_modal_header);
             //
-            HtmlDomGenerator modal_body = new HtmlDomGenerator() { css_class = "modal-body" };
+            div modal_body = new div() { css_class = "modal-body" };
             modal_body.Childs.Add(body_html);
             modal_content.Childs.Add(modal_body);
             //
             modal_content.Childs.Add(modal_footer);
             //
-            HtmlDomGenerator modal_dialog_document = new HtmlDomGenerator() { css_class = "modal-dialog" };
+            div modal_dialog_document = new div() { css_class = "modal-dialog" };
 
 
             modal_dialog_document.CustomAtributes.Add("role", "document");
             modal_dialog_document.Childs.Add(modal_content);
             //
-            HtmlDomGenerator ModalDialog = new HtmlDomGenerator() { css_class = "modal fade", Id_DOM = id_modal_dialog };
+            div ModalDialog = new div() { css_class = "modal fade", Id_DOM = id_modal_dialog };
 
             ModalDialog.CustomAtributes.Add("tabindex", "-1");
             ModalDialog.CustomAtributes.Add("role", "dialog");
@@ -295,11 +288,8 @@ namespace HtmlGenerator
             ModalDialog.CustomAtributes.Add("aria-hidden", "true");
 
             ModalDialog.Childs.Add(modal_dialog_document);
-            ModalDialog.coment = "Modal dialog";
+            ModalDialog.prew_block_coment = "Modal dialog";
             return ModalDialog;
-        }*/
-
-
-
+        }
     }
 }
