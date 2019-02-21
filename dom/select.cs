@@ -3,6 +3,8 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
+using System.Collections.Generic;
+
 namespace HtmlGenerator.dom
 {
     /// <summary>
@@ -53,6 +55,12 @@ namespace HtmlGenerator.dom
             /// </summary>
             public int size = 0;
         }
+
+
+        /// <summary>
+        /// Вложеные элементы списка
+        /// </summary>
+        public List<option> Options = new List<option>();
 
         public select_set set;
 

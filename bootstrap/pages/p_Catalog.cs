@@ -1,16 +1,20 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - Telegram @fakegov 
 ////////////////////////////////////////////////
+using HtmlGenerator.dom;
+using HtmlGenerator.set;
+using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap.pages
 {
     /// <summary>
     /// Каталог/Витрина
     /// </summary>
-    class p_Catalog : base_page_tmpl
+    public class p_Catalog : base_page_tmpl
     {
+        public new string PageTitle = "Каталог";
+        public new string PageHeader = "<strong>Для уточнения поиска настройте фильтр</strong>";
         /*
-
         public readonly exDeliveryTerms sel_del_terms;
         public readonly exGood sel_good;
 
@@ -35,29 +39,33 @@ namespace HtmlGenerator.bootstrap.pages
             if (string.IsNullOrEmpty(prop_value))
                 sel_good = new exGood() { Name = "не выбрано", Information = "фильтр условий доставки не установлен" };
             else
-                sel_good = ServerController.getGoodById(sender.get_params[prop_name]);
+                sel_good = ServerController.getGoodById(sender.get_params[prop_name]);*/
 
 
-            string card_head = "<strong>Для уточнения поиска настройте фильтр</strong>";
-            dom_elements.Add(Get_DIV_Bootstrap_Card(card_head, GetCatalog()));
 
-            //
-            HtmlDomGenerator form_modal_dialog = new HtmlDomGenerator(TypesHtmlDom.form) { Name_DOM = GetPostParamsMetaClass.buy_form_id };
-            form_modal_dialog.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.strong));
-            form_modal_dialog.Childs.AddRange(GetBaseTextInput("Заказ", "-", GetPostParamsMetaClass.order_info_id, "", true, "Для покупки нажмите на кнопку Купить"));
+        /*dom_elements.Add(Get_DIV_Bootstrap_Card(card_head, GetCatalog()));
 
-            dom_elements.Add(GetModalDialog("Подтверждение покупки", "Купить", "Отмена", form_modal_dialog, GetPostParamsMetaClass.cart_modal_form_id));
-        }*/
+        //
+        HtmlDomGenerator form_modal_dialog = new HtmlDomGenerator(TypesHtmlDom.form) { Name_DOM = GetPostParamsMetaClass.buy_form_id };
+        form_modal_dialog.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.strong));
+        form_modal_dialog.Childs.AddRange(GetBaseTextInput("Заказ", "-", GetPostParamsMetaClass.order_info_id, "", true, "Для покупки нажмите на кнопку Купить"));
 
-        /*public List<HtmlDomGenerator> GetCatalog()
+        dom_elements.Add(GetModalDialog("Подтверждение покупки", "Купить", "Отмена", form_modal_dialog, GetPostParamsMetaClass.cart_modal_form_id));
+    }*/
+
+        public List<basic_html_dom> GetCatalog(List<OptionList> filters)
         {
-            List<HtmlDomGenerator> added_dom = new List<HtmlDomGenerator>();
-            added_dom.Add(new HtmlDomGenerator(TypesHtmlDom.p));
+            List<basic_html_dom> added_dom = new List<basic_html_dom>();
+            added_dom.Add(new p(""));
 
-            HtmlDomGenerator filter_form = new HtmlDomGenerator(TypesHtmlDom.form) { form_method = "GET", css_class = "form-inline" };
-            HtmlDomGenerator diw_row = new HtmlDomGenerator() { css_class = "form-row align-items-left" };
+            form.form_set form_set = new form.form_set();
+            form_set.method_form = MethodsForm.GET;
+            form_set.EncType = EncTypes.NoSet;
 
-            List<OptionItem> DeliveryesTree = s_DeliveryClass.GetTreeDeliveryes;
+            form filter_form = new form(form_set) { css_class = "form-inline" };
+            div diw_row = new div() { css_class = "form-row align-items-left" };
+
+            /*List<OptionItem> DeliveryesTree = s_DeliveryClass.GetTreeDeliveryes;
             DeliveryesTree.Insert(0, new OptionItem() { Name = "Все", value = "-1", Disabled = false, Description = "Все города и условия доставки" });
 
             diw_row.Childs.Add(HtmlDomGenerator.GetSelectList(g.GetMemberName((exSupply c) => c.Delivery_terms_id), "Город", "Условия", DeliveryesTree, sel_del_terms.ID is null ? "" : sel_del_terms.ID.ToString()));
@@ -122,8 +130,8 @@ namespace HtmlGenerator.bootstrap.pages
 
                 added_dom.Add(Get_DIV_Bootstrap_Card("<h4>" + supplyes_by_city.Key + "</h4>", GetTable(t_heads, table_body)));
                 added_dom.Add(new HtmlDomGenerator(TypesHtmlDom.p));
-            }
+            }*/
             return added_dom;
-        }*/
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace HtmlGenerator.bootstrap.pages
 {
-    class p_Qiwi : base_page_tmpl
+    public class p_Qiwi : base_page_tmpl
     {
         /*
         exQiwi eq = new exQiwi();

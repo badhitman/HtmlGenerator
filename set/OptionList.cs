@@ -1,14 +1,12 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - Telegram @fakegov 
 ////////////////////////////////////////////////
+using System.Collections.Generic;
 
-namespace HtmlGenerator.bootstrap.pages
+namespace HtmlGenerator.set
 {
-    /// <summary>
-    /// Личный баланс
-    /// </summary>
-    public class p_Balance : base_page_tmpl
+    public class OptionList
     {
-        
+        public List<OptionItem> ListItems = new List<OptionItem>();
     }
 }

@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap.pages
     /// <summary>
     /// Справочник товаров
     /// </summary>
-    class p_Storage : base_page_tmpl
+    public class p_Storage : base_page_tmpl
     {
 
         /*

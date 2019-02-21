@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap.pages
     /// <summary>
     /// Страница заказов
     /// </summary>
-    class p_Orders : base_page_tmpl
+    public class p_Orders : base_page_tmpl
     {
         /*
         public p_Orders(PageGeneratorClass sender)

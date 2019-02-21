@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap.pages
     /// <summary>
     /// Избранное
     /// </summary>
-    class p_Favorites : base_page_tmpl
+    public class p_Favorites : base_page_tmpl
     {
         /*
 

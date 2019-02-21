@@ -11,21 +11,23 @@ namespace HtmlGenerator.dom
     /// изменяться с помощью стилей. Если планируется отправлять данные списка на сервер, то требуется 
     /// поместить элемент "select" внутрь формы. Это также необходимо, когда к данным списка идет обращение через скрипты.
     /// </summary>
-    public class option : basic_html_dom
+    public class option : optgroup
     {
-        public class option_set
+        public class option_set : optgroup_set
         {
-            public string label_text;
+            public new string label_text;
             public string value_option;
             public bool selected = false;
-            public bool disabled = false;
+            public new bool disabled = false;
         }
-        public option_set set;
-        public option(option_set in_set)
+        public new option_set set;
+
+        public option(option_set in_set) : base(new optgroup_set() { label_text = in_set.label_text, disabled = in_set.disabled })
         {
             set = in_set;
             inline = true;
         }
+
         public override string HTML(int deep = 0)
         {
             if (!(set is null))

@@ -27,8 +27,8 @@ namespace HtmlGenerator.bootstrap
             tool_tip = in_tool_tip;
         }
 
-        
-         public li GetMenuItemHtmlDom
+
+        public li GetMenuItemHtmlDom
         {
             get
             {
@@ -36,15 +36,15 @@ namespace HtmlGenerator.bootstrap
 
                 a.a_set a_set = new a.a_set();
                 a_set.href = href;
-                a_set.target = Targets._blank;
+                a_set.target = Targets._self;
                 a_set.text = text;
-                
+
 
                 a a_dom_result = new a(a_set);
                 a_dom_result.css_class = "nav-link";
                 if (SubItems.Count > 0)
                 {
-                     li_dom_result.css_class = (li_dom_result.css_class + " dropdown").Trim();
+                    li_dom_result.css_class = (li_dom_result.css_class + " dropdown").Trim();
                     //
                     a_dom_result.css_class += " dropdown-toggle";
                     a_dom_result.CustomAtributes.Add("data-toggle", "dropdown");
@@ -70,6 +70,6 @@ namespace HtmlGenerator.bootstrap
                 return li_dom_result;
             }
         }
-         
+
     }
 }

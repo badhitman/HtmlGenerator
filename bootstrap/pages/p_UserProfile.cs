@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap.pages
     /// <summary>
     /// Карточка пользователя
     /// </summary>
-    class p_UserProfile : base_page_tmpl
+    public class p_UserProfile : base_page_tmpl
     {
         /*
 public readonly exUser UserProfile;

@@ -34,13 +34,25 @@ namespace HtmlGenerator.dom
             return base.HTML(deep);
         }
 
-        public li GetLi(string value, string name, string desc)
+        /// <summary>
+        /// Добавить текущему "ul" вложеный "li"
+        /// </summary>
+        public void AddLi(string value, string name, string desc, bool disable = false, string tag = "") => Childs.Add(GetLi(value, name, desc, disable, tag));
+
+        public li GetLi(string value, string name, string desc, bool disable = false, string tag = "")
         {
             li ret_val = new li();
             ret_val.Name_DOM = name;
             ret_val.title = desc;
             ret_val.SetAtribute("type", TypeUL.ToString("g"));
             ret_val.SetAtribute("value", value);
+
+            if (disable)
+                ret_val.SetAtribute("disable", null);
+
+            if (!string.IsNullOrEmpty(tag))
+                ret_val.SetAtribute("tag", tag);
+
             return ret_val;
         }
     }

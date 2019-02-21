@@ -4,7 +4,7 @@
 
 namespace HtmlGenerator.bootstrap.pages
 {
-    public class p_Delivery : base_page_tmpl
+    public class p_DeliverySettings : base_page_tmpl
     {
         /*
 

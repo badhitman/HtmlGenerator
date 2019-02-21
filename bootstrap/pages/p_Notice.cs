@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap.pages
     /// <summary>
     /// Уведомления
     /// </summary>
-    class p_Notice : base_page_tmpl
+    public class p_Notice : base_page_tmpl
     {
         /*
 

@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap.pages
     /// <summary>
     /// Список пользователей
     /// </summary>
-    class p_List_Users : base_page_tmpl
+    public class p_List_Users : base_page_tmpl
     {
         /*
         public readonly AccessLevelUser sel_level_users;
