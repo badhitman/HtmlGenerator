@@ -17,7 +17,12 @@ namespace HtmlGenerator.dom
     {
         public thead Thead { get; private set; } = new thead();
         public tbody Tbody { get; private set; } = new tbody();
-
-
+        public override string HTML(int deep = 0)
+        {
+            Childs.Clear();
+            Childs.Add(Thead);
+            Childs.Add(Tbody);
+            return base.HTML(deep);
+        }
     }
 }

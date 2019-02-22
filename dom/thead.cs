@@ -12,29 +12,26 @@ namespace HtmlGenerator.dom
     /// </summary>
     public class thead : basic_html_dom
     {
-        tr my_tr = new tr();
-        List<th> Headers = new List<th>();
+        public virtual List<th> Columns { get; private set; } = new List<th>();
 
-        public void SetTableHeader(string text_header, bool unique = true)
+        public void AddColumn(string text, bool unique = false)
         {
-            if (!unique || Headers.Exists(x => x.InnerText.ToLower() == text_header.ToLower()))
-                Headers.Add(new th() { InnerText = text_header });
+            if (!unique || !Columns.Exists(x => x.InnerText.ToLower() == text.ToLower()))
+                Columns.Add(new th() { InnerText = text });
         }
 
-        public void SetTableHeader(string[] text_headers, bool unique = true)
+        public void AddColumn(string[] text, bool unique = false)
         {
-            foreach (string s in text_headers)
-                SetTableHeader(s, unique);
+            foreach (string s in text)
+                AddColumn(s, unique);
         }
 
         public override string HTML(int deep = 0)
         {
-            if (Headers.Count > 0)
-            {
-                tr my_tr = new tr();
-                Headers.ForEach(x=> my_tr.Childs.Add(x));
-                Childs.Add(my_tr);
-            }
+            Childs.Clear();
+            tr my_tr = new tr();
+            Columns.ForEach(x => my_tr.Childs.Add(x));
+            Childs.Add(my_tr);
             return base.HTML(deep);
         }
     }

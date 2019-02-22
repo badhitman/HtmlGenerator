@@ -344,22 +344,13 @@ namespace HtmlGenerator
         public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
         {
             table table = new table() { css_class = ("table " + css_table_class).Trim() };
-            tbody t_body = new tbody();
-            tr ret_tr = new tr();
-
+            
             foreach (string s in table_heads)
-                table.Thead.SetTableHeader(s);
+                table.Thead.AddColumn(s);
 
             foreach (string[] row_item in table_data)
-            {
-                ret_tr = new tr();
-                foreach (string s in row_item)
-                    ret_tr.Childs.Add(new td() { InnerText = s });
-
-                t_body.Childs.Add(ret_tr);
-            }
-            table.Childs.Add(t_body);
-
+                table.Tbody.AddRow(row_item);
+            
             return table;
         }
 
