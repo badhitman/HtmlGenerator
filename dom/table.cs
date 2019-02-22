@@ -2,7 +2,6 @@
 // © https://github.com/badhitman - Telegram @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
-using System.Collections.Generic;
 
 namespace HtmlGenerator.dom
 {
