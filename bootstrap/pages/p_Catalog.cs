@@ -4,16 +4,21 @@
 using HtmlGenerator.dom;
 using HtmlGenerator.set;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace HtmlGenerator.bootstrap.pages
 {
     /// <summary>
     /// Каталог/Витрина
     /// </summary>
+    [DataContract]
     public class p_Catalog : base_page_tmpl
     {
-        public new string PageTitle = "Каталог";
-        public new string PageHeader = "<strong>Для уточнения поиска настройте фильтр</strong>";
+        public p_Catalog()
+        {
+            PageTitle = "Каталог";
+            PageHeader = "<strong>Для уточнения поиска настройте фильтр</strong>";
+        }
         /*
         public readonly exDeliveryTerms sel_del_terms;
         public readonly exGood sel_good;
