@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - Telegram @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using System.Collections.Generic;
 
 namespace HtmlGenerator.dom
 {
@@ -14,6 +15,9 @@ namespace HtmlGenerator.dom
     /// </summary>
     public class table : basic_html_dom
     {
+        public thead Thead { get; private set; } = new thead();
+        public tbody Tbody { get; private set; } = new tbody();
+
 
     }
 }

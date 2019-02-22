@@ -156,19 +156,19 @@ namespace HtmlGenerator.bootstrap
             set.text = i.ToString();
             a a_tag = new a(set) { css_class = "page-link" };
 
-            li li_tag = new  li() { css_class = "page-item" };
+            li li_tag = new  li(null) { css_class = "page-item" };
 
             if (i < 0)
             {
                 a_tag.SetTagName(typeof(span).Name.ToLower());
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
-                a_tag.inner_html = "⁞";
+                a_tag.InnerText = "⁞";
                 a_tag.set.href = string.Empty;
                 li_tag.css_class += " disabled";
             }
             else if (i == 0)
             {
-                a_tag.inner_html = "<span  class='glyphicon glyphicon-chevron-left'></span>";
+                a_tag.InnerText = "<span  class='glyphicon glyphicon-chevron-left'></span>";
                 if (PageNum == 1)
                 {
                     a_tag.SetTagName(typeof(span).Name.ToLower());
@@ -190,7 +190,7 @@ namespace HtmlGenerator.bootstrap
             }
             else
             {
-                a_tag.inner_html = "<span class='glyphicon glyphicon-chevron-right'></span>";
+                a_tag.InnerText = "<span class='glyphicon glyphicon-chevron-right'></span>";
                 if (PageNum == CountPages)
                 {
                     a_tag.SetTagName(typeof(span).Name.ToLower());

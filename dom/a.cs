@@ -47,7 +47,7 @@ namespace HtmlGenerator.dom
         public a(a_set in_set)
         {
             set = in_set;
-            inner_html = in_set.text;
+            InnerText = in_set.text;
         }
 
         public override string HTML(int deep = 0)

@@ -14,7 +14,7 @@ namespace HtmlGenerator.dom
         public title(string text_title)
         {
             inline = true;
-            inner_html = text_title;
+            InnerText = text_title;
         }
     }
 }

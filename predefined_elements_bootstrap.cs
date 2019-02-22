@@ -37,7 +37,7 @@ namespace HtmlGenerator
         /// <returns>Готовая карточка информации</returns>
         public static div Get_DIV_Bootstrap_Card(string card_head, List<basic_html_dom> body_elements, string css_card = "bg-light")
         {
-            div card_header = new div() { css_class = "card-header", inner_html = card_head };
+            div card_header = new div() { css_class = "card-header", InnerText = card_head };
 
             div card_body = new div() { css_class = "card-body" };
             foreach (div he in body_elements)
@@ -133,8 +133,8 @@ namespace HtmlGenerator
 
         public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
         {
-            div valid_element = new div() { css_class = "valid-tooltip", inner_html = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", inner_html = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
+            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
+            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
             // 
             if (!string.IsNullOrEmpty(valid_text))
                 return new div[] { valid_element, invalid_element };
@@ -198,7 +198,7 @@ namespace HtmlGenerator
             textarea ret_textarea = new textarea(value_input, set_textarea) { css_class = "form-control" };
 
             if (!string.IsNullOrEmpty(value_input))
-                ret_textarea.inner_html = value_input;
+                ret_textarea.InnerText = value_input;
 
 
 
@@ -292,86 +292,76 @@ namespace HtmlGenerator
             return ModalDialog;
         }
 
-        /*public static List<HtmlDomGenerator> GetLoginForm()
+        public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null)
         {
-            List<HtmlDomGenerator> dom_elements = new List<HtmlDomGenerator>();
-            HtmlDomGenerator html_response = new HtmlDomGenerator(TypesHtmlDom.form)
+            List<basic_html_dom> dom_elements = new List<basic_html_dom>();
+            form.form_set form_set = new form.form_set();
+            form_set.method_form = MethodsForm.POST;
+            form_set.target = Targets._self;
+            
+            form html_response = new form(form_set)
             {
-                Id_DOM = GetPostParamsMetaClass.login_form_id,
-                form_method = "POST",
+                Id_DOM = "login_form_id",
                 css_class = "was-validated"
             };
-            html_response.CustomAtributes.Add("novalidate", null);
+            html_response.SetAtribute("novalidate", null);
 
-            html_response.Childs.AddRange(HtmlDomGenerator.GetBaseTextInput("Ваш логин", "", GetPostParamsMetaClass.user_login, "Логин", false, "Введите логин для входа", null, null, null, true));
-            html_response.Childs.AddRange(HtmlDomGenerator.GetPassInput("Ваш пароль", GetPostParamsMetaClass.user_password, "Пароль", "Пароль для входа"));
-            html_response.Childs.AddRange(HtmlDomGenerator.GetPassInput("Повторите пароль", GetPostParamsMetaClass.user_password_r, "Повтор пароля", "Повторно введите пароль"));
-            html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + GetPostParamsMetaClass.collapse_info_new_user;
-            html_response.Childs.Add(HtmlDomGenerator.GetCheckboxInput("Зарегистрироваться", GetPostParamsMetaClass.reg_new_user_chekbox_id));
+            html_response.Childs.Add(GetBaseTextInput("Ваш логин", "", glob_const.user_login_input_id, "Логин", false, "Введите логин для входа", null, null, null, true));
+            html_response.Childs.Add(GetPassInput("Ваш пароль", glob_const.user_password_input_id, "Пароль", "Пароль для входа"));
+            html_response.Childs.Add(GetPassInput("Повторите пароль", glob_const.user_password_repeat_input_id, "Повтор пароля", "Повторно введите пароль"));
+            html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + glob_const.collapse_info_new_user_input_css;
+            html_response.Childs.Add(GetCheckboxInput("Зарегистрироваться", glob_const.reg_new_user_chekbox_id));
 
-            HtmlDomGenerator reg_new_user_info = new HtmlDomGenerator(TypesHtmlDom.p) { css_class = "clearfix" };
-            reg_new_user_info.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.ul) { css_class = "panel-collapse collapse " + GetPostParamsMetaClass.collapse_info_new_user });
-            reg_new_user_info.Childs[0].Childs.Add(new HtmlDomGenerator(TypesHtmlDom.li) { text = "Придумайте/запомните надёжный логин/пароль и входите" });
-            reg_new_user_info.Childs[0].Childs.Add(new HtmlDomGenerator(TypesHtmlDom.li) { text = "Учётная запись будет создана автоматически" });
+            p reg_new_user_info = new p("") { css_class = "clearfix" };
+            reg_new_user_info.Childs.Add(new ul() { css_class = "panel-collapse collapse " + glob_const.collapse_info_new_user_input_css });
+            reg_new_user_info.Childs[0].Childs.Add(new li("Придумайте/запомните надёжный логин/пароль и входите"));
+            reg_new_user_info.Childs[0].Childs.Add(new li("Учётная запись будет создана автоматически"));
 
             html_response.Childs.Add(reg_new_user_info);
-            if (g.Settings.enable_captcha)
+            if (!string.IsNullOrEmpty(re_captcha_key))
             {
-                html_response.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.hr));
-                html_response.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.h4) { text = "Пройдите проверку reCAPTCHA" });
-                html_response.Childs.Add(new HtmlDomGenerator()
-                {
-                    css_class = "g-recaptcha",
-                    CustomAtributes = new Dictionary<string, string>() { { "data-sitekey", g.Settings.re_captcha_key }, { "data-size", "compact" } }
-                });
+                html_response.Childs.Add(new hr());
+                html_response.Childs.Add(new h4("Пройдите проверку reCAPTCHA"));
+                div sitekey = new div() { css_class = "g-recaptcha"};
+                sitekey.SetAtribute("data-size", "compact");
+                sitekey.SetAtribute("data-sitekey", re_captcha_key);
+                html_response.Childs.Add(sitekey);
             }
-            html_response.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.button)
+            html_response.Childs.Add(new button("Войти")
             {
                 css_class = "btn btn-primary btn-lg btn-block",
-                Id_DOM = GetPostParamsMetaClass.button_send_login_form_id,
-                text = "Войти"
+                Id_DOM = glob_const.button_send_login_form_id
             });
 
 
-            dom_elements.Add(HtmlDomGenerator.Get_DIV_Bootstrap_Card("Вход/Регистрация", new List<HtmlDomGenerator>() { html_response }));
+            dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));
             return dom_elements;
-        }*/
+        }
 
         /// <summary>
         /// Сформировать таблицу
         /// </summary>
-        /*public static HtmlDomGenerator GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
+        public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
         {
-            HtmlDomGenerator tr = new HtmlDomGenerator(TypesHtmlDom.tr);
+            table table = new table() { css_class = ("table " + css_table_class).Trim() };
+            tbody t_body = new tbody();
+            tr ret_tr = new tr();
+
             foreach (string s in table_heads)
-                tr.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.th, new Dictionary<string, string>() { { "scope", "col" } }) { text = s });
-
-            HtmlDomGenerator thead = new HtmlDomGenerator(TypesHtmlDom.thead);
-            thead.Childs.Add(tr);
-
-            HtmlDomGenerator table = new HtmlDomGenerator(TypesHtmlDom.table) { css_class = ("table " + css_table_class).Trim() };
-            table.Childs.Add(thead);
-
-            HtmlDomGenerator t_body = new HtmlDomGenerator(TypesHtmlDom.tbody);
+                table.Thead.SetTableHeader(s);
 
             foreach (string[] row_item in table_data)
             {
-                tr = new HtmlDomGenerator(TypesHtmlDom.tr);
+                ret_tr = new tr();
                 foreach (string s in row_item)
-                {
-                    //if (tr.Childs.Count == 0)
-                    //    tr.Childs.Add(new HtmlController(html_types.th, new Dictionary<string, string>() { { "scope", "row" } }) { text = s });
-                    //else
-                    tr.Childs.Add(new HtmlDomGenerator(TypesHtmlDom.td) { text = s });
-                }
-                t_body.Childs.Add(tr);
+                    ret_tr.Childs.Add(new td() { InnerText = s });
+
+                t_body.Childs.Add(ret_tr);
             }
-
-
             table.Childs.Add(t_body);
 
             return table;
-        }*/
+        }
 
         /*public static HtmlDomGenerator GetOrdersAsTable(List<exSupply> supplies)
         {

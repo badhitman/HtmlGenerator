@@ -25,9 +25,9 @@ namespace HtmlGenerator.dom
             public int rowspan = 0;
         }
         public th_set set;
-        public th(th_set in_set)
+        public th(th_set in_set = null)
         {
-            set = in_set;
+            set = in_set is null ? new th_set() : in_set;
         }
 
         public override string HTML(int deep = 0)

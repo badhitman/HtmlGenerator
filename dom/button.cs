@@ -8,7 +8,7 @@ namespace HtmlGenerator.dom
     {
         public button(string text_button)
         {
-            inner_html = text_button;
+            InnerText = text_button;
             inline = true;
         }
     }

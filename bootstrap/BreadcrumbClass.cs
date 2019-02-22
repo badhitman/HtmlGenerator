@@ -28,12 +28,11 @@ namespace HtmlGenerator.bootstrap
                 li my_li;
                 foreach (BreadcrumbItem bi in Breadcrumbs)
                 {
-                    my_li = new li() { css_class = "breadcrumb-item" };
+                    my_li = new li(bi.text) { css_class = "breadcrumb-item" };
                     if (string.IsNullOrEmpty(bi.href))
                     {
                         my_li.css_class += " active";
                         my_li.SetAtribute("aria-current", "page");
-                        my_li.Childs.Add(new text(bi.text));
                     }
                     else
                     {

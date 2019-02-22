@@ -169,9 +169,9 @@ namespace HtmlGenerator
         public string post_block_coment = "";
 
         /// <summary>
-        /// Inner HTML text
+        /// Inner TEXT
         /// </summary>
-        public string inner_html = "";
+        public string InnerText = "";
 
         /// <summary>
         /// Флаг/метка необходимости формировать HTML для элемента в одну строку
@@ -244,8 +244,8 @@ namespace HtmlGenerator
                 foreach (basic_html_dom h in Childs)
                     ret_val += h.HTML(deep + 1);
 
-            if (!string.IsNullOrEmpty(inner_html))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + inner_html;
+            if (!string.IsNullOrEmpty(InnerText))
+                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
 
             if (need_end_tag && !(this is dom.text))
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(custom_name_tag) ? this.GetType().Name.ToLower() : custom_name_tag) + ">";

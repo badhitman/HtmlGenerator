@@ -12,7 +12,7 @@ namespace HtmlGenerator.dom
     {
         public i(string inner_text)
         {
-            inner_html = inner_text;
+            InnerText = inner_text;
         }
     }
 }

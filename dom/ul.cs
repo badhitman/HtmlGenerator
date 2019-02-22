@@ -41,8 +41,7 @@ namespace HtmlGenerator.dom
 
         public li GetLi(string value, string name, string desc, bool disable = false, string tag = "")
         {
-            li ret_val = new li();
-            ret_val.Name_DOM = name;
+            li ret_val = new li(name);
             ret_val.Tooltip = desc;
             ret_val.SetAtribute("type", TypeUL.ToString("g"));
             ret_val.SetAtribute("value", value);

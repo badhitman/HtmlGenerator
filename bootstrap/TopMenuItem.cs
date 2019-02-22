@@ -32,7 +32,7 @@ namespace HtmlGenerator.bootstrap
         {
             get
             {
-                li li_dom_result = new li() { css_class = li_class };
+                li li_dom_result = new li(null) { css_class = li_class };
 
                 a.a_set a_set = new a.a_set();
                 a_set.href = href;

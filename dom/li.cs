@@ -10,6 +10,9 @@ namespace HtmlGenerator.dom
     /// </summary>
     public class li : basic_html_dom
     {
-        
+        public li(string text_value)
+        {
+            InnerText = text_value;
+        }
     }
 }

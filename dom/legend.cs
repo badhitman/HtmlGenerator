@@ -13,7 +13,7 @@ namespace HtmlGenerator.dom
     {
         public legend(string text_legend)
         {
-            inner_html = text_legend;
+            InnerText = text_legend;
         }
     }
 }
