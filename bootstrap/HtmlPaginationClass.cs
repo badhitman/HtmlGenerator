@@ -29,7 +29,7 @@ namespace HtmlGenerator.bootstrap
         li PaginationItem(int i)
         {
             a.a_set set = new a.a_set();
-            set.href = url_tmpl + i.ToString();
+            set.href = UrlTmpl + i.ToString();
             set.text = i.ToString();
             a a_tag = new a(set) { css_class = "page-link" };
 
@@ -54,7 +54,7 @@ namespace HtmlGenerator.bootstrap
                     //li.css_style += " color: #d2d2d2;";
                 }
                 else
-                    a_tag.set.href = url_tmpl + (PageNum - 1).ToString();
+                    a_tag.set.href = UrlTmpl + (PageNum - 1).ToString();
             }
             else if (i <= CountPages)
             {
@@ -75,7 +75,7 @@ namespace HtmlGenerator.bootstrap
                     li_tag.css_class += " disabled";
                 }
                 else
-                    a_tag.set.href = url_tmpl + (PageNum + 1).ToString();
+                    a_tag.set.href = UrlTmpl + (PageNum + 1).ToString();
             }
 
             li_tag.Childs.Add(a_tag);
@@ -117,26 +117,48 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// Шаблон href
         /// </summary>
-        public string url_tmpl = "#";
-
-        public void ReloadDataList<T>(ref List<T> data_list, int page_num, int page_size)
+        private string UrlTmpl = "#";
+        
+        public void ReloadDataList<T>(ref List<T> data_list, int page_num, int page_size, string url_tmpl)
         {
+            UrlTmpl = url_tmpl;
             CountAllElements = data_list.Count();
             PageSize = ParsePageSize(page_size);
             PageNum = ParsePageNum(page_num);
-
-            if (CountAllElements < PageSize)
-                PageSize = CountAllElements;
-
-            if (PageNum > CountPages)
-                PageNum = CountPages;
 
             if (PageNum == 1)
                 data_list = new List<T>(data_list.Take(PageSize));
             else
                 data_list = new List<T>(data_list.Skip(Skip).Take(PageSize));
 
+        }
 
+        int ParsePageNum(int page_num)
+        {
+            if (page_num <= 0)
+                return 1;
+
+            if (CountPages < page_num) // Convert.ToInt16(Math.Ceiling((double)CountAllElements / (double)PageSize));
+                page_num = CountPages;
+            
+            return page_num;
+        }
+
+        int ParsePageSize(int page_size)
+        {
+            int min_pagesize = int.Parse(GetListSizes.Childs[0].GetAtribute("value"));
+            int max_pagesize = int.Parse(GetListSizes.Childs[GetListSizes.Childs.Count - 1].GetAtribute("value"));
+
+            if (min_pagesize > page_size)
+                return min_pagesize;
+
+            if (max_pagesize < page_size)
+                return max_pagesize;
+
+            if (CountAllElements < page_size)
+                page_size = CountAllElements;
+
+            return page_size;
         }
 
         public int Skip { get { return (PageNum - 1) * PageSize; } }
@@ -209,25 +231,6 @@ namespace HtmlGenerator.bootstrap
                 ret_element.Childs.Add(ul_block);
                 return ret_element;
             }
-        }
-
-        int ParsePageNum(int page_num)
-        {
-            throw new NotImplementedException();
-        }
-
-        int ParsePageSize(int item)
-        {
-            int min_pagesize = int.Parse(GetListSizes.Childs[0].GetAtribute("value"));
-            int max_pagesize = int.Parse(GetListSizes.Childs[GetListSizes.Childs.Count - 1].GetAtribute("value"));
-
-            if (min_pagesize > item)
-                return min_pagesize;
-
-            if (max_pagesize < item)
-                return max_pagesize;
-
-            return item;
         }
     }
 }
