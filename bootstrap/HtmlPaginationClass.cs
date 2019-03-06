@@ -5,7 +5,6 @@ using HtmlGenerator.dom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace HtmlGenerator.bootstrap
 {
@@ -14,39 +13,104 @@ namespace HtmlGenerator.bootstrap
 
     public class HtmlPaginationClass
     {
+        public static ul GetListSizes
+        {
+            get
+            {
+                ul ret_list = new ul();
+                ret_list.Childs.Add(ret_list.GetLi("10", "10", "По 10 элементов на странице"));
+                ret_list.Childs.Add(ret_list.GetLi("30", "30", "По 30 элементов на странице"));
+                ret_list.Childs.Add(ret_list.GetLi("50", "50", "По 50 элементов на странице"));
+                ret_list.Childs.Add(ret_list.GetLi("100", "100", "По 100 элементов на странице"));
+                return ret_list;
+            }
+        }
+
+        li PaginationItem(int i)
+        {
+            a.a_set set = new a.a_set();
+            set.href = url_tmpl + i.ToString();
+            set.text = i.ToString();
+            a a_tag = new a(set) { css_class = "page-link" };
+
+            li li_tag = new li(null) { css_class = "page-item" };
+
+            if (i < 0)
+            {
+                a_tag.SetTagName(typeof(span).Name.ToLower());
+                a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
+                a_tag.InnerText = "⁞";
+                a_tag.set.href = string.Empty;
+                li_tag.css_class += " disabled";
+            }
+            else if (i == 0)
+            {
+                a_tag.InnerText = "<span  class='glyphicon glyphicon-chevron-left'></span>";
+                if (PageNum == 1)
+                {
+                    a_tag.SetTagName(typeof(span).Name.ToLower());
+                    a_tag.set.href = string.Empty;
+                    li_tag.css_class += " disabled";
+                    //li.css_style += " color: #d2d2d2;";
+                }
+                else
+                    a_tag.set.href = url_tmpl + (PageNum - 1).ToString();
+            }
+            else if (i <= CountPages)
+            {
+                if (i == PageNum)
+                {
+                    a_tag.SetTagName(typeof(span).Name.ToLower());
+                    li_tag.css_class += " active";
+                    a_tag.set.href = string.Empty;
+                }
+            }
+            else
+            {
+                a_tag.InnerText = "<span class='glyphicon glyphicon-chevron-right'></span>";
+                if (PageNum == CountPages)
+                {
+                    a_tag.SetTagName(typeof(span).Name.ToLower());
+                    a_tag.set.href = string.Empty;
+                    li_tag.css_class += " disabled";
+                }
+                else
+                    a_tag.set.href = url_tmpl + (PageNum + 1).ToString();
+            }
+
+            li_tag.Childs.Add(a_tag);
+
+            return li_tag;
+        }
+
         public Alignment AlignmentPagination = Alignment.Right;
         public Sizing SizingPagination = Sizing.Medium;
-        string page_num;
-        string page_size;
-        public HtmlPaginationClass(string _page_num, string _page_size)
-        {
-            page_num = _page_num;
-            page_size = _page_size;
-        }
+
+        /// <summary>
+        /// Номер страницы "постраничного/разбитого" документа
+        /// </summary>
+        public int PageNum { get; private set; } = 0;
+        /// <summary>
+        /// Размер строк "постраничного/разбитого" документа
+        /// </summary>
+        public int PageSize { get; private set; } = 10;
 
         /// <summary>
         /// Сколько всего элементов для разбивки на страницы
         /// </summary>
-        public int CountAllElements = 0;
+        public int CountAllElements { get; private set; } = 0;
 
         /// <summary>
-        /// Количество элементов на страницу
+        /// Количество страниц в постраничном документе
         /// </summary>
-        public int CountElementsOfPage = 10;
-
-        /// <summary>
-        /// Номер текущей страницы
-        /// </summary>
-        public int PageNum = 1;
-
         private int CountPages
         {
             get
             {
-                if (CountAllElements == 0 && 0 == CountElementsOfPage)
+                if (CountAllElements <= 0 || PageSize <= 0)
                     return 0;
 
-                return Convert.ToInt16(Math.Ceiling((double)CountAllElements / (double)CountElementsOfPage));
+                return Convert.ToInt16(Math.Ceiling((double)CountAllElements / (double)PageSize));
             }
         }
 
@@ -55,29 +119,27 @@ namespace HtmlGenerator.bootstrap
         /// </summary>
         public string url_tmpl = "#";
 
-        public void ReloadDataList<T>(ref List<T> data_list)
+        public void ReloadDataList<T>(ref List<T> data_list, int page_num, int page_size)
         {
             CountAllElements = data_list.Count();
-            CountElementsOfPage = ParsePageSize(page_size);
+            PageSize = ParsePageSize(page_size);
+            PageNum = ParsePageNum(page_num);
 
-            if (CountAllElements < CountElementsOfPage)
-                CountElementsOfPage = CountAllElements;
-
-            if (string.IsNullOrEmpty(page_num) || !Regex.IsMatch(page_num, @"^\d+$") || !int.TryParse(page_num, out PageNum))
-                PageNum = 1;
+            if (CountAllElements < PageSize)
+                PageSize = CountAllElements;
 
             if (PageNum > CountPages)
                 PageNum = CountPages;
 
             if (PageNum == 1)
-                data_list = new List<T>(data_list.Take(CountElementsOfPage));
+                data_list = new List<T>(data_list.Take(PageSize));
             else
-                data_list = new List<T>(data_list.Skip(Skip).Take(CountElementsOfPage));
+                data_list = new List<T>(data_list.Skip(Skip).Take(PageSize));
 
 
         }
 
-        public int Skip { get { return (PageNum - 1) * CountElementsOfPage; } }
+        public int Skip { get { return (PageNum - 1) * PageSize; } }
 
         public nav GetBarPagination
         {
@@ -149,95 +211,23 @@ namespace HtmlGenerator.bootstrap
             }
         }
 
-        private li PaginationItem(int i)
+        int ParsePageNum(int page_num)
         {
-            a.a_set set = new a.a_set();
-            set.href = url_tmpl + i.ToString();
-            set.text = i.ToString();
-            a a_tag = new a(set) { css_class = "page-link" };
-
-            li li_tag = new  li(null) { css_class = "page-item" };
-
-            if (i < 0)
-            {
-                a_tag.SetTagName(typeof(span).Name.ToLower());
-                a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
-                a_tag.InnerText = "⁞";
-                a_tag.set.href = string.Empty;
-                li_tag.css_class += " disabled";
-            }
-            else if (i == 0)
-            {
-                a_tag.InnerText = "<span  class='glyphicon glyphicon-chevron-left'></span>";
-                if (PageNum == 1)
-                {
-                    a_tag.SetTagName(typeof(span).Name.ToLower());
-                    a_tag.set.href = string.Empty;
-                    li_tag.css_class += " disabled";
-                    //li.css_style += " color: #d2d2d2;";
-                }
-                else
-                    a_tag.set.href = url_tmpl + (PageNum - 1).ToString();
-            }
-            else if (i <= CountPages)
-            {
-                if (i == PageNum)
-                {
-                    a_tag.SetTagName(typeof(span).Name.ToLower());
-                    li_tag.css_class += " active";
-                    a_tag.set.href = string.Empty;
-                }
-            }
-            else
-            {
-                a_tag.InnerText = "<span class='glyphicon glyphicon-chevron-right'></span>";
-                if (PageNum == CountPages)
-                {
-                    a_tag.SetTagName(typeof(span).Name.ToLower());
-                    a_tag.set.href = string.Empty;
-                    li_tag.css_class += " disabled";
-                }
-                else
-                    a_tag.set.href = url_tmpl + (PageNum + 1).ToString();
-            }
-
-            li_tag.Childs.Add(a_tag);
-
-            return li_tag;
+            throw new NotImplementedException();
         }
 
-        public static ul GetListSizes
+        int ParsePageSize(int item)
         {
-            get
-            {
-                ul ret_list = new ul();
-                ret_list.Childs.Add(ret_list.GetLi("10", "10", "По 10 элементов на странице"));
-                ret_list.Childs.Add(ret_list.GetLi("30", "30", "По 30 элементов на странице"));
-                ret_list.Childs.Add(ret_list.GetLi("50", "50", "По 50 элементов на странице"));
-                ret_list.Childs.Add(ret_list.GetLi("999999", "Все", "Все элементы на странице"));
-                return ret_list;
-            }
-        }
+            int min_pagesize = int.Parse(GetListSizes.Childs[0].GetAtribute("value"));
+            int max_pagesize = int.Parse(GetListSizes.Childs[GetListSizes.Childs.Count - 1].GetAtribute("value"));
 
-        public static int ParsePageSize(string item)
-        {
-            if (item is null)
-                item = "";
+            if (min_pagesize > item)
+                return min_pagesize;
 
-            if (string.IsNullOrEmpty(item) || !Regex.IsMatch(item, @"^\d+$"))
-                return int.Parse(GetListSizes.Childs[0].GetAtribute("value"));
+            if (max_pagesize < item)
+                return max_pagesize;
 
-            int ret_val = 0;
-            if (!int.TryParse(item, out ret_val))
-                return 0;
-
-            if (int.Parse(GetListSizes.Childs[0].GetAtribute("value")) > ret_val)
-                return int.Parse(GetListSizes.Childs[0].GetAtribute("value"));
-
-            if (int.Parse(GetListSizes.Childs[GetListSizes.Childs.Count - 1].GetAtribute("value")) < ret_val)
-                return int.Parse(GetListSizes.Childs[GetListSizes.Childs.Count - 1].GetAtribute("value"));
-
-            return ret_val;
+            return item;
         }
     }
 }
