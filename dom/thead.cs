@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// © https://github.com/badhitman - Telegram @fakegov
+// © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 using System.Collections.Generic;
