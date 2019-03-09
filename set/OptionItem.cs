@@ -8,19 +8,24 @@ namespace HtmlGenerator.set
     public class OptionItem
     {
         /// <summary>
-        /// Значение переменной
+        /// Заголовок элемента
+        /// </summary>
+        public string Title;
+
+        /// <summary>
+        /// Значимые данные контекста html.dom объекта
         /// </summary>
         public string Value;
 
         /// <summary>
-        /// Подсказка к элементу (всплывающая)
+        /// Подсказка к элементу
         /// </summary>
         public string Tooltip;
 
         /// <summary>
-        /// Заголовок пункта меню
+        /// Добавочные CSS слассы для html.dom объекта
         /// </summary>
-        public string Title;
+        public string CSS;
 
         /// <summary>
         /// Флаг/признак, что элемент отключён

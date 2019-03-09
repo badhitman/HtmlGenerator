@@ -7,6 +7,7 @@ using System.Collections.Generic;
 namespace HtmlGenerator
 {
     public enum StylesElements { Primary, Secondary, Success, Danger, Warning, Info, Light, Dark }
+
     public static class predefined_elements_bootstrap
     {
         public static div GetBootstrapSelectList(string label, select select_body, string Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
@@ -131,29 +132,6 @@ namespace HtmlGenerator
             return returned_input;
         }
 
-        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
-        {
-            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
-            // 
-            if (!string.IsNullOrEmpty(valid_text))
-                return new div[] { valid_element, invalid_element };
-            else
-                return new div[] { invalid_element };
-        }
-
-        public static div GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
-        {
-            div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, false, input_info, null, null, null, true);
-            foreach (basic_html_dom e in ret_val.Childs)
-                if (e is input)
-                {
-                    ((input)e).set.type_input = InputTypes.password;
-                    break;
-                }
-            return ret_val;
-        }
-
         public static div GetSecondTextInput(string label_text, string value_input, string Id_DOM, string placeholder, bool input_readonly, string class_div_group_wrap = null, bool required = false)
         {
             span input_group_text = new span(label_text) { css_class = "input-group-text" };
@@ -180,6 +158,29 @@ namespace HtmlGenerator
                 input_group.Childs.AddRange(GetValidationAlerts(Id_DOM));
 
             return input_group;
+        }
+
+        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
+        {
+            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
+            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
+            // 
+            if (!string.IsNullOrEmpty(valid_text))
+                return new div[] { valid_element, invalid_element };
+            else
+                return new div[] { invalid_element };
+        }
+
+        public static div GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
+        {
+            div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, false, input_info, null, null, null, true);
+            foreach (basic_html_dom e in ret_val.Childs)
+                if (e is input)
+                {
+                    ((input)e).set.type_input = InputTypes.password;
+                    break;
+                }
+            return ret_val;
         }
 
         public static div GetTextarea(string label_text, string value_input, string Id_DOM, bool input_readonly, int rows = 2, bool required = false)
@@ -292,7 +293,18 @@ namespace HtmlGenerator
             return ModalDialog;
         }
 
-        public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null)
+        /// <summary>
+        /// Получить форму регистрации/авторизации
+        /// </summary>
+        /// <param name="user_login_input_id">html dom id/name - идентификатор/имя input-a ввода логина</param>
+        /// <param name="user_password_input_id">html dom id/name - идентификатор/имя input-a ввода пароля</param>
+        /// <param name="user_password_repeat_input_id">html dom id/name - идентификатор/имя input-a ввода повтора пороля</param>
+        /// <param name="reg_new_user_chekbox_id">html dom id/name - идентификатор/имя chekbox-a для регистрации нового пользователя</param>
+        /// <param name="button_send_login_form_id">html dom id/name - идентификатор/имя button-a </param>
+        /// <param name="re_captcha_key">api - ключ reCaptcha</param>
+        /// <param name="collapse_info_new_user_input_css">css класс - области сворачивания и разворачивания для регистрации</param>
+        /// <returns></returns>
+        public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null,string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
         {
             List<basic_html_dom> dom_elements = new List<basic_html_dom>();
             form.form_set form_set = new form.form_set();
@@ -306,14 +318,14 @@ namespace HtmlGenerator
             };
             html_response.SetAtribute("novalidate", null);
 
-            html_response.Childs.Add(GetBaseTextInput("Ваш логин", "", glob_const.user_login_input_id, "Логин", false, "Введите логин для входа", null, null, null, true));
-            html_response.Childs.Add(GetPassInput("Ваш пароль", glob_const.user_password_input_id, "Пароль", "Пароль для входа"));
-            html_response.Childs.Add(GetPassInput("Повторите пароль", glob_const.user_password_repeat_input_id, "Повтор пароля", "Повторно введите пароль"));
-            html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + glob_const.collapse_info_new_user_input_css;
-            html_response.Childs.Add(GetCheckboxInput("Зарегистрироваться", glob_const.reg_new_user_chekbox_id));
+            html_response.Childs.Add(GetBaseTextInput("Ваш логин", "", user_login_input_id, "Логин", false, "Введите логин для входа", null, null, null, true));
+            html_response.Childs.Add(GetPassInput("Ваш пароль", user_password_input_id, "Пароль", "Пароль для входа"));
+            html_response.Childs.Add(GetPassInput("Повторите пароль", user_password_repeat_input_id, "Повтор пароля", "Повторно введите пароль"));
+            html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
+            html_response.Childs.Add(GetCheckboxInput("Зарегистрироваться", reg_new_user_chekbox_id));
 
             p reg_new_user_info = new p("") { css_class = "clearfix" };
-            reg_new_user_info.Childs.Add(new ul() { css_class = "panel-collapse collapse " + glob_const.collapse_info_new_user_input_css });
+            reg_new_user_info.Childs.Add(new ul() { css_class = "panel-collapse collapse " + collapse_info_new_user_input_css });
             reg_new_user_info.Childs[0].Childs.Add(new li("Придумайте/запомните надёжный логин/пароль и входите"));
             reg_new_user_info.Childs[0].Childs.Add(new li("Учётная запись будет создана автоматически"));
 
@@ -330,7 +342,7 @@ namespace HtmlGenerator
             html_response.Childs.Add(new button("Войти")
             {
                 css_class = "btn btn-primary btn-lg btn-block",
-                Id_DOM = glob_const.button_send_login_form_id
+                Id_DOM = button_send_login_form_id
             });
 
 

@@ -37,12 +37,16 @@ namespace HtmlGenerator.dom
         /// <summary>
         /// Добавить текущему "ul" вложеный "li"
         /// </summary>
-        public void AddLi(string value, string name, string desc, bool disable = false, string tag = "") => Childs.Add(GetLi(value, name, desc, disable, tag));
+        public void AddLi(string value, string name, string tooltip, bool disable = false, string tag = "") => Childs.Add(GetLi(value, name, tooltip, disable, tag));
 
-        public li GetLi(string value, string name, string desc, bool disable = false, string tag = "")
+        /// <summary>
+        /// получить li элемент того же типа (ul.type)
+        /// </summary>
+        /// <param name="value">value - Число, с которого будет начинаться нумерованный список.</param>
+        public li GetLi(string value, string text_title, string tooltip, bool disable = false, string tag = "")
         {
-            li ret_val = new li(name);
-            ret_val.Tooltip = desc;
+            li ret_val = new li(text_title);
+            ret_val.Tooltip = tooltip;
             ret_val.SetAtribute("type", TypeUL.ToString("g"));
             ret_val.SetAtribute("value", value);
 
