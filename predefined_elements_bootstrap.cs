@@ -257,7 +257,7 @@ namespace HtmlGenerator
         /// <param name="text_cansel_button">Текст конопки Cansel (если null or empty), то кнопка не выводится вовсе</param>
         /// <param name="body_html">Тело модального окна</param>
         /// <param name="id_modal_dialog">ID атрибут модального окна</param>
-        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_wryte")
+        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")
         {
             span span_close_modal_header = new span("&times;");
             span_close_modal_header.SetAtribute("aria-hidden", "true");
