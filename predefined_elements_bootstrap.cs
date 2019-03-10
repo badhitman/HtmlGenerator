@@ -58,51 +58,19 @@ namespace HtmlGenerator
             return Get_DIV_Bootstrap_Card(card_head, new List<basic_html_dom>() { body_element }, css_card);
         }
 
-        public static p GetCheckboxInput(string label_text, string Id_DOM, bool is_cheked = false, bool required = false)
+        #region Text - input
+        public static div GetBaseTextInput(string label_text, string value_input, string Id_DOM, string placeholder, string input_info, string class_div_group_wrap = null, string label_css_class = null, string input_css_class = null, bool input_readonly = false, bool required = false)
         {
-            div ret_val = new div() { css_class = "form-check" };
-            //
-            input.input_set input_set = new input.input_set();
-            input_set.type_input = InputTypes.checkbox;
-
-            input ret_input = new input(input_set);
-            ret_input.css_class = "form-check-input";
-            ret_input.Id_DOM = Id_DOM;
-
-            if (is_cheked)
-                ret_input.SetAtribute("checked", "true");
-
-            if (required)
-                ret_input.SetAtribute("required", null);
-
-            ret_val.Childs.Add(ret_input);
-            //
-            input_set = new input.input_set();
-            input_set.type_input = InputTypes.hidden;
-            input_set.value = "off";
-            ret_input = new input(input_set);
-            ret_input.Name_DOM = Id_DOM;
-            ret_val.Childs.Add(ret_input);
-            //
-            label label = new label(label_text, Id_DOM);
-            label.css_class = "form-check-label";
-            ret_val.Childs.Add(label);
-
-            return new p(null) { Childs = new List<basic_html_dom>() { ret_val } };
-        }
-
-        public static div GetBaseTextInput(string label_text, string value_input, string Id_DOM, string placeholder, bool input_readonly, string input_info, string class_div_group_wrap = null, string label_css_class = null, string input_css_class = null, bool required = false)
-        {
-            div returned_input = new div() { css_class = "form-group" + " " + class_div_group_wrap };
-
-            if (!string.IsNullOrEmpty(label_text))
-                returned_input.Childs.Add(new label(label_text, Id_DOM) { css_class = label_css_class });
+            div returned_input = new div() { css_class = ("form-group" + " " + class_div_group_wrap).Trim() };
 
             input.input_set input_set = new input.input_set();
             input_set.type_input = InputTypes.text;
             input_set.value = value_input;
 
             input ret_input = new input(input_set) { css_class = input_css_class };
+
+            if (!string.IsNullOrEmpty(label_text))
+                returned_input.Childs.Add(new label(label_text, Id_DOM) { css_class = label_css_class });
 
             if (required)
                 ret_input.set.i_required = true;
@@ -160,21 +128,11 @@ namespace HtmlGenerator
 
             return input_group;
         }
-
-        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
-        {
-            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
-            // 
-            if (!string.IsNullOrEmpty(valid_text))
-                return new div[] { valid_element, invalid_element };
-            else
-                return new div[] { invalid_element };
-        }
+        #endregion
 
         public static div GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
         {
-            div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, false, input_info, null, null, null, true);
+            div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, input_info, null, null, null, false, true);
             foreach (basic_html_dom e in ret_val.Childs)
                 if (e is input)
                 {
@@ -212,6 +170,50 @@ namespace HtmlGenerator
             return returned_input;
         }
 
+        public static p GetCheckboxInput(string label_text, string Id_DOM, bool is_cheked = false, bool required = false)
+        {
+            div ret_val = new div() { css_class = "form-check" };
+            //
+            input.input_set input_set = new input.input_set();
+            input_set.type_input = InputTypes.checkbox;
+
+            input ret_input = new input(input_set);
+            ret_input.css_class = "form-check-input";
+            ret_input.Id_DOM = Id_DOM;
+
+            if (is_cheked)
+                ret_input.SetAtribute("checked", "true");
+
+            if (required)
+                ret_input.SetAtribute("required", null);
+
+            ret_val.Childs.Add(ret_input);
+            //
+            input_set = new input.input_set();
+            input_set.type_input = InputTypes.hidden;
+            input_set.value = "off";
+            ret_input = new input(input_set);
+            ret_input.Name_DOM = Id_DOM;
+            ret_val.Childs.Add(ret_input);
+            //
+            label label = new label(label_text, Id_DOM);
+            label.css_class = "form-check-label";
+            ret_val.Childs.Add(label);
+
+            return new p(null) { Childs = new List<basic_html_dom>() { ret_val } };
+        }
+
+        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
+        {
+            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
+            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
+            // 
+            if (!string.IsNullOrEmpty(valid_text))
+                return new div[] { valid_element, invalid_element };
+            else
+                return new div[] { invalid_element };
+        }
+
         /// <summary>
         /// Сформировать кнопку
         /// </summary>
@@ -221,20 +223,21 @@ namespace HtmlGenerator
         /// <param name="size">Размер кнопки</param>
         /// <param name="btn_block">Флаг режима заполнения родительского блока во всю ширину</param>
         /// <param name="outline_style">Флаг отключения цвета фона. В этом режиме стиль оформления будет использован для рамки и цвета, но не для фона</param>
-        /// <returns></returns>
-        public static button GetButton(string text, string href, ElementsStyles? style = null, ElementsSizes? size = ElementsSizes.Lg, bool btn_block = true, bool outline_style = false)
+        public static button GetButton(string text, string id_button = null, string href = null, ElementsStyles? style = null, ElementsSizes? size = null, bool btn_block = false, bool outline_style = false)
         {
-            button ret_button = new button(text) { css_class = "btn" };
+            button ret_button = new button(text) { css_class = "btn", Id_DOM = id_button };
 
             if (!(style is null))
                 ret_button.css_class += " btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g").ToLower();
 
             if (!(size is null))
-                ret_button.css_class += " btn-"+ size?.ToString("g").ToLower();
+                ret_button.css_class += " btn-" + size?.ToString("g").ToLower();
 
             ret_button.css_class += (btn_block ? " btn-block" : "") + " active";
 
-                if (!string.IsNullOrEmpty(href))
+            if (string.IsNullOrEmpty(href))
+                ret_button.SetAtribute("type", "button");
+            else
             {
                 ret_button.SetTagName("a");
                 ret_button.SetAtribute("href", href);
@@ -245,6 +248,15 @@ namespace HtmlGenerator
             return ret_button;
         }
 
+        /// <summary>
+        /// Сформировать модальное окно
+        /// </summary>
+        /// <param name="title">Заголовок модального окна</param>
+        /// <param name="text_ok_button">Текст конопки Ok (если null or empty), то кнопка не выводится вовсе</param>
+        /// <param name="id_ok_button">ID атрибут конопки Ok</param>
+        /// <param name="text_cansel_button">Текст конопки Cansel (если null or empty), то кнопка не выводится вовсе</param>
+        /// <param name="body_html">Тело модального окна</param>
+        /// <param name="id_modal_dialog">ID атрибут модального окна</param>
         public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_wryte")
         {
             span span_close_modal_header = new span("&times;");
@@ -259,24 +271,21 @@ namespace HtmlGenerator
             div div_modal_header = new div() { css_class = "modal-header" };
             div_modal_header.Childs.Add(h5_modal_header);
             div_modal_header.Childs.Add(button_close_modal_header);
-
-            //
-            button button_close_modal_footer = new button(text_cansel_button) { css_class = "btn btn-secondary" };
-            button_close_modal_footer.SetAtribute("data-dismiss", "modal");
             //
             div modal_footer = new div() { css_class = "modal-footer" };
 
             if (!string.IsNullOrEmpty(text_cansel_button))
+            {
+                button button_close_modal_footer = GetButton(text_cansel_button, null, null, ElementsStyles.Secondary);
+                button_close_modal_footer.SetAtribute("data-dismiss", "modal");
                 modal_footer.Childs.Add(button_close_modal_footer);
+            }
 
             if (!string.IsNullOrEmpty(text_ok_button))
             {
-                button button_send_modal_footer = GetButton(text_ok_button,"#", ElementsStyles.Primary);
-                //a.a_set a_set = new a.a_set();
-                //a_set.text = text_ok_button;
-                //a button_send_modal_footer = new a(a_set) { css_class = "btn btn-primary", Id_DOM = id_ok_button };
-                //button_send_modal_footer.SetAtribute("type", "button");
-                //modal_footer.Childs.Add(button_send_modal_footer);
+                button button_send_modal_footer = GetButton(text_ok_button, null, "#", ElementsStyles.Primary);
+                button_send_modal_footer.Id_DOM = id_ok_button;
+                modal_footer.Childs.Add(button_send_modal_footer);
             }
             //
             div modal_content = new div() { css_class = "modal-content" };
@@ -331,7 +340,7 @@ namespace HtmlGenerator
             };
             html_response.SetAtribute("novalidate", null);
 
-            html_response.Childs.Add(GetBaseTextInput("Ваш логин", "", user_login_input_id, "Логин", false, "Введите логин для входа", null, null, null, true));
+            html_response.Childs.Add(GetBaseTextInput("Ваш логин", "", user_login_input_id, "Логин", "Введите логин для входа", null, null, null, false, true));
             html_response.Childs.Add(GetPassInput("Ваш пароль", user_password_input_id, "Пароль", "Пароль для входа"));
             html_response.Childs.Add(GetPassInput("Повторите пароль", user_password_repeat_input_id, "Повтор пароля", "Повторно введите пароль"));
             html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
@@ -352,11 +361,7 @@ namespace HtmlGenerator
                 sitekey.SetAtribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
             }
-            html_response.Childs.Add(new button("Войти")
-            {
-                css_class = "btn btn-primary btn-lg btn-block",
-                Id_DOM = button_send_login_form_id
-            });
+            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, ElementsStyles.Primary, ElementsSizes.Lg, true));
 
 
             dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));

@@ -10,11 +10,6 @@ namespace HtmlGenerator.dom
     public enum InputTypes
     {
         /// <summary>
-        /// Без указания типа
-        /// </summary>
-        NoSet,
-
-        /// <summary>
         /// Стандартные типы
         /// </summary>
         button, checkbox, file, hidden, image, password, radio, reset, submit, text
@@ -22,16 +17,42 @@ namespace HtmlGenerator.dom
 
     public class input : basic_html_dom
     {
+        /// <summary>
+        /// Пакетные настройки для input-а
+        /// </summary>
         public class input_set
         {
-            public InputTypes type_input;
+            /// <summary>
+            /// Тип input-а
+            /// </summary>
+            public InputTypes? type_input;
+
+            /// <summary>
+            /// Значение/Value input-а
+            /// </summary>
             public string value = null;
+
+            /// <summary>
+            /// флаг - только для чтения
+            /// </summary>
             public bool i_readonly = false;
+
+            /// <summary>
+            /// флаг - отключено
+            /// </summary>
             public bool i_disabled = false;
+
+            /// <summary>
+            /// флаг - обязательно для заполнения
+            /// </summary>
             public bool i_required = false;
         }
 
+        /// <summary>
+        /// Пакетные настройки для input-а
+        /// </summary>
         public input_set set;
+
         public input(input_set in_set)
         {
             set = in_set;
@@ -43,8 +64,8 @@ namespace HtmlGenerator.dom
         {
             if (!(set is null))
             {
-                if (set.type_input > InputTypes.NoSet)
-                    SetAtribute("type", set.type_input.ToString("g"));
+                if (!(set.type_input is null))
+                    SetAtribute("type", set.type_input?.ToString("g"));
 
                 if (!string.IsNullOrEmpty(set.value))
                     SetAtribute("value", set.value);
@@ -60,11 +81,6 @@ namespace HtmlGenerator.dom
 
             }
             return base.HTML(deep);
-        }
-
-        public label GetLabel(string text_title)
-        {
-            return new label(text_title, Id_DOM);
         }
     }
 }
