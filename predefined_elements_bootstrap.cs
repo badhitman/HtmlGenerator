@@ -6,7 +6,8 @@ using System.Collections.Generic;
 
 namespace HtmlGenerator
 {
-    public enum StylesElements { Primary, Secondary, Success, Danger, Warning, Info, Light, Dark }
+    public enum ElementsStyles { Primary, Secondary, Success, Danger, Warning, Info, Light, Dark }
+    public enum ElementsSizes { Lg, Sm }
 
     public static class predefined_elements_bootstrap
     {
@@ -211,30 +212,40 @@ namespace HtmlGenerator
             return returned_input;
         }
 
-        public static button GetButton(string href, string text, StylesElements style = StylesElements.Primary)
+        /// <summary>
+        /// Сформировать кнопку
+        /// </summary>
+        /// <param name="text">Текст кнопки</param>
+        /// <param name="href">Ссылка (если требуетс кнопка-ссылка)</param>
+        /// <param name="style">Стиль оформления кнопки</param>
+        /// <param name="size">Размер кнопки</param>
+        /// <param name="btn_block">Флаг режима заполнения родительского блока во всю ширину</param>
+        /// <param name="outline_style">Флаг отключения цвета фона. В этом режиме стиль оформления будет использован для рамки и цвета, но не для фона</param>
+        /// <returns></returns>
+        public static button GetButton(string text, string href, ElementsStyles? style = null, ElementsSizes? size = ElementsSizes.Lg, bool btn_block = true, bool outline_style = false)
         {
-            button ret_button = new button(text) { css_class = "btn btn-" + style.ToString("g").ToLower() + " btn-lg btn-block active" };
-            ret_button.SetAtribute("href", href);
-            ret_button.SetAtribute("role", "button");
-            ret_button.SetAtribute("aria-pressed", "true");
+            button ret_button = new button(text) { css_class = "btn" };
+
+            if (!(style is null))
+                ret_button.css_class += " btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g").ToLower();
+
+            if (!(size is null))
+                ret_button.css_class += " btn-"+ size?.ToString("g").ToLower();
+
+            ret_button.css_class += (btn_block ? " btn-block" : "") + " active";
+
+                if (!string.IsNullOrEmpty(href))
+            {
+                ret_button.SetTagName("a");
+                ret_button.SetAtribute("href", href);
+                ret_button.SetAtribute("role", "button");
+                ret_button.SetAtribute("aria-pressed", "true");
+            }
 
             return ret_button;
         }
 
-        public static a GetButtonAsLink(string href, string text, StylesElements style = StylesElements.Primary)
-        {
-            a.a_set a_set = new a.a_set();
-            a_set.href = href;
-            a_set.target = Targets._self;
-            a_set.text = text;
-            a ret_button = new a(a_set);
-            ret_button.SetAtribute("role", "button");
-            ret_button.SetAtribute("aria-pressed", "true");
-            ret_button.css_class = "btn btn-" + style.ToString("g").ToLower() + " btn-lg btn-block active";
-            return ret_button;
-        }
-
-        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_create_document_id")
+        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_wryte")
         {
             span span_close_modal_header = new span("&times;");
             span_close_modal_header.SetAtribute("aria-hidden", "true");
@@ -253,18 +264,20 @@ namespace HtmlGenerator
             button button_close_modal_footer = new button(text_cansel_button) { css_class = "btn btn-secondary" };
             button_close_modal_footer.SetAtribute("data-dismiss", "modal");
             //
-            a.a_set a_set = new a.a_set();
-            a_set.text = text_ok_button;
-            a button_send_modal_footer = new a(a_set) { css_class = "btn btn-primary", Id_DOM = id_ok_button };
-            button_send_modal_footer.SetAtribute("type", "button");
-            //
             div modal_footer = new div() { css_class = "modal-footer" };
 
             if (!string.IsNullOrEmpty(text_cansel_button))
                 modal_footer.Childs.Add(button_close_modal_footer);
 
             if (!string.IsNullOrEmpty(text_ok_button))
-                modal_footer.Childs.Add(button_send_modal_footer);
+            {
+                button button_send_modal_footer = GetButton(text_ok_button,"#", ElementsStyles.Primary);
+                //a.a_set a_set = new a.a_set();
+                //a_set.text = text_ok_button;
+                //a button_send_modal_footer = new a(a_set) { css_class = "btn btn-primary", Id_DOM = id_ok_button };
+                //button_send_modal_footer.SetAtribute("type", "button");
+                //modal_footer.Childs.Add(button_send_modal_footer);
+            }
             //
             div modal_content = new div() { css_class = "modal-content" };
             modal_content.Childs.Add(div_modal_header);
@@ -304,13 +317,13 @@ namespace HtmlGenerator
         /// <param name="re_captcha_key">api - ключ reCaptcha</param>
         /// <param name="collapse_info_new_user_input_css">css класс - области сворачивания и разворачивания для регистрации</param>
         /// <returns></returns>
-        public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null,string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
+        public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null, string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
         {
             List<basic_html_dom> dom_elements = new List<basic_html_dom>();
             form.form_set form_set = new form.form_set();
             form_set.method_form = MethodsForm.POST;
             form_set.target = Targets._self;
-            
+
             form html_response = new form(form_set)
             {
                 Id_DOM = "login_form_id",
@@ -334,7 +347,7 @@ namespace HtmlGenerator
             {
                 html_response.Childs.Add(new hr());
                 html_response.Childs.Add(new h4("Пройдите проверку reCAPTCHA"));
-                div sitekey = new div() { css_class = "g-recaptcha"};
+                div sitekey = new div() { css_class = "g-recaptcha" };
                 sitekey.SetAtribute("data-size", "compact");
                 sitekey.SetAtribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
@@ -356,13 +369,13 @@ namespace HtmlGenerator
         public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
         {
             table table = new table() { css_class = ("table " + css_table_class).Trim() };
-            
+
             foreach (string s in table_heads)
                 table.Thead.AddColumn(s);
 
             foreach (string[] row_item in table_data)
                 table.Tbody.AddRow(row_item);
-            
+
             return table;
         }
     }

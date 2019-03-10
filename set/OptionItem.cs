@@ -23,6 +23,11 @@ namespace HtmlGenerator.set
         public string Tooltip;
 
         /// <summary>
+        /// Ссылка
+        /// </summary>
+        //public string Href;
+
+        /// <summary>
         /// Добавочные CSS слассы для html.dom объекта
         /// </summary>
         public string CSS;

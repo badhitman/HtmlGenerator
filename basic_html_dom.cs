@@ -221,8 +221,8 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(Name_DOM))
                 SetAtribute("name", Name_DOM);
 
-            if (!string.IsNullOrEmpty(css_class))
-                SetAtribute("class", css_class);
+            if (!string.IsNullOrEmpty(css_class.Trim()))
+                SetAtribute("class", css_class.Trim());
 
             if (!string.IsNullOrEmpty(css_style))
                 SetAtribute("style", css_style);

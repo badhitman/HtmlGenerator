@@ -73,14 +73,17 @@ namespace HtmlGenerator
         #endregion
 
         #region html.dom.ul
-        public static ul GetTreeView(string id_dom_element, OptionList ListItems)
+        public static ul GetTreeView(string id_dom_element, string ul_class,string li_class, OptionList ListItems)
         {
             ul ret_ul = new ul();
-            write_ul_list(ref ret_ul.Childs, ListItems.ListItems);
+            if (!string.IsNullOrEmpty(ul_class))
+                ret_ul.css_class = ul_class;
+
+            write_ul_list(ref ret_ul.Childs, ListItems.ListItems, li_class);
 
             return ret_ul;
         }
-        private static void write_ul_list(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems)
+        private static void write_ul_list(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems, string li_class)
         {
             foreach (OptionItem o_item in ListItems)
             {
@@ -98,8 +101,14 @@ namespace HtmlGenerator
                 if (!string.IsNullOrEmpty(o_item.Value))
                     li_item.Id_DOM = o_item.Value;
 
+                if (!string.IsNullOrEmpty(o_item.CSS))
+                    li_item.css_class += " " + o_item.CSS;
+
+                if (!string.IsNullOrEmpty(li_class))
+                    li_item.css_class += " " + li_class;
+
                 if (o_item.Childs.Count > 0)
-                    write_ul_list(ref li_item.Childs, o_item.Childs);
+                    write_ul_list(ref li_item.Childs, o_item.Childs, li_class);
 
                 ret_options.Add(li_item);
             }
