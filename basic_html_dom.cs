@@ -155,7 +155,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Устанавливает порядок получения фокуса при переходе между элементами с помощью клавиши Tab.
         /// </summary>
-        public int tabindex = -1;
+        public int tabindex = 0;
 
         /// <summary>
         /// Текст HTML подсказки/tooltip
@@ -200,6 +200,21 @@ namespace HtmlGenerator
             if (!(this is dom.text))
                 ret_val += "<" + (string.IsNullOrEmpty(custom_name_tag) ? this.GetType().Name.ToLower() : custom_name_tag);
 
+            if (!string.IsNullOrEmpty(Id_DOM))
+                SetAtribute("id", Id_DOM);
+
+            if (!string.IsNullOrEmpty(Name_DOM))
+                SetAtribute("name", Name_DOM);
+
+            if (!string.IsNullOrEmpty(Tooltip))
+                SetAtribute("title", Tooltip);
+
+            if (!string.IsNullOrEmpty(css_class?.Trim()))
+                SetAtribute("class", css_class.Trim());
+
+            if (!string.IsNullOrEmpty(css_style))
+                SetAtribute("style", css_style);
+
             if (!string.IsNullOrEmpty(accesskey))
                 SetAtribute("accesskey", accesskey);
 
@@ -209,23 +224,8 @@ namespace HtmlGenerator
             if (hidden)
                 SetAtribute("hidden", null);
 
-            if (tabindex > -1)
+            if (tabindex != 0)
                 SetAtribute("tabindex", tabindex.ToString());
-
-            if (!string.IsNullOrEmpty(Tooltip))
-                SetAtribute("title", Tooltip);
-
-            if (!string.IsNullOrEmpty(Id_DOM))
-                SetAtribute("id", Id_DOM);
-
-            if (!string.IsNullOrEmpty(Name_DOM))
-                SetAtribute("name", Name_DOM);
-
-            if (!string.IsNullOrEmpty(css_class.Trim()))
-                SetAtribute("class", css_class.Trim());
-
-            if (!string.IsNullOrEmpty(css_style))
-                SetAtribute("style", css_style);
 
             foreach (KeyValuePair<string, string> kvp in CustomAtributes)
                 if (!string.IsNullOrEmpty(kvp.Key))
@@ -249,7 +249,6 @@ namespace HtmlGenerator
 
             if (need_end_tag && !(this is dom.text))
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(custom_name_tag) ? this.GetType().Name.ToLower() : custom_name_tag) + ">";
-
 
             post_block_coment = post_block_coment.Replace("<", "[").Replace(">", "]");
 

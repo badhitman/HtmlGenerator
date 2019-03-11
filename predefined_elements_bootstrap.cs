@@ -254,7 +254,7 @@ namespace HtmlGenerator
         /// <param name="title">Заголовок модального окна</param>
         /// <param name="text_ok_button">Текст конопки Ok (если null or empty), то кнопка не выводится вовсе</param>
         /// <param name="id_ok_button">ID атрибут конопки Ok</param>
-        /// <param name="text_cansel_button">Текст конопки Cansel (если null or empty), то кнопка не выводится вовсе</param>
+        /// <param name="text_cansel_button">Текст конопки Cancel (если null or empty), то кнопка не выводится вовсе</param>
         /// <param name="body_html">Тело модального окна</param>
         /// <param name="id_modal_dialog">ID атрибут модального окна</param>
         public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")

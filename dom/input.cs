@@ -57,7 +57,7 @@ namespace HtmlGenerator.dom
         {
             set = in_set;
             inline = true;
-
+            need_end_tag = false;
         }
 
         public override string HTML(int deep = 0)
