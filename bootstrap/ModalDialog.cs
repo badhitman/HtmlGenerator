@@ -23,6 +23,13 @@ namespace HtmlGenerator.bootstrap
         public List<basic_html_dom> BodyElements { get; private set; } = new List<basic_html_dom>();
 
         /// <summary>
+        /// Адрес программы или документа, который обрабатывает данные формы
+        /// </summary>
+        public string FormAction = "./";
+
+        public Targets FormTarget = Targets._self;
+
+        /// <summary>
         /// Заголовок модального диалога
         /// </summary>
         public string TitleDialog;
@@ -79,7 +86,7 @@ namespace HtmlGenerator.bootstrap
 
             if (!string.IsNullOrEmpty(TextOkButton))
             {
-                button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, "#", ElementsStyles.Primary);
+                button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, ElementsStyles.Primary);
                 button_send_modal_footer.css_class += " " + CssOkButton;
                 modal_footer.Childs.Add(button_send_modal_footer);
             }
@@ -92,10 +99,13 @@ namespace HtmlGenerator.bootstrap
             modal_content.Childs.Add(modal_body);
             //
             modal_content.Childs.Add(modal_footer);
+            form.form_set set = new form.form_set() { EncType = EncTypes.WwwFormUrlEncoded, method_form = MethodsForm.POST, target = FormTarget, form_action = FormAction };
+            form my_form = new form(set);
+            my_form.Childs.Add(modal_content);
             //
             div modal_dialog_document = new div() { css_class = "modal-dialog" };
             modal_dialog_document.CustomAtributes.Add("role", "document");
-            modal_dialog_document.Childs.Add(modal_content);
+            modal_dialog_document.Childs.Add(my_form);
             //
             this.css_class = "modal fade";
             CustomAtributes.Add("tabindex", "-1");
