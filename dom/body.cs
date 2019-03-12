@@ -1,5 +1,6 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
+// Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
 namespace HtmlGenerator.dom

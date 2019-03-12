@@ -59,7 +59,7 @@ namespace HtmlGenerator
         }
 
         #region Text - input
-        public static div GetBaseTextInput(string label_text, string value_input, string Id_DOM, string placeholder, string input_info, string class_div_group_wrap = null, string label_css_class = null, string input_css_class = null, bool input_readonly = false, bool required = false)
+        public static div GetBaseTextInput(string label_text, string value_input, string input_name, string placeholder, string input_info, string class_div_group_wrap = null, string label_css_class = null, string input_css_class = null, bool input_readonly = false, bool required = false)
         {
             div returned_input = new div() { css_class = ("form-group" + " " + class_div_group_wrap).Trim() };
 
@@ -70,7 +70,7 @@ namespace HtmlGenerator
             input ret_input = new input(input_set) { css_class = input_css_class };
 
             if (!string.IsNullOrEmpty(label_text))
-                returned_input.Childs.Add(new label(label_text, Id_DOM) { css_class = label_css_class });
+                returned_input.Childs.Add(new label(label_text, input_name) { css_class = label_css_class });
 
             if (required)
                 ret_input.set.i_required = true;
@@ -78,8 +78,7 @@ namespace HtmlGenerator
             if (input_readonly)
                 ret_input.set.i_readonly = true;
 
-            ret_input.Id_DOM = Id_DOM;
-            ret_input.Name_DOM = Id_DOM;
+            ret_input.Name_DOM = input_name;
             ret_input.inline = true;
             ret_input.css_class = "form-control";
 
@@ -89,13 +88,13 @@ namespace HtmlGenerator
             //
             returned_input.Childs.Add(ret_input);
             if (required)
-                returned_input.Childs.AddRange(GetValidationAlerts(Id_DOM));
+                returned_input.Childs.AddRange(GetValidationAlerts(input_name));
 
             if (!string.IsNullOrEmpty(input_info))
                 returned_input.Childs.Add(new small(input_info)
                 {
                     css_class = "form-text text-muted",
-                    Id_DOM = Id_DOM + "Help"
+                    Id_DOM = input_name + "Help"
                 });
 
             return returned_input;

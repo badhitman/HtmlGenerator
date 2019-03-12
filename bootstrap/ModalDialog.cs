@@ -87,6 +87,7 @@ namespace HtmlGenerator.bootstrap
             if (!string.IsNullOrEmpty(TextOkButton))
             {
                 button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, ElementsStyles.Primary);
+                button_send_modal_footer.TypeButton = TypesButton.submit;
                 button_send_modal_footer.css_class += " " + CssOkButton;
                 modal_footer.Childs.Add(button_send_modal_footer);
             }
