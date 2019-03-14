@@ -16,6 +16,11 @@ namespace HtmlGenerator.dom
     public class script : basic_html_dom
     {
         public enum MimeTypes { JavaScript, VBScript }
+
+        /// <summary>
+        ///  Атрибут defer откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. 
+        /// </summary>
+        public bool defer = true;
         public class script_set
         {
             public string src;
@@ -25,7 +30,8 @@ namespace HtmlGenerator.dom
         public script(script_set in_set)
         {
             set = in_set;
-            
+            if (defer)
+                SetAtribute("defer", "");
         }
 
         public override string HTML(int deep = 0)
