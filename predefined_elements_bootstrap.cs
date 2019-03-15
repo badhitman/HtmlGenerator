@@ -141,11 +141,11 @@ namespace HtmlGenerator
             return ret_val;
         }
 
-        public static div GetTextarea(string label_text, string value_input, string Id_DOM, bool input_readonly, int rows = 2, bool required = false)
+        public static div GetTextarea(string label_text, string value_input, string name_input, string placeholder, bool input_readonly = false, int rows = 2, bool required = false)
         {
             div returned_input = new div() { css_class = "form-group" };
             if (!string.IsNullOrEmpty(label_text))
-                returned_input.Childs.Add(new label(label_text, Id_DOM));
+                returned_input.Childs.Add(new label(label_text, name_input));
 
             textarea.set_textarea set_textarea = new textarea.set_textarea();
             set_textarea.required = required;
@@ -159,10 +159,7 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(value_input))
                 ret_textarea.InnerText = value_input;
 
-
-
-            ret_textarea.Id_DOM = Id_DOM;
-            ret_textarea.Name_DOM = Id_DOM;
+            ret_textarea.Name_DOM = name_input;
 
             returned_input.Childs.Add(ret_textarea);
 
