@@ -11,8 +11,8 @@ namespace HtmlGenerator
     public static class Predefined_elements
     {
         #region html.dom.select
-        public static select GetSelectList(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false) => GetSelectList(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
-        public static select GetSelectList(string name_dom_object, OptionList ListItems, string[] selected_option_values = null, bool input_readonly = false, bool required = false)
+        public static select GetSelectDom(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true) => GetSelectDom(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
+        public static select GetSelectDom(string name_dom_object, OptionList ListItems, string[] selected_option_values = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true)
         {
             select.select_set select_set = new select.select_set();
 
@@ -23,7 +23,7 @@ namespace HtmlGenerator
                 selected_option_values = new string[] { "0" };
                 ListItems.ListItems.Insert(0, new OptionItem() { Disabled = true, Tag = "элемент-заглушка", Title = "Выбор значения...", Tooltip = "Выберете значение", Value = "0" });
             }
-            WriteSelectList(ref ret_select.Childs, ListItems.ListItems, selected_option_values);
+            WriteSelectDom(ref ret_select.Childs, ListItems.ListItems, selected_option_values, groups_only, groups_clickable);
 
             if (required)
                 ret_select.SetAtribute("required", null);
@@ -33,16 +33,49 @@ namespace HtmlGenerator
 
             return ret_select;
         }
-        private static void WriteSelectList(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems, string[] selected_option_values = null)
+        private static void WriteSelectDom(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems, string[] selected_option_values = null, bool groups_only = true, bool groups_clickable = true)
         {
-            optgroup.optgroup_set optgroup_set;
+            optgroup.optgroup_set opt_set;
             optgroup option_dom;
+
+            option.option_set option_set;
 
             foreach (OptionItem o_item in ListItems)
             {
-                if (o_item.Childs.Count == 0)
+                if (groups_only && !o_item.IsGroup)
+                    continue;
+
+                if (o_item.IsGroup)
                 {
-                    option.option_set option_set = new option.option_set
+                    if (!groups_clickable)
+                    {
+                        opt_set = new optgroup.optgroup_set
+                        {
+                            TitleText = o_item.Title,
+                            Disabled = o_item.Disabled
+                        };
+                    option_dom = new optgroup(opt_set);
+
+                    }
+                    else
+                    {
+                        option_set = new option.option_set
+                        {
+                            TitleText = o_item.Title,
+                            Disabled = o_item.Disabled,
+                            Value = o_item.Value
+                        };
+                        option_dom = new option(option_set);
+                    }
+                    WriteSelectDom(ref option_dom.Childs, o_item.Childs, selected_option_values);
+                }
+                else
+                {
+
+                }
+                /*if (o_item.Childs.Count == 0)
+                {
+                    option_set = new option.option_set
                     {
                         TitleText = o_item.Title,
                         Disabled = o_item.Disabled,
@@ -53,20 +86,12 @@ namespace HtmlGenerator
                         option_set.Selected = true;
                     //
                     option_dom = new option(new option.option_set());
-                    if (o_item.IsGroup)
-                        option_dom.css_class += " tree-" + (o_item.IsGroup ? "group" : "item");
+                    option_dom.css_class += " tree-" + (o_item.IsGroup ? "group" : "item");
                 }
                 else
                 {
-                    optgroup_set = new optgroup.optgroup_set
-                    {
-                        TitleText = o_item.Title,
-                        Disabled = o_item.Disabled
-                    };
-                    //
-                    option_dom = new optgroup(optgroup_set);
-                    WriteSelectList(ref option_dom.Childs, o_item.Childs, selected_option_values);
-                }
+                    
+                }*/
 
                 if (!string.IsNullOrEmpty(o_item.Tag))
                     option_dom.SetAtribute("tag", o_item.Tag);
@@ -77,7 +102,7 @@ namespace HtmlGenerator
         #endregion
 
         #region html.dom.ul
-        public static ul GetTreeView(string id_dom_element, string ul_class, string li_class, OptionList ListItems)
+        public static ul GetTreeViewDom(string id_dom_element, string ul_class, string li_class, OptionList ListItems)
         {
             ul ret_ul = new ul();
             if (!string.IsNullOrEmpty(ul_class))

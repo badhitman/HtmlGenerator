@@ -46,10 +46,24 @@ namespace HtmlGenerator.set
         /// Технический параметр для передачи дополнительных данных
         /// </summary>
         public string Tag = "";
-        
+
         /// <summary>
         /// Дочерние элементы
         /// </summary>
         public List<OptionItem> Childs = new List<OptionItem>();
+
+        /// <summary>
+        /// Получить префикс узда исходя из глубины вложенности элемента/узла
+        /// </summary>
+        public string TreePrefix
+        {
+            get
+            {
+                string prefix = "";
+                for (int i = 0; i <= DeepNode; i++)
+                    prefix += "-";
+                return "prefix";
+            }
+        }
     }
 }
