@@ -13,6 +13,11 @@ namespace HtmlGenerator.set
         public string Title;
 
         /// <summary>
+        /// Флаг того что элемент является группой
+        /// </summary>
+        public bool IsGroup;
+
+        /// <summary>
         /// Значимые данные контекста html.dom объекта
         /// </summary>
         public string Value;
@@ -23,14 +28,14 @@ namespace HtmlGenerator.set
         public string Tooltip;
 
         /// <summary>
-        /// Ссылка
+        /// Глубина вложености элемента
         /// </summary>
-        //public string Href;
+        public int DeepNode;
 
         /// <summary>
         /// Добавочные CSS слассы для html.dom объекта
         /// </summary>
-        public string CSS;
+        //public string CSS;
 
         /// <summary>
         /// Флаг/признак, что элемент отключён

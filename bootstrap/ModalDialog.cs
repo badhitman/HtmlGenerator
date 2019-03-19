@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom;
+using MultiTool;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
