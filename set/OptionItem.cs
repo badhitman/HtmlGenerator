@@ -60,9 +60,9 @@ namespace HtmlGenerator.set
             get
             {
                 string prefix = "";
-                for (int i = 0; i <= DeepNode; i++)
+                for (int i = 0; i < DeepNode; i++)
                     prefix += "-";
-                return "prefix";
+                return prefix;
             }
         }
     }
