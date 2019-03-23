@@ -37,18 +37,18 @@ namespace HtmlGenerator.bootstrap
 
             if (i < 0)
             {
-                a_tag.SetTagName(typeof(span).Name.ToLower());
+                a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
-                a_tag.InnerText = "⁞";
+                a_tag.InnerHtml = "⁞";
                 a_tag.set.href = string.Empty;
                 li_tag.css_class += " disabled";
             }
             else if (i == 0)
             {
-                a_tag.InnerText = "<span  class='glyphicon glyphicon-chevron-left'></span>";
+                a_tag.InnerHtml = "<span  class='glyphicon glyphicon-chevron-left'></span>";
                 if (PageNum == 1)
                 {
-                    a_tag.SetTagName(typeof(span).Name.ToLower());
+                    a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                     a_tag.set.href = string.Empty;
                     li_tag.css_class += " disabled";
                     //li.css_style += " color: #d2d2d2;";
@@ -60,17 +60,17 @@ namespace HtmlGenerator.bootstrap
             {
                 if (i == PageNum)
                 {
-                    a_tag.SetTagName(typeof(span).Name.ToLower());
+                    a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                     li_tag.css_class += " active";
                     a_tag.set.href = string.Empty;
                 }
             }
             else
             {
-                a_tag.InnerText = "<span class='glyphicon glyphicon-chevron-right'></span>";
+                a_tag.InnerHtml = "<span class='glyphicon glyphicon-chevron-right'></span>";
                 if (PageNum == CountPages)
                 {
-                    a_tag.SetTagName(typeof(span).Name.ToLower());
+                    a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                     a_tag.set.href = string.Empty;
                     li_tag.css_class += " disabled";
                 }

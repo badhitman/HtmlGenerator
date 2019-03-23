@@ -17,7 +17,7 @@ namespace HtmlGenerator.dom
         public label(string i_text, string i_for)
         {
             inline = true;
-            InnerText = i_text;
+            InnerHtml = i_text;
             SetAtribute("for", i_for);
         }
     }

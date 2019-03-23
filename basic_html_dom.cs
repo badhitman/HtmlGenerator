@@ -104,13 +104,17 @@ namespace HtmlGenerator
 
     public abstract class basic_html_dom
     {
-        private string custom_name_tag = "";
+        /// <summary>
+        /// Ручное указание имени/типа элемента/тэга
+        /// По умолчанию имя/тип определяется по имени типа класса, но в случае необходимости его можно изменить на сосбтвенный
+        /// </summary>
+        public string set_custom_name_tag = null;
 
         /// <summary>
         /// Дочерние/вложеные элементы
         /// </summary>
         public List<basic_html_dom> Childs = new List<basic_html_dom>();
-        
+
         /// <summary>
         /// Пользовательские атрибуты текущего HTML элемента
         /// </summary>
@@ -122,14 +126,14 @@ namespace HtmlGenerator
         public string Id_DOM = "";
 
         /// <summary>
-        /// Позволяет получить доступ к элементу с помощью заданного сочетания клавиш. Браузеры при этом используют различные комбинации клавиш.
-        /// </summary>
-        public string accesskey = null;
-
-        /// <summary>
         /// Имя/Name элемента в DOM
         /// </summary>
         public string Name_DOM = "";
+
+        /// <summary>
+        /// Позволяет получить доступ к элементу с помощью заданного сочетания клавиш. Браузеры при этом используют различные комбинации клавиш.
+        /// </summary>
+        public string accesskey = null;
 
         /// <summary>
         /// Определяет имя класса, которое позволяет связать тег со стилевым оформлением.
@@ -154,6 +158,7 @@ namespace HtmlGenerator
 
         /// <summary>
         /// Устанавливает порядок получения фокуса при переходе между элементами с помощью клавиши Tab.
+        /// В случае значения по умолчанию 0 - атрибут не выводится вовсе
         /// </summary>
         public int tabindex = 0;
 
@@ -163,15 +168,16 @@ namespace HtmlGenerator
         public string Tooltip = "";
 
         /// <summary>
-        /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два коментария (в самом начале и самом конце DOM блока)
+        /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два коментария (в самом начале и самом конце DOM блока).
+        /// Если указать только начальный/верхний коментарий, то он же будет использоваться и в нижнем.
         /// </summary>
         public string prew_block_coment = "";
         public string post_block_coment = "";
 
         /// <summary>
-        /// Inner TEXT
+        /// Произвольный html текст внутри DOM блока/элемента
         /// </summary>
-        public string InnerText = "";
+        public string InnerHtml = "";
 
         /// <summary>
         /// Флаг/метка необходимости формировать HTML для элемента в одну строку
@@ -179,7 +185,7 @@ namespace HtmlGenerator
         public bool inline = false;
 
         /// <summary>
-        /// Флаг/метка необходимости закрывающего тега для элемента
+        /// Флаг/метка необходимости парного/закрывающего тега для элемента
         /// </summary>
         public bool need_end_tag = true;
 
@@ -190,7 +196,11 @@ namespace HtmlGenerator
         /// <returns>Возвращает готовый html</returns>
         public virtual string HTML(int deep = 0)
         {
+            /////////////////////////////////////////////
+            // Вычещаем недопустимый текст из коментария  
             prew_block_coment = prew_block_coment.Replace("<", "[").Replace(">", "]");
+            post_block_coment = post_block_coment.Replace("<", "[").Replace(">", "]");
+
             string ret_val = "";
 
             if (!string.IsNullOrEmpty(prew_block_coment))
@@ -198,7 +208,7 @@ namespace HtmlGenerator
 
             ret_val += GetTabPrefix("\t", deep);
             if (!(this is dom.text))
-                ret_val += "<" + (string.IsNullOrEmpty(custom_name_tag) ? this.GetType().Name.ToLower() : custom_name_tag);
+                ret_val += "<" + (string.IsNullOrEmpty(set_custom_name_tag) ? GetType().Name.ToLower() : set_custom_name_tag);
 
             if (!string.IsNullOrEmpty(Id_DOM))
                 SetAtribute("id", Id_DOM);
@@ -229,7 +239,7 @@ namespace HtmlGenerator
 
             foreach (KeyValuePair<string, string> kvp in CustomAtributes)
                 if (!string.IsNullOrEmpty(kvp.Key))
-                    ret_val += " " + kvp.Key + (string.IsNullOrEmpty(kvp.Value) ? "" : "=\"" + kvp.Value + "\"");
+                    ret_val += " " + kvp.Key + (kvp.Value is null ? "" : "=\"" + kvp.Value + "\"");
 
             if (!need_end_tag && !(this is dom.text))
                 ret_val += " />";
@@ -244,11 +254,11 @@ namespace HtmlGenerator
                 foreach (basic_html_dom h in Childs)
                     ret_val += h.HTML(deep + 1);
 
-            if (!string.IsNullOrEmpty(InnerText))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
+            if (!string.IsNullOrEmpty(InnerHtml))
+                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerHtml;
 
             if (need_end_tag && !(this is dom.text))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(custom_name_tag) ? this.GetType().Name.ToLower() : custom_name_tag) + ">";
+                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(set_custom_name_tag) ? this.GetType().Name.ToLower() : set_custom_name_tag) + ">";
 
             post_block_coment = post_block_coment.Replace("<", "[").Replace(">", "]");
 
@@ -276,16 +286,25 @@ namespace HtmlGenerator
         }
 
         /// <summary>
-        /// Установить или добавить атрибут
+        /// Установить или добавить атрибут.
         /// </summary>
-        /// <param name="attr_name"></param>
-        /// <param name="attr_value"></param>
+        /// <param name="attr_name">Имя атрибута dom объекта</param>
+        /// <param name="attr_value">Если знаение атрибута IS NULL, то генератор объявит имя атрибута у объекта, но не будет указывать значение этого атрибута (т.е. будет пропущен знак = и его значение)</param>
         public void SetAtribute(string attr_name, string attr_value)
         {
             if (!CustomAtributes.ContainsKey(attr_name))
                 CustomAtributes.Add(attr_name, attr_value);
             else
                 CustomAtributes[attr_name] = attr_value;
+        }
+
+        /// <summary>
+        /// Пакетная установка атрибутов
+        /// </summary>
+        public void SetAtribute(Dictionary<string, string> in_custom_atributes)
+        {
+            foreach (KeyValuePair<string, string> kvp in in_custom_atributes)
+                SetAtribute(kvp.Key, kvp.Value);
         }
 
         /// <summary>
@@ -307,22 +326,6 @@ namespace HtmlGenerator
             if (CustomAtributes.ContainsKey(attr_name))
                 CustomAtributes.Remove(attr_name);
         }
-
-        /// <summary>
-        /// Пакетная установка атрибутов
-        /// </summary>
-        public void SetAtribute(Dictionary<string, string> in_custom_atributes)
-        {
-            if (!(in_custom_atributes is null))
-                foreach (KeyValuePair<string, string> kvp in in_custom_atributes)
-                    SetAtribute(kvp.Key, kvp.Value);
-        }
-
-        /// <summary>
-        /// Установить объекту пользовательское имя HTML.DOM. По умолчанию имя берётся из имени типа класса.
-        /// Если передать пустую строку или null, то имя тега будет представлено как имя типа класса
-        /// </summary>
-        public void SetTagName(string in_custom_name_tag = null) => custom_name_tag = in_custom_name_tag;
 
         /// <summary>
         /// Установить DOM элементу обработчик события.

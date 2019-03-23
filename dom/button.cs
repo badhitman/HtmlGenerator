@@ -30,7 +30,7 @@ namespace HtmlGenerator.dom
         public TypesButton TypeButton;
         public button(string text_button, TypesButton type_button = TypesButton.button)
         {
-            InnerText = text_button;
+            InnerHtml = text_button;
             TypeButton = type_button;
         }
 

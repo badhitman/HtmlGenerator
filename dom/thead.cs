@@ -16,8 +16,8 @@ namespace HtmlGenerator.dom
 
         public void AddColumn(string text, bool unique = false)
         {
-            if (!unique || !Columns.Exists(x => x.InnerText.ToLower() == text.ToLower()))
-                Columns.Add(new th() { InnerText = text });
+            if (!unique || !Columns.Exists(x => x.InnerHtml.ToLower() == text.ToLower()))
+                Columns.Add(new th() { InnerHtml = text });
         }
 
         public void AddColumn(string[] text, bool unique = false)

@@ -11,7 +11,7 @@ namespace HtmlGenerator
     public static class Predefined_elements
     {
         #region html.dom.select
-        public static select GetSelectDom(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true) => GetSelectDom(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
+        //public static select GetSelectDom(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true) => GetSelectDom(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
         public static select GetSelectDom(string name_dom_object, OptionList ListItems, string[] selected_option_values = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true)
         {
             select.select_set select_set = new select.select_set();
@@ -35,6 +35,9 @@ namespace HtmlGenerator
         }
         private static void WriteSelectDom(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems, string[] selected_option_values = null, bool groups_only = true, bool groups_clickable = true)
         {
+            if (ListItems.Count == 0)
+                return;
+
             optgroup.optgroup_set opt_set;
             optgroup option_dom;
 
@@ -45,53 +48,29 @@ namespace HtmlGenerator
                 if (groups_only && !o_item.IsGroup)
                     continue;
 
-                if (o_item.IsGroup)
+                if (o_item.IsGroup && !groups_clickable)
                 {
-                    if (!groups_clickable)
+                    opt_set = new optgroup.optgroup_set
                     {
-                        opt_set = new optgroup.optgroup_set
-                        {
-                            TitleText = o_item.Title,
-                            Disabled = o_item.Disabled
-                        };
+                        TitleText = o_item.Title,
+                        Disabled = o_item.Disabled
+                    };
                     option_dom = new optgroup(opt_set);
-
-                    }
-                    else
-                    {
-                        option_set = new option.option_set
-                        {
-                            TitleText = o_item.Title,
-                            Disabled = o_item.Disabled,
-                            Value = o_item.Value
-                        };
-                        option_dom = new option(option_set);
-                    }
-                    WriteSelectDom(ref option_dom.Childs, o_item.Childs, selected_option_values);
                 }
                 else
-                {
-
-                }
-                /*if (o_item.Childs.Count == 0)
                 {
                     option_set = new option.option_set
                     {
-                        TitleText = o_item.Title,
+                        TitleText = o_item.TreePrefix + o_item.Title,
                         Disabled = o_item.Disabled,
                         Value = o_item.Value
                     };
-
+                    option_dom = new option(option_set);
                     if (!(selected_option_values is null) && Array.IndexOf(selected_option_values, option_set.Value) > -1)
                         option_set.Selected = true;
-                    //
-                    option_dom = new option(new option.option_set());
-                    option_dom.css_class += " tree-" + (o_item.IsGroup ? "group" : "item");
                 }
-                else
-                {
-                    
-                }*/
+                option_dom.css_class += " tree-" + (o_item.IsGroup ? "group" : "item");
+                WriteSelectDom(ref option_dom.Childs, o_item.Childs, selected_option_values, groups_only, groups_clickable);
 
                 if (!string.IsNullOrEmpty(o_item.Tag))
                     option_dom.SetAtribute("tag", o_item.Tag);

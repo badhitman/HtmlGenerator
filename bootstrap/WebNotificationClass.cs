@@ -65,7 +65,7 @@ namespace HtmlGenerator.bootstrap
             my_span.SetAtribute("aria-hidden", "true");
             button_close.Childs.Add(my_span);
 
-            div.InnerText = Message;
+            div.InnerHtml = Message;
             div.Childs.Add(button_close);
 
             return div;

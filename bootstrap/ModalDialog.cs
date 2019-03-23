@@ -54,7 +54,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// меняем сразу имя тега на div
         /// </summary>
-        public ModalDialog() => SetTagName("div");
+        public ModalDialog() => set_custom_name_tag = "div";
 
         /// <summary>
         /// При вызове этого метода поле Childs очищается и заново заполняется

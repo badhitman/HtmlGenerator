@@ -39,7 +39,7 @@ namespace HtmlGenerator
         /// <returns>Готовая карточка информации</returns>
         public static div Get_DIV_Bootstrap_Card(string card_head, List<basic_html_dom> body_elements, string css_card = "bg-light")
         {
-            div card_header = new div() { css_class = "card-header", InnerText = card_head };
+            div card_header = new div() { css_class = "card-header", InnerHtml = card_head };
 
             div card_body = new div() { css_class = "card-body" };
             foreach (div he in body_elements)
@@ -157,7 +157,7 @@ namespace HtmlGenerator
             textarea ret_textarea = new textarea(value_input, set_textarea) { css_class = "form-control" };
 
             if (!string.IsNullOrEmpty(value_input))
-                ret_textarea.InnerText = value_input;
+                ret_textarea.InnerHtml = value_input;
 
             ret_textarea.Name_DOM = name_input;
 
@@ -201,8 +201,8 @@ namespace HtmlGenerator
 
         public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
         {
-            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
+            div valid_element = new div() { css_class = "valid-tooltip", InnerHtml = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
+            div invalid_element = new div() { css_class = "invalid-tooltip", InnerHtml = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
             // 
             if (!string.IsNullOrEmpty(valid_text))
                 return new div[] { valid_element, invalid_element };
@@ -235,7 +235,7 @@ namespace HtmlGenerator
                 ret_button.SetAtribute("type", "button");
             else
             {
-                ret_button.SetTagName("a");
+                ret_button.set_custom_name_tag ="a";
                 ret_button.SetAtribute("href", href);
                 ret_button.SetAtribute("role", "button");
                 ret_button.SetAtribute("aria-pressed", "true");

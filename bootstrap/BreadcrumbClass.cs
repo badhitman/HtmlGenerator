@@ -33,7 +33,7 @@ namespace HtmlGenerator.bootstrap
                     {
                         my_li.css_class += " active";
                         my_li.SetAtribute("aria-current", "page");
-                        my_li.InnerText = bi.text;
+                        my_li.InnerHtml = bi.text;
                     }
                     else
                     {
