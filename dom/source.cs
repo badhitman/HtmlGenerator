@@ -59,7 +59,7 @@ namespace HtmlGenerator.dom
         tv
     }
 
-    public class source_audio : basic_html_dom
+    public class source : basic_html_dom
     {
         /// <summary>
         /// Определяет устройство, для которого будет воспроизводиться аудио или видеофайл. 
@@ -67,13 +67,27 @@ namespace HtmlGenerator.dom
         public MediaDevices media = MediaDevices.all;
 
         /// <summary>
-        /// Адрес аудио или видеофайла, который будет воспроизводиться на веб-странице.
+        /// Адрес медиа файла, который будет воспроизводиться на веб-странице.
         /// </summary>
         public string src = "#";
 
+        /// <summary>
+        /// Задает MIME-тип источника, а также аудио и видеокодек — так называется алгоритм хранения воспроизводимых данных.
+        /// Вначале указывается MIME-тип, затем после точки с запятой пишется ключевое слово codecs и ему присваивается через запятую значение видео и аудиокодека. Если предполагается использовать только звук, видеокодек не пишется.
+        /// Пример: type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+        /// </summary>
+        public string mimetype = null;
+
         public override string HTML(int deep = 0)
         {
-            set_custom_name_tag = "source";
+            SetAtribute("media", media.ToString("g"));
+            if (!string.IsNullOrEmpty(src))
+            {
+                SetAtribute("src", src);
+                if (!string.IsNullOrEmpty(mimetype))
+                    SetAtribute("type", mimetype);
+            }
+
             return base.HTML(deep);
         }
     }

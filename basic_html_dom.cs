@@ -106,7 +106,7 @@ namespace HtmlGenerator
     {
         /// <summary>
         /// Ручное указание имени/типа элемента/тэга
-        /// По умолчанию имя/тип определяется по имени типа класса, но в случае необходимости его можно изменить на сосбтвенный
+        /// По умолчанию имя/тип определяется по имени типа класса, но в случае необходимости его можно изменить на собственный
         /// </summary>
         public string set_custom_name_tag = null;
 
@@ -177,7 +177,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Произвольный html текст внутри DOM блока/элемента
         /// </summary>
-        public string InnerHtml = "";
+        public string InnerText = "";
 
         /// <summary>
         /// Флаг/метка необходимости формировать HTML для элемента в одну строку
@@ -254,8 +254,8 @@ namespace HtmlGenerator
                 foreach (basic_html_dom h in Childs)
                     ret_val += h.HTML(deep + 1);
 
-            if (!string.IsNullOrEmpty(InnerHtml))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerHtml;
+            if (!string.IsNullOrEmpty(InnerText))
+                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
 
             if (need_end_tag && !(this is dom.text))
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(set_custom_name_tag) ? this.GetType().Name.ToLower() : set_custom_name_tag) + ">";

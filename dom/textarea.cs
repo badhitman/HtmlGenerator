@@ -88,7 +88,7 @@ namespace HtmlGenerator.dom
         {
             inline = true;
             set = in_set;
-            InnerHtml = text_value;
+            InnerText = text_value;
         }
 
         public override string HTML(int deep = 0)
@@ -113,7 +113,7 @@ namespace HtmlGenerator.dom
                     SetAtribute("maxlength", set.maxlength.ToString());
 
                 if (!string.IsNullOrEmpty(set.TextValue))
-                    InnerHtml = set.TextValue;
+                    InnerText = set.TextValue;
 
                 if (!string.IsNullOrEmpty(set.placeholder))
                     SetAtribute("placeholder", set.placeholder);

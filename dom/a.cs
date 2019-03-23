@@ -172,7 +172,7 @@ namespace HtmlGenerator.dom
         public a(a_set in_set)
         {
             set = in_set;
-            InnerHtml = in_set.text;
+            InnerText = in_set.text;
         }
 
         public override string HTML(int deep = 0)
@@ -180,7 +180,8 @@ namespace HtmlGenerator.dom
             if (!(set.href is null))
             {
                 SetAtribute("href", set.href);
-                if(!string.IsNullOrEmpty(set.mimetype))
+                //
+                if (!string.IsNullOrEmpty(set.mimetype))
                     SetAtribute("type", set.mimetype);
             }
 

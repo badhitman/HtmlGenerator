@@ -39,13 +39,13 @@ namespace HtmlGenerator.bootstrap
             {
                 a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
-                a_tag.InnerHtml = "⁞";
+                a_tag.InnerText = "⁞";
                 a_tag.set.href = string.Empty;
                 li_tag.css_class += " disabled";
             }
             else if (i == 0)
             {
-                a_tag.InnerHtml = "<span  class='glyphicon glyphicon-chevron-left'></span>";
+                a_tag.InnerText = "<span  class='glyphicon glyphicon-chevron-left'></span>";
                 if (PageNum == 1)
                 {
                     a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
@@ -67,7 +67,7 @@ namespace HtmlGenerator.bootstrap
             }
             else
             {
-                a_tag.InnerHtml = "<span class='glyphicon glyphicon-chevron-right'></span>";
+                a_tag.InnerText = "<span class='glyphicon glyphicon-chevron-right'></span>";
                 if (PageNum == CountPages)
                 {
                     a_tag.set_custom_name_tag = typeof(span).Name.ToLower();

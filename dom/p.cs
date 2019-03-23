@@ -14,7 +14,7 @@ namespace HtmlGenerator.dom
     {
         public p(string in_text)
         {
-            InnerHtml = in_text;
+            InnerText = in_text;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace HtmlGenerator.dom
         public h1(string h_text)
         {
             inline = true;
-            InnerHtml = h_text;
+            InnerText = h_text;
         }
     }
 }

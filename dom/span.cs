@@ -17,7 +17,7 @@ namespace HtmlGenerator.dom
         public span(string inner_text = null)
         {
             if (!string.IsNullOrEmpty(inner_text))
-                InnerHtml = inner_text;
+                InnerText = inner_text;
         }
     }
 }
