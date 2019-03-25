@@ -2,9 +2,6 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HtmlGenerator.dom
 {
@@ -59,6 +56,9 @@ namespace HtmlGenerator.dom
         tv
     }
 
+    /// <summary>
+    /// Вставляет звуковой или видеофайл для тегов "audio" и "video". Обобщенно такие файлы называются медийными.
+    /// </summary>
     public class source : basic_html_dom
     {
         /// <summary>
@@ -80,6 +80,10 @@ namespace HtmlGenerator.dom
 
         public override string HTML(int deep = 0)
         {
+            /// <summary>
+            /// Вложеные элементы тут не допустимы
+            /// </summary>
+            Childs.Clear();
             SetAtribute("media", media.ToString("g"));
             if (!string.IsNullOrEmpty(src))
             {

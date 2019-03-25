@@ -2,9 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace HtmlGenerator.dom
 {
@@ -61,5 +59,28 @@ namespace HtmlGenerator.dom
         /// Для этой же цели также можно использовать вложеный(ые) тег(и) "source".
         /// </summary>
         public string src = "#";
+
+        public override string HTML(int deep = 0)
+        {
+            /// <summary>
+            /// Вложеные элементы могут быть только source
+            /// </summary>
+            Childs = Childs.Where(x => x is source).ToList();
+            if (Childs.Count == 0)
+                SetAtribute("src", src);
+
+            if (autoplay)
+                SetAtribute("autoplay", "autoplay");
+            else
+                SetAtribute("preload", preload.ToString("g"));
+
+            if(controls)
+                SetAtribute("controls", "controls");
+
+            if (loop)
+                SetAtribute("loop", "loop");
+
+            return base.HTML(deep);
+        }
     }
 }

@@ -11,5 +11,13 @@ namespace HtmlGenerator.dom
             inline = true;
             InnerText = i_html_text;
         }
+
+        public override string HTML(int deep = 0)
+        {
+            ////////////////////////////
+            // Вложеные элементы не предусмотрены
+            Childs.Clear();
+            return base.HTML(deep);
+        }
     }
 }
