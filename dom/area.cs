@@ -17,9 +17,9 @@ namespace HtmlGenerator.dom
         circle,
 
         /// <summary>
-        /// Указывает всю область. Нижнее подчёркивание вначале пришлось добавить потому что default зарезервивроаное слово
+        /// Указывает всю область.
         /// </summary>
-        _default,
+        @default,
 
         /// <summary>
         /// Область в виде полигона (многоугольника).
@@ -97,8 +97,7 @@ namespace HtmlGenerator.dom
             if (set.target != Targets.NoSet)
                 SetAtribute("target", set.target.ToString("g"));
 
-            // символ нижнего подчёркивания добавлен к перечислению default. убераем его в HTML
-            SetAtribute("shape", set.shape.ToString("g").Replace("_", ""));
+            SetAtribute("shape", set.shape.ToString("g"));
 
             string s_coords = "";
             set.coords.ForEach(x => s_coords += " " + x.ToString());

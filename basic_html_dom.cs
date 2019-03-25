@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
+using HtmlGenerator.dom;
 using System;
 using System.Collections.Generic;
 
@@ -338,6 +339,25 @@ namespace HtmlGenerator
                     CustomAtributes.Remove(my_event.ToString("g"));
                 else
                     SetAtribute(my_event.ToString("g"), event_src);
+        }
+
+        /// <summary>
+        /// Получить в виде строки тип кодирования отпарвляемых данных HTML формы
+        /// </summary>
+        public static string GetEnctypeHtmlForm(EncTypes EncType)
+        {
+            switch (EncType)
+            {
+                // Данные не кодируются. Это значение применяется при отправке файлов.
+                case EncTypes.MultipartFormData:
+                    return "multipart/form-data";
+                // Пробелы заменяются знаком +, буквы и другие символы не кодируются.
+                case EncTypes.Plain:
+                    return "text/plain";
+                // EncTypes.WwwFormUrlEncoded: Вместо пробелов ставится +, символы вроде русских букв кодируются их шестнадцатеричными значениями (например, %D0%9F%D0%B5%D1%82%D1%8F вместо Петя).
+                default:
+                    return "application/x-www-form-urlencoded";
+            }
         }
     }
 }

@@ -46,7 +46,7 @@ namespace HtmlGenerator.dom
         public class form_set
         {
             /// <summary>
-            /// Метод протокола HTTP.
+            /// Атрибут сообщает браузеру, каким методом следует передавать данные формы на сервер. 
             /// </summary>
             public MethodsForm method_form = MethodsForm.POST;
 
@@ -74,6 +74,17 @@ namespace HtmlGenerator.dom
             /// _top - Отменяет все фреймы и загружает страницу в полном окне браузера, если фреймов нет, то это значение работает как _self.
             /// </summary>
             public Targets target = Targets._self;
+
+            /// <summary>
+            /// Отменяет встроенную проверку данных введенных пользователем в форме на корректность.
+            /// Такая проверка осуществляется браузером автоматически при отправке формы на сервер и происходит для полей [input type="email"], [input type="url"], а также при наличии атрибута pattern или required.
+            /// </summary>
+            public bool novalidate = false;
+
+            /// <summary>
+            /// Управляет автозаполнением полей форм. Значение может быть перекрыто атрибутом autocomplete у конкретных элементов формы.
+            /// </summary>
+            public bool autocomplete = false;
         }
 
         public form_set set;
@@ -96,24 +107,17 @@ namespace HtmlGenerator.dom
                 if (!string.IsNullOrEmpty(set.accept_charset))
                     SetAtribute("accept-charset", set.accept_charset);
 
-                SetAtribute("target", set.target.ToString("g"));
+                if (set.target != Targets.NoSet)
+                    SetAtribute("target", set.target.ToString("g"));
 
-                if (set.EncType != EncTypes.NoSet)
-                    switch (set.EncType)
-                    {
-                        case EncTypes.WwwFormUrlEncoded:
-                            SetAtribute("enctype", "application/x-www-form-urlencoded");
-                            break;
-                        case EncTypes.MultipartFormData:
-                            SetAtribute("enctype", "multipart/form-data");
-                            break;
-                        case EncTypes.Plain:
-                            SetAtribute("enctype", "text/plain");
-                            break;
-                        default:
-                            SetAtribute("enctype", "application/x-www-form-urlencoded");
-                            break;
-                    }
+                if (set.EncType > EncTypes.NoSet)
+                    SetAtribute("enctype", GetEnctypeHtmlForm(set.EncType));
+
+                if (set.novalidate)
+                    SetAtribute("novalidate", null);
+
+                if (set.autocomplete)
+                    SetAtribute("autocomplete", null);
             }
             return base.HTML(deep);
         }

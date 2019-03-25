@@ -18,5 +18,15 @@ namespace HtmlGenerator.dom
         {
 
         }
+
+        public @base Base = null;
+
+        public override string HTML(int deep = 0)
+        {
+            if (!(Base is null) && !Childs.Exists(x => x is @base))
+                Childs.Add(Base);
+
+            return base.HTML(deep);
+        }
     }
 }
