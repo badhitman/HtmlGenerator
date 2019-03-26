@@ -2,6 +2,11 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom;
+using HtmlGenerator.dom.collections;
+using HtmlGenerator.dom.form;
+using HtmlGenerator.dom.table;
+using HtmlGenerator.dom.text;
+using HtmlGenerator.set;
 using System.Collections.Generic;
 
 namespace HtmlGenerator
@@ -326,7 +331,7 @@ namespace HtmlGenerator
         {
             List<basic_html_dom> dom_elements = new List<basic_html_dom>();
             form.form_set form_set = new form.form_set();
-            form_set.method_form = MethodsForm.POST;
+            form_set.method_form = MethodsFormEnum.POST;
             form_set.target = Targets._self;
 
             form html_response = new form(form_set)

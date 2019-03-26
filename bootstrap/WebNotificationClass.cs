@@ -2,6 +2,8 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom;
+using HtmlGenerator.dom.form;
+using HtmlGenerator.dom.text;
 
 namespace HtmlGenerator.bootstrap
 {

@@ -2,6 +2,9 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom;
+using HtmlGenerator.dom.form;
+using HtmlGenerator.dom.text;
+using HtmlGenerator.set;
 using MultiTool;
 using System.Collections.Generic;
 
@@ -101,7 +104,7 @@ namespace HtmlGenerator.bootstrap
             modal_content.Childs.Add(modal_body);
             //
             modal_content.Childs.Add(modal_footer);
-            form.form_set set = new form.form_set() { EncType = EncTypes.WwwFormUrlEncoded, method_form = MethodsForm.POST, target = FormTarget, form_action = FormAction };
+            form.form_set set = new form.form_set() { EncType = EncTypesEnum.WwwFormUrlEncoded, method_form = MethodsFormEnum.POST, target = FormTarget, form_action = FormAction };
             form my_form = new form(set);
             my_form.Childs.Add(modal_content);
             //

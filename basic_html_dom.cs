@@ -2,6 +2,8 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 using HtmlGenerator.dom;
+using HtmlGenerator.dom.text;
+using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
 
@@ -208,7 +210,7 @@ namespace HtmlGenerator
                 ret_val += GetTabPrefix("\t", deep) + "<!-- " + prew_block_coment + " -->";
 
             ret_val += GetTabPrefix("\t", deep);
-            if (!(this is dom.text))
+            if (!(this is text))
                 ret_val += "<" + (string.IsNullOrEmpty(set_custom_name_tag) ? GetType().Name.ToLower() : set_custom_name_tag);
 
             if (!string.IsNullOrEmpty(Id_DOM))
@@ -242,23 +244,23 @@ namespace HtmlGenerator
                 if (!string.IsNullOrEmpty(kvp.Key))
                     ret_val += " " + kvp.Key + (kvp.Value is null ? "" : "=\"" + kvp.Value + "\"");
 
-            if (!need_end_tag && !(this is dom.text))
+            if (!need_end_tag && !(this is text))
                 ret_val += " />";
-            else if (this is dom.text)
+            else if (this is text)
             {
                 // * * *
             }
             else
                 ret_val += ">";
 
-            if (!(this is dom.text))
+            if (!(this is text))
                 foreach (basic_html_dom h in Childs)
                     ret_val += h.HTML(deep + 1);
 
             if (!string.IsNullOrEmpty(InnerText))
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
 
-            if (need_end_tag && !(this is dom.text))
+            if (need_end_tag && !(this is text))
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(set_custom_name_tag) ? this.GetType().Name.ToLower() : set_custom_name_tag) + ">";
 
             post_block_coment = post_block_coment.Replace("<", "[").Replace(">", "]");
@@ -344,15 +346,15 @@ namespace HtmlGenerator
         /// <summary>
         /// Получить в виде строки тип кодирования отпарвляемых данных HTML формы
         /// </summary>
-        public static string GetEnctypeHtmlForm(EncTypes EncType)
+        public static string GetEnctypeHtmlForm(EncTypesEnum EncType)
         {
             switch (EncType)
             {
                 // Данные не кодируются. Это значение применяется при отправке файлов.
-                case EncTypes.MultipartFormData:
+                case EncTypesEnum.MultipartFormData:
                     return "multipart/form-data";
                 // Пробелы заменяются знаком +, буквы и другие символы не кодируются.
-                case EncTypes.Plain:
+                case EncTypesEnum.Plain:
                     return "text/plain";
                 // EncTypes.WwwFormUrlEncoded: Вместо пробелов ставится +, символы вроде русских букв кодируются их шестнадцатеричными значениями (например, %D0%9F%D0%B5%D1%82%D1%8F вместо Петя).
                 default:
