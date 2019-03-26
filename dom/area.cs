@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using HtmlGenerator.set;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.dom
@@ -76,7 +77,7 @@ namespace HtmlGenerator.dom
             /// По умолчанию, при переходе по ссылке документ открывается в текущем окне или фрейме.
             /// При необходимости, это условие может быть изменено атрибутом target тега "a". В XHTML применение этого атрибута запрещено. 
             /// </summary>
-            public Targets target = Targets.NoSet;
+            public TargetsEnum? target = null;
         }
 
         public area_set set;
@@ -94,8 +95,8 @@ namespace HtmlGenerator.dom
                     SetAtribute("type", set.mimetype);
             }
 
-            if (set.target != Targets.NoSet)
-                SetAtribute("target", set.target.ToString("g"));
+            if (!(set.target is null))
+                SetAtribute("target", set.target?.ToString("g"));
 
             SetAtribute("shape", set.shape.ToString("g"));
 

@@ -37,10 +37,8 @@ namespace HtmlGenerator.bootstrap
                         my_li.InnerText = bi.text;
                     }
                     else
-                    {
-                        a.a_set a_set = new a.a_set() { href = bi.href, text = bi.text };
-                        my_li.Childs.Add(new a(a_set));
-                    }
+                        my_li.Childs.Add(new a() { href = bi.href, InnerText = bi.text });
+
                     my_ol.Childs.Add(my_li);
                 }
 

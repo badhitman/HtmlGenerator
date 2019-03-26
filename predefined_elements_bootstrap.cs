@@ -330,14 +330,14 @@ namespace HtmlGenerator
         public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null, string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
         {
             List<basic_html_dom> dom_elements = new List<basic_html_dom>();
-            form.form_set form_set = new form.form_set();
-            form_set.method_form = MethodsFormEnum.POST;
-            form_set.target = Targets._self;
+            
 
-            form html_response = new form(form_set)
+            form html_response = new form()
             {
                 Id_DOM = "login_form_id",
-                css_class = "was-validated"
+                css_class = "was-validated",
+                target = TargetsEnum._self,
+                method_form = MethodsFormEnum.POST
             };
             html_response.SetAtribute("novalidate", null);
 

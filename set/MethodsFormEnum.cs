@@ -8,12 +8,7 @@ namespace HtmlGenerator.set
     public enum MethodsFormEnum
     {
         /// <summary>
-        /// Без указания метода
-        /// </summary>
-        NoSet,
-
-        /// <summary>
-        /// Стандартные методы
+        /// Стандартные HTTP методы
         /// </summary>
         POST, GET
     }

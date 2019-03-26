@@ -31,7 +31,7 @@ namespace HtmlGenerator.bootstrap
         /// </summary>
         public string FormAction = "./";
 
-        public Targets FormTarget = Targets._self;
+        public TargetsEnum FormTarget = TargetsEnum._self;
 
         /// <summary>
         /// Заголовок модального диалога
@@ -104,8 +104,7 @@ namespace HtmlGenerator.bootstrap
             modal_content.Childs.Add(modal_body);
             //
             modal_content.Childs.Add(modal_footer);
-            form.form_set set = new form.form_set() { EncType = EncTypesEnum.WwwFormUrlEncoded, method_form = MethodsFormEnum.POST, target = FormTarget, form_action = FormAction };
-            form my_form = new form(set);
+            form my_form = new form(){ EncType = EncTypesEnum.WwwFormUrlEncoded, method_form = MethodsFormEnum.POST, target = FormTarget, form_action = FormAction };
             my_form.Childs.Add(modal_content);
             //
             div modal_dialog_document = new div() { css_class = "modal-dialog" };

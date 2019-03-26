@@ -20,11 +20,6 @@ namespace HtmlGenerator.set
         /// <summary>
         /// Пробелы заменяются знаком +, буквы и другие символы не кодируются.
         /// </summary>
-        Plain,
-
-        /// <summary>
-        /// Признак того, что указывать атрибут не нужно
-        /// </summary>
-        NoSet
+        Plain
     }
 }

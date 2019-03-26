@@ -10,11 +10,6 @@ namespace HtmlGenerator.set
     public enum AlignEnum
     {
         /// <summary>
-        /// Не установлено
-        /// </summary>
-        NoSet,
-
-        /// <summary>
         /// Левое выравнивание
         /// </summary>
         left,

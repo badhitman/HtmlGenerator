@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.dom;
 using HtmlGenerator.dom.collections;
+using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
 
@@ -35,13 +36,7 @@ namespace HtmlGenerator.bootstrap
             {
                 li li_dom_result = new li(null) { css_class = li_class };
 
-                a.a_set a_set = new a.a_set();
-                a_set.href = href;
-                a_set.target = Targets._self;
-                a_set.text = text;
-
-
-                a a_dom_result = new a(a_set);
+                a a_dom_result = new a() { href = href, target = TargetsEnum._self, InnerText = text };
                 a_dom_result.css_class = "nav-link";
                 if (SubItems.Count > 0)
                 {
@@ -58,11 +53,7 @@ namespace HtmlGenerator.bootstrap
                     submenu.CustomAtributes.Add("aria-labelledby", id_a_parent);
                     foreach (TopMenuItem i in SubItems)
                     {
-                        a.a_set submenu_a_set = new a.a_set();
-                        submenu_a_set.href = i.href;
-                        submenu_a_set.target = Targets._blank;
-                        submenu_a_set.text = i.text;
-                        submenu.Childs.Add(new a(submenu_a_set) { css_class = "dropdown-item", inline = true });
+                        submenu.Childs.Add(new a() { css_class = "dropdown-item", inline = true, href = i.href, target = TargetsEnum._blank, InnerText = i.text });
                     }
                     li_dom_result.Childs.Add(submenu);
                 }

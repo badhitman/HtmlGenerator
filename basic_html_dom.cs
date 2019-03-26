@@ -346,7 +346,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Получить в виде строки тип кодирования отпарвляемых данных HTML формы
         /// </summary>
-        public static string GetEnctypeHtmlForm(EncTypesEnum EncType)
+        public static string GetEnctypeHtmlForm(EncTypesEnum? EncType)
         {
             switch (EncType)
             {

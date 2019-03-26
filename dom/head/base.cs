@@ -3,6 +3,8 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
+using HtmlGenerator.set;
+
 namespace HtmlGenerator.dom.head
 {
     /// <summary>
@@ -34,7 +36,7 @@ namespace HtmlGenerator.dom.head
         /// Для этого используется атрибут target, в качестве его значения указывается имя окна или фрейма.
         /// Если target не установлен, возвращаемый результат показывается в текущем окне. 
         /// </summary>
-        public Targets target = Targets.NoSet;
+        public TargetsEnum? target = null;
 
         public override string HTML(int deep = 0)
         {
@@ -43,8 +45,8 @@ namespace HtmlGenerator.dom.head
             if (!string.IsNullOrEmpty(href))
                 SetAtribute("href", href);
 
-            if (target != Targets.NoSet)
-                SetAtribute("target", target.ToString("g"));
+            if (!(target is null))
+                SetAtribute("target", target?.ToString("g"));
 
             return base.HTML(deep);
         }

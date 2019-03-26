@@ -60,12 +60,12 @@ namespace HtmlGenerator.dom.form
         /// Устанавливает способ кодирования данных формы при их отправке на сервер. Обычно явно указывается в случае, когда используется поле для отправки файла (input type="file").
         /// Этот атрибут по своему действию аналогичен атрибуту enctype тега "form".
         /// </summary>
-        public EncTypesEnum formenctype = EncTypesEnum.NoSet;
+        public EncTypesEnum? formenctype = null;
 
         /// <summary>
         /// Атрибут сообщает браузеру, каким методом следует передавать данные формы на сервер. 
         /// </summary>
-        public MethodsFormEnum formmethod = MethodsFormEnum.NoSet;
+        public MethodsFormEnum? formmethod = null;
 
         /// <summary>
         /// Отменяет встроенную проверку данных введенных пользователем в форме на корректность при нажатии на кнопку.
@@ -76,7 +76,7 @@ namespace HtmlGenerator.dom.form
         /// <summary>
         /// Определяет окно или фрейм в которое будет загружаться результат, возвращаемый обработчиком формы, в виде HTML-документа.
         /// </summary>
-        public Targets formtarget = Targets._self;
+        public TargetsEnum? formtarget = TargetsEnum._self;
 
         public button(string text_button, TypesButton type_button = TypesButton.button)
         {
@@ -100,17 +100,17 @@ namespace HtmlGenerator.dom.form
             if (!string.IsNullOrEmpty(formaction) && formaction.Length > 0)
                 SetAtribute("formaction", formaction);
 
-            if (formenctype != EncTypesEnum.NoSet)
+            if (!(formenctype is null))
                 SetAtribute("formenctype", GetEnctypeHtmlForm(formenctype));
 
-            if (formmethod != MethodsFormEnum.NoSet)
-                SetAtribute("formmethod", formmethod.ToString("g"));
+            if (!(formmethod is null))
+                SetAtribute("formmethod", formmethod?.ToString("g"));
 
             if (formnovalidate)
                 SetAtribute("formnovalidate", null);
 
-            if(formtarget != Targets.NoSet)
-                SetAtribute("formtarget", formtarget.ToString("g"));
+            if(!(formtarget is null))
+                SetAtribute("formtarget", formtarget?.ToString("g"));
 
             return base.HTML(deep);
         }

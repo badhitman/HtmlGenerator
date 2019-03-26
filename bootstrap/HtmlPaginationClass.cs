@@ -30,10 +30,7 @@ namespace HtmlGenerator.bootstrap
 
         li PaginationItem(int i)
         {
-            a.a_set set = new a.a_set();
-            set.href = UrlTmpl + i.ToString();
-            set.text = i.ToString();
-            a a_tag = new a(set) { css_class = "page-link" };
+            a a_tag = new a() { css_class = "page-link", href = UrlTmpl + i.ToString(), InnerText = i.ToString() };
 
             li li_tag = new li(null) { css_class = "page-item" };
 
@@ -42,7 +39,7 @@ namespace HtmlGenerator.bootstrap
                 a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
                 a_tag.InnerText = "⁞";
-                a_tag.set.href = string.Empty;
+                a_tag.href = string.Empty;
                 li_tag.css_class += " disabled";
             }
             else if (i == 0)
@@ -51,12 +48,12 @@ namespace HtmlGenerator.bootstrap
                 if (PageNum == 1)
                 {
                     a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
-                    a_tag.set.href = string.Empty;
+                    a_tag.href = string.Empty;
                     li_tag.css_class += " disabled";
                     //li.css_style += " color: #d2d2d2;";
                 }
                 else
-                    a_tag.set.href = UrlTmpl + (PageNum - 1).ToString();
+                    a_tag.href = UrlTmpl + (PageNum - 1).ToString();
             }
             else if (i <= CountPages)
             {
@@ -64,7 +61,7 @@ namespace HtmlGenerator.bootstrap
                 {
                     a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
                     li_tag.css_class += " active";
-                    a_tag.set.href = string.Empty;
+                    a_tag.href = string.Empty;
                 }
             }
             else
@@ -73,11 +70,11 @@ namespace HtmlGenerator.bootstrap
                 if (PageNum == CountPages)
                 {
                     a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
-                    a_tag.set.href = string.Empty;
+                    a_tag.href = string.Empty;
                     li_tag.css_class += " disabled";
                 }
                 else
-                    a_tag.set.href = UrlTmpl + (PageNum + 1).ToString();
+                    a_tag.href = UrlTmpl + (PageNum + 1).ToString();
             }
 
             li_tag.Childs.Add(a_tag);
