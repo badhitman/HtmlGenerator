@@ -1,28 +1,31 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
+// Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
 namespace HtmlGenerator.dom
 {
+    /// <summary>
+    ///  Тег [img] предназначен для отображения на веб-странице изображений в графическом формате GIF, JPEG или PNG. Адрес файла с картинкой задаётся через атрибут [src].
+    ///  Если необходимо, то рисунок можно сделать ссылкой на другой файл, поместив тег [img] в контейнер [a].
+    ///  При этом вокруг изображения отображается рамка, которую можно убрать, добавив атрибут [border="0"] в тег [img].
+    ///  
+    ///  Рисунки также могут применяться в качестве карт-изображений, когда картинка содержит активные области, выступающие в качестве ссылок.
+    ///  Такая карта по внешнему виду ничем не отличается от обычного изображения, но при этом оно может быть разбито на невидимые зоны разной формы, где каждая из областей служит ссылкой. 
+    /// </summary>
     public class img : basic_html_dom
     {
-        public class img_set
-        {
-            public string src;
-            public string alt = null;
-        }
-        public img_set set;
-        public img(img_set in_set)
-        {
-            set = in_set;
-            inline = true;
+        public string src = null;
+        public string alt = null;
 
-        }
+        public img()=> inline = true;
         public override string HTML(int deep = 0)
         {
-            SetAtribute("src", set.src);
-            if (!string.IsNullOrEmpty(set.alt))
-                SetAtribute("alt", set.alt);
+            if (!string.IsNullOrEmpty(src))
+                SetAtribute("src", src);
+
+            if (!string.IsNullOrEmpty(alt))
+                SetAtribute("alt", alt);
 
             return base.HTML(deep);
         }
