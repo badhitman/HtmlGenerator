@@ -49,7 +49,7 @@ namespace HtmlGenerator.dom.collections
         public li GetLi(string value, string text_title, string tooltip, bool disable = false, string tag = "")
         {
             li ret_val = new li(text_title);
-            ret_val.Tooltip = tooltip;
+            ret_val.title = tooltip;
             ret_val.SetAtribute("type", TypeUL.ToString("g"));
             ret_val.SetAtribute("value", value);
 

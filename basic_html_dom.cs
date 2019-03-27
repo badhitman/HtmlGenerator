@@ -71,7 +71,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Текст HTML подсказки/tooltip
         /// </summary>
-        public string Tooltip = "";
+        public string title = "";
 
         /// <summary>
         /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два коментария (в самом начале и самом конце DOM блока).
@@ -123,8 +123,8 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(Name_DOM))
                 SetAtribute("name", Name_DOM);
 
-            if (!string.IsNullOrEmpty(Tooltip))
-                SetAtribute("title", Tooltip);
+            if (!string.IsNullOrEmpty(title))
+                SetAtribute("title", title);
 
             if (!string.IsNullOrEmpty(css_class?.Trim()))
                 SetAtribute("class", css_class.Trim());

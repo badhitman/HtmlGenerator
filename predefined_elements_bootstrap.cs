@@ -28,7 +28,7 @@ namespace HtmlGenerator
             select_body.css_class = (select_body.css_class.Trim() + " custom-select").Trim();
 
             if (!string.IsNullOrEmpty(Tooltip))
-                ret_dom.Tooltip = Tooltip;
+                ret_dom.title = Tooltip;
 
             ret_dom.SetAtribute("data-toggle", "tooltip");
             ret_dom.Childs.Add(select_body);

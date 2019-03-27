@@ -79,7 +79,7 @@ namespace HtmlGenerator.set
         }
 
         /// <summary>
-        /// 
+        /// Тип используемого размера: в пикселях, процентах и т.п.
         /// </summary>
         public TypeSize type = TypeSize.auto;
 

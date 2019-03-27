@@ -102,7 +102,7 @@ namespace HtmlGenerator
                     li_item.SetAtribute("tag", o_item.Tag);
 
                 if (!string.IsNullOrEmpty(o_item.Tooltip))
-                    li_item.Tooltip = o_item.Tooltip;
+                    li_item.title = o_item.Tooltip;
 
                 if (!string.IsNullOrEmpty(o_item.Value))
                     li_item.Id_DOM = o_item.Value;
