@@ -1,7 +1,6 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
-using HtmlGenerator.dom;
 using HtmlGenerator.dom.text;
 using HtmlGenerator.set;
 using System;
