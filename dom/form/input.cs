@@ -13,7 +13,7 @@ namespace HtmlGenerator.dom.form
         /// <summary>
         /// Стандартные типы
         /// </summary>
-        button, checkbox, file, hidden, image, password, radio, reset, submit, text
+        button, checkbox, file, hidden, image, password, radio, reset, submit, text, email, url
     }
 
     /// <summary>

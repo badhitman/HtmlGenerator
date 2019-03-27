@@ -45,5 +45,20 @@ namespace HtmlGenerator.dom.media
         /// Не всегда браузер может распознать тип файла по его расширению. В таких случаях лучше указывать его тип с помощью атрибута [type], который устанавливает MIME-тип для данных.
         /// </summary>
         public string type = null;
+
+        public override string HTML(int deep = 0)
+        {
+            SetAtribute("hight", hight.ToString());
+            SetAtribute("width", width.ToString());
+
+            if (!string.IsNullOrEmpty(src))
+            {
+                SetAtribute("src", src);
+                if (!string.IsNullOrEmpty(type))
+                    SetAtribute("type", type);
+            }
+
+            return base.HTML(deep);
+        }
     }
 }
