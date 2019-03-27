@@ -15,12 +15,26 @@ namespace HtmlGenerator.dom
     /// </summary>
     public class img : basic_html_dom
     {
+        /// <summary>
+        /// Путь к графическому файлу. 
+        /// </summary>
         public string src = null;
+
+        /// <summary>
+        /// Альтернативный текст для изображения. 
+        /// </summary>
         public string alt = null;
 
-        public img()=> inline = true;
+        public img()
+        {
+            inline = true;
+            need_end_tag = false;
+        }
+
         public override string HTML(int deep = 0)
         {
+            Childs.Clear();
+
             if (!string.IsNullOrEmpty(src))
                 SetAtribute("src", src);
 

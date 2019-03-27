@@ -6,13 +6,13 @@
 namespace HtmlGenerator.dom.collections
 {
     /// <summary>
-    /// Тег "ul" устанавливает маркированный список. Каждый элемент списка должен начинаться с тега "li".
-    /// Если к тегу "ul" применяется таблица стилей, то элементы "li" наследуют эти свойства.
+    /// Тег [ul] устанавливает маркированный список. Каждый элемент списка должен начинаться с тега [li].
+    /// Если к тегу [ul] применяется таблица стилей, то элементы [li] наследуют эти свойства.
     /// </summary>
     public class ul : basic_html_dom
     {
         /// <summary>
-        /// Устанавливает вид маркера.
+        /// Для маркированного списка маркеры могут принимать один из трех видов: кружок (disc), окружность (circle) и квадрат (square).
         /// </summary>
         public enum TypesUL
         {
@@ -21,6 +21,9 @@ namespace HtmlGenerator.dom.collections
             square
         }
 
+        /// <summary>
+        /// Устанавливает вид маркера списка. 
+        /// </summary>
         public TypesUL TypeUL = TypesUL.disc;
 
         public ul(TypesUL in_TypeUL = TypesUL.disc)

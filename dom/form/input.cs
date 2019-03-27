@@ -6,9 +6,9 @@
 namespace HtmlGenerator.dom.form
 {
     /// <summary>
-    /// Доступные типа input
+    /// Доступные типы [input]
     /// </summary>
-    public enum InputTypes
+    public enum InputTypesEnum
     {
         /// <summary>
         /// Стандартные типы
@@ -16,71 +16,66 @@ namespace HtmlGenerator.dom.form
         button, checkbox, file, hidden, image, password, radio, reset, submit, text
     }
 
+    /// <summary>
+    ///  Тег [input] является одним из разносторонних элементов формы и позволяет создавать разные элементы интерфейса и обеспечить взаимодействие с пользователем.
+    ///  Главным образом [input] предназначен для создания текстовых полей, различных кнопок, переключателей и флажков.
+    ///  Хотя элемент [input] не требуется помещать внутрь контейнера [form], определяющего форму, но если введенные пользователем данные должны быть отправлены на сервер, где их обрабатывает серверная программа, то указывать [form] обязательно.
+    ///  То же самое обстоит и в случае обработки данных с помощью клиентских приложений, например, скриптов на языке JavaScript.
+    ///  
+    ///  Основной атрибут тега [input], определяющий вид элемента — [type].
+    ///  Он позволяет задавать следующие элементы формы: текстовое поле(text), поле с паролем(password), переключатель(radio), флажок(checkbox), скрытое поле(hidden), кнопка(button), кнопка для отправки формы(submit), кнопка для очистки формы(reset), поле для отправки файла(file) и кнопка с изображением(image).
+    ///  Для каждого элемента существует свой список атрибутов, которые определяют его вид и характеристики.Кроме того, в HTML5 добавлено еще более десятка новых элементов.
+    /// </summary>
     public class input : basic_html_dom
     {
         /// <summary>
-        /// Пакетные настройки для input-а
+        /// Тип input-а
         /// </summary>
-        public class input_set
-        {
-            /// <summary>
-            /// Тип input-а
-            /// </summary>
-            public InputTypes? type_input;
-
-            /// <summary>
-            /// Значение/Value input-а
-            /// </summary>
-            public string value = null;
-
-            /// <summary>
-            /// флаг - только для чтения
-            /// </summary>
-            public bool i_readonly = false;
-
-            /// <summary>
-            /// флаг - отключено
-            /// </summary>
-            public bool i_disabled = false;
-
-            /// <summary>
-            /// флаг - обязательно для заполнения
-            /// </summary>
-            public bool i_required = false;
-        }
+        public InputTypesEnum? type;
 
         /// <summary>
-        /// Пакетные настройки для input-а
+        /// Значение/Value input-а
         /// </summary>
-        public input_set set;
+        public string value = null;
 
-        public input(input_set in_set)
+        /// <summary>
+        /// флаг - только для чтения
+        /// </summary>
+        public bool @readonly = false;
+
+        /// <summary>
+        /// флаг - отключено
+        /// </summary>
+        public bool disabled = false;
+
+        /// <summary>
+        /// флаг - обязательно для заполнения
+        /// </summary>
+        public bool required = false;
+
+        public input()
         {
-            set = in_set;
             inline = true;
             need_end_tag = false;
         }
 
         public override string HTML(int deep = 0)
         {
-            if (!(set is null))
-            {
-                if (!(set.type_input is null))
-                    SetAtribute("type", set.type_input?.ToString("g"));
+            if (!(type is null))
+                SetAtribute("type", type?.ToString("g"));
 
-                if (!string.IsNullOrEmpty(set.value))
-                    SetAtribute("value", set.value);
+            if (!string.IsNullOrEmpty(value))
+                SetAtribute("value", value);
 
-                if (set.i_readonly)
-                    SetAtribute("readonly", null);
+            if (@readonly)
+                SetAtribute("readonly", null);
 
-                if (set.i_disabled)
-                    SetAtribute("disabled", null);
+            if (disabled)
+                SetAtribute("disabled", null);
 
-                if (set.i_required)
-                    SetAtribute("required", null);
+            if (required)
+                SetAtribute("required", null);
 
-            }
             return base.HTML(deep);
         }
     }

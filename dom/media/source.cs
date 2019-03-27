@@ -57,7 +57,7 @@ namespace HtmlGenerator.dom.media
     }
 
     /// <summary>
-    /// Вставляет звуковой или видеофайл для тегов "audio" и "video". Обобщенно такие файлы называются медийными.
+    /// Вставляет звуковой или видеофайл для тегов [audio] и [video]. Обобщенно такие файлы называются медийными.
     /// </summary>
     public class source : basic_html_dom
     {

@@ -68,20 +68,16 @@ namespace HtmlGenerator
         {
             div returned_input = new div() { css_class = ("form-group" + " " + class_div_group_wrap).Trim() };
 
-            input.input_set input_set = new input.input_set();
-            input_set.type_input = InputTypes.text;
-            input_set.value = value_input;
-
-            input ret_input = new input(input_set) { css_class = input_css_class };
+            input ret_input = new input() { css_class = input_css_class, type = InputTypesEnum.text, value = value_input };
 
             if (!string.IsNullOrEmpty(label_text))
                 returned_input.Childs.Add(new label(label_text, input_name) { css_class = label_css_class });
 
             if (required)
-                ret_input.set.i_required = true;
+                ret_input.required = true;
 
             if (input_readonly)
-                ret_input.set.i_readonly = true;
+                ret_input.@readonly = true;
 
             ret_input.Name_DOM = input_name;
             ret_input.inline = true;
@@ -113,12 +109,7 @@ namespace HtmlGenerator
             div input_group = new div() { css_class = ("input-group " + class_div_group_wrap).Trim() };
             input_group.Childs.Add(input_group_prepend);
 
-            input.input_set input_set = new input.input_set();
-            input_set.type_input = InputTypes.text;
-            input_set.i_required = required;
-            input_set.value = value_input;
-            input_set.i_readonly = input_readonly;
-            input ret_input = new input(input_set) { css_class = "form-control" };
+            input ret_input = new input() { css_class = "form-control", type = InputTypesEnum.text, required = required, value = value_input, @readonly = input_readonly };
 
             if (!string.IsNullOrEmpty(Id_DOM))
                 ret_input.Id_DOM = Id_DOM;
@@ -140,7 +131,7 @@ namespace HtmlGenerator
             foreach (basic_html_dom e in ret_val.Childs)
                 if (e is input)
                 {
-                    ((input)e).set.type_input = InputTypes.password;
+                    ((input)e).type = InputTypesEnum.password;
                     break;
                 }
             return ret_val;
@@ -152,16 +143,11 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(label_text))
                 returned_input.Childs.Add(new label(label_text, name_input));
 
-            textarea.set_textarea set_textarea = new textarea.set_textarea();
-            set_textarea.required = required;
-            set_textarea.Readonly = input_readonly;
-
+            textarea ret_textarea = new textarea() { css_class = "form-control", InnerText = value_input, required = required, @readonly = input_readonly };
             if (rows > 0)
-                set_textarea.rows = rows;
+                ret_textarea.rows = rows;
 
-            textarea ret_textarea = new textarea(value_input, set_textarea) { css_class = "form-control" };
-
-            if (!string.IsNullOrEmpty(value_input))
+                if (!string.IsNullOrEmpty(value_input))
                 ret_textarea.InnerText = value_input;
 
             ret_textarea.Name_DOM = name_input;
@@ -175,10 +161,7 @@ namespace HtmlGenerator
         {
             div ret_val = new div() { css_class = "form-check" };
             //
-            input.input_set input_set = new input.input_set();
-            input_set.type_input = InputTypes.checkbox;
-
-            input ret_input = new input(input_set);
+            input ret_input = new input() { type = InputTypesEnum.checkbox };
             ret_input.css_class = "form-check-input";
             ret_input.Id_DOM = Id_DOM;
 
@@ -190,10 +173,7 @@ namespace HtmlGenerator
 
             ret_val.Childs.Add(ret_input);
             //
-            input_set = new input.input_set();
-            input_set.type_input = InputTypes.hidden;
-            input_set.value = "off";
-            ret_input = new input(input_set);
+            ret_input = new input() { type = InputTypesEnum.hidden, value = "off" };
             ret_input.Name_DOM = Id_DOM;
             ret_val.Childs.Add(ret_input);
             //

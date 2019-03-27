@@ -189,6 +189,7 @@ namespace HtmlGenerator
 
         /// <summary>
         /// Флаг/метка необходимости парного/закрывающего тега для элемента
+        /// Если false, то тег закроется: />
         /// </summary>
         public bool need_end_tag = true;
 

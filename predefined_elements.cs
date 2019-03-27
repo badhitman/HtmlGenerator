@@ -14,9 +14,7 @@ namespace HtmlGenerator
         //public static select GetSelectDom(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true) => GetSelectDom(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
         public static select GetSelectDom(string name_dom_object, OptionList ListItems, string[] selected_option_values = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true)
         {
-            select.select_set select_set = new select.select_set();
-
-            select ret_select = new select(select_set) { Name_DOM = name_dom_object };
+            select ret_select = new select() { Name_DOM = name_dom_object };
 
             if (selected_option_values is null)
             {

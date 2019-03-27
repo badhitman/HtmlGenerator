@@ -18,7 +18,7 @@ namespace HtmlGenerator.dom
     public class area : basic_html_dom
     {
         /// <summary>
-        /// Атрибут alt устанавливает альтернативный текст для области изображения.
+        /// Атрибут [alt] устанавливает альтернативный текст для области изображения.
         /// Такой текст отображается в виде всплывающей подсказки при наведении курсора мыши на область.
         /// </summary>
         public string alt = null;
@@ -30,7 +30,7 @@ namespace HtmlGenerator.dom
         public List<int> coords { get; private set; } = new List<int>();
 
         /// <summary>
-        /// Ссылка
+        /// Задает адрес документа, на который следует перейти.
         /// </summary>
         public string href = "#";
 
