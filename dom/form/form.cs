@@ -62,7 +62,7 @@ namespace HtmlGenerator.dom.form
         /// <summary>
         /// Управляет автозаполнением полей форм. Значение может быть перекрыто атрибутом autocomplete у конкретных элементов формы.
         /// </summary>
-        public bool autocomplete = false;
+        public bool? autocomplete = null;
 
         public override string HTML(int deep = 0)
         {
@@ -84,8 +84,8 @@ namespace HtmlGenerator.dom.form
             if (novalidate)
                 SetAtribute("novalidate", null);
 
-            if (autocomplete)
-                SetAtribute("autocomplete", null);
+            if (!(autocomplete is null))
+                SetAtribute("autocomplete", autocomplete == true ? "on" : "off");
 
             return base.HTML(deep);
         }

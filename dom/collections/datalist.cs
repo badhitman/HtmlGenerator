@@ -3,6 +3,8 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
+using System.Collections.Generic;
+
 namespace HtmlGenerator.dom.collections
 {
     /// <summary>
@@ -11,6 +13,6 @@ namespace HtmlGenerator.dom.collections
     /// </summary>
     public class datalist : basic_html_dom
     {
-
+        
     }
 }
