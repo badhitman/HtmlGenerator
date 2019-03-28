@@ -2,31 +2,24 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using HtmlGenerator.set;
 
 namespace HtmlGenerator.dom.collections
 {
+
     /// <summary>
     /// Тег [ul] устанавливает маркированный список. Каждый элемент списка должен начинаться с тега [li].
     /// Если к тегу [ul] применяется таблица стилей, то элементы [li] наследуют эти свойства.
     /// </summary>
     public class ul : basic_html_dom
     {
-        /// <summary>
-        /// Для маркированного списка маркеры могут принимать один из трех видов: кружок (disc), окружность (circle) и квадрат (square).
-        /// </summary>
-        public enum TypesUL
-        {
-            disc,
-            circle,
-            square
-        }
 
         /// <summary>
         /// Устанавливает вид маркера списка. 
         /// </summary>
-        public TypesUL TypeUL = TypesUL.disc;
+        public TypesULEnum TypeUL = TypesULEnum.disc;
 
-        public ul(TypesUL in_TypeUL = TypesUL.disc)
+        public ul(TypesULEnum in_TypeUL = TypesULEnum.disc)
         {
             TypeUL = in_TypeUL;
         }

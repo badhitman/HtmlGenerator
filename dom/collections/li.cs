@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using HtmlGenerator.set;
 
 namespace HtmlGenerator.dom.collections
 {
@@ -10,9 +11,20 @@ namespace HtmlGenerator.dom.collections
     /// </summary>
     public class li : basic_html_dom
     {
+        /// <summary>
+        /// Устанавливает вид маркера списка. 
+        /// </summary>
+        public TypesULEnum TypeUL = TypesULEnum.disc;
+
         public li(string text_value)
         {
             InnerText = text_value;
+        }
+
+        public override string HTML(int deep = 0)
+        {
+            SetAtribute("type", TypeUL.ToString("g"));
+            return base.HTML(deep);
         }
     }
 }
