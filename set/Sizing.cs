@@ -71,7 +71,7 @@ namespace HtmlGenerator.set
             // Специальные
 
             /// <summary>
-            /// Flexible Lengths
+            /// Flexible
             /// </summary>
             fr,
 

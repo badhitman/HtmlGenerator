@@ -4,6 +4,7 @@
 ////////////////////////////////////////////////
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HtmlGenerator.dom.collections
 {
@@ -13,6 +14,10 @@ namespace HtmlGenerator.dom.collections
     /// </summary>
     public class datalist : basic_html_dom
     {
-        
+        public override string HTML(int deep = 0)
+        {
+            Childs = Childs.Where(x => x is option).ToList();
+            return base.HTML(deep);
+        }
     }
 }

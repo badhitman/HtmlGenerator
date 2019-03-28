@@ -4,6 +4,7 @@
 ////////////////////////////////////////////////
 
 using HtmlGenerator.set;
+using System.Linq;
 
 namespace HtmlGenerator.dom.form
 {
@@ -20,10 +21,21 @@ namespace HtmlGenerator.dom.form
     public class input : basic_html_dom
     {
         /// <summary>
-        /// Тип input-а
+        /// Сообщает браузеру, к какому типу относится элемент формы. 
         /// </summary>
         public InputTypesEnum type = InputTypesEnum.text;
 
+        /// <summary>
+        /// Определяет значение элемента формы, которое будет отправлено на сервер или получено с помощью клиентских скриптов.
+        /// На сервер отправляется пара «имя=значение», где имя задается атрибутом name тега [input], а значение — атрибутом [value].
+        /// 
+        /// В зависимости от типа элемента атрибут [value] выступает в следующей роли:
+        /// 
+        /// для кнопок(input type = "button | reset | submit") устанавливает текстовую надпись на них;
+        /// для текстовых полей(input type = "password | text") указывает предварительно введенную строку. Пользователь может стирать текст и вводить свои символы, но при использовании в форме кнопки Reset пользовательский текст очищается и восстанавливается введенный в атрибуте [value];
+        /// для флажков и переключателей(input type = "checkbox | radio") уникально определяет каждый элемент, с тем, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.
+        /// для файлового поля(input type = "file") не оказывает влияние.
+        /// </summary>
         public string value = null;
 
         /// <summary>
@@ -92,7 +104,7 @@ namespace HtmlGenerator.dom.form
         /// <summary>
         /// Атрибут сообщает браузеру, каким методом следует передавать данные формы на сервер. 
         /// </summary>
-        public MethodsFormEnum formmethod = MethodsFormEnum.POST;
+        public MethodsFormEnum? formmethod = null;
 
         /// <summary>
         /// Отменяет встроенную проверку данных введенных пользователем в форме на корректность перед отправкой формы.
@@ -103,7 +115,7 @@ namespace HtmlGenerator.dom.form
         /// <summary>
         /// Определяет окно или фрейм в которое будет загружаться результат, возвращаемый обработчиком формы, в виде HTML-документа.
         /// </summary>
-        public TargetsEnum formtarget = TargetsEnum._self;
+        public TargetsEnum? formtarget = null;
 
         /// <summary>
         /// Указывает на список вариантов, созданный с помощью тега [datalist], которые можно выбирать при наборе текста.
@@ -111,15 +123,60 @@ namespace HtmlGenerator.dom.form
         /// </summary>
         public string list = null;
 
-        public int max = 0;
+        /// <summary>
+        /// Устанавливает верхнее значение для ввода числа или даты в поле формы.
+        /// 
+        /// Допустимые начения:
+        ///   Целое положительное или отрицательное число(для type = "number", type= "range").
+        ///   Дата в формате ГГГГ-ММ-ДД(например: 2012-12-22) для type = "date".
+        /// </summary>
+        public string max = null;
 
+        /// <summary>
+        /// Устанавливает нижнее значение для ввода числа или даты в поле формы. 
+        /// 
+        /// Допустимые начения:
+        ///   Целое положительное или отрицательное число(для type = "number", type= "range").
+        ///   Дата в формате ГГГГ-ММ-ДД(например: 2012-12-22) для type = "date".
+        /// </summary>
+        public string min = null;
 
+        /// <summary>
+        /// Устанавливает максимальное число символов, которое может быть введено пользователем в текстовом поле.
+        /// Когда это количество достигается при наборе, дальнейший ввод становится невозможным.
+        /// </summary>
+        public int maxlength = 0;
 
+        /// <summary>
+        /// Атрибут [multiple] позволяет указывать одновременно несколько файлов в поле для загрузки файлов, а также несколько адресов электронной почты.
+        /// При использовании двух и более почтовых адресов они должны перечисляться через запятую.
+        /// </summary>
+        public bool multiple = false;
 
+        /// <summary>
+        /// Указывает регулярное выражение, согласно которому требуется вводить и проверять данные в поле формы.
+        /// Если присутствует атрибут [pattern], то форма не будет отправляться, пока поле не будет заполнено правильно.
+        /// </summary>
+        public string pattern = null;
 
+        /// <summary>
+        /// Выводит текст внутри поля формы, который исчезает при получении фокуса.
+        /// Если внутри строки предполагается пробел, ее необходимо брать в двойные или одинарные кавычки.
+        /// </summary>
+        public string placeholder = null;
 
+        /// <summary>
+        /// Ширина текстового поля, которое определяется числом символов моноширинного шрифта.
+        /// Иными словами, ширина задается количеством близстоящих букв одинаковой ширины по горизонтали.
+        /// Если размер шрифта изменяется с помощью стилей, ширина также соответственно меняется. 
+        /// </summary>
+        public int size = 0;
 
-
+        /// <summary>
+        /// Устанавливает шаг изменения числа для ползунков и полей ввода чисел.
+        /// Любое целое или дробное число.
+        /// </summary>
+        public double step = 0;
 
         public input()
         {
@@ -130,8 +187,42 @@ namespace HtmlGenerator.dom.form
         public override string HTML(int deep = 0)
         {
             SetAtribute("type", type.ToString("g"));
-            if (type == InputTypesEnum.file && !string.IsNullOrEmpty(accept))
-                SetAtribute("accept", accept);
+            if (type == InputTypesEnum.file)
+            {
+                if (!string.IsNullOrEmpty(accept))
+                    SetAtribute("accept", accept);
+
+                if (!string.IsNullOrEmpty(formenctype))
+                    SetAtribute("formenctype", formenctype);
+            }
+            else if (@checked && new[] { InputTypesEnum.radio, InputTypesEnum.checkbox }.Contains(type))
+                SetAtribute("checked", "checked");
+            else if (new[] { InputTypesEnum.range, InputTypesEnum.number, InputTypesEnum.date }.Contains(type))
+            {
+                if (!string.IsNullOrEmpty(max))
+                    SetAtribute("max", max);
+
+                if (!string.IsNullOrEmpty(min))
+                    SetAtribute("min", min);
+
+                if (step > 0 && type != InputTypesEnum.date)
+                    SetAtribute("step", step.ToString());
+            }
+            else if (new[] { InputTypesEnum.text, InputTypesEnum.password }.Contains(type))
+            {
+                if (maxlength > 0)
+                    SetAtribute("maxlength", maxlength.ToString());
+                if (size > 0)
+                    SetAtribute("size", size.ToString("g"));
+            }
+            else if (new[] { InputTypesEnum.email, InputTypesEnum.tel, InputTypesEnum.text, InputTypesEnum.search, InputTypesEnum.url }.Contains(type))
+            {
+                if (!string.IsNullOrEmpty(pattern))
+                    SetAtribute("pattern", pattern);
+
+                if (!string.IsNullOrEmpty(placeholder))
+                    SetAtribute("placeholder", placeholder);
+            }
 
             if (!string.IsNullOrEmpty(value))
                 SetAtribute("value", value);
@@ -147,6 +238,33 @@ namespace HtmlGenerator.dom.form
 
             if (!(autocomplete is null))
                 SetAtribute("autocomplete", autocomplete == true ? "on" : "off");
+
+            if (autofocus)
+                SetAtribute("autofocus", null);
+
+            if (!string.IsNullOrEmpty(form))
+                SetAtribute("form", form);
+
+            if (!string.IsNullOrEmpty(formaction))
+                SetAtribute("formaction", formaction);
+
+            if (!string.IsNullOrEmpty(formaction))
+                SetAtribute("formaction", formaction);
+
+            if (!(formmethod is null))
+                SetAtribute("formmethod", formmethod?.ToString("g"));
+
+            if (formnovalidate)
+                SetAtribute("formnovalidate", null);
+
+            if (!(formtarget is null))
+                SetAtribute("formtarget", formtarget?.ToString("g"));
+
+            if (!string.IsNullOrEmpty(list))
+                SetAtribute("list", list);
+
+            if (multiple)
+                SetAtribute("multiple", null);
 
             return base.HTML(deep);
         }
