@@ -52,7 +52,7 @@ namespace HtmlGenerator.dom
         /// </summary>
         public TargetsEnum? target = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(alt is null))
                 SetAtribute("alt", alt);
@@ -76,7 +76,7 @@ namespace HtmlGenerator.dom
             if (!string.IsNullOrEmpty(s_coords))
                 SetAtribute("coords", s_coords);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
 
     }

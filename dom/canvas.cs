@@ -21,7 +21,7 @@ namespace HtmlGenerator.dom
         /// </summary>
         public int width = -1;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (height > 0)
                 SetAtribute("height", height);
@@ -29,7 +29,7 @@ namespace HtmlGenerator.dom
             if (width > 0)
                 SetAtribute("width", width);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

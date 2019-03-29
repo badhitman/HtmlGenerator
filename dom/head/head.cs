@@ -21,12 +21,12 @@ namespace HtmlGenerator.dom.head
 
         public @base Base = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(Base is null) && !Childs.Exists(x => x is @base))
                 Childs.Add(Base);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace HtmlGenerator.dom.collections
             TypeOL = in_TypeOL;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (TypeOL == TypesOL.Numb)
                 SetAtribute("type", "1");
@@ -62,7 +62,7 @@ namespace HtmlGenerator.dom.collections
             else
                 RemoveAtribute("type");
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
 
         /// <summary>

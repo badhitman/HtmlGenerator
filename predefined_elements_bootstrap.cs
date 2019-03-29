@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace HtmlGenerator
 {
     public enum ElementsStyles { Primary, Secondary, Success, Danger, Warning, Info, Light, Dark }
-    public enum ElementsSizes { Lg, Sm }
+    public enum ElementsBootstrapSizes { Lg, Sm }
 
     public static class predefined_elements_bootstrap
     {
@@ -204,7 +204,7 @@ namespace HtmlGenerator
         /// <param name="size">Размер кнопки</param>
         /// <param name="btn_block">Флаг режима заполнения родительского блока во всю ширину</param>
         /// <param name="outline_style">Флаг отключения цвета фона. В этом режиме стиль оформления будет использован для рамки и цвета, но не для фона</param>
-        public static button GetButton(string text, string id_button = null, string href = null, ElementsStyles? style = null, ElementsSizes? size = null, bool btn_block = false, bool outline_style = false)
+        public static button GetButton(string text, string id_button = null, string href = null, ElementsStyles? style = null, ElementsBootstrapSizes? size = null, bool btn_block = false, bool outline_style = false)
         {
             button ret_button = new button(text) { css_class = "btn", Id_DOM = id_button };
 
@@ -342,7 +342,7 @@ namespace HtmlGenerator
                 sitekey.SetAtribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
             }
-            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, ElementsStyles.Primary, ElementsSizes.Lg, true));
+            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, ElementsStyles.Primary, ElementsBootstrapSizes.Lg, true));
 
 
             dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));

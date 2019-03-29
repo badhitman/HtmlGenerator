@@ -184,7 +184,7 @@ namespace HtmlGenerator.dom.form
             need_end_tag = false;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("type", type.ToString("g"));
             if (type == InputTypesEnum.file)
@@ -266,7 +266,7 @@ namespace HtmlGenerator.dom.form
             if (multiple)
                 SetAtribute("multiple", null);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -93,7 +93,7 @@ namespace HtmlGenerator.dom.media
             need_end_tag = false;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(src))
                 SetAtribute("src", src);
@@ -113,7 +113,7 @@ namespace HtmlGenerator.dom.media
             if (!string.IsNullOrEmpty(usemap))
                 SetAtribute("usemap", usemap);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace HtmlGenerator.dom.media
         /// </summary>
         public string type = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("hight", hight.ToString());
             SetAtribute("width", width.ToString());
@@ -58,7 +58,7 @@ namespace HtmlGenerator.dom.media
                     SetAtribute("type", type);
             }
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

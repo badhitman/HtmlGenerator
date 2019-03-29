@@ -12,12 +12,12 @@ namespace HtmlGenerator.dom.text
             InnerText = i_html_text;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             ////////////////////////////
             // Вложеные элементы не предусмотрены
             Childs.Clear();
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace HtmlGenerator.dom.media
         /// </summary>
         public string poster = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (width > 0)
                 SetAtribute("width", width);
@@ -36,7 +36,7 @@ namespace HtmlGenerator.dom.media
             if (!string.IsNullOrEmpty(poster))
                 SetAtribute("poster", poster);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace HtmlGenerator.dom.head
         /// </summary>
         public TargetsEnum? target = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
 
@@ -48,7 +48,7 @@ namespace HtmlGenerator.dom.head
             if (!(target is null))
                 SetAtribute("target", target?.ToString("g"));
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

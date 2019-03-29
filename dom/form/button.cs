@@ -87,7 +87,7 @@ namespace HtmlGenerator.dom.form
             TypeButton = type_button;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("type", TypeButton.ToString("g"));
 
@@ -115,7 +115,7 @@ namespace HtmlGenerator.dom.form
             if(!(formtarget is null))
                 SetAtribute("formtarget", formtarget?.ToString("g"));
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

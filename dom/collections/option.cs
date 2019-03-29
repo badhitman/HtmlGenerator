@@ -26,7 +26,7 @@ namespace HtmlGenerator.dom.collections
             inline = true;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(set is null))
             {
@@ -39,7 +39,7 @@ namespace HtmlGenerator.dom.collections
                 if (set.Disabled)
                     SetAtribute("disabled", null);
             }
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

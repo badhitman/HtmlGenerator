@@ -20,7 +20,7 @@ namespace HtmlGenerator.dom.details
         /// </summary>
         public bool open = false;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(Summary is null))
                 Childs.Insert(0, Summary);
@@ -28,7 +28,7 @@ namespace HtmlGenerator.dom.details
             if (open)
                 SetAtribute("open", null);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

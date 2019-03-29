@@ -45,7 +45,7 @@ namespace HtmlGenerator.dom.head
             need_end_tag = false;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(charset))
                 SetAtribute("charset", charset);
@@ -56,7 +56,7 @@ namespace HtmlGenerator.dom.head
             if (!string.IsNullOrEmpty(http_equiv))
                 SetAtribute("http-equiv", http_equiv);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

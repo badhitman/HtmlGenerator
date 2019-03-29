@@ -40,11 +40,11 @@ namespace HtmlGenerator.dom.table
                 my_tr.AddColumn(s);
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
             Rows.ForEach(x => Childs.Add(x));
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

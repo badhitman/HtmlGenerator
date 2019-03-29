@@ -34,14 +34,14 @@ namespace HtmlGenerator.dom.head
                 SetAtribute("defer", "");
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("type", "text/" + set.mimeType.ToString("g").ToLower());
 
             if (!string.IsNullOrEmpty(set.src))
                 SetAtribute("src", set.src);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

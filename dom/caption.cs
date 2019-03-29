@@ -18,13 +18,13 @@ namespace HtmlGenerator.dom
         /// </summary>
         AlignEnum? align = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             List<AlignEnum?> AllowedAligned = new List<AlignEnum?>() { AlignEnum.left, AlignEnum.right, AlignEnum.bottom, AlignEnum.top };
             if (AllowedAligned.Contains(align))
                 SetAtribute("align", align?.ToString("g"));
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

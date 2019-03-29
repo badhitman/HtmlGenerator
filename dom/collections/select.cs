@@ -57,7 +57,7 @@ namespace HtmlGenerator.dom.collections
         /// </summary>
         public List<option> Options = new List<option>();
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (autofocus)
                 SetAtribute("autofocus", null);
@@ -74,7 +74,7 @@ namespace HtmlGenerator.dom.collections
             if (size > 0)
                 SetAtribute("size", size);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

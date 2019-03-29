@@ -21,7 +21,7 @@ namespace HtmlGenerator.dom.text
         /// </summary>
         public string datetime = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(cite))
                 SetAtribute("cite",cite);
@@ -29,7 +29,7 @@ namespace HtmlGenerator.dom.text
             if (!string.IsNullOrEmpty(datetime))
                 SetAtribute("datetime", datetime);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

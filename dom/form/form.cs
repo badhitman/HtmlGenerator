@@ -64,7 +64,7 @@ namespace HtmlGenerator.dom.form
         /// </summary>
         public bool? autocomplete = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(method_form is null))
                 SetAtribute("method", method_form?.ToString("g"));
@@ -87,7 +87,7 @@ namespace HtmlGenerator.dom.form
             if (!(autocomplete is null))
                 SetAtribute("autocomplete", autocomplete == true ? "on" : "off");
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

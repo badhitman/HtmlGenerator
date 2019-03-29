@@ -60,7 +60,7 @@ namespace HtmlGenerator.dom.media
         /// </summary>
         public string src = "#";
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             /// <summary>
             /// Вложеные элементы могут быть только source
@@ -80,7 +80,7 @@ namespace HtmlGenerator.dom.media
             if (loop)
                 SetAtribute("loop", "loop");
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

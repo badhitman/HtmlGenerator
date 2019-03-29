@@ -62,7 +62,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// При вызове этого метода поле Childs очищается и заново заполняется
         /// </summary>
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
 
@@ -120,7 +120,7 @@ namespace HtmlGenerator.bootstrap
             Childs.Add(modal_dialog_document);
             prew_block_coment = "Modal dialog";
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

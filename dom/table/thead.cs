@@ -26,13 +26,13 @@ namespace HtmlGenerator.dom.table
                 AddColumn(s, unique);
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
             tr my_tr = new tr();
             Columns.ForEach(x => my_tr.Childs.Add(x));
             Childs.Add(my_tr);
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

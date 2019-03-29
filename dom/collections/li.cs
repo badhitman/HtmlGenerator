@@ -21,10 +21,10 @@ namespace HtmlGenerator.dom.collections
             InnerText = text_value;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("type", TypeUL.ToString("g"));
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
-// Описание позаимствовано с сайтов http://htmlbook.ru/html/a и https://webref.ru/html/a
+// Описание позаимствовано с сайтов http://htmlbook.ru
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
 
@@ -42,7 +42,7 @@ namespace HtmlGenerator.dom
         /// </summary>
         public bool download = false;
         
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(href is null))
             {
@@ -61,7 +61,7 @@ namespace HtmlGenerator.dom
             if (download)
                 SetAtribute("download", null);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

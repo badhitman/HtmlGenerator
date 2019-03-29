@@ -52,7 +52,7 @@ namespace HtmlGenerator.dom
             inline = true;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("high", high);
             SetAtribute("low", low);
@@ -61,7 +61,7 @@ namespace HtmlGenerator.dom
             SetAtribute("optimum", optimum);
             SetAtribute("value", value);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

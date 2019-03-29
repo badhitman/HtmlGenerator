@@ -38,7 +38,7 @@ namespace HtmlGenerator.dom.fieldset
             legend_text = in_legend_text;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(form))
                 SetAtribute("form", form);
@@ -49,7 +49,7 @@ namespace HtmlGenerator.dom.fieldset
             if (!string.IsNullOrEmpty(legend_text))
                 Childs.Insert(0, new legend(legend_text));
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

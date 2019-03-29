@@ -44,7 +44,7 @@ namespace HtmlGenerator.dom.head
             need_end_tag = false;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (!(media.Count == 1 && media[0] == MediaDevicesEnum.all))
             {
@@ -69,7 +69,7 @@ namespace HtmlGenerator.dom.head
             if (rel == RelationsEnum.icon)
                 SetAtribute("rel", "shortcut icon");
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

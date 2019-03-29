@@ -18,12 +18,12 @@ namespace HtmlGenerator.dom.table
         /// </summary>
         public int span = -1;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (span > 0)
                 SetAtribute("span", span);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

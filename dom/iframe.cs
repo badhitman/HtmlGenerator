@@ -73,7 +73,7 @@ namespace HtmlGenerator.dom
         /// </summary>
         public string srcdoc = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             if (height > 0)
                 SetAtribute("height", height);
@@ -99,7 +99,7 @@ namespace HtmlGenerator.dom
             if (!string.IsNullOrEmpty(srcdoc))
                 SetAtribute("srcdoc", srcdoc);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

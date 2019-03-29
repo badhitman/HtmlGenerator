@@ -90,7 +90,7 @@ namespace HtmlGenerator.dom.form
         /// </summary>
         public WrapsModesEnum wrap = WrapsModesEnum.soft;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("wrap", wrap.ToString("g"));
 
@@ -121,7 +121,7 @@ namespace HtmlGenerator.dom.form
             if (rows > 0)
                 SetAtribute("rows", rows);
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

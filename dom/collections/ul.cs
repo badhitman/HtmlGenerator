@@ -24,10 +24,10 @@ namespace HtmlGenerator.dom.collections
             TypeUL = in_TypeUL;
         }
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             SetAtribute("type", TypeUL.ToString("g"));
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
 
         /// <summary>

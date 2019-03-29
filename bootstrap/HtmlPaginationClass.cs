@@ -11,7 +11,7 @@ using System.Linq;
 namespace HtmlGenerator.bootstrap
 {
     public enum Alignment { Left, Center, Right }
-    public enum Sizing { Small, Medium, Big }
+    public enum SizingBootstrapPagination { Small, Medium, Big }
 
     public class HtmlPaginationClass
     {
@@ -83,7 +83,7 @@ namespace HtmlGenerator.bootstrap
         }
 
         public Alignment AlignmentPagination = Alignment.Right;
-        public Sizing SizingPagination = Sizing.Medium;
+        public SizingBootstrapPagination SizingPagination = SizingBootstrapPagination.Medium;
 
         /// <summary>
         /// Номер страницы "постраничного/разбитого" документа
@@ -176,9 +176,9 @@ namespace HtmlGenerator.bootstrap
                 ul ul_block = new ul { css_class = "pagination" };
 
                 #region Formatting pagination (aligment + sizing)
-                if (SizingPagination == Sizing.Big)
+                if (SizingPagination == SizingBootstrapPagination.Big)
                     ul_block.css_class += " pagination-lg";
-                else if (SizingPagination == Sizing.Small)
+                else if (SizingPagination == SizingBootstrapPagination.Small)
                     ul_block.css_class += " pagination-sm";
 
                 if (AlignmentPagination == Alignment.Center)

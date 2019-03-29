@@ -29,7 +29,7 @@ namespace HtmlGenerator.dom.media
         /// </summary>
         public string mimetype = null;
 
-        public override string HTML(int deep = 0)
+        public override string GetHTML(int deep = 0)
         {
             /// <summary>
             /// Вложеные элементы тут не допустимы
@@ -43,7 +43,7 @@ namespace HtmlGenerator.dom.media
                     SetAtribute("type", mimetype);
             }
 
-            return base.HTML(deep);
+            return base.GetHTML(deep);
         }
     }
 }

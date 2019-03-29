@@ -101,7 +101,7 @@ namespace HtmlGenerator
         /// </summary>
         /// <param name="deep">Глубина вложености html блока/элемента (для отступов/табуляторов)</param>
         /// <returns>Возвращает готовый html</returns>
-        public virtual string HTML(int deep = 0)
+        public virtual string GetHTML(int deep = 0)
         {
             /////////////////////////////////////////////
             // Вычещаем недопустимый текст из коментария  
@@ -159,7 +159,7 @@ namespace HtmlGenerator
 
             if (!(this is text))
                 foreach (basic_html_dom h in Childs)
-                    ret_val += h.HTML(deep + 1);
+                    ret_val += h.GetHTML(deep + 1);
 
             if (!string.IsNullOrEmpty(InnerText))
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
