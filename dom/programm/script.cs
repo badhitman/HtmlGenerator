@@ -18,28 +18,21 @@ namespace HtmlGenerator.dom.head
         public enum MimeTypes { JavaScript, VBScript }
 
         /// <summary>
-        ///  Атрибут defer откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. 
+        ///  Атрибут [defer] откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. 
         /// </summary>
         public bool defer = true;
-        public class script_set
-        {
-            public string src;
-            public MimeTypes mimeType = MimeTypes.JavaScript;
-        }
-        public script_set set;
-        public script(script_set in_set)
-        {
-            set = in_set;
-            if (defer)
-                SetAtribute("defer", "");
-        }
+        public string src;
+        public MimeTypes mimeType = MimeTypes.JavaScript;
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("type", "text/" + set.mimeType.ToString("g").ToLower());
+            if (defer)
+                SetAtribute("defer", null);
 
-            if (!string.IsNullOrEmpty(set.src))
-                SetAtribute("src", set.src);
+            SetAtribute("type", "text/" + mimeType.ToString("g").ToLower());
+
+            if (!string.IsNullOrEmpty(src))
+                SetAtribute("src", src);
 
             return base.GetHTML(deep);
         }
