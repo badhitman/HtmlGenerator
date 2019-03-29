@@ -72,7 +72,7 @@ namespace HtmlGenerator.dom.collections
                 SetAtribute("required", null);
 
             if (size > 0)
-                SetAtribute("size", size.ToString());
+                SetAtribute("size", size);
 
             return base.HTML(deep);
         }

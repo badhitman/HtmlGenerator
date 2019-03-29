@@ -98,7 +98,7 @@ namespace HtmlGenerator.dom.form
                 SetAtribute("autofocus", null);
 
             if (cols > 0)
-                SetAtribute("cols", cols.ToString());
+                SetAtribute("cols", cols);
 
             if (disabled)
                 SetAtribute("disabled", null);
@@ -107,7 +107,7 @@ namespace HtmlGenerator.dom.form
                 SetAtribute("form", form);
 
             if (maxlength > 0)
-                SetAtribute("maxlength", maxlength.ToString());
+                SetAtribute("maxlength", maxlength);
 
             if (!string.IsNullOrEmpty(placeholder))
                 SetAtribute("placeholder", placeholder);
@@ -119,7 +119,7 @@ namespace HtmlGenerator.dom.form
                 SetAtribute("required", null);
 
             if (rows > 0)
-                SetAtribute("rows", rows.ToString());
+                SetAtribute("rows", rows);
 
             return base.HTML(deep);
         }

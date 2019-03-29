@@ -21,7 +21,7 @@ namespace HtmlGenerator.dom.table
         public override string HTML(int deep = 0)
         {
             if (span > 0)
-                SetAtribute("span", span.ToString());
+                SetAtribute("span", span);
 
             return base.HTML(deep);
         }

@@ -206,12 +206,12 @@ namespace HtmlGenerator.dom.form
                     SetAtribute("min", min);
 
                 if (step > 0 && type != InputTypesEnum.date)
-                    SetAtribute("step", step.ToString());
+                    SetAtribute("step", step);
             }
             else if (new[] { InputTypesEnum.text, InputTypesEnum.password }.Contains(type))
             {
                 if (maxlength > 0)
-                    SetAtribute("maxlength", maxlength.ToString());
+                    SetAtribute("maxlength", maxlength);
                 if (size > 0)
                     SetAtribute("size", size.ToString("g"));
             }

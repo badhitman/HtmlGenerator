@@ -76,10 +76,10 @@ namespace HtmlGenerator.dom
         public override string HTML(int deep = 0)
         {
             if (height > 0)
-                SetAtribute("height", height.ToString());
+                SetAtribute("height", height);
 
             if (width > 0)
-                SetAtribute("width", width.ToString());
+                SetAtribute("width", width);
 
             if (sandbox.Count > 0)
             {

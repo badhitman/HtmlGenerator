@@ -102,10 +102,10 @@ namespace HtmlGenerator.dom.media
                 SetAtribute("alt", alt);
 
             if (height > 0)
-                SetAtribute("height", height.ToString());
+                SetAtribute("height", height);
 
             if (width > 0)
-                SetAtribute("width", width.ToString());
+                SetAtribute("width", width);
 
             if (ismap)
                 SetAtribute("ismap", null);

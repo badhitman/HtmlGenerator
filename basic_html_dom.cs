@@ -149,7 +149,7 @@ namespace HtmlGenerator
                     ret_val += " " + kvp.Key + (kvp.Value is null ? "" : "=\"" + kvp.Value + "\"");
 
             if (!need_end_tag && !(this is text))
-                ret_val += " />";
+                ret_val += " >";
             else if (this is text)
             {
                 // * * *
@@ -204,6 +204,8 @@ namespace HtmlGenerator
             else
                 CustomAtributes[attr_name] = attr_value;
         }
+        public void SetAtribute(string attr_name, int attr_value) => SetAtribute(attr_name, attr_value.ToString());
+        public void SetAtribute(string attr_name, double attr_value) => SetAtribute(attr_name, attr_value.ToString());
 
         /// <summary>
         /// Пакетная установка атрибутов

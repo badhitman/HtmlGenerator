@@ -2,59 +2,10 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using HtmlGenerator.set;
 
 namespace HtmlGenerator.dom.media
 {
-    /// <summary>
-    /// Определяет устройство, для которого будет воспроизводиться аудио или видеофайл. 
-    /// </summary>
-    public enum MediaDevices
-    {
-        /// <summary>
-        /// Все устройства.
-        /// </summary>
-        all,
-
-        /// <summary>
-        /// Устройства, основанные на системе Брайля, предназначены для слепых людей.
-        /// </summary>
-        braille,
-
-        /// <summary>
-        /// Наладонники, смартфоны, устройства с малой шириной экрана.
-        /// </summary>
-        handheld,
-
-        /// <summary>
-        /// Печатающее устройство вроде принтера.
-        /// </summary>
-        print,
-
-        /// <summary>
-        /// Экран монитора.
-        /// </summary>
-        screen,
-
-        /// <summary>
-        /// Речевые синтезаторы, а также программы для воспроизведения текста вслух. Сюда же входят речевые браузеры.
-        /// </summary>
-        speech,
-
-        /// <summary>
-        /// Проектор.
-        /// </summary>
-        projection,
-
-        /// <summary>
-        /// Телетайпы, терминалы, портативные устройства с ограниченными возможностями экрана.
-        /// </summary>
-        tty,
-
-        /// <summary>
-        /// Телевизор.
-        /// </summary>
-        tv
-    }
 
     /// <summary>
     /// Вставляет звуковой или видеофайл для тегов [audio] и [video]. Обобщенно такие файлы называются медийными.
@@ -64,7 +15,7 @@ namespace HtmlGenerator.dom.media
         /// <summary>
         /// Определяет устройство, для которого будет воспроизводиться аудио или видеофайл. 
         /// </summary>
-        public MediaDevices media = MediaDevices.all;
+        public MediaDevicesEnum media = MediaDevicesEnum.all;
 
         /// <summary>
         /// Адрес медиа файла, который будет воспроизводиться на веб-странице.

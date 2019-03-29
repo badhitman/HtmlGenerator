@@ -28,10 +28,10 @@ namespace HtmlGenerator.dom.media
         public override string HTML(int deep = 0)
         {
             if (width > 0)
-                SetAtribute("width", width.ToString());
+                SetAtribute("width", width);
 
             if (height > 0)
-                SetAtribute("height", height.ToString());
+                SetAtribute("height", height);
 
             if (!string.IsNullOrEmpty(poster))
                 SetAtribute("poster", poster);
