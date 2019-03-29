@@ -5,6 +5,7 @@ using HtmlGenerator.dom.text;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HtmlGenerator
 {
@@ -206,6 +207,25 @@ namespace HtmlGenerator
         }
         public void SetAtribute(string attr_name, int attr_value) => SetAtribute(attr_name, attr_value.ToString());
         public void SetAtribute(string attr_name, double attr_value) => SetAtribute(attr_name, attr_value.ToString());
+        /// <summary>
+        /// Установить DOM объекту составное значение атрибута
+        /// </summary>
+        /// <param name="attr_name">Имя атрибута</param>
+        /// <param name="attributes">Список значений атрибутов</param>
+        /// <param name="separator">Символ-разделитель значений в составном значении атрибута</param>
+        /// <param name="check_duplicates_attributes">если true - то дубли будут исключены</param>
+        public void SetAtribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = false)
+        {
+            string media_as_string = "";
+            if (check_duplicates_attributes)
+                (from attr in attributes group attr by attr.ToString()).ToList().ForEach(e => media_as_string += " " + e.Key);
+            else
+                attributes.ForEach(e => media_as_string += " " + e.ToString());
+
+            media_as_string = media_as_string.Trim().Replace(" ", separator);
+            if (!string.IsNullOrEmpty(media_as_string))
+                SetAtribute(attr_name, media_as_string);
+        }
 
         /// <summary>
         /// Пакетная установка атрибутов

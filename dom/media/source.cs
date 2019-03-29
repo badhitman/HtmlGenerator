@@ -3,6 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
+using System.Collections.Generic;
 
 namespace HtmlGenerator.dom.media
 {
@@ -15,7 +16,7 @@ namespace HtmlGenerator.dom.media
         /// <summary>
         /// Определяет устройство, для которого будет воспроизводиться аудио или видеофайл. 
         /// </summary>
-        public MediaDevicesEnum media = MediaDevicesEnum.all;
+        public List<MediaDevicesEnum> media = new List<MediaDevicesEnum>() { MediaDevicesEnum.all };
 
         /// <summary>
         /// Адрес медиа файла, который будет воспроизводиться на веб-странице.
@@ -35,7 +36,9 @@ namespace HtmlGenerator.dom.media
             /// Вложеные элементы тут не допустимы
             /// </summary>
             Childs.Clear();
-            SetAtribute("media", media.ToString("g"));
+
+            SetAtribute("media", media, ", ");
+
             if (!string.IsNullOrEmpty(src))
             {
                 SetAtribute("src", src);

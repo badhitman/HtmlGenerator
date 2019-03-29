@@ -46,15 +46,8 @@ namespace HtmlGenerator.dom.head
 
         public override string GetHTML(int deep = 0)
         {
-            if (!(media.Count == 1 && media[0] == MediaDevicesEnum.all))
-            {
-                string media_as_string = "";
-                media.ForEach(e => media_as_string += " " + e.ToString("g"));
-                media_as_string = media_as_string.Trim();
-                if (!string.IsNullOrEmpty(media_as_string))
-                    SetAtribute("media", media_as_string.Replace(" ", ", "));
-            }
-
+            SetAtribute("media", media, ", ");
+            
             if (!string.IsNullOrEmpty(href))
             {
                 SetAtribute("href", href);
