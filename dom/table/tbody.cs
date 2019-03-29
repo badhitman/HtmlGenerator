@@ -16,7 +16,7 @@ namespace HtmlGenerator.dom.table
     public class tbody : basic_html_dom
     {
         /// <summary>
-        /// Ширина таблицы. Равна размеру в колонках самой длинной строки
+        /// Ширина таблицы. Равна размеру (в колонках) самой "длинной" строки
         /// </summary>
         public int WidthTable
         {
@@ -26,13 +26,21 @@ namespace HtmlGenerator.dom.table
                 if (Rows is null || Rows.Count == 0)
                     return 0;
 
-                foreach (tr item in Rows)
-                    result = Math.Max(result, item.Columns.Count);
+                Rows.ForEach(r => Math.Max(result, r.Columns.Count));
 
                 return result;
             }
         }
+
+        /// <summary>
+        /// Строки таблицы
+        /// </summary>
         public List<tr> Rows { get; private set; } = new List<tr>();
+
+        /// <summary>
+        /// Добавить строку в таблицу
+        /// </summary>
+        /// <param name="td_cols">значения ячеек в строке</param>
         public void AddRow(string[] td_cols)
         {
             tr my_tr = new tr();

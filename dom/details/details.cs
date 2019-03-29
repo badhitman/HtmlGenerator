@@ -13,6 +13,9 @@ namespace HtmlGenerator.dom.details
     /// </summary>
     public class details : basic_html_dom
     {
+        /// <summary>
+        /// Указывает заголовок для тега [details], по которому можно щелкать для разворачивания/сворачивания информации. Тег [summary] должен идти первым внутри [details].
+        /// </summary>
         public summary Summary = null;
 
         /// <summary>

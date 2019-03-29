@@ -5,7 +5,6 @@ using HtmlGenerator.dom;
 using HtmlGenerator.dom.form;
 using HtmlGenerator.dom.text;
 using HtmlGenerator.set;
-using MultiTool;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
