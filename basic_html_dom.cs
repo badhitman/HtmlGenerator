@@ -263,10 +263,12 @@ namespace HtmlGenerator
         public void SetEvent(UniversalEventsEnum my_event, string event_src)
         {
             if (string.IsNullOrEmpty(event_src))
+            {
                 if (CustomAtributes.ContainsKey(my_event.ToString("g")))
                     CustomAtributes.Remove(my_event.ToString("g"));
-                else
-                    SetAtribute(my_event.ToString("g"), event_src);
+            }
+            else
+                SetAtribute(my_event.ToString("g"), event_src);
         }
 
         /// <summary>
