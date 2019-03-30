@@ -211,10 +211,10 @@ namespace HtmlGenerator
         /// Установить DOM объекту составное значение атрибута
         /// </summary>
         /// <param name="attr_name">Имя атрибута</param>
-        /// <param name="attributes">Список значений атрибутов</param>
+        /// <param name="attributes">Список значений атрибутов, которые нужно объеденить в одно составное значение</param>
         /// <param name="separator">Символ-разделитель значений в составном значении атрибута</param>
-        /// <param name="check_duplicates_attributes">если true - то дубли будут исключены</param>
-        public void SetAtribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = false)
+        /// <param name="check_duplicates_attributes">если true - то дубли значений будут исключены из конечного составного значения</param>
+        public void SetAtribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
         {
             string media_as_string = "";
             if (check_duplicates_attributes)

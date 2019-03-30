@@ -19,10 +19,7 @@ namespace HtmlGenerator.dom.collections
         /// </summary>
         public TypesULEnum TypeUL = TypesULEnum.disc;
 
-        public ul(TypesULEnum in_TypeUL = TypesULEnum.disc)
-        {
-            TypeUL = in_TypeUL;
-        }
+        public ul(TypesULEnum in_TypeUL = TypesULEnum.disc)=> TypeUL = in_TypeUL;
 
         public override string GetHTML(int deep = 0)
         {

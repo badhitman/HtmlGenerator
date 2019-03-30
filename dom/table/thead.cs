@@ -12,14 +12,26 @@ namespace HtmlGenerator.dom.table
     /// </summary>
     public class thead : basic_html_dom
     {
+        /// <summary>
+        /// Колонки заголовочной части
+        /// </summary>
         public virtual List<th> Columns { get; private set; } = new List<th>();
 
+        /// <summary>
+        /// Добавить колонку в заголовочную часть таблицы
+        /// </summary>
+        /// <param name="text">Текст заголовка колонки</param>
+        /// <param name="unique">Проверять или нет - уникальность заголовков таблицы</param>
         public void AddColumn(string text, bool unique = false)
         {
             if (!unique || !Columns.Exists(x => x.InnerText.ToLower() == text.ToLower()))
                 Columns.Add(new th() { InnerText = text });
         }
 
+        /// <summary>
+        /// Пакетное добавление заголовков в таблицу
+        /// </summary>
+        /// <param name="text">Пакет заголовков</param>
         public void AddColumn(string[] text, bool unique = false)
         {
             foreach (string s in text)

@@ -80,7 +80,7 @@ namespace HtmlGenerator.dom.form
         /// Указывает замещающийся текст.
         /// Выводит текст внутри текстового поля, который исчезает при получении фокуса.
         /// </summary>
-        public string placeholder = null;
+        public string placeholder;
 
         /// <summary>
         /// Параметры переноса строк.
