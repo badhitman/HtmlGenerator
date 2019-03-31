@@ -16,11 +16,6 @@ namespace HtmlGenerator.dom.collections
         /// </summary>
         public TypesULEnum TypeUL = TypesULEnum.disc;
 
-        public li(string text_value)
-        {
-            InnerText = text_value;
-        }
-
         public override string GetHTML(int deep = 0)
         {
             SetAtribute("type", TypeUL.ToString("g"));

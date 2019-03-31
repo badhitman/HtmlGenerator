@@ -57,7 +57,7 @@ namespace HtmlGenerator.bootstrap
         public string TextCancelButton = "Cancel";
 
         /// <summary>
-        /// меняем сразу имя тега на div
+        /// Меняем имя тега на div
         /// </summary>
         public ModalDialog() => set_custom_name_tag = typeof(div).ToString();
 

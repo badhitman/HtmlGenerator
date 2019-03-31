@@ -38,7 +38,7 @@ namespace HtmlGenerator.dom.collections
         /// <param name="value">value - Число, с которого будет начинаться нумерованный список.</param>
         public li GetLi(string value, string text_title, string tooltip, bool disable = false, string tag = "")
         {
-            li ret_val = new li(text_title);
+            li ret_val = new li() { InnerText = text_title };
             ret_val.title = tooltip;
             ret_val.SetAtribute("type", TypeUL.ToString("g"));
             ret_val.SetAtribute("value", value);

@@ -16,11 +16,11 @@ namespace HtmlGenerator.dom
         /// <summary>
         /// Определяет выравнивание заголовка. 
         /// </summary>
-        AlignEnum? align = null;
+        AlignmentEnum? align = null;
 
         public override string GetHTML(int deep = 0)
         {
-            List<AlignEnum?> AllowedAligned = new List<AlignEnum?>() { AlignEnum.left, AlignEnum.right, AlignEnum.bottom, AlignEnum.top };
+            List<AlignmentEnum?> AllowedAligned = new List<AlignmentEnum?>() { AlignmentEnum.left, AlignmentEnum.right, AlignmentEnum.bottom, AlignmentEnum.top };
             if (AllowedAligned.Contains(align))
                 SetAtribute("align", align?.ToString("g"));
 

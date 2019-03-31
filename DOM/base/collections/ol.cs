@@ -70,7 +70,7 @@ namespace HtmlGenerator.dom.collections
         /// </summary>
         public li GetLi()
         {
-            li ret_val = new li(null);
+            li ret_val = new li();
             if (TypeOL != TypesOL.None)
                 ret_val.SetAtribute("type", TypeOL.ToString("g"));
             else

@@ -22,7 +22,7 @@ namespace HtmlGenerator.bootstrap
         public new List<html_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
 
         /// <summary>
-        /// меняем сразу имя тега на nav
+        /// Меняем имя тега на nav
         /// </summary>
         public Breadcrumbs() => set_custom_name_tag = typeof(nav).ToString();
 
@@ -38,7 +38,7 @@ namespace HtmlGenerator.bootstrap
             li my_li;
             foreach (BreadcrumbItem bi in BreadcrumbsCol)
             {
-                my_li = new li(null) { css_class = "breadcrumb-item" };
+                my_li = new li() { css_class = "breadcrumb-item" };
                 if (string.IsNullOrEmpty(bi.href))
                 {
                     my_li.css_class += " active";

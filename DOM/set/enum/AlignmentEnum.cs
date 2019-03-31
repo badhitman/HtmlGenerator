@@ -7,7 +7,7 @@ namespace HtmlGenerator.set
     /// <summary>
     /// Выравнивания
     /// </summary>
-    public enum AlignEnum
+    public enum AlignmentEnum
     {
         /// <summary>
         /// Левое выравнивание

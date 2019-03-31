@@ -32,7 +32,7 @@ namespace HtmlGenerator.bootstrap
         {
             a a_tag = new a() { css_class = "page-link", href = UrlTmpl + i.ToString(), InnerText = i.ToString() };
 
-            li li_tag = new li(null) { css_class = "page-item" };
+            li li_tag = new li() { css_class = "page-item" };
 
             if (i < 0)
             {

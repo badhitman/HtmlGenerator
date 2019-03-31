@@ -93,7 +93,7 @@ namespace HtmlGenerator
         {
             foreach (OptionItem o_item in ListItems)
             {
-                li li_item = new li(o_item.Title);
+                li li_item = new li() { InnerText = o_item.Title };
 
                 if (o_item.Disabled)
                     li_item.css_class += " disabled";

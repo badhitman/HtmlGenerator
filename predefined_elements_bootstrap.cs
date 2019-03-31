@@ -329,8 +329,8 @@ namespace HtmlGenerator
 
             p reg_new_user_info = new p("") { css_class = "clearfix" };
             reg_new_user_info.Childs.Add(new ul() { css_class = "panel-collapse collapse " + collapse_info_new_user_input_css });
-            reg_new_user_info.Childs[0].Childs.Add(new li("Придумайте/запомните надёжный логин/пароль и входите"));
-            reg_new_user_info.Childs[0].Childs.Add(new li("Учётная запись будет создана автоматически"));
+            reg_new_user_info.Childs[0].Childs.Add(new li() { InnerText = "Придумайте/запомните надёжный логин/пароль и входите" });
+            reg_new_user_info.Childs[0].Childs.Add(new li() { InnerText = "Учётная запись будет создана автоматически" });
 
             html_response.Childs.Add(reg_new_user_info);
             if (!string.IsNullOrEmpty(re_captcha_key))
