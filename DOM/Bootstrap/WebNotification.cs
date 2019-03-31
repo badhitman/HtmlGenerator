@@ -4,49 +4,19 @@
 using HtmlGenerator.dom;
 using HtmlGenerator.dom.form;
 using HtmlGenerator.dom.text;
+using HtmlGenerator.DOM.set.bootstrap_enum;
 
 namespace HtmlGenerator.bootstrap
 {
-    /// <summary>
-    /// Статусы уведомлений
-    /// </summary>
-    public enum StatusNote
-    {
-        /// <summary>
-        /// Простое (серый цвет)
-        /// </summary>
-        Dark,
-        /// <summary>
-        /// Первоочередное
-        /// </summary>
-        Primary,
-        /// <summary>
-        /// Информирование
-        /// </summary>
-        Info,
-        /// <summary>
-        /// Опасно
-        /// </summary>
-        Danger,
-        /// <summary>
-        /// Внимание
-        /// </summary>
-        Warning,
-        /// <summary>
-        /// Успешно
-        /// </summary>
-        Success
-    }
-
     /// <summary>
     /// Класс Web/DOM уведомления для пользователя.
     /// </summary>
     public class WebNotification
     {
         //
-        public StatusNote CurrStatus;
+        public VisualBootstrapStylesEnum CurrStatus;
         public string Message;
-        public WebNotification(StatusNote s, string msg)
+        public WebNotification(VisualBootstrapStylesEnum s, string msg)
         {
             CurrStatus = s;
             Message = msg;
