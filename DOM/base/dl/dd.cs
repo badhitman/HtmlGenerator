@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.dl
+namespace HtmlGenerator.DOM.dl
 {
     /// <summary>
     /// Тег [dd] входит в тройку элементов [dl], [dt], [dd], предназначенных для создания списка определений.

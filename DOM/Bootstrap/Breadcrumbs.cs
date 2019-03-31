@@ -1,8 +1,8 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom;
-using HtmlGenerator.dom.collections;
+using HtmlGenerator.DOM;
+using HtmlGenerator.DOM.collections;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap

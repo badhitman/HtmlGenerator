@@ -5,7 +5,7 @@
 
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.head
+namespace HtmlGenerator.DOM.head
 {
     /// <summary>
     ///  Элемент [base] определен внутри контейнера [head] и инструктирует браузер относительно полного базового адреса текущего документа.

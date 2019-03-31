@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.text
+namespace HtmlGenerator.DOM.text
 {
     /// <summary>
     /// Тег [blockquote] предназначен для выделения длинных цитат внутри документа.

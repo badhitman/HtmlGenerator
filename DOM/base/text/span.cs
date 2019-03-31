@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.text
+namespace HtmlGenerator.DOM.text
 {
     /// <summary>
     /// Тег [span] предназначен для определения строчных элементов документа. В отличие от блочных элементов, таких как [table], [p] или [div],

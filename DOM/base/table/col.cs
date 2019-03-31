@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.table
+namespace HtmlGenerator.DOM.table
 {
     /// <summary>
     ///  Тег [col] задает ширину и другие характеристики одной или нескольких колонок таблицы.

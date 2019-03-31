@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.collections
+namespace HtmlGenerator.DOM.collections
 {
     public class optgroup : html_dom_root
     {

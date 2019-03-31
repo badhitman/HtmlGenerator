@@ -5,7 +5,7 @@
 
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.form
+namespace HtmlGenerator.DOM.form
 {
     /// <summary>
     ///  Определяет тип кнопки, который устанавливает ее поведение в форме. По внешнему виду кнопки разного типа никак не различаются, но у каждой такой кнопки свои функции. 

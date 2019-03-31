@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.text
+namespace HtmlGenerator.DOM.text
 {
     /// <summary>
     /// Тег [ins] предназначен для выделения текста, который был добавлен в новую версию документа.

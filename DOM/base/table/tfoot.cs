@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.table
+namespace HtmlGenerator.DOM.table
 {
     /// <summary>
     /// Элемент [tfoot] предназначен для хранения одной или нескольких строк, которые представлены внизу таблицы.

@@ -5,7 +5,7 @@
 namespace HtmlGenerator.DOM.set.bootstrap_enum
 {
     /// <summary>
-    /// Стили оформления
+    /// Стили оформления Bootstrap
     /// </summary>
     public enum VisualBootstrapStylesEnum
     {

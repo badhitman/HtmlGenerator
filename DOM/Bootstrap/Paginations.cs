@@ -1,9 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom;
-using HtmlGenerator.dom.collections;
-using HtmlGenerator.dom.text;
+using HtmlGenerator.DOM;
+using HtmlGenerator.DOM.collections;
+using HtmlGenerator.DOM.set.bootstrap_enum;
+using HtmlGenerator.DOM.text;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,6 @@ using System.Linq;
 
 namespace HtmlGenerator.bootstrap
 {
-    public enum SizingBootstrapPagination { Small, Medium, Big }
-
     public class Paginations
     {
         public static ul GetListSizes

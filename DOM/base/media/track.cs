@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.media
+namespace HtmlGenerator.DOM.media
 {
     /// <summary>
     /// Позволяет авторам указать текстовую дорожку для медийных элементов [audio] и [video].

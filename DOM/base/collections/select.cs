@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using System.Collections.Generic;
 
-namespace HtmlGenerator.dom.collections
+namespace HtmlGenerator.DOM.collections
 {
     /// <summary>
     /// Тег [select] позволяет создать элемент интерфейса в виде раскрывающегося списка, а также список с одним или множественным выбором.

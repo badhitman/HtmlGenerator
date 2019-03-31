@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.text;
+using HtmlGenerator.DOM.text;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.text
+namespace HtmlGenerator.DOM.text
 {
     public class text : html_dom_root
     {

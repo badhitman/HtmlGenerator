@@ -5,7 +5,7 @@
 
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.form
+namespace HtmlGenerator.DOM.form
 {
     /// <summary>
     /// Тег [form] устанавливает форму на веб-странице. Форма предназначена для обмена данными между пользователем и сервером.

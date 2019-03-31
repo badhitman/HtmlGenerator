@@ -7,7 +7,7 @@ using HtmlGenerator.set;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HtmlGenerator.dom
+namespace HtmlGenerator.DOM
 {
     /// <summary>
     /// Тег [iframe] создает плавающий фрейм, который находится внутри обычного документа, он позволяет загружать в область заданных размеров любые другие независимые документы.

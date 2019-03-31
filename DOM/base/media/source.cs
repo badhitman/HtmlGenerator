@@ -5,7 +5,7 @@
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.dom.media
+namespace HtmlGenerator.DOM.media
 {
 
     /// <summary>

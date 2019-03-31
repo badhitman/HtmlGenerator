@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom
+namespace HtmlGenerator.DOM
 {
     /// <summary>
     /// Тег [mark] помечает текст как выделенный.

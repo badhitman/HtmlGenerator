@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.fieldset
+namespace HtmlGenerator.DOM.fieldset
 {
     /// <summary>
     /// Тег [legend] применяется для создания заголовка группы элементов формы, которая определяется с помощью тега [fieldset].

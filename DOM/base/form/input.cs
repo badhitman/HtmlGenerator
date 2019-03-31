@@ -6,7 +6,7 @@
 using HtmlGenerator.set;
 using System.Linq;
 
-namespace HtmlGenerator.dom.form
+namespace HtmlGenerator.DOM.form
 {
     /// <summary>
     ///  Тег [input] является одним из разносторонних элементов формы и позволяет создавать разные элементы интерфейса и обеспечить взаимодействие с пользователем.

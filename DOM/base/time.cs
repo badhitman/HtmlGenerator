@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using System;
 
-namespace HtmlGenerator.dom
+namespace HtmlGenerator.DOM
 {
     /// <summary>
     /// Помечает текст внутри тега [time] как дата, время или оба значения.
