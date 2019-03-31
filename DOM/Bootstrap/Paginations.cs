@@ -4,13 +4,13 @@
 using HtmlGenerator.dom;
 using HtmlGenerator.dom.collections;
 using HtmlGenerator.dom.text;
+using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace HtmlGenerator.bootstrap
 {
-    public enum Alignment { Left, Center, Right }
     public enum SizingBootstrapPagination { Small, Medium, Big }
 
     public class Paginations
@@ -82,7 +82,7 @@ namespace HtmlGenerator.bootstrap
             return li_tag;
         }
 
-        public Alignment AlignmentPagination = Alignment.Right;
+        public AlignmentEnum AlignmentPagination = AlignmentEnum.right;
         public SizingBootstrapPagination SizingPagination = SizingBootstrapPagination.Medium;
 
         /// <summary>
@@ -170,7 +170,6 @@ namespace HtmlGenerator.bootstrap
                 if (CountAllElements == 0)
                     return ret_element;
 
-
                 ret_element.SetAtribute("aria-label", "Page navigation");
 
                 ul ul_block = new ul { css_class = "pagination" };
@@ -181,9 +180,9 @@ namespace HtmlGenerator.bootstrap
                 else if (SizingPagination == SizingBootstrapPagination.Small)
                     ul_block.css_class += " pagination-sm";
 
-                if (AlignmentPagination == Alignment.Center)
+                if (AlignmentPagination == AlignmentEnum.center)
                     ul_block.css_class += "  justify-content-center";
-                else if (AlignmentPagination == Alignment.Right)
+                else if (AlignmentPagination == AlignmentEnum.right)
                     ul_block.css_class += "  justify-content-end";
                 #endregion
 
