@@ -5,7 +5,7 @@
 
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.media
+namespace HtmlGenerator.dom.extended
 {
     /// <summary>
     /// Элемент [embed] используется для загрузки и отображения объектов (например, видеофайлов, флэш-роликов, некоторых звуковых файлов и т.д.), которые исходно браузер не понимает.

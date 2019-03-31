@@ -2,13 +2,14 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 ///
-namespace HtmlGenerator.dom
+namespace HtmlGenerator.dom.text
 {
-    public class h2 : h1
+    public class h1 : basic_html_dom
     {
-        public h2(string h_text) : base(h_text)
+        public h1(string h_text)
         {
-
+            inline = true;
+            InnerText = h_text;
         }
     }
 }

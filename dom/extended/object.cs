@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.media
+namespace HtmlGenerator.dom.extended
 {
     /// <summary>
     /// Элемент [object] сообщает браузеру, как загружать и отображать объекты, которые исходно браузер не понимает.

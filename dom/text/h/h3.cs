@@ -1,12 +1,12 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
-///
-namespace HtmlGenerator.dom
+
+namespace HtmlGenerator.dom.text
 {
-    public class h4 : h3
+    public class h3 : h2
     {
-        public h4(string h_text) : base(h_text)
+        public h3(string h_text) : base(h_text)
         {
 
         }

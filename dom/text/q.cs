@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 // Описание позаимствовано с сайтов http://htmlbook.ru
 ////////////////////////////////////////////////
+
 namespace HtmlGenerator.dom.text
 {
     /// <summary>
