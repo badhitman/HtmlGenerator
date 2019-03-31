@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
 {
-    public class BreadcrumbClass
+    public class Breadcrumb
     {
         public List<BreadcrumbItem> Breadcrumbs = new List<BreadcrumbItem>();
         public void AddBreadcrumb(string in_text, string in_href = null)

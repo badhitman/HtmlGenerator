@@ -13,7 +13,7 @@ namespace HtmlGenerator.bootstrap
     public enum Alignment { Left, Center, Right }
     public enum SizingBootstrapPagination { Small, Medium, Big }
 
-    public class HtmlPaginationClass
+    public class HtmlPagination
     {
         public static ul GetListSizes
         {

@@ -41,12 +41,12 @@ namespace HtmlGenerator.bootstrap
     /// <summary>
     /// Класс Web/DOM уведомления для пользователя.
     /// </summary>
-    public class WebNotificationClass
+    public class WebNotification
     {
         //
         public StatusNote CurrStatus;
         public string Message;
-        public WebNotificationClass(StatusNote s, string msg)
+        public WebNotification(StatusNote s, string msg)
         {
             CurrStatus = s;
             Message = msg;

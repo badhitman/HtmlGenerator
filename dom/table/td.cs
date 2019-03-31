@@ -12,11 +12,6 @@ namespace HtmlGenerator.dom.table
     public class td : th
     {
         /// <summary>
-        /// Устанавливает число ячеек, которые должны быть объединены по горизонтали. Этот атрибут имеет смысл для таблиц, состоящих из нескольких строк
-        /// </summary>
-        public int colspan = 0;
-
-        /// <summary>
         /// Позволяет связать ячейки таблицы с заголовками.
         /// Этот атрибут предназначен для повышения доступности таблицы пользователям речевых браузеров, в обычных браузерах результат применения атрибута [headers] не заметен.
         /// 
@@ -24,16 +19,8 @@ namespace HtmlGenerator.dom.table
         /// </summary>
         public string headers;
 
-        /// <summary>
-        /// Устанавливает число ячеек, которые должны быть объединены по вертикали. Этот атрибут имеет смысл для таблиц, состоящих из нескольких строк.
-        /// </summary>
-        public int rowspan = 0;
-
         public override string GetHTML(int deep = 0)
         {
-            if (colspan > 0)
-                SetAtribute("colspan", colspan);
-
             if (!string.IsNullOrEmpty(headers))
                 SetAtribute("headers", headers);
 
