@@ -14,8 +14,16 @@ namespace HtmlGenerator.DOM.table
     /// </summary>
     public class table : html_dom_root
     {
+        /// <summary>
+        /// Заголовок таблицы с указанием заголовоков колонок
+        /// </summary>
         public thead Thead { get; private set; } = new thead();
+
+        /// <summary>
+        /// Тело таблицы (без заголовочной части)
+        /// </summary>
         public tbody Tbody { get; private set; } = new tbody();
+
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();

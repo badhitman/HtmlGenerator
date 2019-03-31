@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.form;
+using HtmlGenerator.DOM.set.bootstrap_enum;
 using HtmlGenerator.DOM.text;
 using HtmlGenerator.set;
 using System.Collections.Generic;
@@ -85,14 +86,14 @@ namespace HtmlGenerator.bootstrap
 
             if (!string.IsNullOrEmpty(TextCancelButton))
             {
-                button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, ElementsStyles.Secondary);
+                button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.Secondary);
                 button_close_modal_footer.SetAtribute("data-dismiss", "modal");
                 modal_footer.Childs.Add(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(TextOkButton))
             {
-                button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, ElementsStyles.Primary);
+                button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.Primary);
                 button_send_modal_footer.TypeButton = TypesButton.submit;
                 button_send_modal_footer.css_class += " " + CssOkButton;
                 modal_footer.Childs.Add(button_send_modal_footer);

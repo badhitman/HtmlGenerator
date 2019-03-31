@@ -4,6 +4,7 @@
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.collections;
 using HtmlGenerator.DOM.form;
+using HtmlGenerator.DOM.set.bootstrap_enum;
 using HtmlGenerator.DOM.table;
 using HtmlGenerator.DOM.text;
 using HtmlGenerator.set;
@@ -11,9 +12,6 @@ using System.Collections.Generic;
 
 namespace HtmlGenerator
 {
-    public enum ElementsStyles { Primary, Secondary, Success, Danger, Warning, Info, Light, Dark }
-    public enum ElementsBootstrapSizes { Lg, Sm }
-
     public static class predefined_elements_bootstrap
     {
         public static div GetBootstrapSelectList(string label, select select_body, string Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
@@ -204,7 +202,7 @@ namespace HtmlGenerator
         /// <param name="size">Размер кнопки</param>
         /// <param name="btn_block">Флаг режима заполнения родительского блока во всю ширину</param>
         /// <param name="outline_style">Флаг отключения цвета фона. В этом режиме стиль оформления будет использован для рамки и цвета, но не для фона</param>
-        public static button GetButton(string text, string id_button = null, string href = null, ElementsStyles? style = null, ElementsBootstrapSizes? size = null, bool btn_block = false, bool outline_style = false)
+        public static button GetButton(string text, string id_button = null, string href = null, VisualBootstrapStylesEnum? style = null, SizingBootstrap? size = null, bool btn_block = false, bool outline_style = false)
         {
             button ret_button = new button(text) { css_class = "btn", Id_DOM = id_button };
 
@@ -257,14 +255,14 @@ namespace HtmlGenerator
 
             if (!string.IsNullOrEmpty(text_cansel_button))
             {
-                button button_close_modal_footer = GetButton(text_cansel_button, null, null, ElementsStyles.Secondary);
+                button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.Secondary);
                 button_close_modal_footer.SetAtribute("data-dismiss", "modal");
                 modal_footer.Childs.Add(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(text_ok_button))
             {
-                button button_send_modal_footer = GetButton(text_ok_button, null, "#", ElementsStyles.Primary);
+                button button_send_modal_footer = GetButton(text_ok_button, null, "#", VisualBootstrapStylesEnum.Primary);
                 button_send_modal_footer.Id_DOM = id_ok_button;
                 modal_footer.Childs.Add(button_send_modal_footer);
             }
@@ -342,7 +340,7 @@ namespace HtmlGenerator
                 sitekey.SetAtribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
             }
-            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, ElementsStyles.Primary, ElementsBootstrapSizes.Lg, true));
+            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, VisualBootstrapStylesEnum.Primary, SizingBootstrap.Lg, true));
 
 
             dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));
@@ -354,7 +352,7 @@ namespace HtmlGenerator
         /// </summary>
         public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
         {
-            table table = new table() { css_class = ("table " + css_table_class).Trim() };
+            table table = new table() { css_class = css_table_class.Trim() };
 
             foreach (string s in table_heads)
                 table.Thead.AddColumn(s);
