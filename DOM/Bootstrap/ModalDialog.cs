@@ -59,7 +59,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// Меняем имя тега на div
         /// </summary>
-        public ModalDialog() => set_custom_name_tag = typeof(div).ToString();
+        public ModalDialog() => set_custom_name_tag = typeof(div).Name;
 
         /// <summary>
         /// При вызове этого метода поле Childs очищается и заново заполняется

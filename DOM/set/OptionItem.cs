@@ -8,7 +8,7 @@ namespace HtmlGenerator.set
     public class OptionItem
     {
         /// <summary>
-        /// Заголовок элемента
+        /// Заголовок/Наименование элемента
         /// </summary>
         public string Title;
 
@@ -18,24 +18,19 @@ namespace HtmlGenerator.set
         public bool IsGroup;
 
         /// <summary>
-        /// Значимые данные контекста html.dom объекта
+        /// Нагрузка (значимые данные контекста) html.dom объекта
         /// </summary>
         public string Value;
 
         /// <summary>
-        /// Подсказка к элементу
+        /// Подсказка для элемента
         /// </summary>
         public string Tooltip;
 
         /// <summary>
-        /// Глубина вложености элемента
+        /// Глубина вложености текущего элемента
         /// </summary>
         public int DeepNode;
-
-        /// <summary>
-        /// Добавочные CSS слассы для html.dom объекта
-        /// </summary>
-        //public string CSS;
 
         /// <summary>
         /// Флаг/признак, что элемент отключён
@@ -48,12 +43,13 @@ namespace HtmlGenerator.set
         public string Tag = "";
 
         /// <summary>
-        /// Дочерние элементы
+        /// Дочерние/Вложеные элементы
         /// </summary>
         public List<OptionItem> Childs = new List<OptionItem>();
 
         /// <summary>
-        /// Получить префикс узда исходя из глубины вложенности элемента/узла
+        /// Получить префикс узла исходя из глубины вложенности элемента/узла
+        /// Расчитывается исходя из знаечния [DeepNode]
         /// </summary>
         public string TreePrefix
         {

@@ -24,7 +24,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// Меняем имя тега на nav
         /// </summary>
-        public Breadcrumbs() => set_custom_name_tag = typeof(nav).ToString();
+        public Breadcrumbs() => set_custom_name_tag = typeof(nav).Name;
 
         public override string GetHTML(int deep = 0)
         {

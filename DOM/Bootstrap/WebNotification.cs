@@ -25,7 +25,7 @@ namespace HtmlGenerator.bootstrap
 
         public WebNotification(VisualBootstrapStylesEnum status_style, string text_msg)
         {
-            set_custom_name_tag = typeof(div).ToString();
+            set_custom_name_tag = typeof(div).Name;
             CurrStatus = status_style;
             Message = text_msg;
         }

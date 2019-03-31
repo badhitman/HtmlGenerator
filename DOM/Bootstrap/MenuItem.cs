@@ -49,7 +49,7 @@ namespace HtmlGenerator.bootstrap
 
         public MenuItem(string in_text, string in_href, string in_tool_tip)
         {
-            set_custom_name_tag = typeof(li).ToString();
+            set_custom_name_tag = typeof(li).Name;
             text_menu_item = in_text;
             href_menu_item = in_href;
             tool_tip = in_tool_tip;
