@@ -42,7 +42,7 @@ namespace HtmlGenerator
         /// <param name="body_elements">Элементы содержимого</param>
         /// <param name="css_card">Стиль офрмления карточки</param>
         /// <returns>Готовая карточка информации</returns>
-        public static div Get_DIV_Bootstrap_Card(string card_head, List<basic_html_dom> body_elements, string css_card = "bg-light")
+        public static div Get_DIV_Bootstrap_Card(string card_head, List<html_dom_root> body_elements, string css_card = "bg-light")
         {
             div card_header = new div() { css_class = "card-header", InnerText = card_head };
 
@@ -58,9 +58,9 @@ namespace HtmlGenerator
             return card_set;
         }
 
-        public static div Get_DIV_Bootstrap_Card(string card_head, basic_html_dom body_element, string css_card = "bg-light")
+        public static div Get_DIV_Bootstrap_Card(string card_head, html_dom_root body_element, string css_card = "bg-light")
         {
-            return Get_DIV_Bootstrap_Card(card_head, new List<basic_html_dom>() { body_element }, css_card);
+            return Get_DIV_Bootstrap_Card(card_head, new List<html_dom_root>() { body_element }, css_card);
         }
 
         #region Text - input
@@ -128,7 +128,7 @@ namespace HtmlGenerator
         public static div GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
         {
             div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, input_info, null, null, null, false, true);
-            foreach (basic_html_dom e in ret_val.Childs)
+            foreach (html_dom_root e in ret_val.Childs)
                 if (e is input)
                 {
                     ((input)e).type = InputTypesEnum.password;
@@ -181,7 +181,7 @@ namespace HtmlGenerator
             label.css_class = "form-check-label";
             ret_val.Childs.Add(label);
 
-            return new p(null) { Childs = new List<basic_html_dom>() { ret_val } };
+            return new p(null) { Childs = new List<html_dom_root>() { ret_val } };
         }
 
         public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
@@ -238,7 +238,7 @@ namespace HtmlGenerator
         /// <param name="text_cansel_button">Текст конопки Cancel (если null or empty), то кнопка не выводится вовсе</param>
         /// <param name="body_html">Тело модального окна</param>
         /// <param name="id_modal_dialog">ID атрибут модального окна</param>
-        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, basic_html_dom body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")
+        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, html_dom_root body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")
         {
             span span_close_modal_header = new span("&times;");
             span_close_modal_header.SetAtribute("aria-hidden", "true");
@@ -307,9 +307,9 @@ namespace HtmlGenerator
         /// <param name="re_captcha_key">api - ключ reCaptcha</param>
         /// <param name="collapse_info_new_user_input_css">css класс - области сворачивания и разворачивания для регистрации</param>
         /// <returns></returns>
-        public static List<basic_html_dom> GetLoginForm(string re_captcha_key = null, string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
+        public static List<html_dom_root> GetLoginForm(string re_captcha_key = null, string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
         {
-            List<basic_html_dom> dom_elements = new List<basic_html_dom>();
+            List<html_dom_root> dom_elements = new List<html_dom_root>();
             
 
             form html_response = new form()

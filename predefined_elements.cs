@@ -31,7 +31,7 @@ namespace HtmlGenerator
 
             return ret_select;
         }
-        private static void WriteSelectDom(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems, string[] selected_option_values = null, bool groups_only = true, bool groups_clickable = true)
+        private static void WriteSelectDom(ref List<html_dom_root> ret_options, List<OptionItem> ListItems, string[] selected_option_values = null, bool groups_only = true, bool groups_clickable = true)
         {
             if (ListItems.Count == 0)
                 return;
@@ -89,7 +89,7 @@ namespace HtmlGenerator
 
             return ret_ul;
         }
-        private static void WriteUl(ref List<basic_html_dom> ret_options, List<OptionItem> ListItems, string li_class)
+        private static void WriteUl(ref List<html_dom_root> ret_options, List<OptionItem> ListItems, string li_class)
         {
             foreach (OptionItem o_item in ListItems)
             {
