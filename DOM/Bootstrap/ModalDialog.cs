@@ -12,10 +12,10 @@ namespace HtmlGenerator.bootstrap
     /// <summary>
     /// Модальный диалог
     /// </summary>
-    public class ModalDialog : html_dom_root
+    public class ModalDialog : div
     {
         /// <summary>
-        /// НЕ ИСПОЛЬЗУЙ ЭТО поле для добавления дочерей! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.
+        /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.
         /// Для наполнения тела модального окна используется BodyElements
         /// </summary>
         public new List<html_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
@@ -30,6 +30,9 @@ namespace HtmlGenerator.bootstrap
         /// </summary>
         public string FormAction = "./";
 
+        /// <summary>
+        /// Имя окна или фрейма, куда обработчик будет загружать возвращаемый результат.
+        /// </summary>
         public TargetsEnum FormTarget = TargetsEnum._self;
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// меняем сразу имя тега на div
         /// </summary>
-        public ModalDialog() => set_custom_name_tag = "div";
+        public ModalDialog() => set_custom_name_tag = typeof(div).ToString();
 
         /// <summary>
         /// При вызове этого метода поле Childs очищается и заново заполняется

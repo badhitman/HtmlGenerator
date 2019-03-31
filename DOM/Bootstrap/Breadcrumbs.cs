@@ -7,48 +7,56 @@ using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
 {
-    public class Breadcrumbs
+    /// <summary>
+    /// Указывает местоположение текущей страницы в навигационной иерархии, которая автоматически добавляет разделители через CSS.
+    /// </summary>
+    public class Breadcrumbs : nav
     {
         public List<BreadcrumbItem> BreadcrumbsCol = new List<BreadcrumbItem>();
-        public void AddBreadcrumb(string in_text, string in_href = null)
-        {
-            BreadcrumbsCol.Add(new BreadcrumbItem() { text = in_text, href = in_href });
-        }
+        public void AddBreadcrumb(string in_text, string in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItem() { text = in_text, href = in_href });
 
-        public nav GetDomBreadcrumbs
+        /// <summary>
+        /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.
+        /// Для наполнения тела используется BreadcrumbsCol (например через метод AddBreadcrumb)
+        /// </summary>
+        public new List<html_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
+
+        /// <summary>
+        /// меняем сразу имя тега на nav
+        /// </summary>
+        public Breadcrumbs() => set_custom_name_tag = typeof(nav).ToString();
+
+        public override string GetHTML(int deep = 0)
         {
-            get
+            Childs.Clear();
+            ol my_ol = new ol(ol.TypesOL.None) { css_class = "breadcrumb" };
+
+            if (BreadcrumbsCol.Count == 0)
+                goto end;
+            else
+                BreadcrumbsCol[BreadcrumbsCol.Count - 1].href = null;
+            li my_li;
+            foreach (BreadcrumbItem bi in BreadcrumbsCol)
             {
-                ol my_ol = new ol(ol.TypesOL.None) { css_class = "breadcrumb" };
-
-                if (BreadcrumbsCol.Count == 0)
-                    goto end;
-                else
-                    BreadcrumbsCol[BreadcrumbsCol.Count - 1].href = null;
-
-                li my_li;
-                foreach (BreadcrumbItem bi in BreadcrumbsCol)
+                my_li = new li(null) { css_class = "breadcrumb-item" };
+                if (string.IsNullOrEmpty(bi.href))
                 {
-                    my_li = new li(null) { css_class = "breadcrumb-item" };
-                    if (string.IsNullOrEmpty(bi.href))
-                    {
-                        my_li.css_class += " active";
-                        my_li.SetAtribute("aria-current", "page");
-                        my_li.InnerText = bi.text;
-                    }
-                    else
-                        my_li.Childs.Add(new a() { href = bi.href, InnerText = bi.text });
-
-                    my_ol.Childs.Add(my_li);
+                    my_li.css_class += " active";
+                    my_li.SetAtribute("aria-current", "page");
+                    my_li.InnerText = bi.text;
                 }
+                else
+                    my_li.Childs.Add(new a() { href = bi.href, InnerText = bi.text });
 
-                end:
-
-                nav my_nav = new nav() { css_style = "margin-top: 3px;" };
-                my_nav.CustomAtributes.Add("aria-label", "breadcrumb");
-                my_nav.Childs.Add(my_ol);
-                return my_nav;
+                my_ol.Childs.Add(my_li);
             }
+
+            end:
+
+            css_style = "margin-top: 3px;";
+            SetAtribute("aria-label", "breadcrumb");
+            Childs.Add(my_ol);
+            return base.GetHTML(deep);
         }
 
         public class BreadcrumbItem
