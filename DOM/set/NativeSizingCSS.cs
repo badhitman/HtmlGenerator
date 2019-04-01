@@ -32,6 +32,11 @@ namespace HtmlGenerator.set
             em,
 
             /// <summary>
+            /// Единица rem задаёт размер относительно размера шрифта элемента [html].
+            /// </summary>
+            rem,
+
+            /// <summary>
             /// Высота символа x
             /// </summary>
             ex,

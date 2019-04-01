@@ -1,0 +1,10 @@
+﻿////////////////////////////////////////////////
+// © https://github.com/badhitman - @fakegov 
+////////////////////////////////////////////////
+
+namespace HtmlGenerator.DOM.Bootstrap
+{
+    public class class LoginForm
+    {
+    }
+}
