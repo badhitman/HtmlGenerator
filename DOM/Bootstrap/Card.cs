@@ -12,7 +12,7 @@ namespace HtmlGenerator.DOM.Bootstrap
     /// Если вы знакомы с Bootstrap 3, карточки заменяют наши старые панели, колодцы и эскизы.
     /// Аналогичная функциональность этих компонентов доступна в качестве классов модификаторов для карточек.
     /// </summary>
-    public class Card : div
+    public class Card : bootstrap_dom_root
     {
         /// <summary>
         /// Дополнительный CSS класс для карточки
@@ -42,12 +42,12 @@ namespace HtmlGenerator.DOM.Bootstrap
         /// <summary>
         /// Тело карточки
         /// </summary>
-        public List<html_dom_root> CardBody = new List<html_dom_root>();
+        public List<base_dom_root> CardBody = new List<base_dom_root>();
 
         /// <summary>
         /// Подвал карточки
         /// </summary>
-        public List<html_dom_root> CardFooter = new List<html_dom_root>();
+        public List<base_dom_root> CardFooter = new List<base_dom_root>();
 
         public Card() => set_custom_name_tag = typeof(div).Name;
 
@@ -56,12 +56,12 @@ namespace HtmlGenerator.DOM.Bootstrap
             Childs.Clear();
             css_class += ("card " + adding_card_css_class).Trim();
             if (!string.IsNullOrEmpty(CardHeader))
-                Childs.Add(new div() { css_class = ("card-header "+ adding_header_css_class).Trim(), InnerText = CardHeader });
+                Childs.Add(new div() { css_class = ("card-header " + adding_header_css_class).Trim(), InnerText = CardHeader });
 
             Childs.Add(new div() { css_class = ("card-body " + adding_body_css_class).Trim(), Childs = CardBody });
 
-            if(CardFooter.Count>0)
-                Childs.Add(new div() { css_class = ("card-footer "+ adding_footer_css_class).Trim(), Childs = CardFooter });
+            if (CardFooter.Count > 0)
+                Childs.Add(new div() { css_class = ("card-footer " + adding_footer_css_class).Trim(), Childs = CardFooter });
 
             return base.GetHTML(deep);
         }

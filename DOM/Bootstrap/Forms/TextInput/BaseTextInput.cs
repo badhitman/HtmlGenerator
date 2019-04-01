@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM.Bootstrap
     /// <summary>
     /// Базовый [Input] в [div] обёртке. [Label] сверху над [Input]-ом и текст описания [InputInfoFooter] под [Input]-ом
     /// </summary>
-    public class BaseTextInput : div
+    public class BaseTextInput : bootstrap_dom_root
     {
         /// <summary>
         /// Текстова метка для Input-а
@@ -58,17 +58,6 @@ namespace HtmlGenerator.DOM.Bootstrap
                     Id_DOM = Input.Name_DOM + "Help"
                 });
             return base.GetHTML(deep);
-        }
-
-        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
-        {
-            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
-            // 
-            if (!string.IsNullOrEmpty(valid_text))
-                return new div[] { valid_element, invalid_element };
-            else
-                return new div[] { invalid_element };
         }
     }
 }

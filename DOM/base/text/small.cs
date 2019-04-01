@@ -13,7 +13,7 @@ namespace HtmlGenerator.DOM.text
     /// а шрифт Verdana чуть больше шрифта Arial. Учитывайте эту особенность при выборе шрифта и его размеров.Для более точного управления размером текста 
     /// используйте стили.
     /// </summary>
-    public class small : html_dom_root
+    public class small : base_dom_root
     {
         public small(string in_text)
         {

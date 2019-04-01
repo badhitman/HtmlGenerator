@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM.media
     /// <summary>
     /// Добавляет, воспроизводит и управляет настройками видеоролика на веб-странице. Путь к файлу задается через атрибут [src] или вложенный тег [source].
     /// </summary>
-    public class video : html_dom_root
+    public class video : base_dom_root
     {
         /// <summary>
         /// Задает ширину области для воспроизведения видеоролика. 

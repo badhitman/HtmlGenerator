@@ -12,7 +12,7 @@ namespace HtmlGenerator.DOM.head
     /// Содержимое тега [head] не отображается напрямую на веб-странице, за исключением тега [title] устанавливающего заголовок окна веб-страницы.
     /// Внутри контейнера [head] допускается размещать следующие элементы: [base], [basefont], [bgsound], [link], [meta], [script], [style], [title].
     /// </summary>
-    public class head : html_dom_root
+    public class head : base_dom_root
     {
         public head()
         {

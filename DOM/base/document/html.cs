@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM
     /// Как правило, тег [html] идет в документе вторым, после определения типа документа (Document Type Definition, DTD), устанавливаемого через элемент [!DOCTYPE].
     /// Закрывающий тег [html] должен всегда стоять в документе последним. 
     /// </summary>
-    public class html : html_dom_root
+    public class html : base_dom_root
     {
         /// <summary>
         /// Указывает файл манифеста, необходимый для создания оффлайнового приложения.

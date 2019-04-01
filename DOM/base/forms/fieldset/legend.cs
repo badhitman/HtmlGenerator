@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.fieldset
     /// Тег [legend] применяется для создания заголовка группы элементов формы, которая определяется с помощью тега [fieldset].
     /// Группа элементов обозначается в браузере с помощью рамки, а текст, который располагается внутри контейнера [legend], встраивается в эту рамку.
     /// </summary>
-    public class legend : html_dom_root
+    public class legend : base_dom_root
     {
         public legend(string text_legend)
         {

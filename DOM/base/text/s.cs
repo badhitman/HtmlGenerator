@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.text
     /// Тег [s] отображает текст как перечеркнутый. Этот тег аналогичен тегу [strike], но в отличие от него имеет сокращенную форму записи подобно тегам [b], [i] и [u].
     /// Взамен этого тега рекомендуется использовать стили. 
     /// </summary>
-    public class s : html_dom_root
+    public class s : base_dom_root
     {
         public s()
         {

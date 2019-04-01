@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.fieldset
     /// Браузеры для повышения наглядности отображают результат использования тега [fieldset] в виде рамки. Ее вид зависит от операционной системы, а также
     /// используемого браузера
     /// </summary>
-    public class fieldset : html_dom_root
+    public class fieldset : base_dom_root
     {
         /// <summary>
         /// Связывает группу [fieldset] с формой по её идентификатору.

@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM.text
     ///  пустой отступ перед строкой. Если текст, в котором используется перевод строки, обтекает плавающий элемент, то с помощью атрибута [clear] тега [br]
     ///  можно сделать так, чтобы следующая строка начиналась ниже элемента.
     /// </summary>
-    public class br : html_dom_root
+    public class br : base_dom_root
     {
         public br()
         {

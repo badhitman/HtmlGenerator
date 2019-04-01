@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.collections
     /// <summary>
     /// Тег [li] определяет отдельный элемент списка. Внешний тег [ul] или [ol] устанавливает тип списка — маркированный или нумерованный.
     /// </summary>
-    public class li : html_dom_root
+    public class li : base_dom_root
     {
         /// <summary>
         /// Устанавливает вид маркера списка. 

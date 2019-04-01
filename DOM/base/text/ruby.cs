@@ -13,7 +13,7 @@ namespace HtmlGenerator.DOM.text
     /// 
     /// Название тега происходит от слова «рубин», которым в типографии обозначается небольшой шрифт. 
     /// </summary>
-    public class ruby : html_dom_root
+    public class ruby : base_dom_root
     {
 
     }

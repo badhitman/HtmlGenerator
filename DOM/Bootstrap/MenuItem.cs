@@ -15,7 +15,7 @@ namespace HtmlGenerator.bootstrap
         /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.
         /// Для наполнения тела модального окна используется BodyElements
         /// </summary>
-        public new List<html_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
+        public new List<base_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
 
         /// <summary>
         /// Вложеные элементы пунктов меню

@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.details
     /// 
     /// Исходно содержимое [details] скрыто, вместо него выводится текст «Подробнее», щелчок по которому прячет или показывает содержимое элемента.
     /// </summary>
-    public class details : html_dom_root
+    public class details : base_dom_root
     {
         /// <summary>
         /// Указывает заголовок для тега [details], по которому можно щелкать для разворачивания/сворачивания информации. Тег [summary] должен идти первым внутри [details].

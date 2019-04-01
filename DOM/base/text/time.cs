@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM
     /// Помечает текст внутри тега [time] как дата, время или оба значения.
     /// Может указываться непосредственно внутри контейнера [time], либо задаваться через атрибут [datetime].
     /// </summary>
-    public class time : html_dom_root
+    public class time : base_dom_root
     {
         /// <summary>
         /// Задает дату, время или оба значения для текста.

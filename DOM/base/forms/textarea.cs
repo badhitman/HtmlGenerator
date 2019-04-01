@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.forms
     /// 
     /// Между тегами [textarea] и [/textarea] можно поместить любой текст, который будет отображаться внутри поля.
     /// </summary>
-    public class textarea : html_dom_root
+    public class textarea : base_dom_root
     {
         /// <summary>
         /// Атрибут [wrap] говорит браузеру, как осуществлять перенос текста в поле [textarea] и в каком виде отправлять данные на сервер.

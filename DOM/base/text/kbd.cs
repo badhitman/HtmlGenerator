@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.text
     /// Тег [kbd] используется для обозначения текста, который набирается на клавиатуре или для названия клавиш.
     /// Браузеры обычно помечают текст в контейнере [kbd] моноширинным шрифтом. 
     /// </summary>
-    public class kbd : html_dom_root
+    public class kbd : base_dom_root
     {
 
     }

@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.head
     ///  Тег [style] применяется для определения стилей элементов веб-страницы.
     ///  Тег [style] необходимо использовать внутри контейнера [head]. Можно задавать более чем один тег [style].
     /// </summary>
-    public class style : html_dom_root
+    public class style : base_dom_root
     {
         /// <summary>
         ///  Устанавливает устройство вывода, для которого предназначена таблица стилей.

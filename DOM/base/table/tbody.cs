@@ -13,7 +13,7 @@ namespace HtmlGenerator.DOM.table
     /// Допускается применять несколько тегов [tbody] внутри контейнера [table]. Доступны и другие виды группировок строк — [tfoot] и [thead], 
     /// ни один из них не должен перекрываться с элементом [tbody].
     /// </summary>
-    public class tbody : html_dom_root
+    public class tbody : base_dom_root
     {
         /// <summary>
         /// Ширина таблицы. Равна размеру (в колонках) самой "длинной" строки

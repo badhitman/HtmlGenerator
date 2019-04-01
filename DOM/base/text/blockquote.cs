@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.text
     /// Тег [blockquote] предназначен для выделения длинных цитат внутри документа.
     /// Текст, обозначенный этим тегом, традиционно отображается как выровненный блок с отступами слева и справа (примерно по 40 пикселов), а также с отбивкой сверху и снизу. 
     /// </summary>
-    public class blockquote : html_dom_root
+    public class blockquote : base_dom_root
     {
 
     }

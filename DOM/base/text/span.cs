@@ -12,7 +12,7 @@ namespace HtmlGenerator.DOM.text
     /// стиль текста. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут [class]
     /// или [id] с именем селектора.
     /// </summary>
-    public class span : html_dom_root
+    public class span : base_dom_root
     {
         public span(string inner_text = null)
         {

@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM.text
     /// <summary>
     ///  Устанавливает жирное начертание шрифта. Допустимо использовать этот тег совместно с другими тегами, которые определяют начертание текста.
     /// </summary>
-    public class b : html_dom_root
+    public class b : base_dom_root
     {
         public b()
         {

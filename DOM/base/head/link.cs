@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.head
     ///  Устанавливает связь с внешним документом вроде файла со стилями или со шрифтами. В отличие от тега [a], тег [link] размещается всегда внутри
     ///  контейнера [head] и не создает ссылку.
     /// </summary>
-    public class link : html_dom_root
+    public class link : base_dom_root
     {
         /// <summary>
         ///  Путь к файлу, на который делается ссылка (URL).

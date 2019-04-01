@@ -13,7 +13,7 @@ namespace HtmlGenerator.DOM.extended
     /// [script] может располагаться в заголовке или теле HTML-документа в неограниченном количестве. В большинстве случаев местоположение скрипта 
     /// никак не сказывается на работу программы. Однако скрипты, которые должны выполняться в первую очередь, обычно помещают в заголовок документа.
     /// </summary>
-    public class script : html_dom_root
+    public class script : base_dom_root
     {
         public enum MimeTypes { JavaScript, VBScript }
 

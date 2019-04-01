@@ -12,7 +12,7 @@ namespace HtmlGenerator.DOM.forms
     /// Существует два способа связывания объекта и метки. Первый заключается в использовании идентификатора [id] внутри элемента формы и указании
     /// его имени в качестве атрибута [for] тега [label]. При втором способе элемент формы помещается внутрь контейнера [label].
     /// </summary>
-    public class label : html_dom_root
+    public class label : base_dom_root
     {
         public label(string i_text, string i_for)
         {

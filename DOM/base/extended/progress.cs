@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM
     /// <summary>
     /// Используется для отображения прогресса завершенности задачи. Изменение значения происходит через JavaScript.
     /// </summary>
-    public class progress : html_dom_root
+    public class progress : base_dom_root
     {
         /// <summary>
         /// Текущее значение прогресса.

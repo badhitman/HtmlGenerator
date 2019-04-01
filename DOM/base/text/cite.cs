@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM.text
     /// Такое выделение удобно для изменения стиля текста через CSS, а также применяется для разделения кода HTML на структурные элементы. 
     /// Браузеры обычно устанавливают текст внутри контейнера [cite] курсивом. 
     /// </summary>
-    public class cite : html_dom_root
+    public class cite : base_dom_root
     {
 
     }

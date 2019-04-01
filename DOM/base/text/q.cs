@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM.text
     /// <summary>
     /// Используется для выделения в тексте цитат. Содержимое контейнера автоматически отображается в браузере в кавычках. 
     /// </summary>
-    public class q : html_dom_root
+    public class q : base_dom_root
     {
 
     }

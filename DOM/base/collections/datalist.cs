@@ -12,7 +12,7 @@ namespace HtmlGenerator.DOM.collections
     /// Создает список вариантов, которые можно выбирать при наборе в текстовом поле.
     /// Изначально этот список скрыт и становится доступным при получении полем фокуса или наборе текста.
     /// </summary>
-    public class datalist : html_dom_root
+    public class datalist : base_dom_root
     {
         public override string GetHTML(int deep = 0)
         {

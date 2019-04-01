@@ -28,7 +28,7 @@ namespace HtmlGenerator.DOM.forms
         submit
     }
 
-    public class button : html_dom_root
+    public class button : base_dom_root
     {
         /// <summary>
         ///  Определяет тип кнопки, который устанавливает ее поведение в форме. По внешнему виду кнопки разного типа никак не различаются, но у каждой такой кнопки свои функции. 

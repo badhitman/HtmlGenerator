@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM
     ///  Тег [nav] задает навигацию по сайту. Если на странице несколько блоков ссылок, то в [nav] обычно помещают приоритетные ссылки.
     ///  Также допустимо использовать несколько тегов [nav] в документе. Запрещается вкладывать [nav] внутрь [address].
     /// </summary>
-    public class nav : html_dom_root
+    public class nav : base_dom_root
     {
 
     }

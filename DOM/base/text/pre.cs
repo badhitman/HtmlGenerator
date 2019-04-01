@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.text
     /// Тег [pre] позволяет обойти эту особенность и отображать текст как требуется разработчику. 
     /// В отличие от тега [plaintext], использование которого осуждается в HTML 4, внутри контейнера [pre] допустимо применять любые теги кроме следующих: [big], [img], [object], [small], [sub] и [sup].
     /// </summary>
-    public class pre : html_dom_root
+    public class pre : base_dom_root
     {
 
     }

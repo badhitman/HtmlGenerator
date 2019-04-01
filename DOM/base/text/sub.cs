@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM.text
     /// <summary>
     /// Отображает шрифт в виде нижнего индекса. Текст при этом располагается ниже базовой линии остальных символов строки и уменьшенного размера.
     /// </summary>
-    public class sub : html_dom_root
+    public class sub : base_dom_root
     {
 
     }

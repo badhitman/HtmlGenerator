@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM
     /// Такой текст ничем не отличается от обычного, но его вид может быть изменен с помощью стилей.
     /// В браузере Chrome и Firefox фоновый цвет текста внутри [mark] выделяется желтым цветом.
     /// </summary>
-    public class mark : html_dom_root
+    public class mark : base_dom_root
     {
 
     }

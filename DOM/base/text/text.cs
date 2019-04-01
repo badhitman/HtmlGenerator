@@ -4,7 +4,7 @@
 
 namespace HtmlGenerator.DOM.text
 {
-    public class text : html_dom_root
+    public class text : base_dom_root
     {
         public text(string i_html_text)
         {

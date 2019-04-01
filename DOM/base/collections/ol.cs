@@ -5,7 +5,7 @@
 
 namespace HtmlGenerator.DOM.collections
 {
-    public class ol : html_dom_root
+    public class ol : base_dom_root
     {
         /// <summary>
         /// Устанавливает вид маркера.

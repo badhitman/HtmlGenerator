@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM.text
     /// <summary>
     ///  Отображает шрифт в виде верхнего индекса. Шрифт при этом отображается выше базовой линии текста и уменьшенного размера. 
     /// </summary>
-    public class sup : html_dom_root
+    public class sup : base_dom_root
     {
 
     }

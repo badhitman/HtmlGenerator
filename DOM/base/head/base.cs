@@ -17,7 +17,7 @@ namespace HtmlGenerator.DOM.head
     ///
     ///  Второе применение тега [base] — задание целевого окна для всех ссылок на текущей странице.
     /// </summary>
-    public class @base : html_dom_root
+    public class @base : base_dom_root
     {
         public @base()
         {

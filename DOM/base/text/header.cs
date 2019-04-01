@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM.text
     /// <summary>
     /// Тег [header] задает «шапку» сайта или раздела, в которой обычно располагается заголовок.
     /// </summary>
-    public class header : html_dom_root
+    public class header : base_dom_root
     {
 
     }

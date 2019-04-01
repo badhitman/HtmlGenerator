@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM.media
     /// Позволяет авторам указать текстовую дорожку для медийных элементов [audio] и [video].
     /// Такая дорожка обычно содержит субтитры на разных языках, комментарии, заголовки и др.
     /// </summary>
-    public class track : html_dom_root
+    public class track : base_dom_root
     {
         /// <summary>
         /// Указывает тип дорожки

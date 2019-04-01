@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
+using HtmlGenerator.DOM.Bootstrap;
 using HtmlGenerator.DOM.collections;
 using HtmlGenerator.DOM.forms;
 using HtmlGenerator.DOM.set.bootstrap_enum;
@@ -40,7 +41,7 @@ namespace HtmlGenerator
         /// <param name="body_elements">Элементы содержимого</param>
         /// <param name="css_card">Стиль офрмления карточки</param>
         /// <returns>Готовая карточка информации</returns>
-        public static div Get_DIV_Bootstrap_Card(string card_head, List<html_dom_root> body_elements, string css_card = "bg-light")
+        public static div Get_DIV_Bootstrap_Card(string card_head, List<base_dom_root> body_elements, string css_card = "bg-light")
         {
             div card_header = new div() { css_class = "card-header", InnerText = card_head };
 
@@ -56,84 +57,12 @@ namespace HtmlGenerator
             return card_set;
         }
 
-        public static div Get_DIV_Bootstrap_Card(string card_head, html_dom_root body_element, string css_card = "bg-light")
+        public static div Get_DIV_Bootstrap_Card(string card_head, base_dom_root body_element, string css_card = "bg-light")
         {
-            return Get_DIV_Bootstrap_Card(card_head, new List<html_dom_root>() { body_element }, css_card);
+            return Get_DIV_Bootstrap_Card(card_head, new List<base_dom_root>() { body_element }, css_card);
         }
 
-        #region Text - input
-        public static div GetBaseTextInput(string label_text, string value_input, string input_name, string placeholder, string input_info, string class_div_group_wrap = null, string label_css_class = null, string input_css_class = null, bool input_readonly = false, bool required = false)
-        {
-            div returned_input = new div() { css_class = ("form-group " + class_div_group_wrap).Trim() };
 
-            input ret_input = new input() { css_class = input_css_class, type = InputTypesEnum.text, value = value_input };
-
-            if (!string.IsNullOrEmpty(label_text))
-                returned_input.Childs.Add(new label(label_text, input_name) { css_class = label_css_class });
-
-            if (required)
-                ret_input.required = true;
-
-            if (input_readonly)
-                ret_input.@readonly = true;
-
-            ret_input.Name_DOM = input_name;
-            ret_input.inline = true;
-            ret_input.css_class = "form-control";
-
-            if (!string.IsNullOrEmpty(placeholder))
-                ret_input.SetAtribute("placeholder", placeholder);
-
-            //
-            returned_input.Childs.Add(ret_input);
-            if (required)
-                returned_input.Childs.AddRange(GetValidationAlerts(input_name));
-
-            if (!string.IsNullOrEmpty(input_info))
-                returned_input.Childs.Add(new small(input_info)
-                {
-                    css_class = "form-text text-muted",
-                    Id_DOM = input_name + "Help"
-                });
-
-            return returned_input;
-        }
-
-        public static div GetSecondTextInput(string label_text, string value_input, string Id_DOM, string placeholder, bool input_readonly, string class_div_group_wrap = null, bool required = false)
-        {
-            span input_group_text = new span(label_text) { css_class = "input-group-text" };
-            div input_group_prepend = new div() { css_class = "input-group-prepend" };
-            input_group_prepend.Childs.Add(input_group_text);
-            div input_group = new div() { css_class = ("input-group " + class_div_group_wrap).Trim() };
-            input_group.Childs.Add(input_group_prepend);
-
-            input ret_input = new input() { css_class = "form-control", type = InputTypesEnum.text, required = required, value = value_input, @readonly = input_readonly };
-
-            if (!string.IsNullOrEmpty(Id_DOM))
-                ret_input.Id_DOM = Id_DOM;
-
-            if (!string.IsNullOrEmpty(placeholder))
-                ret_input.SetAtribute("placeholder", placeholder);
-
-            input_group.Childs.Add(ret_input);
-            if (required)
-                input_group.Childs.AddRange(GetValidationAlerts(Id_DOM));
-
-            return input_group;
-        }
-        #endregion
-
-        public static div GetPassInput(string label_text, string Id_DOM, string placeholder, string input_info)
-        {
-            div ret_val = GetBaseTextInput(label_text, "", Id_DOM, placeholder, input_info, null, null, null, false, true);
-            foreach (html_dom_root e in ret_val.Childs)
-                if (e is input)
-                {
-                    ((input)e).type = InputTypesEnum.password;
-                    break;
-                }
-            return ret_val;
-        }
 
         public static div GetTextarea(string label_text, string value_input, string name_input, string placeholder, bool input_readonly = false, int rows = 2, bool required = false)
         {
@@ -179,7 +108,7 @@ namespace HtmlGenerator
             label.css_class = "form-check-label";
             ret_val.Childs.Add(label);
 
-            return new p(null) { Childs = new List<html_dom_root>() { ret_val } };
+            return new p(null) { Childs = new List<base_dom_root>() { ret_val } };
         }
 
         public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
@@ -236,7 +165,7 @@ namespace HtmlGenerator
         /// <param name="text_cansel_button">Текст конопки Cancel (если null or empty), то кнопка не выводится вовсе</param>
         /// <param name="body_html">Тело модального окна</param>
         /// <param name="id_modal_dialog">ID атрибут модального окна</param>
-        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, html_dom_root body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")
+        public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, base_dom_root body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")
         {
             span span_close_modal_header = new span("&times;");
             span_close_modal_header.SetAtribute("aria-hidden", "true");
@@ -305,7 +234,7 @@ namespace HtmlGenerator
         /// <param name="re_captcha_key">api - ключ reCaptcha</param>
         /// <param name="collapse_info_new_user_input_css">css класс - области сворачивания и разворачивания для регистрации</param>
         /// <returns></returns>
-        public static List<html_dom_root> GetLoginForm(
+        public static List<base_dom_root> GetLoginForm(
             string re_captcha_key = null,
             string user_password_input_id = "user_password_input_id",
             string user_password_repeat_input_id = "user_password_repeat_input_id",
@@ -314,7 +243,7 @@ namespace HtmlGenerator
             string button_send_login_form_id = "button_send_login_form_id",
             string collapse_info_new_user_input_css = "collapse_info_new_user_input")
         {
-            List<html_dom_root> dom_elements = new List<html_dom_root>();
+            List<base_dom_root> dom_elements = new List<base_dom_root>();
 
             form html_response = new form()
             {
@@ -325,9 +254,25 @@ namespace HtmlGenerator
             };
             html_response.SetAtribute("novalidate", null);
 
-            html_response.Childs.Add(GetBaseTextInput("Ваш логин", "", user_login_input_id, "Логин", "Введите логин для входа", null, null, null, false, true));
-            html_response.Childs.Add(GetPassInput("Ваш пароль", user_password_input_id, "Пароль", "Пароль для входа"));
-            html_response.Childs.Add(GetPassInput("Повторите пароль", user_password_repeat_input_id, "Повтор пароля", "Повторно введите пароль"));
+            BaseTextInput textInput = new BaseTextInput("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
+            textInput.Input.placeholder = "Логин";
+            textInput.Input.required = true;
+            html_response.Childs.Add(textInput);
+
+            textInput = new BaseTextInput("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
+            textInput.Input.type = InputTypesEnum.password;
+            textInput.Input.placeholder = "Пароль";
+            html_response.Childs.Add(textInput);
+
+            textInput = new BaseTextInput("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
+            textInput.Input.type = InputTypesEnum.password;
+            textInput.Input.placeholder = "Повтор";
+            textInput.css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
+            html_response.Childs.Add(textInput);
+
+
+
+
             html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
             html_response.Childs.Add(GetCheckboxInput("Зарегистрироваться", reg_new_user_chekbox_id));
 

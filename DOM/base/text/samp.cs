@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM.text
     /// Браузеры обычно отображают текст в контейнере [samp] с помощью моноширинного шрифта.
     /// С помощью стилей можно задать свое собственное оформление. 
     /// </summary>
-    public class samp : html_dom_root
+    public class samp : base_dom_root
     {
 
     }

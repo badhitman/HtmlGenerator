@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM
     /// Цель использования тега [map] — в связывании тега [img] с клиентской картой-изображением.
     /// Эта связь определяется применением единого идентификатора как в теге [img], задаваемого атрибутом [usemap], так и в теге [map], устанавливаемого атрибутом [name]. 
     /// </summary>
-    public class map : html_dom_root
+    public class map : base_dom_root
     {
 
     }

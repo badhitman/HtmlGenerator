@@ -4,7 +4,7 @@
 
 namespace HtmlGenerator.DOM
 {
-    public class div : html_dom_root
+    public class div : base_dom_root
     {
         public div()
         {

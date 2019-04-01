@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.head
     /// Определяет заголовок документа. Элемент [title] не является частью документа и не показывается напрямую на веб-странице.
     /// В операционной системе Windows текст заголовка отображается в левом верхнем углу окна браузера
     /// </summary>
-    public class title : html_dom_root
+    public class title : base_dom_root
     {
         public title(string text_title)
         {

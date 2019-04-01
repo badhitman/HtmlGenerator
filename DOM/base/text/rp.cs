@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM.text
     /// Используется для вывода текста в браузерах, которые не поддерживают тег [ruby].
     /// В остальных браузерах текст, заключенный в контейнер [rp], не отображается. Тег [rp] должен идти до или после тега [rt].
     /// </summary>
-    public class rp : html_dom_root
+    public class rp : base_dom_root
     {
 
     }

@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.text
     /// <summary>
     /// Тег [wbr] указывает браузеру место, где допускается делать перенос строки в тексте, если этого требует ширина родительского элемента.
     /// </summary>
-    public class wbr : html_dom_root
+    public class wbr : base_dom_root
     {
 
     }

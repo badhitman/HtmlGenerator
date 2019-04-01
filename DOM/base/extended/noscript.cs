@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM
     ///  Контейнер [noscript] показывает свое содержимое, если браузер не поддерживает работу со скриптами или их поддержка отключена пользователем.
     ///  В остальных случаях браузер игнорирует этот тег и все, что располагается внутри него.
     /// </summary>
-    public class noscript : html_dom_root
+    public class noscript : base_dom_root
     {
 
     }

@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.text
     /// 
     /// В отличие от тега [pre] дополнительные пробелы внутри контейнера [code] не учитываются, так же, как и переносы текста. Поэтому используйте тег [br] или [p] для создания переносов.
     /// </summary>
-    public class code : html_dom_root
+    public class code : base_dom_root
     {
 
     }

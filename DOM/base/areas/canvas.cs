@@ -9,7 +9,7 @@ namespace HtmlGenerator.DOM
     /// Создает область, в которой при помощи JavaScript можно рисовать разные объекты, выводить изображения, трансформировать их и менять свойства.
     /// При помощи тега [canvas] можно создавать рисунки, анимацию, игры и др. 
     /// </summary>
-    public class canvas : html_dom_root
+    public class canvas : base_dom_root
     {
         /// <summary>
         /// Задает высоту холста. По умолчанию 300 пикселов.

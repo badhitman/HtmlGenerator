@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace HtmlGenerator
 {
-    public abstract class html_dom_root
+    public abstract class base_dom_root
     {
         /// <summary>
         /// Ручное указание имени/типа элемента/тэга
@@ -20,7 +20,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Дочерние/вложеные элементы
         /// </summary>
-        public List<html_dom_root> Childs = new List<html_dom_root>();
+        public List<base_dom_root> Childs = new List<base_dom_root>();
 
         /// <summary>
         /// Пользовательские атрибуты текущего HTML элемента
@@ -159,7 +159,7 @@ namespace HtmlGenerator
                 ret_val += ">";
 
             if (!(this is text))
-                foreach (html_dom_root h in Childs)
+                foreach (base_dom_root h in Childs)
                     ret_val += h.GetHTML(deep + 1);
 
             if (!string.IsNullOrEmpty(InnerText))

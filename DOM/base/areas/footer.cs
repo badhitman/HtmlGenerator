@@ -8,7 +8,7 @@ namespace HtmlGenerator.DOM
     /// <summary>
     /// Тег [footer] задаёт «подвал» сайта или раздела, в нём может располагаться имя автора, дата документа, контактная и правовая информация.
     /// </summary>
-    public class footer : html_dom_root
+    public class footer : base_dom_root
     {
 
     }

@@ -19,12 +19,12 @@ namespace HtmlGenerator.bootstrap
         /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.
         /// Для наполнения тела модального окна используется BodyElements
         /// </summary>
-        public new List<html_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
+        public new List<base_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
 
         /// <summary>
         /// Элементы тела модального диалога
         /// </summary>
-        public List<html_dom_root> BodyElements { get; private set; } = new List<html_dom_root>();
+        public List<base_dom_root> BodyElements { get; private set; } = new List<base_dom_root>();
 
         /// <summary>
         /// Адрес программы или документа, который обрабатывает данные формы

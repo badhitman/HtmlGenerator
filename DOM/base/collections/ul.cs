@@ -11,7 +11,7 @@ namespace HtmlGenerator.DOM.collections
     /// Тег [ul] устанавливает маркированный список. Каждый элемент списка должен начинаться с тега [li].
     /// Если к тегу [ul] применяется таблица стилей, то элементы [li] наследуют эти свойства.
     /// </summary>
-    public class ul : html_dom_root
+    public class ul : base_dom_root
     {
 
         /// <summary>

@@ -5,7 +5,7 @@
 
 namespace HtmlGenerator.DOM.collections
 {
-    public class optgroup : html_dom_root
+    public class optgroup : base_dom_root
     {
         public class optgroup_set
         {
