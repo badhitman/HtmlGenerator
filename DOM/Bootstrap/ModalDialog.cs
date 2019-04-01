@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.form;
+using HtmlGenerator.DOM.forms;
 using HtmlGenerator.DOM.set.bootstrap_enum;
 using HtmlGenerator.DOM.text;
 using HtmlGenerator.set;

@@ -54,13 +54,14 @@ namespace HtmlGenerator.DOM.Bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
+            css_class += ("card " + adding_card_css_class).Trim();
             if (!string.IsNullOrEmpty(CardHeader))
-                Childs.Add(new div() { css_class = "card-header", InnerText = CardHeader });
+                Childs.Add(new div() { css_class = ("card-header "+ adding_header_css_class).Trim(), InnerText = CardHeader });
 
-            Childs.Add(new div() { css_class = "card-body", Childs = CardBody });
+            Childs.Add(new div() { css_class = ("card-body " + adding_body_css_class).Trim(), Childs = CardBody });
 
             if(CardFooter.Count>0)
-                Childs.Add(new div() { css_class = "card-footer", Childs = CardFooter });
+                Childs.Add(new div() { css_class = ("card-footer "+ adding_footer_css_class).Trim(), Childs = CardFooter });
 
             return base.GetHTML(deep);
         }

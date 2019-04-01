@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.collections;
-using HtmlGenerator.DOM.form;
+using HtmlGenerator.DOM.forms;
 using HtmlGenerator.DOM.set.bootstrap_enum;
 using HtmlGenerator.DOM.table;
 using HtmlGenerator.DOM.text;
@@ -64,7 +64,7 @@ namespace HtmlGenerator
         #region Text - input
         public static div GetBaseTextInput(string label_text, string value_input, string input_name, string placeholder, string input_info, string class_div_group_wrap = null, string label_css_class = null, string input_css_class = null, bool input_readonly = false, bool required = false)
         {
-            div returned_input = new div() { css_class = ("form-group" + " " + class_div_group_wrap).Trim() };
+            div returned_input = new div() { css_class = ("form-group " + class_div_group_wrap).Trim() };
 
             input ret_input = new input() { css_class = input_css_class, type = InputTypesEnum.text, value = value_input };
 
@@ -145,7 +145,7 @@ namespace HtmlGenerator
             if (rows > 0)
                 ret_textarea.rows = rows;
 
-                if (!string.IsNullOrEmpty(value_input))
+            if (!string.IsNullOrEmpty(value_input))
                 ret_textarea.InnerText = value_input;
 
             ret_textarea.Name_DOM = name_input;
@@ -218,7 +218,7 @@ namespace HtmlGenerator
                 ret_button.SetAtribute("type", "button");
             else
             {
-                ret_button.set_custom_name_tag ="a";
+                ret_button.set_custom_name_tag = "a";
                 ret_button.SetAtribute("href", href);
                 ret_button.SetAtribute("role", "button");
                 ret_button.SetAtribute("aria-pressed", "true");
@@ -305,10 +305,16 @@ namespace HtmlGenerator
         /// <param name="re_captcha_key">api - ключ reCaptcha</param>
         /// <param name="collapse_info_new_user_input_css">css класс - области сворачивания и разворачивания для регистрации</param>
         /// <returns></returns>
-        public static List<html_dom_root> GetLoginForm(string re_captcha_key = null, string user_password_input_id = "user_password_input_id", string user_password_repeat_input_id = "user_password_repeat_input_id", string user_login_input_id = "user_login_input_id", string reg_new_user_chekbox_id = "reg_new_user_chekbox_id", string button_send_login_form_id = "button_send_login_form_id", string collapse_info_new_user_input_css = "collapse_info_new_user_input")
+        public static List<html_dom_root> GetLoginForm(
+            string re_captcha_key = null,
+            string user_password_input_id = "user_password_input_id",
+            string user_password_repeat_input_id = "user_password_repeat_input_id",
+            string user_login_input_id = "user_login_input_id",
+            string reg_new_user_chekbox_id = "reg_new_user_chekbox_id",
+            string button_send_login_form_id = "button_send_login_form_id",
+            string collapse_info_new_user_input_css = "collapse_info_new_user_input")
         {
             List<html_dom_root> dom_elements = new List<html_dom_root>();
-            
 
             form html_response = new form()
             {
@@ -341,7 +347,6 @@ namespace HtmlGenerator
                 html_response.Childs.Add(sitekey);
             }
             html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, VisualBootstrapStylesEnum.Primary, SizingBootstrap.Lg, true));
-
 
             dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));
             return dom_elements;
