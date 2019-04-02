@@ -20,6 +20,18 @@ namespace HtmlGenerator.DOM.Bootstrap.Forms
 
         public input Input = new input() { css_class = "form-check-input", type = InputTypesEnum.checkbox };
 
+        /// <summary>
+        /// Текст, который будет выведен в случае установки Checkbox-а. (используется если Input.required = true)
+        /// Если NullOrEmty, то этот тип информатора не будет сформирован вовсе
+        /// </summary>
+        public string valid_feedback_text = null;
+
+        /// <summary>
+        /// Текст, который будет выведен в случае отсутствия Checkbox-а. (используется если Input.required = true)
+        /// Если NullOrEmty, то этот тип информатора не будет сформирован вовсе
+        /// </summary>
+        public string invalid_feedback_text = "Пожалуйста, установите Checkbox";
+
         public CheckboxInput(string Label, string InputID)
         {
             tag_custom_name = typeof(div).Name;
@@ -40,7 +52,7 @@ namespace HtmlGenerator.DOM.Bootstrap.Forms
                 Childs.Add(LabelInput);
 
             if (Input.required)
-                Childs.AddRange(GetValidationAlerts(Input.Id_DOM));
+                Childs.AddRange(GetValidationAlerts(Input.Id_DOM, valid_feedback_text, invalid_feedback_text));
 
             ////////////////////////////////////////////////
             // Фиксим проблему кроссбраузерности отправок формой чекбокса.

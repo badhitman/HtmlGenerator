@@ -11,7 +11,7 @@ namespace HtmlGenerator.bootstrap
     /// <summary>
     /// Класс Web/DOM уведомления для пользователя.
     /// </summary>
-    public class WebNotification : div
+    public class Alert : div
     {
         /// <summary>
         /// Стиль оформления уведомления
@@ -23,7 +23,12 @@ namespace HtmlGenerator.bootstrap
         /// </summary>
         public string Message;
 
-        public WebNotification(VisualBootstrapStylesEnum status_style, string text_msg)
+        /// <summary>
+        /// Флаг/Признак наличия у Alert-а кнопки закрытия
+        /// </summary>
+        public bool isDismissible = false;
+
+        public Alert(VisualBootstrapStylesEnum status_style, string text_msg)
         {
             tag_custom_name = typeof(div).Name;
             CurrStatus = status_style;
@@ -33,18 +38,22 @@ namespace HtmlGenerator.bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            css_class = "alert alert-" + CurrStatus.ToString("g").ToLower() + " alert-dismissible fade show";
+            css_class = "alert alert-" + CurrStatus.ToString("g").ToLower() + (isDismissible ? " alert-dismissible fade show" : "");
             css_style = "min-height: 50px;";
             SetAtribute("role", "alert");
-            button button_close = new button(null) { css_class = "close" };
-            button_close.SetAtribute("data-dismiss", "alert");
-            button_close.SetAtribute("aria-label", "Close");
-            span my_span = new span() { InnerText = "&times;" };
-            my_span.SetAtribute("aria-hidden", "true");
-            button_close.Childs.Add(my_span);
-            InnerText = Message;
-            Childs.Add(button_close);
 
+            if (isDismissible)
+            {
+                button button_close = new button(null) { css_class = "close" };
+                button_close.SetAtribute("data-dismiss", "alert");
+                button_close.SetAtribute("aria-label", "Close");
+                span my_span = new span() { InnerText = "&times;" };
+                my_span.SetAtribute("aria-hidden", "true");
+                button_close.Childs.Add(my_span);
+                Childs.Add(button_close);
+            }
+
+            InnerText = Message;
             return base.GetHTML(deep);
         }
     }

@@ -5,8 +5,12 @@ HTML Generator - .Net Core
 
 Пример 1:
 ```
+// Создаём объект передаём первым параметром текст Label-а, а вторым идентификатор Input-а
 CheckboxCustomInput mybox = new CheckboxCustomInput("Check this custom checkbox", "customControlValidation1");
+// указываем, что поле обязательно для заполенния (если это необходимо).
+// От этого зависит наличие у CheckBox-а реакционных уведомлений (invalid-feedback и/или valid-feedback), текст которых устанавливается через соответсвующие поля mybox.valid_feedback_text и mybox.invalid_feedback_text
 mybox.Input.required = true;
+// получаем готовый форматированый HTML
 string test_s = mybox.GetHTML();
 ```
 Результат => HTML.Bootstrap:
@@ -14,7 +18,7 @@ string test_s = mybox.GetHTML();
 <div class="custom-control custom-checkbox">
 	<input type="checkbox" required id="customControlValidation1" class="custom-control-input" >
 	<label for="customControlValidation1" class="custom-control-label">Check this custom checkbox</label>
-	<div id="invalid-tooltip-customControlValidation1" class="invalid-feedback">Укажите значение</div>
+	<div id="invalid-tooltip-customControlValidation1" class="invalid-feedback">Пожалуйста, установите Checkbox</div>
 	<input type="hidden" value="off" >
 	<script type="text/javascript">
 		jQuery(document).ready(function () {
