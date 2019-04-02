@@ -10,8 +10,8 @@ namespace HtmlGenerator.DOM.Bootstrap
 
         public div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
         {
-            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
+            div valid_element = new div() { css_class = "valid-feedback", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id, inline = true };
+            div invalid_element = new div() { css_class = "invalid-feedback", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id, inline = true };
             // 
             if (!string.IsNullOrEmpty(valid_text))
                 return new div[] { valid_element, invalid_element };

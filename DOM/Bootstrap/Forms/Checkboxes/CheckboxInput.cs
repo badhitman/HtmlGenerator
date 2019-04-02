@@ -40,21 +40,21 @@ namespace HtmlGenerator.DOM.Bootstrap.Forms
                 Childs.Add(LabelInput);
 
             if (Input.required)
-                Childs.AddRange(GetValidationAlerts(Input.Name_DOM));
+                Childs.AddRange(GetValidationAlerts(Input.Id_DOM));
 
             ////////////////////////////////////////////////
             // Фиксим проблему кроссбраузерности отправок формой чекбокса.
-            // Разные браузеры могут по разному отправлять чекбокс. Для стандартизации этой процедуры с чекбоксом в паре держим его "тень" в виде скрытого input-а и контролируем/синхронизируем его значение
+            // Разные браузеры могут по разному отправлять чекбокс. Для стандартизации этой процедуры с чекбоксом в паре держим его "тень" в виде скрытого input-а и контролируем значение теневого значения синхронизируя с основным
             Childs.Add(new input() { type = InputTypesEnum.hidden, value = (Input.@checked ? "on" : "off"), Name_DOM = Id_DOM });
             //
             script my_script = new script();
             my_script.Childs.Add(new text("jQuery(document).ready(function () {"));
             my_script.Childs.Add(new text("\tjQuery('#" + Input.Id_DOM + "').change(function () {"));
             my_script.Childs.Add(new text("\t\tif (jQuery(this).prop('checked')) {"));
-            my_script.Childs.Add(new text("\t\t\tjQuery('input[name=reg_new_user_chekbox_id').val('on');"));
+            my_script.Childs.Add(new text("\t\t\tjQuery('input[name=" + Input.Id_DOM + "').val('on');"));
             my_script.Childs.Add(new text("\t\t}"));
             my_script.Childs.Add(new text("\t\telse {"));
-            my_script.Childs.Add(new text("\t\t\tjQuery('input[name=reg_new_user_chekbox_id').val('off');"));
+            my_script.Childs.Add(new text("\t\t\tjQuery('input[name=" + Input.Id_DOM + "').val('off');"));
             my_script.Childs.Add(new text("\t\t}"));
             my_script.Childs.Add(new text("\t});"));
             my_script.Childs.Add(new text("});"));

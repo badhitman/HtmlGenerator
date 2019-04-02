@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.Bootstrap;
+using HtmlGenerator.DOM.Bootstrap.Forms;
 using HtmlGenerator.DOM.collections;
 using HtmlGenerator.DOM.forms;
 using HtmlGenerator.DOM.set.bootstrap_enum;
@@ -82,33 +83,6 @@ namespace HtmlGenerator
             returned_input.Childs.Add(ret_textarea);
 
             return returned_input;
-        }
-
-        public static p GetCheckboxInput(string label_text, string Id_DOM, bool is_cheked = false, bool required = false)
-        {
-            div ret_val = new div() { css_class = "form-check" };
-            //
-            input ret_input = new input() { type = InputTypesEnum.checkbox };
-            ret_input.css_class = "form-check-input";
-            ret_input.Id_DOM = Id_DOM;
-
-            if (is_cheked)
-                ret_input.SetAtribute("checked", "true");
-
-            if (required)
-                ret_input.SetAtribute("required", null);
-
-            ret_val.Childs.Add(ret_input);
-            //
-            ret_input = new input() { type = InputTypesEnum.hidden, value = "off" };
-            ret_input.Name_DOM = Id_DOM;
-            ret_val.Childs.Add(ret_input);
-            //
-            label label = new label(label_text, Id_DOM);
-            label.css_class = "form-check-label";
-            ret_val.Childs.Add(label);
-
-            return new p(null) { Childs = new List<base_dom_root>() { ret_val } };
         }
 
         public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
@@ -274,7 +248,7 @@ namespace HtmlGenerator
 
 
             html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
-            html_response.Childs.Add(GetCheckboxInput("Зарегистрироваться", reg_new_user_chekbox_id));
+            html_response.Childs.Add(new CheckboxInput("Зарегистрироваться", reg_new_user_chekbox_id));
 
             p reg_new_user_info = new p("") { css_class = "clearfix" };
             reg_new_user_info.Childs.Add(new ul() { css_class = "panel-collapse collapse " + collapse_info_new_user_input_css });
