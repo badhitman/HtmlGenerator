@@ -16,7 +16,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// Стиль оформления уведомления
         /// </summary>
-        public VisualBootstrapStylesEnum CurrStatus;
+        public VisualBootstrapStylesEnum StyleAlert;
 
         /// <summary>
         /// Текст уведомления
@@ -31,14 +31,14 @@ namespace HtmlGenerator.bootstrap
         public Alert(VisualBootstrapStylesEnum status_style, string text_msg)
         {
             tag_custom_name = typeof(div).Name;
-            CurrStatus = status_style;
+            StyleAlert = status_style;
             Message = text_msg;
         }
 
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            css_class = "alert alert-" + CurrStatus.ToString("g").ToLower() + (isDismissible ? " alert-dismissible fade show" : "");
+            css_class = "alert alert-" + StyleAlert.ToString("g").ToLower() + (isDismissible ? " alert-dismissible fade show" : "");
             css_style = "min-height: 50px;";
             SetAttribute("role", "alert");
 

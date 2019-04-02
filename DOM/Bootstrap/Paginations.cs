@@ -29,7 +29,8 @@ namespace HtmlGenerator.bootstrap
         }
 
         public AlignmentEnum AlignmentPagination = AlignmentEnum.right;
-        public SizingBootstrap? SizingPagination = null;
+
+        public SizingBootstrap? SiziePagination = null;
 
         /// <summary>
         /// Шаблон href
@@ -188,9 +189,9 @@ namespace HtmlGenerator.bootstrap
             ul ul_block = new ul { css_class = "pagination" };
 
             #region Formatting pagination (aligment + sizing)
-            if (SizingPagination == SizingBootstrap.Lg)
+            if (SiziePagination == SizingBootstrap.Lg)
                 ul_block.css_class += " pagination-lg";
-            else if (SizingPagination == SizingBootstrap.Sm)
+            else if (SiziePagination == SizingBootstrap.Sm)
                 ul_block.css_class += " pagination-sm";
 
             if (AlignmentPagination == AlignmentEnum.center)

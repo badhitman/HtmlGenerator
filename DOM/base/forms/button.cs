@@ -33,7 +33,7 @@ namespace HtmlGenerator.DOM.forms
         /// <summary>
         ///  Определяет тип кнопки, который устанавливает ее поведение в форме. По внешнему виду кнопки разного типа никак не различаются, но у каждой такой кнопки свои функции. 
         /// </summary>
-        public TypesButton TypeButton;
+        public TypesButton? TypeButton;
 
         /// <summary>
         /// Атрибут [autofocus] устанавливает, что кнопка получает фокус после загрузки страницы. Такую кнопку можно нажать сразу без перевода на неё фокуса, например, с помощью клавиатуры.
@@ -89,7 +89,8 @@ namespace HtmlGenerator.DOM.forms
 
         public override string GetHTML(int deep = 0)
         {
-            SetAttribute("type", TypeButton.ToString("g"));
+            if (!(TypeButton is null))
+                SetAttribute("type", TypeButton?.ToString("g"));
 
             if (autofocus)
                 SetAttribute("autofocus", null);
@@ -112,7 +113,7 @@ namespace HtmlGenerator.DOM.forms
             if (formnovalidate)
                 SetAttribute("formnovalidate", null);
 
-            if(!(formtarget is null))
+            if (!(formtarget is null))
                 SetAttribute("formtarget", formtarget?.ToString("g"));
 
             return base.GetHTML(deep);

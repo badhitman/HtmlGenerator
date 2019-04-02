@@ -250,7 +250,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Удалить атрибу (если существует)
         /// </summary>
-        public void RemoveAttribute(string attr_name, bool ignore_case_name_attr = false)
+        public void RemoveAttribute(string attr_name)
         {
             if (CustomAttributes.ContainsKey(attr_name))
                 CustomAttributes.Remove(attr_name);
