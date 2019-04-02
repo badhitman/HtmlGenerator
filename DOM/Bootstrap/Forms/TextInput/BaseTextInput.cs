@@ -52,11 +52,16 @@ namespace HtmlGenerator.DOM.Bootstrap
                 Childs.AddRange(GetValidationAlerts(Input.Name_DOM));
 
             if (!string.IsNullOrEmpty(InputInfoFooter))
+            {
+                string input_info_id = Input.Name_DOM + "Help";
                 Childs.Add(new small(InputInfoFooter)
                 {
+                    inline = true,
                     css_class = "form-text text-muted",
-                    Id_DOM = Input.Name_DOM + "Help"
+                    Id_DOM = input_info_id
                 });
+                Input.SetAtribute("aria-describedby", input_info_id);
+            }
             return base.GetHTML(deep);
         }
     }
