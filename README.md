@@ -9,7 +9,6 @@ mybox.Input.required = true;
 string test_s = mybox.GetHTML();
 ```
 Это сгенерирует Bootstrap HTML разметку следующего содержания:
-*JS код не относится непосредственно к Bootstrap. Это лайфхак для кроссбраузерной стандартизации отпарвки ЧекБокс-а формой.*
 ```
 <div class="custom-control custom-checkbox">
 	<input type="checkbox" required id="customControlValidation1" class="custom-control-input" >
@@ -30,3 +29,4 @@ string test_s = mybox.GetHTML();
 	</script>
 </div>
 ```
+*JS код не относится непосредственно к Bootstrap. Это лайфхак для кроссбраузерной стандартизации отпарвки ЧекБокс-а формой.*
