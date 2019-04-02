@@ -7,7 +7,10 @@ HTML Generator - .Net Core
 CheckboxCustomInput mybox = new CheckboxCustomInput("Check this custom checkbox", "customControlValidation1");
 mybox.Input.required = true;
 string test_s = mybox.GetHTML();
-
+```
+Это сгенерирует Bootstrap HTML разметку следующего содержания:
+*JS код не относится непосредственно к Bootstrap. Это лайфхак для кроссбраузерной стандартизации отпарвки ЧекБокс-а формой.*
+```
 <div class="custom-control custom-checkbox">
 	<input type="checkbox" required id="customControlValidation1" class="custom-control-input" >
 	<label for="customControlValidation1" class="custom-control-label">Check this custom checkbox</label>
