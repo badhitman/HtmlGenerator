@@ -8,7 +8,8 @@ HTML Generator - .Net Core
 // Создаём объект передаём первым параметром текст Label-а, а вторым идентификатор Input-а
 CheckboxCustomInput mybox = new CheckboxCustomInput("Check this custom checkbox", "customControlValidation1");
 // указываем, что поле обязательно для заполенния (если это необходимо).
-// От этого зависит наличие у CheckBox-а реакционных уведомлений (invalid-feedback и/или valid-feedback), текст которых устанавливается через соответсвующие поля mybox.valid_feedback_text и mybox.invalid_feedback_text
+// От этого зависит наличие у CheckBox-а реакционных уведомлений (invalid-feedback и/или valid-feedback), 
+// текст которых устанавливается через соответсвующие поля mybox.valid_feedback_text и mybox.invalid_feedback_text
 mybox.Input.required = true;
 // получаем готовый форматированый HTML
 string test_s = mybox.GetHTML();
