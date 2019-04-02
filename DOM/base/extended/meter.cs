@@ -54,12 +54,12 @@ namespace HtmlGenerator.DOM
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("high", high);
-            SetAtribute("low", low);
-            SetAtribute("max", max);
-            SetAtribute("min", min);
-            SetAtribute("optimum", optimum);
-            SetAtribute("value", value);
+            SetAttribute("high", high);
+            SetAttribute("low", low);
+            SetAttribute("max", max);
+            SetAttribute("min", min);
+            SetAttribute("optimum", optimum);
+            SetAttribute("value", value);
 
             return base.GetHTML(deep);
         }

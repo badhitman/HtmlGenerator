@@ -67,25 +67,25 @@ namespace HtmlGenerator.DOM.forms
         public override string GetHTML(int deep = 0)
         {
             if (!(method_form is null))
-                SetAtribute("method", method_form?.ToString("g"));
+                SetAttribute("method", method_form?.ToString("g"));
 
             if (!string.IsNullOrEmpty(form_action))
-                SetAtribute("action", form_action);
+                SetAttribute("action", form_action);
 
             if (!string.IsNullOrEmpty(accept_charset))
-                SetAtribute("accept-charset", accept_charset);
+                SetAttribute("accept-charset", accept_charset);
 
             if (!(target is null))
-                SetAtribute("target", target?.ToString("g"));
+                SetAttribute("target", target?.ToString("g"));
 
             if (!(EncType is null))
-                SetAtribute("enctype", GetEnctypeHtmlForm(EncType));
+                SetAttribute("enctype", GetEnctypeHtmlForm(EncType));
 
             if (novalidate)
-                SetAtribute("novalidate", null);
+                SetAttribute("novalidate", null);
 
             if (!(autocomplete is null))
-                SetAtribute("autocomplete", autocomplete == true ? "on" : "off");
+                SetAttribute("autocomplete", autocomplete == true ? "on" : "off");
 
             return base.GetHTML(deep);
         }

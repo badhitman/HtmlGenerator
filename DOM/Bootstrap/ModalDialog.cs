@@ -70,11 +70,11 @@ namespace HtmlGenerator.bootstrap
             Childs.Clear();
 
             span span_close_modal_header = new span("&times;");
-            span_close_modal_header.SetAtribute("aria-hidden", "true");
+            span_close_modal_header.SetAttribute("aria-hidden", "true");
             //
             button button_close_modal_header = new button(null) { css_class = "close" };
-            button_close_modal_header.SetAtribute("data-dismiss", "modal");
-            button_close_modal_header.SetAtribute("aria-label", "Close");
+            button_close_modal_header.SetAttribute("data-dismiss", "modal");
+            button_close_modal_header.SetAttribute("aria-label", "Close");
             button_close_modal_header.Childs.Add(span_close_modal_header);
             //
             h5 h5_modal_header = new h5(TitleDialog) { css_class = "modal-title" };
@@ -87,7 +87,7 @@ namespace HtmlGenerator.bootstrap
             if (!string.IsNullOrEmpty(TextCancelButton))
             {
                 button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.Secondary);
-                button_close_modal_footer.SetAtribute("data-dismiss", "modal");
+                button_close_modal_footer.SetAttribute("data-dismiss", "modal");
                 modal_footer.Childs.Add(button_close_modal_footer);
             }
 
@@ -111,14 +111,14 @@ namespace HtmlGenerator.bootstrap
             my_form.Childs.Add(modal_content);
             //
             div modal_dialog_document = new div() { css_class = "modal-dialog" };
-            modal_dialog_document.CustomAtributes.Add("role", "document");
+            modal_dialog_document.CustomAttributes.Add("role", "document");
             modal_dialog_document.Childs.Add(my_form);
             //
             this.css_class = "modal fade";
-            CustomAtributes.Add("tabindex", "-1");
-            CustomAtributes.Add("role", "dialog");
-            CustomAtributes.Add("aria-labelledby", Id_DOM);
-            CustomAtributes.Add("aria-hidden", "true");
+            CustomAttributes.Add("tabindex", "-1");
+            CustomAttributes.Add("role", "dialog");
+            CustomAttributes.Add("aria-labelledby", Id_DOM);
+            CustomAttributes.Add("aria-hidden", "true");
 
             Childs.Add(modal_dialog_document);
             before_coment_block = "Modal dialog";

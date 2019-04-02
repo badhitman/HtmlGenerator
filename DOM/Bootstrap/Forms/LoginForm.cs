@@ -23,7 +23,7 @@ namespace HtmlGenerator.DOM.Bootstrap
         public LoginForm()
         {
             CardHeader = "Вход/Регистрация";
-            html_form.SetAtribute("novalidate", null);
+            html_form.SetAttribute("novalidate", null);
         }
     }
 }

@@ -27,12 +27,12 @@ namespace HtmlGenerator.DOM.extended
         public override string GetHTML(int deep = 0)
         {
             if (defer)
-                SetAtribute("defer", null);
+                SetAttribute("defer", null);
 
-            SetAtribute("type", "text/" + mimeType.ToString("g").ToLower());
+            SetAttribute("type", "text/" + mimeType.ToString("g").ToLower());
 
             if (!string.IsNullOrEmpty(src))
-                SetAtribute("src", src);
+                SetAttribute("src", src);
 
             return base.GetHTML(deep);
         }

@@ -46,20 +46,20 @@ namespace HtmlGenerator.DOM.textual
         {
             if (!(href is null))
             {
-                SetAtribute("href", href);
+                SetAttribute("href", href);
                 //
                 if (!string.IsNullOrEmpty(mimetype))
-                    SetAtribute("type", mimetype);
+                    SetAttribute("type", mimetype);
             }
 
             if (target != null)
-                SetAtribute("target", target?.ToString("g"));
+                SetAttribute("target", target?.ToString("g"));
 
             if (!(rel is null))
-                SetAtribute("rel", rel?.ToString("g"));
+                SetAttribute("rel", rel?.ToString("g"));
 
             if (download)
-                SetAtribute("download", null);
+                SetAttribute("download", null);
 
             return base.GetHTML(deep);
         }

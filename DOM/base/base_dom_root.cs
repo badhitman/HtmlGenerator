@@ -32,7 +32,7 @@ namespace HtmlGenerator
         /// <summary>
         /// Пользовательские атрибуты текущего HTML элемента
         /// </summary>
-        public Dictionary<string, string> CustomAtributes { get; private set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> CustomAttributes { get; private set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Идентификатор/ID элемента в DOM
@@ -119,33 +119,33 @@ namespace HtmlGenerator
                 ret_val += "<" + (string.IsNullOrEmpty(tag_custom_name) ? GetType().Name.ToLower() : tag_custom_name);
 
             if (!string.IsNullOrEmpty(Id_DOM))
-                SetAtribute("id", Id_DOM);
+                SetAttribute("id", Id_DOM);
 
             if (!string.IsNullOrEmpty(Name_DOM))
-                SetAtribute("name", Name_DOM);
+                SetAttribute("name", Name_DOM);
 
             if (!string.IsNullOrEmpty(title))
-                SetAtribute("title", title);
+                SetAttribute("title", title);
 
             if (!string.IsNullOrEmpty(css_class?.Trim()))
-                SetAtribute("class", css_class.Trim());
+                SetAttribute("class", css_class.Trim());
 
             if (!string.IsNullOrEmpty(css_style))
-                SetAtribute("style", css_style);
+                SetAttribute("style", css_style);
 
             if (!string.IsNullOrEmpty(accesskey))
-                SetAtribute("accesskey", accesskey);
+                SetAttribute("accesskey", accesskey);
 
             if (contenteditable)
-                SetAtribute("contenteditable", null);
+                SetAttribute("contenteditable", null);
 
             if (hidden)
-                SetAtribute("hidden", null);
+                SetAttribute("hidden", null);
 
             if (tabindex != 0)
-                SetAtribute("tabindex", tabindex.ToString());
+                SetAttribute("tabindex", tabindex.ToString());
 
-            foreach (KeyValuePair<string, string> kvp in CustomAtributes)
+            foreach (KeyValuePair<string, string> kvp in CustomAttributes)
                 if (!string.IsNullOrEmpty(kvp.Key))
                     ret_val += " " + kvp.Key + (kvp.Value is null ? "" : "=\"" + kvp.Value + "\"");
 
@@ -198,15 +198,15 @@ namespace HtmlGenerator
         /// </summary>
         /// <param name="attr_name">Имя атрибута dom объекта</param>
         /// <param name="attr_value">Если знаение атрибута IS NULL, то генератор объявит имя атрибута у объекта, но не будет указывать значение этого атрибута (т.е. будет пропущен знак = и его значение)</param>
-        public void SetAtribute(string attr_name, string attr_value)
+        public void SetAttribute(string attr_name, string attr_value)
         {
-            if (!CustomAtributes.ContainsKey(attr_name))
-                CustomAtributes.Add(attr_name, attr_value);
+            if (!CustomAttributes.ContainsKey(attr_name))
+                CustomAttributes.Add(attr_name, attr_value);
             else
-                CustomAtributes[attr_name] = attr_value;
+                CustomAttributes[attr_name] = attr_value;
         }
-        public void SetAtribute(string attr_name, int attr_value) => SetAtribute(attr_name, attr_value.ToString());
-        public void SetAtribute(string attr_name, double attr_value) => SetAtribute(attr_name, attr_value.ToString());
+        public void SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
+        public void SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
         /// <summary>
         /// Установить DOM объекту составное значение атрибута
         /// </summary>
@@ -214,7 +214,7 @@ namespace HtmlGenerator
         /// <param name="attributes">Список значений атрибутов, которые нужно объеденить в одно составное значение</param>
         /// <param name="separator">Символ-разделитель значений в составном значении атрибута</param>
         /// <param name="check_duplicates_attributes">если true - то дубли значений будут исключены из конечного составного значения</param>
-        public void SetAtribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
+        public void SetAttribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
         {
             string media_as_string = "";
             if (check_duplicates_attributes)
@@ -224,25 +224,25 @@ namespace HtmlGenerator
 
             media_as_string = media_as_string.Trim().Replace(" ", separator);
             if (!string.IsNullOrEmpty(media_as_string))
-                SetAtribute(attr_name, media_as_string);
+                SetAttribute(attr_name, media_as_string);
         }
 
         /// <summary>
         /// Пакетная установка атрибутов
         /// </summary>
-        public void SetAtribute(Dictionary<string, string> in_custom_atributes)
+        public void SetAttribute(Dictionary<string, string> in_custom_atributes)
         {
             foreach (KeyValuePair<string, string> kvp in in_custom_atributes)
-                SetAtribute(kvp.Key, kvp.Value);
+                SetAttribute(kvp.Key, kvp.Value);
         }
 
         /// <summary>
         /// Получить значение атрибута
         /// </summary>
-        public string GetAtribute(string attr_name)
+        public string GetAttribute(string attr_name)
         {
-            if (CustomAtributes.ContainsKey(attr_name))
-                return CustomAtributes[attr_name];
+            if (CustomAttributes.ContainsKey(attr_name))
+                return CustomAttributes[attr_name];
 
             return null;
         }
@@ -250,10 +250,10 @@ namespace HtmlGenerator
         /// <summary>
         /// Удалить атрибу (если существует)
         /// </summary>
-        public void RemoveAtribute(string attr_name)
+        public void RemoveAttribute(string attr_name, bool ignore_case_name_attr = false)
         {
-            if (CustomAtributes.ContainsKey(attr_name))
-                CustomAtributes.Remove(attr_name);
+            if (CustomAttributes.ContainsKey(attr_name))
+                CustomAttributes.Remove(attr_name);
         }
 
         /// <summary>
@@ -264,11 +264,11 @@ namespace HtmlGenerator
         {
             if (string.IsNullOrEmpty(event_src))
             {
-                if (CustomAtributes.ContainsKey(my_event.ToString("g")))
-                    CustomAtributes.Remove(my_event.ToString("g"));
+                if (CustomAttributes.ContainsKey(my_event.ToString("g")))
+                    CustomAttributes.Remove(my_event.ToString("g"));
             }
             else
-                SetAtribute(my_event.ToString("g"), event_src);
+                SetAttribute(my_event.ToString("g"), event_src);
         }
 
         /// <summary>

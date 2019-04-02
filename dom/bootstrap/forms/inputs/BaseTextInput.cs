@@ -60,7 +60,7 @@ namespace HtmlGenerator.DOM.Bootstrap
                     css_class = "form-text text-muted",
                     Id_DOM = input_info_id
                 });
-                Input.SetAtribute("aria-describedby", input_info_id);
+                Input.SetAttribute("aria-describedby", input_info_id);
             }
             return base.GetHTML(deep);
         }

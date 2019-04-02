@@ -25,10 +25,10 @@ namespace HtmlGenerator.DOM.tables
         public override string GetHTML(int deep = 0)
         {
             if (colspan > 0)
-                SetAtribute("colspan", colspan);
+                SetAttribute("colspan", colspan);
 
             if (rowspan > 0)
-                SetAtribute("rowspan", rowspan);
+                SetAttribute("rowspan", rowspan);
 
             return base.GetHTML(deep);
         }

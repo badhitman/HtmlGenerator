@@ -56,11 +56,11 @@ namespace HtmlGenerator.DOM.collections
         public override string GetHTML(int deep = 0)
         {
             if (TypeOL == TypesOL.Numb)
-                SetAtribute("type", "1");
+                SetAttribute("type", "1");
             else if (TypeOL != TypesOL.None)
-                SetAtribute("type", TypeOL.ToString("g"));
+                SetAttribute("type", TypeOL.ToString("g"));
             else
-                RemoveAtribute("type");
+                RemoveAttribute("type");
 
             return base.GetHTML(deep);
         }
@@ -72,9 +72,9 @@ namespace HtmlGenerator.DOM.collections
         {
             li ret_val = new li();
             if (TypeOL != TypesOL.None)
-                ret_val.SetAtribute("type", TypeOL.ToString("g"));
+                ret_val.SetAttribute("type", TypeOL.ToString("g"));
             else
-                ret_val.RemoveAtribute("type");
+                ret_val.RemoveAttribute("type");
             return ret_val;
         }
     }

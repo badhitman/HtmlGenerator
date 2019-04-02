@@ -89,31 +89,31 @@ namespace HtmlGenerator.DOM.forms
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("type", TypeButton.ToString("g"));
+            SetAttribute("type", TypeButton.ToString("g"));
 
             if (autofocus)
-                SetAtribute("autofocus", null);
+                SetAttribute("autofocus", null);
 
             if (disabled)
-                SetAtribute("disabled", "disabled");
+                SetAttribute("disabled", "disabled");
 
             if (!string.IsNullOrEmpty(form) && form.Length > 0)
-                SetAtribute("form", form);
+                SetAttribute("form", form);
 
             if (!string.IsNullOrEmpty(formaction) && formaction.Length > 0)
-                SetAtribute("formaction", formaction);
+                SetAttribute("formaction", formaction);
 
             if (!(formenctype is null))
-                SetAtribute("formenctype", GetEnctypeHtmlForm(formenctype));
+                SetAttribute("formenctype", GetEnctypeHtmlForm(formenctype));
 
             if (!(formmethod is null))
-                SetAtribute("formmethod", formmethod?.ToString("g"));
+                SetAttribute("formmethod", formmethod?.ToString("g"));
 
             if (formnovalidate)
-                SetAtribute("formnovalidate", null);
+                SetAttribute("formnovalidate", null);
 
             if(!(formtarget is null))
-                SetAtribute("formtarget", formtarget?.ToString("g"));
+                SetAttribute("formtarget", formtarget?.ToString("g"));
 
             return base.GetHTML(deep);
         }

@@ -44,7 +44,7 @@ namespace HtmlGenerator.bootstrap
                 if (string.IsNullOrEmpty(bi.href))
                 {
                     my_li.css_class += " active";
-                    my_li.SetAtribute("aria-current", "page");
+                    my_li.SetAttribute("aria-current", "page");
                     my_li.InnerText = bi.text;
                 }
                 else
@@ -56,7 +56,7 @@ namespace HtmlGenerator.bootstrap
             end:
 
             css_style = "margin-top: 3px;";
-            SetAtribute("aria-label", "breadcrumb");
+            SetAttribute("aria-label", "breadcrumb");
             Childs.Add(my_ol);
             return base.GetHTML(deep);
         }

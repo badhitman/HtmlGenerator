@@ -40,15 +40,15 @@ namespace HtmlGenerator.bootstrap
             Childs.Clear();
             css_class = "alert alert-" + CurrStatus.ToString("g").ToLower() + (isDismissible ? " alert-dismissible fade show" : "");
             css_style = "min-height: 50px;";
-            SetAtribute("role", "alert");
+            SetAttribute("role", "alert");
 
             if (isDismissible)
             {
                 button button_close = new button(null) { css_class = "close" };
-                button_close.SetAtribute("data-dismiss", "alert");
-                button_close.SetAtribute("aria-label", "Close");
+                button_close.SetAttribute("data-dismiss", "alert");
+                button_close.SetAttribute("aria-label", "Close");
                 span my_span = new span() { InnerText = "&times;" };
-                my_span.SetAtribute("aria-hidden", "true");
+                my_span.SetAttribute("aria-hidden", "true");
                 button_close.Childs.Add(my_span);
                 Childs.Add(button_close);
             }

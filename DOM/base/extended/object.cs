@@ -56,13 +56,13 @@ namespace HtmlGenerator.DOM.extended
         public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(data))
-                SetAtribute("data", data);
+                SetAttribute("data", data);
 
             if (!string.IsNullOrEmpty(mimetype))
-                SetAtribute("type", mimetype);
+                SetAttribute("type", mimetype);
 
-            SetAtribute("height", height.ToString());
-            SetAtribute("width", width.ToString());
+            SetAttribute("height", height.ToString());
+            SetAttribute("width", width.ToString());
 
             return base.GetHTML(deep);
         }

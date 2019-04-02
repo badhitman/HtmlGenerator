@@ -68,14 +68,14 @@ namespace HtmlGenerator.bootstrap
                 css_class = (css_class + " dropdown").Trim();
                 //
                 a_dom_result.css_class += " dropdown-toggle";
-                a_dom_result.CustomAtributes.Add("data-toggle", "dropdown");
-                a_dom_result.CustomAtributes.Add("aria-haspopup", "true");
-                a_dom_result.CustomAtributes.Add("aria-expanded", "false");
+                a_dom_result.CustomAttributes.Add("data-toggle", "dropdown");
+                a_dom_result.CustomAttributes.Add("aria-haspopup", "true");
+                a_dom_result.CustomAttributes.Add("aria-expanded", "false");
                 string id_a_parent = "dropdown_" + new Guid().ToString().Replace("-", "");
                 a_dom_result.Id_DOM = id_a_parent;
                 //
                 div submenu = new div() { css_class = "dropdown-menu" };
-                submenu.CustomAtributes.Add("aria-labelledby", id_a_parent);
+                submenu.CustomAttributes.Add("aria-labelledby", id_a_parent);
                 foreach (MenuItem i in SubItems)
                     submenu.Childs.Add(new a() { css_class = "dropdown-item", inline = true, href = i.href_menu_item, target = TargetsEnum._blank, InnerText = i.text_menu_item });
 

@@ -48,14 +48,14 @@ namespace HtmlGenerator.DOM.extended
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("hight", hight.ToString());
-            SetAtribute("width", width.ToString());
+            SetAttribute("hight", hight.ToString());
+            SetAttribute("width", width.ToString());
 
             if (!string.IsNullOrEmpty(src))
             {
-                SetAtribute("src", src);
+                SetAttribute("src", src);
                 if (!string.IsNullOrEmpty(type))
-                    SetAtribute("type", type);
+                    SetAttribute("type", type);
             }
 
             return base.GetHTML(deep);

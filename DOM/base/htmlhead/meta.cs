@@ -48,13 +48,13 @@ namespace HtmlGenerator.DOM.head
         public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(charset))
-                SetAtribute("charset", charset);
+                SetAttribute("charset", charset);
 
             if (!string.IsNullOrEmpty(content))
-                SetAtribute("content", content);
+                SetAttribute("content", content);
 
             if (!string.IsNullOrEmpty(http_equiv))
-                SetAtribute("http-equiv", http_equiv);
+                SetAttribute("http-equiv", http_equiv);
 
             return base.GetHTML(deep);
         }

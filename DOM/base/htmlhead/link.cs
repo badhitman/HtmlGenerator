@@ -39,28 +39,28 @@ namespace HtmlGenerator.DOM.head
 
         public link(Dictionary<string, string> in_custom_atributes = null)
         {
-            SetAtribute(in_custom_atributes);
+            SetAttribute(in_custom_atributes);
             inline = true;
             need_end_tag = false;
         }
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("media", media, ", ");
+            SetAttribute("media", media, ", ");
             
             if (!string.IsNullOrEmpty(href))
             {
-                SetAtribute("href", href);
+                SetAttribute("href", href);
 
                 if (!string.IsNullOrEmpty(mimetype))
-                    SetAtribute("type", mimetype);
+                    SetAttribute("type", mimetype);
 
                 if (rel == RelationsEnum.stylesheet || rel == RelationsEnum.alternate)
-                    SetAtribute("rel", rel?.ToString("g"));
+                    SetAttribute("rel", rel?.ToString("g"));
             }
 
             if (rel == RelationsEnum.icon)
-                SetAtribute("rel", "shortcut icon");
+                SetAttribute("rel", "shortcut icon");
 
             return base.GetHTML(deep);
         }

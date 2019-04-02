@@ -43,10 +43,10 @@ namespace HtmlGenerator.DOM.head
             Childs.Clear();
 
             if (!string.IsNullOrEmpty(href))
-                SetAtribute("href", href);
+                SetAttribute("href", href);
 
             if (!(target is null))
-                SetAtribute("target", target?.ToString("g"));
+                SetAttribute("target", target?.ToString("g"));
 
             return base.GetHTML(deep);
         }

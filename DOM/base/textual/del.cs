@@ -24,10 +24,10 @@ namespace HtmlGenerator.DOM.textual
         public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(cite))
-                SetAtribute("cite",cite);
+                SetAttribute("cite",cite);
 
             if (!string.IsNullOrEmpty(datetime))
-                SetAtribute("datetime", datetime);
+                SetAttribute("datetime", datetime);
 
             return base.GetHTML(deep);
         }

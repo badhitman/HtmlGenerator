@@ -27,10 +27,10 @@ namespace HtmlGenerator.DOM.head
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("media", media, ", ");
+            SetAttribute("media", media, ", ");
 
             if (!string.IsNullOrEmpty(type))
-                SetAtribute("type", type);
+                SetAttribute("type", type);
 
             return base.GetHTML(deep);
         }

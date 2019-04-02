@@ -186,85 +186,85 @@ namespace HtmlGenerator.DOM.forms
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("type", type.ToString("g"));
+            SetAttribute("type", type.ToString("g"));
             if (type == InputTypesEnum.file)
             {
                 if (!string.IsNullOrEmpty(accept))
-                    SetAtribute("accept", accept);
+                    SetAttribute("accept", accept);
 
                 if (!string.IsNullOrEmpty(formenctype))
-                    SetAtribute("formenctype", formenctype);
+                    SetAttribute("formenctype", formenctype);
             }
             else if (@checked && new[] { InputTypesEnum.radio, InputTypesEnum.checkbox }.Contains(type))
-                SetAtribute("checked", "checked");
+                SetAttribute("checked", "checked");
             else if (new[] { InputTypesEnum.range, InputTypesEnum.number, InputTypesEnum.date }.Contains(type))
             {
                 if (!string.IsNullOrEmpty(max))
-                    SetAtribute("max", max);
+                    SetAttribute("max", max);
 
                 if (!string.IsNullOrEmpty(min))
-                    SetAtribute("min", min);
+                    SetAttribute("min", min);
 
                 if (step > 0 && type != InputTypesEnum.date)
-                    SetAtribute("step", step);
+                    SetAttribute("step", step);
             }
             else if (new[] { InputTypesEnum.text, InputTypesEnum.password }.Contains(type))
             {
                 if (maxlength > 0)
-                    SetAtribute("maxlength", maxlength);
+                    SetAttribute("maxlength", maxlength);
                 if (size > 0)
-                    SetAtribute("size", size.ToString("g"));
+                    SetAttribute("size", size.ToString("g"));
             }
             else if (new[] { InputTypesEnum.email, InputTypesEnum.tel, InputTypesEnum.text, InputTypesEnum.search, InputTypesEnum.url }.Contains(type))
             {
                 if (!string.IsNullOrEmpty(pattern))
-                    SetAtribute("pattern", pattern);
+                    SetAttribute("pattern", pattern);
 
                 if (!string.IsNullOrEmpty(placeholder))
-                    SetAtribute("placeholder", placeholder);
+                    SetAttribute("placeholder", placeholder);
             }
 
             if (!string.IsNullOrEmpty(value))
-                SetAtribute("value", value);
+                SetAttribute("value", value);
 
             if (@readonly)
-                SetAtribute("readonly", null);
+                SetAttribute("readonly", null);
 
             if (disabled)
-                SetAtribute("disabled", null);
+                SetAttribute("disabled", null);
 
             if (required)
-                SetAtribute("required", null);
+                SetAttribute("required", null);
 
             if (!(autocomplete is null))
-                SetAtribute("autocomplete", autocomplete == true ? "on" : "off");
+                SetAttribute("autocomplete", autocomplete == true ? "on" : "off");
 
             if (autofocus)
-                SetAtribute("autofocus", null);
+                SetAttribute("autofocus", null);
 
             if (!string.IsNullOrEmpty(form))
-                SetAtribute("form", form);
+                SetAttribute("form", form);
 
             if (!string.IsNullOrEmpty(formaction))
-                SetAtribute("formaction", formaction);
+                SetAttribute("formaction", formaction);
 
             if (!string.IsNullOrEmpty(formaction))
-                SetAtribute("formaction", formaction);
+                SetAttribute("formaction", formaction);
 
             if (!(formmethod is null))
-                SetAtribute("formmethod", formmethod?.ToString("g"));
+                SetAttribute("formmethod", formmethod?.ToString("g"));
 
             if (formnovalidate)
-                SetAtribute("formnovalidate", null);
+                SetAttribute("formnovalidate", null);
 
             if (!(formtarget is null))
-                SetAtribute("formtarget", formtarget?.ToString("g"));
+                SetAttribute("formtarget", formtarget?.ToString("g"));
 
             if (!string.IsNullOrEmpty(list))
-                SetAtribute("list", list);
+                SetAttribute("list", list);
 
             if (multiple)
-                SetAtribute("multiple", null);
+                SetAttribute("multiple", null);
 
             return base.GetHTML(deep);
         }

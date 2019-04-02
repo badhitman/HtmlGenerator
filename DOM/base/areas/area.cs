@@ -55,26 +55,26 @@ namespace HtmlGenerator.DOM
         public override string GetHTML(int deep = 0)
         {
             if (!(alt is null))
-                SetAtribute("alt", alt);
+                SetAttribute("alt", alt);
 
             if (!(href is null))
             {
-                SetAtribute("href", href);
+                SetAttribute("href", href);
                 if (!string.IsNullOrEmpty(mimetype))
-                    SetAtribute("type", mimetype);
+                    SetAttribute("type", mimetype);
             }
 
             if (!(target is null))
-                SetAtribute("target", target?.ToString("g"));
+                SetAttribute("target", target?.ToString("g"));
 
-            SetAtribute("shape", shape.ToString("g"));
+            SetAttribute("shape", shape.ToString("g"));
 
             string s_coords = "";
             coords.ForEach(x => s_coords += " " + x.ToString());
             s_coords = s_coords.Trim();
             s_coords = s_coords.Replace(" ", ", ");
             if (!string.IsNullOrEmpty(s_coords))
-                SetAtribute("coords", s_coords);
+                SetAttribute("coords", s_coords);
 
             return base.GetHTML(deep);
         }

@@ -184,7 +184,7 @@ namespace HtmlGenerator.bootstrap
             if (CountAllElements == 0)
                 goto end;
 
-            SetAtribute("aria-label", "Page navigation");
+            SetAttribute("aria-label", "Page navigation");
             ul ul_block = new ul { css_class = "pagination" };
 
             #region Formatting pagination (aligment + sizing)

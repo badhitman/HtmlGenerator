@@ -30,14 +30,14 @@ namespace HtmlGenerator.DOM.collections
         {
             if (!(set is null))
             {
-                SetAtribute("label", set.TitleText);
-                SetAtribute("value", set.Value);
+                SetAttribute("label", set.TitleText);
+                SetAttribute("value", set.Value);
 
                 if (set.Selected)
-                    SetAtribute("selected", null);
+                    SetAttribute("selected", null);
 
                 if (set.Disabled)
-                    SetAtribute("disabled", null);
+                    SetAttribute("disabled", null);
             }
             return base.GetHTML(deep);
         }

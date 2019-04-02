@@ -23,7 +23,7 @@ namespace HtmlGenerator.DOM.collections
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("type", TypeUL.ToString("g"));
+            SetAttribute("type", TypeUL.ToString("g"));
             return base.GetHTML(deep);
         }
 
@@ -40,14 +40,14 @@ namespace HtmlGenerator.DOM.collections
         {
             li ret_val = new li() { InnerText = text_title };
             ret_val.title = tooltip;
-            ret_val.SetAtribute("type", TypeUL.ToString("g"));
-            ret_val.SetAtribute("value", value);
+            ret_val.SetAttribute("type", TypeUL.ToString("g"));
+            ret_val.SetAttribute("value", value);
 
             if (disable)
-                ret_val.SetAtribute("disable", null);
+                ret_val.SetAttribute("disable", null);
 
             if (!string.IsNullOrEmpty(tag))
-                ret_val.SetAtribute("tag", tag);
+                ret_val.SetAttribute("tag", tag);
 
             return ret_val;
         }

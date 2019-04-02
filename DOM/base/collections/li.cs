@@ -18,7 +18,7 @@ namespace HtmlGenerator.DOM.collections
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("type", TypeUL.ToString("g"));
+            SetAttribute("type", TypeUL.ToString("g"));
             return base.GetHTML(deep);
         }
     }

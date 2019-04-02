@@ -28,13 +28,13 @@ namespace HtmlGenerator.DOM.media
         public override string GetHTML(int deep = 0)
         {
             if (width > 0)
-                SetAtribute("width", width);
+                SetAttribute("width", width);
 
             if (height > 0)
-                SetAtribute("height", height);
+                SetAttribute("height", height);
 
             if (!string.IsNullOrEmpty(poster))
-                SetAtribute("poster", poster);
+                SetAttribute("poster", poster);
 
             return base.GetHTML(deep);
         }

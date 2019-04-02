@@ -43,19 +43,19 @@ namespace HtmlGenerator.DOM.media
         public override string GetHTML(int deep = 0)
         {
             if (!(kind is null))
-                SetAtribute("kind", kind?.ToString("g"));
+                SetAttribute("kind", kind?.ToString("g"));
 
             if (!string.IsNullOrEmpty(src))
-                SetAtribute("src", src);
+                SetAttribute("src", src);
 
             if (!(srclang is null))
-                SetAtribute("srclang", srclang?.ToString("g"));
+                SetAttribute("srclang", srclang?.ToString("g"));
 
             if (!string.IsNullOrEmpty(label))
-                SetAtribute("label", label);
+                SetAttribute("label", label);
 
             if(@default)
-                SetAtribute("default", null);
+                SetAttribute("default", null);
 
             return base.GetHTML(deep);
         }

@@ -37,10 +37,10 @@ namespace HtmlGenerator.DOM.collections
         {
             if (!(set is null))
             {
-                SetAtribute("label", set.TitleText);
+                SetAttribute("label", set.TitleText);
 
                 if (set.Disabled)
-                    SetAtribute("disabled", null);
+                    SetAttribute("disabled", null);
             }
             return base.GetHTML(deep);
         }

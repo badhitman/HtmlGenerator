@@ -22,8 +22,8 @@ namespace HtmlGenerator.DOM
 
         public override string GetHTML(int deep = 0)
         {
-            SetAtribute("value", value);
-            SetAtribute("max", max);
+            SetAttribute("value", value);
+            SetAttribute("max", max);
 
             return base.GetHTML(deep);
         }

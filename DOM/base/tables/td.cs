@@ -22,7 +22,7 @@ namespace HtmlGenerator.DOM.tables
         public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(headers))
-                SetAtribute("headers", headers);
+                SetAttribute("headers", headers);
 
             return base.GetHTML(deep);
         }

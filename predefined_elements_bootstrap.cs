@@ -30,7 +30,7 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(Tooltip))
                 ret_dom.title = Tooltip;
 
-            ret_dom.SetAtribute("data-toggle", "tooltip");
+            ret_dom.SetAttribute("data-toggle", "tooltip");
             ret_dom.Childs.Add(select_body);
             return ret_dom;
         }
@@ -57,11 +57,7 @@ namespace HtmlGenerator
 
             return card_set;
         }
-
-        public static div Get_DIV_Bootstrap_Card(string card_head, base_dom_root body_element, string css_card = "bg-light")
-        {
-            return Get_DIV_Bootstrap_Card(card_head, new List<base_dom_root>() { body_element }, css_card);
-        }
+        public static div Get_DIV_Bootstrap_Card(string card_head, base_dom_root body_element, string css_card = "bg-light") => Get_DIV_Bootstrap_Card(card_head, new List<base_dom_root>() { body_element }, css_card);
 
         public static div GetTextarea(string label_text, string value_input, string name_input, string placeholder, bool input_readonly = false, int rows = 2, bool required = false)
         {
@@ -105,13 +101,13 @@ namespace HtmlGenerator
             ret_button.css_class += (btn_block ? " btn-block" : "") + " active";
 
             if (string.IsNullOrEmpty(href))
-                ret_button.SetAtribute("type", "button");
+                ret_button.SetAttribute("type", "button");
             else
             {
                 ret_button.tag_custom_name = "a";
-                ret_button.SetAtribute("href", href);
-                ret_button.SetAtribute("role", "button");
-                ret_button.SetAtribute("aria-pressed", "true");
+                ret_button.SetAttribute("href", href);
+                ret_button.SetAttribute("role", "button");
+                ret_button.SetAttribute("aria-pressed", "true");
             }
 
             return ret_button;
@@ -129,11 +125,11 @@ namespace HtmlGenerator
         public static div GetModalDialog(string title, string text_ok_button, string text_cansel_button, base_dom_root body_html, string id_modal_dialog = "exampleModal", string id_ok_button = "button_try_write")
         {
             span span_close_modal_header = new span("&times;");
-            span_close_modal_header.SetAtribute("aria-hidden", "true");
+            span_close_modal_header.SetAttribute("aria-hidden", "true");
             //
             button button_close_modal_header = new button(null) { css_class = "close" };
-            button_close_modal_header.SetAtribute("data-dismiss", "modal");
-            button_close_modal_header.SetAtribute("aria-label", "Close");
+            button_close_modal_header.SetAttribute("data-dismiss", "modal");
+            button_close_modal_header.SetAttribute("aria-label", "Close");
             button_close_modal_header.Childs.Add(span_close_modal_header);
             //
             h5 h5_modal_header = new h5(title) { css_class = "modal-title" };
@@ -146,7 +142,7 @@ namespace HtmlGenerator
             if (!string.IsNullOrEmpty(text_cansel_button))
             {
                 button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.Secondary);
-                button_close_modal_footer.SetAtribute("data-dismiss", "modal");
+                button_close_modal_footer.SetAttribute("data-dismiss", "modal");
                 modal_footer.Childs.Add(button_close_modal_footer);
             }
 
@@ -169,15 +165,15 @@ namespace HtmlGenerator
             div modal_dialog_document = new div() { css_class = "modal-dialog" };
 
 
-            modal_dialog_document.CustomAtributes.Add("role", "document");
+            modal_dialog_document.CustomAttributes.Add("role", "document");
             modal_dialog_document.Childs.Add(modal_content);
             //
             div ModalDialog = new div() { css_class = "modal fade", Id_DOM = id_modal_dialog };
 
-            ModalDialog.CustomAtributes.Add("tabindex", "-1");
-            ModalDialog.CustomAtributes.Add("role", "dialog");
-            ModalDialog.CustomAtributes.Add("aria-labelledby", id_modal_dialog);
-            ModalDialog.CustomAtributes.Add("aria-hidden", "true");
+            ModalDialog.CustomAttributes.Add("tabindex", "-1");
+            ModalDialog.CustomAttributes.Add("role", "dialog");
+            ModalDialog.CustomAttributes.Add("aria-labelledby", id_modal_dialog);
+            ModalDialog.CustomAttributes.Add("aria-hidden", "true");
 
             ModalDialog.Childs.Add(modal_dialog_document);
             ModalDialog.before_coment_block = "Modal dialog";
@@ -213,7 +209,7 @@ namespace HtmlGenerator
                 target = TargetsEnum._self,
                 method_form = MethodsFormEnum.POST
             };
-            html_response.SetAtribute("novalidate", null);
+            html_response.SetAttribute("novalidate", null);
 
             BaseTextInput textInput = new BaseTextInput("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
             textInput.Input.placeholder = "Логин";
@@ -248,8 +244,8 @@ namespace HtmlGenerator
                 html_response.Childs.Add(new hr());
                 html_response.Childs.Add(new h4("Пройдите проверку reCAPTCHA"));
                 div sitekey = new div() { css_class = "g-recaptcha" };
-                sitekey.SetAtribute("data-size", "compact");
-                sitekey.SetAtribute("data-sitekey", re_captcha_key);
+                sitekey.SetAttribute("data-size", "compact");
+                sitekey.SetAttribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
             }
             html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, VisualBootstrapStylesEnum.Primary, SizingBootstrap.Lg, true));

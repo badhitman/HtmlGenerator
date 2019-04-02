@@ -67,18 +67,18 @@ namespace HtmlGenerator.DOM.media
             /// </summary>
             Childs = Childs.Where(x => x is source).ToList();
             if (Childs.Count == 0)
-                SetAtribute("src", src);
+                SetAttribute("src", src);
 
             if (autoplay)
-                SetAtribute("autoplay", "autoplay");
+                SetAttribute("autoplay", "autoplay");
             else
-                SetAtribute("preload", preload.ToString("g"));
+                SetAttribute("preload", preload.ToString("g"));
 
             if(controls)
-                SetAtribute("controls", "controls");
+                SetAttribute("controls", "controls");
 
             if (loop)
-                SetAtribute("loop", "loop");
+                SetAttribute("loop", "loop");
 
             return base.GetHTML(deep);
         }

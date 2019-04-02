@@ -76,10 +76,10 @@ namespace HtmlGenerator.DOM
         public override string GetHTML(int deep = 0)
         {
             if (height > 0)
-                SetAtribute("height", height);
+                SetAttribute("height", height);
 
             if (width > 0)
-                SetAtribute("width", width);
+                SetAttribute("width", width);
 
             if (sandbox.Count > 0)
             {
@@ -87,17 +87,17 @@ namespace HtmlGenerator.DOM
                 foreach (SandboxModesEnum s in sandbox)
                     sandbox_as_string += " " + s.ToString("g").Replace("_", "-");
 
-                SetAtribute("sandbox", sandbox_as_string.Trim());
+                SetAttribute("sandbox", sandbox_as_string.Trim());
             }
 
             if (seamless)
-                SetAtribute("seamless", null);
+                SetAttribute("seamless", null);
 
             if (!string.IsNullOrEmpty(src))
-                SetAtribute("src", src);
+                SetAttribute("src", src);
 
             if (!string.IsNullOrEmpty(srcdoc))
-                SetAtribute("srcdoc", srcdoc);
+                SetAttribute("srcdoc", srcdoc);
 
             return base.GetHTML(deep);
         }

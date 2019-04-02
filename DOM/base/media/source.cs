@@ -37,13 +37,13 @@ namespace HtmlGenerator.DOM.media
             /// </summary>
             Childs.Clear();
 
-            SetAtribute("media", media, ", ");
+            SetAttribute("media", media, ", ");
 
             if (!string.IsNullOrEmpty(src))
             {
-                SetAtribute("src", src);
+                SetAttribute("src", src);
                 if (!string.IsNullOrEmpty(mimetype))
-                    SetAtribute("type", mimetype);
+                    SetAttribute("type", mimetype);
             }
 
             return base.GetHTML(deep);

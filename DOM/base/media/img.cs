@@ -96,22 +96,22 @@ namespace HtmlGenerator.DOM.media
         public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(src))
-                SetAtribute("src", src);
+                SetAttribute("src", src);
 
             if (!string.IsNullOrEmpty(alt))
-                SetAtribute("alt", alt);
+                SetAttribute("alt", alt);
 
             if (height > 0)
-                SetAtribute("height", height);
+                SetAttribute("height", height);
 
             if (width > 0)
-                SetAtribute("width", width);
+                SetAttribute("width", width);
 
             if (ismap)
-                SetAtribute("ismap", null);
+                SetAttribute("ismap", null);
 
             if (!string.IsNullOrEmpty(usemap))
-                SetAtribute("usemap", usemap);
+                SetAttribute("usemap", usemap);
 
             return base.GetHTML(deep);
         }

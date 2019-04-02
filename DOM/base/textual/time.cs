@@ -21,7 +21,7 @@ namespace HtmlGenerator.DOM
         public override string GetHTML(int deep = 0)
         {
             if (datetime > DateTime.MinValue)
-                SetAtribute("datetime", datetime.ToString("yyyy-MM-dd HH:mm:ss"));
+                SetAttribute("datetime", datetime.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return base.GetHTML(deep);
         }

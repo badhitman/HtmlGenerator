@@ -18,7 +18,7 @@ namespace HtmlGenerator.DOM.forms
         {
             inline = true;
             InnerText = i_text;
-            SetAtribute("for", i_for);
+            SetAttribute("for", i_for);
         }
     }
 }

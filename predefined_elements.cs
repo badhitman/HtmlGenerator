@@ -24,10 +24,10 @@ namespace HtmlGenerator
             WriteSelectDom(ref ret_select.Childs, ListItems.ListItems, selected_option_values, groups_only, groups_clickable);
 
             if (required)
-                ret_select.SetAtribute("required", null);
+                ret_select.SetAttribute("required", null);
 
             if (input_readonly)
-                ret_select.CustomAtributes.Add("readonly", null);
+                ret_select.CustomAttributes.Add("readonly", null);
 
             return ret_select;
         }
@@ -71,7 +71,7 @@ namespace HtmlGenerator
                 WriteSelectDom(ref option_dom.Childs, o_item.Childs, selected_option_values, groups_only, groups_clickable);
 
                 if (!string.IsNullOrEmpty(o_item.Tag))
-                    option_dom.SetAtribute("tag", o_item.Tag);
+                    option_dom.SetAttribute("tag", o_item.Tag);
 
                 ret_options.Add(option_dom);
             }
@@ -99,7 +99,7 @@ namespace HtmlGenerator
                     li_item.css_class += " disabled";
 
                 if (!string.IsNullOrEmpty(o_item.Tag))
-                    li_item.SetAtribute("tag", o_item.Tag);
+                    li_item.SetAttribute("tag", o_item.Tag);
 
                 if (!string.IsNullOrEmpty(o_item.Tooltip))
                     li_item.title = o_item.Tooltip;

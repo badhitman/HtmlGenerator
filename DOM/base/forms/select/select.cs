@@ -61,19 +61,19 @@ namespace HtmlGenerator.DOM.collections
         public override string GetHTML(int deep = 0)
         {
             if (autofocus)
-                SetAtribute("autofocus", null);
+                SetAttribute("autofocus", null);
 
             if (disabled)
-                SetAtribute("disabled", null);
+                SetAttribute("disabled", null);
 
             if (multiple)
-                SetAtribute("multiple", null);
+                SetAttribute("multiple", null);
 
             if (required)
-                SetAtribute("required", null);
+                SetAttribute("required", null);
 
             if (size > 0)
-                SetAtribute("size", size);
+                SetAttribute("size", size);
 
             return base.GetHTML(deep);
         }

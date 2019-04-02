@@ -29,7 +29,7 @@ namespace HtmlGenerator.DOM.details
                 Childs.Insert(0, Summary);
 
             if (open)
-                SetAtribute("open", null);
+                SetAttribute("open", null);
 
             return base.GetHTML(deep);
         }

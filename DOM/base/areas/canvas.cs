@@ -24,10 +24,10 @@ namespace HtmlGenerator.DOM
         public override string GetHTML(int deep = 0)
         {
             if (height > 0)
-                SetAtribute("height", height);
+                SetAttribute("height", height);
 
             if (width > 0)
-                SetAtribute("width", width);
+                SetAttribute("width", width);
 
             return base.GetHTML(deep);
         }

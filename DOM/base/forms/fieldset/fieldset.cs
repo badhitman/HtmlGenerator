@@ -41,10 +41,10 @@ namespace HtmlGenerator.DOM.fieldset
         public override string GetHTML(int deep = 0)
         {
             if (!string.IsNullOrEmpty(form))
-                SetAtribute("form", form);
+                SetAttribute("form", form);
 
             if(disabled)
-                SetAtribute("disabled", null);
+                SetAttribute("disabled", null);
 
             if (!string.IsNullOrEmpty(legend_text))
                 Childs.Insert(0, new legend(legend_text));

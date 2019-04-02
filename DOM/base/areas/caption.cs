@@ -22,7 +22,7 @@ namespace HtmlGenerator.DOM
         {
             List<AlignmentEnum?> AllowedAligned = new List<AlignmentEnum?>() { AlignmentEnum.left, AlignmentEnum.right, AlignmentEnum.bottom, AlignmentEnum.top };
             if (AllowedAligned.Contains(align))
-                SetAtribute("align", align?.ToString("g"));
+                SetAttribute("align", align?.ToString("g"));
 
             return base.GetHTML(deep);
         }
