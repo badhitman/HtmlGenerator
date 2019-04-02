@@ -49,3 +49,4 @@ string test_s = my_text_input.GetHTML();
 	<small id="exampleInputEmail1Help" class="form-text text-muted">We'll never share your email with anyone else.</small>
 </div>
 ```
+*Тут C# кода как-буд-то больше чем HTML кода на выходе, но это от подробных настроек Input-a*
