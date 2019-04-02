@@ -53,7 +53,8 @@ namespace HtmlGenerator.bootstrap
                 Childs.Add(button_close);
             }
 
-            InnerText = Message;
+            Childs.Add(new text(Message));
+            
             return base.GetHTML(deep);
         }
     }
