@@ -10,6 +10,7 @@ namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Указывает местоположение текущей страницы в навигационной иерархии, которая автоматически добавляет разделители через CSS.
+    /// https://getbootstrap.com/docs/4.3/components/breadcrumb/
     /// </summary>
     public class Breadcrumbs : nav
     {

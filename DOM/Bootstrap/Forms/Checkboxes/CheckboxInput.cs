@@ -61,14 +61,14 @@ namespace HtmlGenerator.DOM.Bootstrap.Forms
             //
             script my_script = new script();
             my_script.Childs.Add(new text("jQuery(document).ready(function () {"));
-            my_script.Childs.Add(new text("\tjQuery('#" + Input.Id_DOM + "').change(function () {"));
-            my_script.Childs.Add(new text("\t\tif (jQuery(this).prop('checked')) {"));
-            my_script.Childs.Add(new text("\t\t\tjQuery('input[name=" + Input.Id_DOM + "').val('on');"));
-            my_script.Childs.Add(new text("\t\t}"));
-            my_script.Childs.Add(new text("\t\telse {"));
-            my_script.Childs.Add(new text("\t\t\tjQuery('input[name=" + Input.Id_DOM + "').val('off');"));
-            my_script.Childs.Add(new text("\t\t}"));
-            my_script.Childs.Add(new text("\t});"));
+            my_script.Childs.Add(new text("  jQuery('#" + Input.Id_DOM + "').change(function () {"));
+            my_script.Childs.Add(new text("    if (jQuery(this).prop('checked')) {"));
+            my_script.Childs.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('on');"));
+            my_script.Childs.Add(new text("    }"));
+            my_script.Childs.Add(new text("    else {"));
+            my_script.Childs.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('off');"));
+            my_script.Childs.Add(new text("    }"));
+            my_script.Childs.Add(new text("  });"));
             my_script.Childs.Add(new text("});"));
             Childs.Add(my_script);
             ///////////////////////////////////////////////

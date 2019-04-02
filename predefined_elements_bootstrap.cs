@@ -63,8 +63,6 @@ namespace HtmlGenerator
             return Get_DIV_Bootstrap_Card(card_head, new List<base_dom_root>() { body_element }, css_card);
         }
 
-
-
         public static div GetTextarea(string label_text, string value_input, string name_input, string placeholder, bool input_readonly = false, int rows = 2, bool required = false)
         {
             div returned_input = new div() { css_class = "form-group" };
@@ -83,17 +81,6 @@ namespace HtmlGenerator
             returned_input.Childs.Add(ret_textarea);
 
             return returned_input;
-        }
-
-        public static div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)
-        {
-            div valid_element = new div() { css_class = "valid-tooltip", InnerText = valid_text, Id_DOM = "valid-tooltip-" + validation_input_id };
-            div invalid_element = new div() { css_class = "invalid-tooltip", InnerText = invalid_text, Id_DOM = "invalid-tooltip-" + validation_input_id };
-            // 
-            if (!string.IsNullOrEmpty(valid_text))
-                return new div[] { valid_element, invalid_element };
-            else
-                return new div[] { invalid_element };
         }
 
         /// <summary>
