@@ -12,7 +12,7 @@ namespace HtmlGenerator.DOM.Bootstrap
     /// Если вы знакомы с Bootstrap 3, карточки заменяют наши старые панели, колодцы и эскизы.
     /// Аналогичная функциональность этих компонентов доступна в качестве классов модификаторов для карточек.
     /// </summary>
-    public class Card : bootstrap_dom_root
+    public class Card : base_dom_root
     {
         /// <summary>
         /// Дополнительный CSS класс для карточки
@@ -49,7 +49,7 @@ namespace HtmlGenerator.DOM.Bootstrap
         /// </summary>
         public List<base_dom_root> CardFooter = new List<base_dom_root>();
 
-        public Card() => set_custom_name_tag = typeof(div).Name;
+        public Card() => tag_custom_name = typeof(div).Name;
 
         public override string GetHTML(int deep = 0)
         {

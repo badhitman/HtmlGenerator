@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.text;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.DOM.set.bootstrap_enum;
 
 namespace HtmlGenerator.bootstrap
@@ -25,7 +25,7 @@ namespace HtmlGenerator.bootstrap
 
         public WebNotification(VisualBootstrapStylesEnum status_style, string text_msg)
         {
-            set_custom_name_tag = typeof(div).Name;
+            tag_custom_name = typeof(div).Name;
             CurrStatus = status_style;
             Message = text_msg;
         }

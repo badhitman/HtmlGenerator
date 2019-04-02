@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.text;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
 
 namespace HtmlGenerator.DOM.Bootstrap
@@ -10,7 +10,7 @@ namespace HtmlGenerator.DOM.Bootstrap
     /// <summary>
     /// Базовый [Input] в [div] обёртке. [Label] сверху над [Input]-ом и текст описания [InputInfoFooter] под [Input]-ом
     /// </summary>
-    public class BaseTextInput : bootstrap_dom_root
+    public class BaseTextInput : forms_dom_root
     {
         /// <summary>
         /// Текстова метка для Input-а
@@ -31,7 +31,7 @@ namespace HtmlGenerator.DOM.Bootstrap
 
         public BaseTextInput(string Label, string InputID)
         {
-            set_custom_name_tag = typeof(div).Name;
+            tag_custom_name = typeof(div).Name;
             if (!string.IsNullOrEmpty(Label))
                 LabelInput = new label(Label, InputID);
 

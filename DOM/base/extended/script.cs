@@ -20,7 +20,7 @@ namespace HtmlGenerator.DOM.extended
         /// <summary>
         ///  Атрибут [defer] откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. 
         /// </summary>
-        public bool defer = true;
+        public bool defer = false;
         public string src;
         public MimeTypes mimeType = MimeTypes.JavaScript;
 

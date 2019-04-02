@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.collections;
+using HtmlGenerator.DOM.textual;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
@@ -24,7 +25,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// Меняем имя тега на nav
         /// </summary>
-        public Breadcrumbs() => set_custom_name_tag = typeof(nav).Name;
+        public Breadcrumbs() => tag_custom_name = typeof(nav).Name;
 
         public override string GetHTML(int deep = 0)
         {

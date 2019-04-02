@@ -4,7 +4,7 @@
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.forms;
 using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.text;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
@@ -60,7 +60,7 @@ namespace HtmlGenerator.bootstrap
         /// <summary>
         /// Меняем имя тега на div
         /// </summary>
-        public ModalDialog() => set_custom_name_tag = typeof(div).Name;
+        public ModalDialog() => tag_custom_name = typeof(div).Name;
 
         /// <summary>
         /// При вызове этого метода поле Childs очищается и заново заполняется
@@ -121,7 +121,7 @@ namespace HtmlGenerator.bootstrap
             CustomAtributes.Add("aria-hidden", "true");
 
             Childs.Add(modal_dialog_document);
-            prew_block_coment = "Modal dialog";
+            before_coment_block = "Modal dialog";
 
             return base.GetHTML(deep);
         }

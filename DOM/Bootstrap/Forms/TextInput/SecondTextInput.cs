@@ -10,14 +10,14 @@ namespace HtmlGenerator.DOM.Bootstrap.TextInput
     /// Миниминизированый [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.
     /// К тому же тут Label прилеплен слева к [Input] образуя единый горизонтльный блок
     /// </summary>
-    public class SecondTextInput : bootstrap_dom_root
+    public class SecondTextInput : forms_dom_root
     {
         public string LabelText;
         public input Input = new input() { type = InputTypesEnum.text, css_class = "form-control" };
 
         public SecondTextInput(string Label, string InputID)
         {
-            set_custom_name_tag = typeof(div).Name;
+            tag_custom_name = typeof(div).Name;
             LabelText = Label;
 
             Input.Name_DOM = InputID;

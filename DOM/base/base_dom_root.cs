@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM.text;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
@@ -12,10 +12,17 @@ namespace HtmlGenerator
     public abstract class base_dom_root
     {
         /// <summary>
+        /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два коментария (непосредственно до и после DOM блока).
+        /// Если указать только начальный/верхний коментарий, то он же будет использоваться и в нижнем.
+        /// </summary>
+        public string before_coment_block = "";
+        public string after_coment_block = "";
+
+        /// <summary>
         /// Ручное указание имени/типа элемента/тэга
         /// По умолчанию имя/тип определяется по имени типа класса, но в случае необходимости его можно изменить на собственный
         /// </summary>
-        public string set_custom_name_tag = null;
+        public string tag_custom_name = null;
 
         /// <summary>
         /// Дочерние/вложеные элементы
@@ -75,13 +82,6 @@ namespace HtmlGenerator
         public string title = "";
 
         /// <summary>
-        /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два коментария (в самом начале и самом конце DOM блока).
-        /// Если указать только начальный/верхний коментарий, то он же будет использоваться и в нижнем.
-        /// </summary>
-        public string prew_block_coment = "";
-        public string post_block_coment = "";
-
-        /// <summary>
         /// Произвольный html текст внутри DOM блока/элемента
         /// </summary>
         public string InnerText = "";
@@ -106,17 +106,17 @@ namespace HtmlGenerator
         {
             /////////////////////////////////////////////
             // Вычещаем недопустимый текст из коментария  
-            prew_block_coment = prew_block_coment.Replace("<", "[").Replace(">", "]");
-            post_block_coment = post_block_coment.Replace("<", "[").Replace(">", "]");
+            before_coment_block = before_coment_block.Replace("<", "[").Replace(">", "]");
+            after_coment_block = after_coment_block.Replace("<", "[").Replace(">", "]");
 
             string ret_val = "";
 
-            if (!string.IsNullOrEmpty(prew_block_coment))
-                ret_val += GetTabPrefix("\t", deep) + "<!-- " + prew_block_coment + " -->";
+            if (!string.IsNullOrEmpty(before_coment_block))
+                ret_val += GetTabPrefix("\t", deep) + "<!-- " + before_coment_block + " -->";
 
             ret_val += GetTabPrefix("\t", deep);
             if (!(this is text))
-                ret_val += "<" + (string.IsNullOrEmpty(set_custom_name_tag) ? GetType().Name.ToLower() : set_custom_name_tag);
+                ret_val += "<" + (string.IsNullOrEmpty(tag_custom_name) ? GetType().Name.ToLower() : tag_custom_name);
 
             if (!string.IsNullOrEmpty(Id_DOM))
                 SetAtribute("id", Id_DOM);
@@ -166,14 +166,14 @@ namespace HtmlGenerator
                 ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
 
             if (need_end_tag && !(this is text))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(set_custom_name_tag) ? this.GetType().Name.ToLower() : set_custom_name_tag) + ">";
+                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? this.GetType().Name.ToLower() : tag_custom_name) + ">";
 
-            post_block_coment = post_block_coment.Replace("<", "[").Replace(">", "]");
+            after_coment_block = after_coment_block.Replace("<", "[").Replace(">", "]");
 
-            if (!string.IsNullOrEmpty(post_block_coment))
-                ret_val += GetTabPrefix("\t", deep) + "<!-- " + post_block_coment + " /-->";
-            else if (!string.IsNullOrEmpty(prew_block_coment))
-                ret_val += GetTabPrefix("\t", deep) + "<!-- " + prew_block_coment + " /-->";
+            if (!string.IsNullOrEmpty(after_coment_block))
+                ret_val += GetTabPrefix("\t", deep) + "<!-- " + after_coment_block + " /-->";
+            else if (!string.IsNullOrEmpty(before_coment_block))
+                ret_val += GetTabPrefix("\t", deep) + "<!-- " + before_coment_block + " /-->";
             return ret_val;
         }
 

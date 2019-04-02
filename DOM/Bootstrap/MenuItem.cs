@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.collections;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace HtmlGenerator.bootstrap
 
         public MenuItem(string in_text, string in_href, string in_tool_tip)
         {
-            set_custom_name_tag = typeof(li).Name;
+            tag_custom_name = typeof(li).Name;
             text_menu_item = in_text;
             href_menu_item = in_href;
             tool_tip = in_tool_tip;

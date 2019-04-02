@@ -6,8 +6,8 @@ using HtmlGenerator.DOM.Bootstrap;
 using HtmlGenerator.DOM.collections;
 using HtmlGenerator.DOM.forms;
 using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.table;
-using HtmlGenerator.DOM.text;
+using HtmlGenerator.DOM.tables;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
@@ -147,7 +147,7 @@ namespace HtmlGenerator
                 ret_button.SetAtribute("type", "button");
             else
             {
-                ret_button.set_custom_name_tag = "a";
+                ret_button.tag_custom_name = "a";
                 ret_button.SetAtribute("href", href);
                 ret_button.SetAtribute("role", "button");
                 ret_button.SetAtribute("aria-pressed", "true");
@@ -219,7 +219,7 @@ namespace HtmlGenerator
             ModalDialog.CustomAtributes.Add("aria-hidden", "true");
 
             ModalDialog.Childs.Add(modal_dialog_document);
-            ModalDialog.prew_block_coment = "Modal dialog";
+            ModalDialog.before_coment_block = "Modal dialog";
             return ModalDialog;
         }
 

@@ -4,7 +4,7 @@
 using HtmlGenerator.DOM;
 using HtmlGenerator.DOM.collections;
 using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.text;
+using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
@@ -130,7 +130,7 @@ namespace HtmlGenerator.bootstrap
 
             if (i < 0)
             {
-                a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
+                a_tag.tag_custom_name = typeof(span).Name.ToLower();
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
                 a_tag.InnerText = "⁞";
                 a_tag.href = string.Empty;
@@ -141,7 +141,7 @@ namespace HtmlGenerator.bootstrap
                 a_tag.InnerText = "<span  class='glyphicon glyphicon-chevron-left'></span>";
                 if (PageNum == 1)
                 {
-                    a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
+                    a_tag.tag_custom_name = typeof(span).Name.ToLower();
                     a_tag.href = string.Empty;
                     li_tag.css_class += " disabled";
                 }
@@ -152,7 +152,7 @@ namespace HtmlGenerator.bootstrap
             {
                 if (i == PageNum)
                 {
-                    a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
+                    a_tag.tag_custom_name = typeof(span).Name.ToLower();
                     li_tag.css_class += " active";
                     a_tag.href = string.Empty;
                 }
@@ -162,7 +162,7 @@ namespace HtmlGenerator.bootstrap
                 a_tag.InnerText = "<span class='glyphicon glyphicon-chevron-right'></span>";
                 if (PageNum == CountPages)
                 {
-                    a_tag.set_custom_name_tag = typeof(span).Name.ToLower();
+                    a_tag.tag_custom_name = typeof(span).Name.ToLower();
                     a_tag.href = string.Empty;
                     li_tag.css_class += " disabled";
                 }
@@ -179,8 +179,8 @@ namespace HtmlGenerator.bootstrap
         {
             Childs.Clear();
 
-            set_custom_name_tag = typeof(nav).Name;
-            prew_block_coment = "pagination";
+            tag_custom_name = typeof(nav).Name;
+            before_coment_block = "pagination";
             if (CountAllElements == 0)
                 goto end;
 
