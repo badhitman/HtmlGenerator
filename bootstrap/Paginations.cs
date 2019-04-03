@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
+using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.collections;
 using HtmlGenerator.html5.textual;
@@ -13,7 +14,7 @@ using System.Linq;
 
 namespace HtmlGenerator.bootstrap
 {
-    public class Paginations : nav
+    public class Paginations : safe_base_dom_root
     {
         public static List<DataTreeItem> GetListSizes
         {

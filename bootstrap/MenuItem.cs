@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
 {
-    public class MenuItem : li
+    public class MenuItem : safe_base_dom_root
     {
         /// <summary>
         /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.

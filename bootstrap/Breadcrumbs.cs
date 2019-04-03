@@ -13,7 +13,7 @@ namespace HtmlGenerator.bootstrap
     /// Указывает местоположение текущей страницы в навигационной иерархии, которая автоматически добавляет разделители через CSS.
     /// https://getbootstrap.com/docs/4.3/components/breadcrumb/
     /// </summary>
-    public class Breadcrumbs : nav
+    public class Breadcrumbs : safe_base_dom_root
     {
         public List<BreadcrumbItem> BreadcrumbsCol = new List<BreadcrumbItem>();
         public void AddBreadcrumb(string in_text, string in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItem() { text = in_text, href = in_href });

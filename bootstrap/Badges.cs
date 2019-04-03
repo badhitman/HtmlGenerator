@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-
+using HtmlGenerator.html5;
 using HtmlGenerator.html5.textual;
 using HtmlGenerator.set.bootstrap;
 
@@ -11,7 +11,7 @@ namespace HtmlGenerator.bootstrap
     /// Компонент Bootstrap для формирования небольшого значка
     /// https://getbootstrap.com/docs/4.3/components/badge/
     /// </summary>
-    public class Badge : span
+    public class Badge : safe_base_dom_root
     {
         public VisualBootstrapStylesEnum? StyleBadge = null;
 

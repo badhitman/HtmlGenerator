@@ -10,7 +10,7 @@ namespace HtmlGenerator.html5.tables
     /// Элемент [thead] предназначен для хранения одной или нескольких строк, которые представлены вверху таблицы. 
     /// Допустимо использовать не более одного элемента [thead] в пределах одной таблицы, и он должен идти в исходном коде сразу после тега [table].
     /// </summary>
-    public class thead : base_dom_root
+    public class thead : safe_base_dom_root
     {
         /// <summary>
         /// Колонки заголовочной части

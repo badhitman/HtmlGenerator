@@ -8,7 +8,7 @@ using HtmlGenerator.html5.areas;
 
 namespace HtmlGenerator.bootstrap.forms
 {
-    public class forms_dom_root : base_dom_root
+    public class forms_dom_root : safe_base_dom_root
     {
 
         public div[] GetValidationAlerts(string validation_input_id, string invalid_text = "Укажите значение", string valid_text = null)

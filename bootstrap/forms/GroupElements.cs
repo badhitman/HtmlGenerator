@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
+using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
 using HtmlGenerator.html5.textual;
@@ -14,7 +15,7 @@ namespace HtmlGenerator.bootstrap.forms
     /// <summary>
     /// Группировка кнопок вместе в единую линию
     /// </summary>
-    public class GroupElements : div
+    public class GroupElements : safe_base_dom_root
     {
         /// <summary>
         /// Группы и панели инструментов должны иметь явную метку, так как в противном случае большинство вспомогательных технологий не будут объявлять их, несмотря на наличие правильного атрибута роли.

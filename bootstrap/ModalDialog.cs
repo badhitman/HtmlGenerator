@@ -14,7 +14,7 @@ namespace HtmlGenerator.bootstrap
     /// <summary>
     /// Модальный диалог
     /// </summary>
-    public class ModalDialog : div
+    public class ModalDialog : safe_base_dom_root
     {
         /// <summary>
         /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот спсиок пере-заполняется.

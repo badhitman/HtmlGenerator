@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
+using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
 using HtmlGenerator.html5.textual;
@@ -11,7 +12,7 @@ namespace HtmlGenerator.bootstrap
     /// <summary>
     /// Класс Web/DOM уведомления для пользователя.
     /// </summary>
-    public class Alert : div
+    public class Alert : safe_base_dom_root
     {
         /// <summary>
         /// Стиль оформления уведомления

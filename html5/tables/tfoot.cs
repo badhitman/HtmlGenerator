@@ -11,7 +11,7 @@ namespace HtmlGenerator.html5.tables
     /// 
     /// В пределах таблицы разрешается использовать только один элемент [tfoot].
     /// </summary>
-    public class tfoot : base_dom_root
+    public class tfoot : safe_base_dom_root
     {
 
     }

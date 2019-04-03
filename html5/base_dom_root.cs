@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace HtmlGenerator.html5
 {
+    /// <summary>
+    /// Базовый HTML.DOM
+    /// </summary>
     public abstract class base_dom_root : IDisposable
     {
         /// <summary>
@@ -38,13 +41,11 @@ namespace HtmlGenerator.html5
         /// <summary>
         /// Прямое добавление дочернего/вложеного элемента.
         /// </summary>
-        /// <param name="child">Элемент для вложения</param>
         public virtual void Add(base_dom_root child) => Childs.Add(child);
 
         /// <summary>
         /// Пакетное добавление дочерних/вложеных элементов.
         /// </summary>
-        /// <param name="childs"></param>
         public virtual void AddRange(List<base_dom_root> childs) => Childs.AddRange(childs);
 
         /// <summary>

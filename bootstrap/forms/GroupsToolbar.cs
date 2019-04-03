@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
+using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.set.bootstrap;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace HtmlGenerator.bootstrap.forms
     /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.
     /// Используйте служебные классы по мере необходимости, чтобы выделить группы, кнопки и многое другое.
     /// </summary>
-    public class GroupsToolbar : div
+    public class GroupsToolbar : safe_base_dom_root
     {
         /// <summary>
         /// Группы и панели инструментов должны иметь явную метку, так как в противном случае большинство вспомогательных технологий не будут объявлять их, несмотря на наличие правильного атрибута роли.
