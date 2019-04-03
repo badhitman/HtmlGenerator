@@ -1,15 +1,15 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom;
-using HtmlGenerator.dom.Bootstrap;
-using HtmlGenerator.dom.Bootstrap.Forms;
-using HtmlGenerator.dom.collections;
-using HtmlGenerator.dom.forms;
-using HtmlGenerator.dom.set.bootstrap_enum;
-using HtmlGenerator.dom.tables;
-using HtmlGenerator.dom.textual;
-using HtmlGenerator.set;
+using HtmlGenerator.dom.bootstrap.forms;
+using HtmlGenerator.dom.html;
+using HtmlGenerator.dom.html.areas;
+using HtmlGenerator.dom.html.collections;
+using HtmlGenerator.dom.html.forms;
+using HtmlGenerator.dom.html.tables;
+using HtmlGenerator.dom.html.textual;
+using HtmlGenerator.dom.set;
+using HtmlGenerator.dom.set.bootstrap;
 using System.Collections.Generic;
 
 namespace HtmlGenerator

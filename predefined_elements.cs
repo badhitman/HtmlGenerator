@@ -1,9 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom;
-using HtmlGenerator.dom.collections;
-using HtmlGenerator.set.entities;
+using HtmlGenerator.dom.html;
+using HtmlGenerator.dom.html.collections;
+using HtmlGenerator.dom.html.forms;
+using HtmlGenerator.dom.set.entities;
 using System;
 using System.Collections.Generic;
 
