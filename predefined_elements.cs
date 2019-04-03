@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.DOM.collections;
-using HtmlGenerator.set;
+using HtmlGenerator.set.entities;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +19,7 @@ namespace HtmlGenerator
             if (selected_option_values is null)
             {
                 selected_option_values = new string[] { "0" };
-                ListItems.ListItems.Insert(0, new OptionItem() { Disabled = true, Tag = "элемент-заглушка", Title = "Выбор значения...", Tooltip = "Выберете значение", Value = "0" });
+                ListItems.ListItems.Insert(0, new DataTreeItem() { Disabled = true, Tag = "элемент-заглушка", Title = "Выбор значения...", Tooltip = "Выберете значение", Value = "0" });
             }
             WriteSelectDom(ref ret_select.Childs, ListItems.ListItems, selected_option_values, groups_only, groups_clickable);
 
@@ -31,7 +31,7 @@ namespace HtmlGenerator
 
             return ret_select;
         }
-        private static void WriteSelectDom(ref List<base_dom_root> ret_options, List<OptionItem> ListItems, string[] selected_option_values = null, bool groups_only = true, bool groups_clickable = true)
+        private static void WriteSelectDom(ref List<base_dom_root> ret_options, List<DataTreeItem> ListItems, string[] selected_option_values = null, bool groups_only = true, bool groups_clickable = true)
         {
             if (ListItems.Count == 0)
                 return;
@@ -41,7 +41,7 @@ namespace HtmlGenerator
 
             option.option_set option_set;
 
-            foreach (OptionItem o_item in ListItems)
+            foreach (DataTreeItem o_item in ListItems)
             {
                 if (groups_only && !o_item.IsGroup)
                     continue;
@@ -89,9 +89,9 @@ namespace HtmlGenerator
 
             return ret_ul;
         }
-        private static void WriteUl(ref List<base_dom_root> ret_options, List<OptionItem> ListItems, string li_class)
+        private static void WriteUl(ref List<base_dom_root> ret_options, List<DataTreeItem> ListItems, string li_class)
         {
-            foreach (OptionItem o_item in ListItems)
+            foreach (DataTreeItem o_item in ListItems)
             {
                 li li_item = new li() { InnerText = o_item.Title };
 

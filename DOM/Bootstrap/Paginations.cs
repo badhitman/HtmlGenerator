@@ -6,6 +6,7 @@ using HtmlGenerator.DOM.collections;
 using HtmlGenerator.DOM.set.bootstrap_enum;
 using HtmlGenerator.DOM.textual;
 using HtmlGenerator.set;
+using HtmlGenerator.set.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,16 @@ namespace HtmlGenerator.bootstrap
 {
     public class Paginations : nav
     {
-        public static List<OptionItem> GetListSizes
+        public static List<DataTreeItem> GetListSizes
         {
             get
             {
-                return new List<OptionItem>()
+                return new List<DataTreeItem>()
                 {
-                    new OptionItem() { Value = "10", Title = "10", Tooltip = "По 10 элементов на странице"},
-                    new OptionItem() { Value = "30", Title = "30", Tooltip = "По 30 элементов на странице" },
-                    new OptionItem() { Value = "50", Title = "50", Tooltip = "По 50 элементов на странице" },
-                    new OptionItem() { Value = "100", Title = "100", Tooltip = "По 100 элементов на странице" }
+                    new DataTreeItem() { Value = "10", Title = "10", Tooltip = "По 10 элементов на странице"},
+                    new DataTreeItem() { Value = "30", Title = "30", Tooltip = "По 30 элементов на странице" },
+                    new DataTreeItem() { Value = "50", Title = "50", Tooltip = "По 50 элементов на странице" },
+                    new DataTreeItem() { Value = "100", Title = "100", Tooltip = "По 100 элементов на странице" }
                 };
             }
         }

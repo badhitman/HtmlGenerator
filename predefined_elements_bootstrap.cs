@@ -141,14 +141,14 @@ namespace HtmlGenerator
 
             if (!string.IsNullOrEmpty(text_cansel_button))
             {
-                button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.Secondary);
+                button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.secondary);
                 button_close_modal_footer.SetAttribute("data-dismiss", "modal");
                 modal_footer.Childs.Add(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(text_ok_button))
             {
-                button button_send_modal_footer = GetButton(text_ok_button, null, "#", VisualBootstrapStylesEnum.Primary);
+                button button_send_modal_footer = GetButton(text_ok_button, null, "#", VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.Id_DOM = id_ok_button;
                 modal_footer.Childs.Add(button_send_modal_footer);
             }
@@ -248,7 +248,7 @@ namespace HtmlGenerator
                 sitekey.SetAttribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
             }
-            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, VisualBootstrapStylesEnum.Primary, SizingBootstrap.Lg, true));
+            html_response.Childs.Add(GetButton("Войти", button_send_login_form_id, null, VisualBootstrapStylesEnum.primary, SizingBootstrap.Lg, true));
 
             dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));
             return dom_elements;

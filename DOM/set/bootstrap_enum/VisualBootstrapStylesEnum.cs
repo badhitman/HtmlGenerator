@@ -12,41 +12,41 @@ namespace HtmlGenerator.DOM.set.bootstrap_enum
         /// <summary>
         /// Тёмное
         /// </summary>
-        Dark,
+        dark,
 
         /// <summary>
         /// Светлое
         /// </summary>
-        Light,
+        light,
 
         /// <summary>
         /// Первоочередное
         /// </summary>
-        Primary,
+        primary,
 
         /// <summary>
         /// Второстепенное
         /// </summary>
-        Secondary,
+        secondary,
 
         /// <summary>
         /// Информирование
         /// </summary>
-        Info,
+        info,
 
         /// <summary>
         /// Успешно
         /// </summary>
-        Success,
+        success,
 
         /// <summary>
         /// Внимание
         /// </summary>
-        Warning,
+        warning,
 
         /// <summary>
         /// Опасно
         /// </summary>
-        Danger
+        danger
     }
 }

@@ -3,10 +3,10 @@
 ////////////////////////////////////////////////
 using System.Collections.Generic;
 
-namespace HtmlGenerator.set
+namespace HtmlGenerator.set.entities
 {
     public class OptionList
     {
-        public List<OptionItem> ListItems = new List<OptionItem>();
+        public List<DataTreeItem> ListItems = new List<DataTreeItem>();
     }
 }
