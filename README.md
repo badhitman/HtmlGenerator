@@ -64,7 +64,7 @@ my_test_obj.Childs.Add(new Button("Middle", VisualBootstrapStylesEnum.secondary)
 my_test_obj.Childs.Add(new Button("Right", VisualBootstrapStylesEnum.secondary));
 string test_string = my_test_obj.GetHTML();
 ```
-Результат => HTML.Bootstrap:
+Результат => HTML.Bootstrap [demo](https://getbootstrap.com/docs/4.3/components/button-group/#basic-example):
 ```HTML
 <div role="group" aria-label="Basic example group" class="btn-group">
 	<button type="button" class="btn btn-secondary">Left</button>
