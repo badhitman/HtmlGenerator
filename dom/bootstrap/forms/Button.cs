@@ -37,7 +37,6 @@ namespace HtmlGenerator.dom.bootstrap.forms
         public Button(string text_button, VisualBootstrapStylesEnum style_button) : base(text_button)
         {
             StyleButton = style_button;
-
         }
 
         public override string GetHTML(int deep = 0)
@@ -59,7 +58,7 @@ namespace HtmlGenerator.dom.bootstrap.forms
                     }
                     break;
                 case TypesBootstrapButton.button:
-                    if(ToggleState)
+                    if (ToggleState)
                     {
                         SetAttribute("data-toggle", "button");
                         SetAttribute("aria-pressed", "false");
