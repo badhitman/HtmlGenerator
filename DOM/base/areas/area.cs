@@ -5,7 +5,7 @@
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM
+namespace HtmlGenerator.dom
 {
     /// <summary>
     ///  Каждый элемент [area] определяет активные области изображения, которые являются ссылками.

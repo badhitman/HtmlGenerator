@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.Bootstrap
+namespace HtmlGenerator.dom.Bootstrap
 {
     public class forms_dom_root : base_dom_root
     {

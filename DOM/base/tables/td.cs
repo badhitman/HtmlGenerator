@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.tables
+namespace HtmlGenerator.dom.tables
 {
     /// <summary>
     /// Предназначен для создания одной ячейки таблицы. Тег [td] должен размещаться внутри контейнера [tr],

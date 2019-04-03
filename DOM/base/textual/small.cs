@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.textual
+namespace HtmlGenerator.dom.textual
 {
     /// <summary>
     /// Тег [small] уменьшает размер шрифта на единицу по сравнению с обычным текстом. В HTML размер шрифта измеряется в условных единицах от 1 до 7,

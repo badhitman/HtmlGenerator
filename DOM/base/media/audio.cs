@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using System.Linq;
 
-namespace HtmlGenerator.DOM.media
+namespace HtmlGenerator.dom.media
 {
     /// <summary>
     /// Используется для загрузки аудиофайла вместе с загрузкой веб-страницы.

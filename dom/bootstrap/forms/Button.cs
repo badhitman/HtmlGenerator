@@ -2,8 +2,8 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom.set.bootstrap_enum;
-using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.set.bootstrap_enum;
+using HtmlGenerator.dom.forms;
+using HtmlGenerator.dom.set.bootstrap_enum;
 
 namespace HtmlGenerator.dom.bootstrap.forms
 {

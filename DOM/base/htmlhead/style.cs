@@ -5,7 +5,7 @@
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.head
+namespace HtmlGenerator.dom.head
 {
     /// <summary>
     ///  Тег [style] применяется для определения стилей элементов веб-страницы.

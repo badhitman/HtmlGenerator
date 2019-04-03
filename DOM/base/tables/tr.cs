@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.tables
+namespace HtmlGenerator.dom.tables
 {
     /// <summary>
     /// Тег [tr] служит контейнером для создания строки таблицы. Каждая ячейка в пределах такой строки может задаваться с помощью тега [th] или [td].

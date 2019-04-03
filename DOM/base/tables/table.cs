@@ -2,8 +2,14 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+/*
+     
+ */
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace HtmlGenerator.DOM.tables
+namespace HtmlGenerator.dom.tables
 {
     /// <summary>
     /// Элемент [table] служит контейнером для элементов, определяющих содержимое таблицы. Любая таблица состоит из строк и ячеек, 
@@ -23,6 +29,24 @@ namespace HtmlGenerator.DOM.tables
         /// Тело таблицы (без заголовочной части)
         /// </summary>
         public tbody Tbody { get; private set; } = new tbody();
+
+        /// <summary>
+        /// ЗАПРЕЩЕНО!
+        /// В данный объект нельзя {напрямую/вручную} добавлять вложеные [dom] объекты.
+        /// </summary>
+        public override void Add(base_dom_root child)
+        {
+            //base.Add(child);
+        }
+
+        /// <summary>
+        /// ЗАПРЕЩЕНО!
+        /// В данный объект нельзя {напрямую/вручную} добавлять вложеные [dom] объекты
+        /// </summary>
+        public override void AddRange(List<base_dom_root> childs)
+        {
+            //base.AddRange(childs);
+        }
 
         public override string GetHTML(int deep = 0)
         {

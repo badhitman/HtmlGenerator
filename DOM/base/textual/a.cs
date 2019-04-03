@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.DOM.textual
+namespace HtmlGenerator.dom.textual
 {
     /// <summary>
     ///  Элемент [a] (от англ. anchor — якорь) является одним из важных в HTML и предназначен для создания ссылок.

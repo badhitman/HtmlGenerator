@@ -1,9 +1,9 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.collections;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom;
+using HtmlGenerator.dom.collections;
+using HtmlGenerator.dom.textual;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.bootstrap
@@ -48,9 +48,9 @@ namespace HtmlGenerator.bootstrap
                     my_li.InnerText = bi.text;
                 }
                 else
-                    my_li.Childs.Add(new a() { href = bi.href, InnerText = bi.text });
+                    my_li.Add(new a() { href = bi.href, InnerText = bi.text });
 
-                my_ol.Childs.Add(my_li);
+                my_ol.Add(my_li);
             }
 
             end:

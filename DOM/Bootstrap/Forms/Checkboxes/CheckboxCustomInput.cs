@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.Bootstrap.Forms.Checkboxes
+namespace HtmlGenerator.dom.Bootstrap.Forms.Checkboxes
 {
     public class CheckboxCustomInput : CheckboxInput
     {

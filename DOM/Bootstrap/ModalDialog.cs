@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom;
+using HtmlGenerator.dom.forms;
+using HtmlGenerator.dom.set.bootstrap_enum;
+using HtmlGenerator.dom.textual;
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
@@ -75,12 +75,12 @@ namespace HtmlGenerator.bootstrap
             button button_close_modal_header = new button(null) { css_class = "close" };
             button_close_modal_header.SetAttribute("data-dismiss", "modal");
             button_close_modal_header.SetAttribute("aria-label", "Close");
-            button_close_modal_header.Childs.Add(span_close_modal_header);
+            button_close_modal_header.Add(span_close_modal_header);
             //
             h5 h5_modal_header = new h5(TitleDialog) { css_class = "modal-title" };
             div div_modal_header = new div() { css_class = "modal-header" };
-            div_modal_header.Childs.Add(h5_modal_header);
-            div_modal_header.Childs.Add(button_close_modal_header);
+            div_modal_header.Add(h5_modal_header);
+            div_modal_header.Add(button_close_modal_header);
             //
             div modal_footer = new div() { css_class = "modal-footer" };
 
@@ -88,7 +88,7 @@ namespace HtmlGenerator.bootstrap
             {
                 button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
                 button_close_modal_footer.SetAttribute("data-dismiss", "modal");
-                modal_footer.Childs.Add(button_close_modal_footer);
+                modal_footer.Add(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(TextOkButton))
@@ -96,23 +96,23 @@ namespace HtmlGenerator.bootstrap
                 button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.TypeButton = TypesButton.submit;
                 button_send_modal_footer.css_class += " " + CssOkButton;
-                modal_footer.Childs.Add(button_send_modal_footer);
+                modal_footer.Add(button_send_modal_footer);
             }
             //
             div modal_content = new div() { css_class = "modal-content" };
-            modal_content.Childs.Add(div_modal_header);
+            modal_content.Add(div_modal_header);
             //
             div modal_body = new div() { css_class = "modal-body" };
-            modal_body.Childs.AddRange(BodyElements);
-            modal_content.Childs.Add(modal_body);
+            modal_body.AddRange(BodyElements);
+            modal_content.Add(modal_body);
             //
-            modal_content.Childs.Add(modal_footer);
+            modal_content.Add(modal_footer);
             form my_form = new form() { EncType = EncTypesEnum.WwwFormUrlEncoded, method_form = MethodsFormEnum.POST, target = FormTarget, form_action = FormAction };
-            my_form.Childs.Add(modal_content);
+            my_form.Add(modal_content);
             //
             div modal_dialog_document = new div() { css_class = "modal-dialog" };
             modal_dialog_document.CustomAttributes.Add("role", "document");
-            modal_dialog_document.Childs.Add(my_form);
+            modal_dialog_document.Add(my_form);
             //
             this.css_class = "modal fade";
             CustomAttributes.Add("tabindex", "-1");

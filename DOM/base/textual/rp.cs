@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.textual
+namespace HtmlGenerator.dom.textual
 {
     /// <summary>
     /// Используется для вывода текста в браузерах, которые не поддерживают тег [ruby].

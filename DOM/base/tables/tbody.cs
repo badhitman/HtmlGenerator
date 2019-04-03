@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.tables
+namespace HtmlGenerator.dom.tables
 {
     /// <summary>
     /// Элемент [tbody] предназначен для хранения одной или нескольких строк таблицы. Это позволяет создавать структурные блоки, 

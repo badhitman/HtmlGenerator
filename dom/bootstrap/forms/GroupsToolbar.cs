@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom.set.bootstrap_enum;
-using HtmlGenerator.DOM;
+using HtmlGenerator.dom;
 using System.Collections.Generic;
 
 namespace HtmlGenerator.dom.bootstrap.forms.buttons

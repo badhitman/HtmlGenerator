@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.tables
+namespace HtmlGenerator.dom.tables
 {
     /// <summary>
     /// Элемент [thead] предназначен для хранения одной или нескольких строк, которые представлены вверху таблицы. 

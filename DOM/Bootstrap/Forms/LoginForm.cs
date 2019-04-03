@@ -2,10 +2,10 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-using HtmlGenerator.DOM.forms;
+using HtmlGenerator.dom.forms;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.DOM.Bootstrap
+namespace HtmlGenerator.dom.Bootstrap
 {
     public class LoginForm : Card
     {

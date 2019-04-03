@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.set.bootstrap_enum
+namespace HtmlGenerator.dom.set.bootstrap_enum
 {
     public enum SizingBootstrap
     {

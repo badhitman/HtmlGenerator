@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.textual
+namespace HtmlGenerator.dom.textual
 {
     /// <summary>
     /// Тег [ruby] предназначен для добавления небольшой аннотации сверху или снизу от заданного текста.

@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.Bootstrap
+namespace HtmlGenerator.dom.Bootstrap
 {
     /// <summary>
     /// Карточки Bootstrap - предоставляют собой гибкий и расширяемый контейнер контента в различных вариантамах и с разными опциями.
@@ -58,10 +58,18 @@ namespace HtmlGenerator.DOM.Bootstrap
             if (!string.IsNullOrEmpty(CardHeader))
                 Childs.Add(new div() { css_class = ("card-header " + adding_header_css_class).Trim(), InnerText = CardHeader });
 
-            Childs.Add(new div() { css_class = ("card-body " + adding_body_css_class).Trim(), Childs = CardBody });
+            using (div card_body = new div() { css_class = ("card-body " + adding_body_css_class).Trim() })
+            {
+                card_body.AddRange(CardBody);
+                Childs.Add(card_body);
+            }
 
-            if (CardFooter.Count > 0)
-                Childs.Add(new div() { css_class = ("card-footer " + adding_footer_css_class).Trim(), Childs = CardFooter });
+            using (div card_footer = new div() { css_class = ("card-footer " + adding_footer_css_class).Trim() })
+            {
+                card_footer.AddRange(CardFooter);
+                if (CardFooter.Count > 0)
+                    Childs.Add(card_footer);
+            }
 
             return base.GetHTML(deep);
         }

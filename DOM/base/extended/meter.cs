@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM
+namespace HtmlGenerator.dom
 {
     /// <summary>
     /// Используется для вывода значения в некотором известном диапазоне.

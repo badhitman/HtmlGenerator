@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.forms
+namespace HtmlGenerator.dom.forms
 {
     /// <summary>
     ///  Поле [textarea] представляет собой элемент формы для создания области, в которую можно вводить несколько строк текста.

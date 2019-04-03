@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.DOM.collections
+namespace HtmlGenerator.dom.collections
 {
 
     /// <summary>

@@ -2,10 +2,10 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 using HtmlGenerator.dom.set.entities;
-using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom;
+using HtmlGenerator.dom.forms;
+using HtmlGenerator.dom.set.bootstrap_enum;
+using HtmlGenerator.dom.textual;
 using System;
 using System.Collections.Generic;
 
@@ -59,7 +59,7 @@ namespace HtmlGenerator.dom.bootstrap.forms.buttons
 
             div dropdown_node = new div() { css_class = "dropdown-menu" };
             dropdown_node.SetAttribute("aria-labelledby", id_node);
-            nesting.ForEach(x=> dropdown_node.Childs.Add(new a() { css_class = "dropdown-item", href = x.Value, InnerText = x.Title }));
+            nesting.ForEach(x=> dropdown_node.Add(new a() { css_class = "dropdown-item", href = x.Value, InnerText = x.Title }));
             
             Childs.Add(nested_group);
         }

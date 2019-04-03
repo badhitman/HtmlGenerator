@@ -1,14 +1,14 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.Bootstrap;
-using HtmlGenerator.DOM.Bootstrap.Forms;
-using HtmlGenerator.DOM.collections;
-using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.tables;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom;
+using HtmlGenerator.dom.Bootstrap;
+using HtmlGenerator.dom.Bootstrap.Forms;
+using HtmlGenerator.dom.collections;
+using HtmlGenerator.dom.forms;
+using HtmlGenerator.dom.set.bootstrap_enum;
+using HtmlGenerator.dom.tables;
+using HtmlGenerator.dom.textual;
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
@@ -22,8 +22,8 @@ namespace HtmlGenerator
 
             if (!string.IsNullOrEmpty(label))
             {
-                ret_dom.Childs.Add(new div { css_class = "input-group-prepend" });
-                ret_dom.Childs[0].Childs.Add(new label(label, select_body.Id_DOM) { css_class = "input-group-text" });
+                ret_dom.Add(new div { css_class = "input-group-prepend" });
+                //ret_dom.Childs[0].Childs.Add(new label(label, select_body.Id_DOM) { css_class = "input-group-text" });
             }
             select_body.css_class = (select_body.css_class.Trim() + " custom-select").Trim();
 
@@ -31,7 +31,7 @@ namespace HtmlGenerator
                 ret_dom.title = Tooltip;
 
             ret_dom.SetAttribute("data-toggle", "tooltip");
-            ret_dom.Childs.Add(select_body);
+            ret_dom.Add(select_body);
             return ret_dom;
         }
 
@@ -48,12 +48,12 @@ namespace HtmlGenerator
 
             div card_body = new div() { css_class = "card-body" };
             foreach (div he in body_elements)
-                card_body.Childs.Add(he);
+                card_body.Add(he);
 
             div card_set = new div() { css_class = ("card " + css_card).Trim() };
 
-            card_set.Childs.Add(card_header);
-            card_set.Childs.Add(card_body);
+            card_set.Add(card_header);
+            card_set.Add(card_body);
 
             return card_set;
         }
@@ -63,7 +63,7 @@ namespace HtmlGenerator
         {
             div returned_input = new div() { css_class = "form-group" };
             if (!string.IsNullOrEmpty(label_text))
-                returned_input.Childs.Add(new label(label_text, name_input));
+                returned_input.Add(new label(label_text, name_input));
 
             textarea ret_textarea = new textarea() { css_class = "form-control", InnerText = value_input, required = required, @readonly = input_readonly };
             if (rows > 0)
@@ -74,7 +74,7 @@ namespace HtmlGenerator
 
             ret_textarea.Name_DOM = name_input;
 
-            returned_input.Childs.Add(ret_textarea);
+            returned_input.Add(ret_textarea);
 
             return returned_input;
         }
@@ -130,12 +130,12 @@ namespace HtmlGenerator
             button button_close_modal_header = new button(null) { css_class = "close" };
             button_close_modal_header.SetAttribute("data-dismiss", "modal");
             button_close_modal_header.SetAttribute("aria-label", "Close");
-            button_close_modal_header.Childs.Add(span_close_modal_header);
+            button_close_modal_header.Add(span_close_modal_header);
             //
             h5 h5_modal_header = new h5(title) { css_class = "modal-title" };
             div div_modal_header = new div() { css_class = "modal-header" };
-            div_modal_header.Childs.Add(h5_modal_header);
-            div_modal_header.Childs.Add(button_close_modal_header);
+            div_modal_header.Add(h5_modal_header);
+            div_modal_header.Add(button_close_modal_header);
             //
             div modal_footer = new div() { css_class = "modal-footer" };
 
@@ -143,30 +143,30 @@ namespace HtmlGenerator
             {
                 button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.secondary);
                 button_close_modal_footer.SetAttribute("data-dismiss", "modal");
-                modal_footer.Childs.Add(button_close_modal_footer);
+                modal_footer.Add(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(text_ok_button))
             {
                 button button_send_modal_footer = GetButton(text_ok_button, null, "#", VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.Id_DOM = id_ok_button;
-                modal_footer.Childs.Add(button_send_modal_footer);
+                modal_footer.Add(button_send_modal_footer);
             }
             //
             div modal_content = new div() { css_class = "modal-content" };
-            modal_content.Childs.Add(div_modal_header);
+            modal_content.Add(div_modal_header);
             //
             div modal_body = new div() { css_class = "modal-body" };
-            modal_body.Childs.Add(body_html);
-            modal_content.Childs.Add(modal_body);
+            modal_body.Add(body_html);
+            modal_content.Add(modal_body);
             //
-            modal_content.Childs.Add(modal_footer);
+            modal_content.Add(modal_footer);
             //
             div modal_dialog_document = new div() { css_class = "modal-dialog" };
 
 
             modal_dialog_document.CustomAttributes.Add("role", "document");
-            modal_dialog_document.Childs.Add(modal_content);
+            modal_dialog_document.Add(modal_content);
             //
             div ModalDialog = new div() { css_class = "modal fade", Id_DOM = id_modal_dialog };
 
@@ -175,7 +175,7 @@ namespace HtmlGenerator
             ModalDialog.CustomAttributes.Add("aria-labelledby", id_modal_dialog);
             ModalDialog.CustomAttributes.Add("aria-hidden", "true");
 
-            ModalDialog.Childs.Add(modal_dialog_document);
+            ModalDialog.Add(modal_dialog_document);
             ModalDialog.before_coment_block = "Modal dialog";
             return ModalDialog;
         }
@@ -214,18 +214,18 @@ namespace HtmlGenerator
             BaseTextInput textInput = new BaseTextInput("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
             textInput.Input.placeholder = "Логин";
             textInput.Input.required = true;
-            html_response.Childs.Add(textInput);
+            html_response.Add(textInput);
 
             textInput = new BaseTextInput("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Пароль";
-            html_response.Childs.Add(textInput);
+            html_response.Add(textInput);
 
             textInput = new BaseTextInput("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Повтор";
             textInput.css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
-            html_response.Childs.Add(textInput);
+            html_response.Add(textInput);
 
 
 

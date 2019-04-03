@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.collections;
-using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom;
+using HtmlGenerator.dom.collections;
+using HtmlGenerator.dom.set.bootstrap_enum;
+using HtmlGenerator.dom.textual;
 using HtmlGenerator.set;
 using HtmlGenerator.set.entities;
 using System;

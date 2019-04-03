@@ -1,12 +1,12 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM.extended;
-using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom.extended;
+using HtmlGenerator.dom.forms;
+using HtmlGenerator.dom.textual;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.DOM.Bootstrap.Forms
+namespace HtmlGenerator.dom.Bootstrap.Forms
 {
     /// <summary>
     /// Стандартный Checkbox в одну горизонтальную строку. Label - справа
@@ -60,16 +60,16 @@ namespace HtmlGenerator.DOM.Bootstrap.Forms
             Childs.Add(new input() { type = InputTypesEnum.hidden, value = Input.@checked ? "on" : "off", Name_DOM = Id_DOM });
             //
             script my_script = new script();
-            my_script.Childs.Add(new text("jQuery(document).ready(function () {"));
-            my_script.Childs.Add(new text("  jQuery('#" + Input.Id_DOM + "').change(function () {"));
-            my_script.Childs.Add(new text("    if (jQuery(this).prop('checked')) {"));
-            my_script.Childs.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('on');"));
-            my_script.Childs.Add(new text("    }"));
-            my_script.Childs.Add(new text("    else {"));
-            my_script.Childs.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('off');"));
-            my_script.Childs.Add(new text("    }"));
-            my_script.Childs.Add(new text("  });"));
-            my_script.Childs.Add(new text("});"));
+            my_script.Add(new text("jQuery(document).ready(function () {"));
+            my_script.Add(new text("  jQuery('#" + Input.Id_DOM + "').change(function () {"));
+            my_script.Add(new text("    if (jQuery(this).prop('checked')) {"));
+            my_script.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('on');"));
+            my_script.Add(new text("    }"));
+            my_script.Add(new text("    else {"));
+            my_script.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('off');"));
+            my_script.Add(new text("    }"));
+            my_script.Add(new text("  });"));
+            my_script.Add(new text("});"));
             Childs.Add(my_script);
             ///////////////////////////////////////////////
             ///

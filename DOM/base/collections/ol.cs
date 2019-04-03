@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.collections
+namespace HtmlGenerator.dom.collections
 {
     public class ol : base_dom_root
     {

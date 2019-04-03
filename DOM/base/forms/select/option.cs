@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.collections
+namespace HtmlGenerator.dom
 {
     /// <summary>
     /// Тег [option] определяет отдельные пункты списка, создаваемого с помощью контейнера [select].

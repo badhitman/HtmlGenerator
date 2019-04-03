@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.details
+namespace HtmlGenerator.dom.details
 {
     /// <summary>
     /// Указывает заголовок для [details], по которому можно щёлкать для разворачивания/сворачивания информации. Элемент [summary] должен идти первым внутри [details].

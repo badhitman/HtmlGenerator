@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HtmlGenerator.DOM.collections
+namespace HtmlGenerator.dom.collections
 {
     /// <summary>
     /// Создает список вариантов, которые можно выбирать при наборе в текстовом поле.

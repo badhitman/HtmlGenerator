@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.extended
+namespace HtmlGenerator.dom.extended
 {
     /// <summary>
     ///  Тег [script] предназначен для описания скриптов, может содержать ссылку на программу или ее текст на определенном языке.

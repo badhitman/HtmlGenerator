@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom.textual;
 using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace HtmlGenerator
 {
-    public abstract class base_dom_root
+    public abstract class base_dom_root : IDisposable
     {
         /// <summary>
         /// Символ(ы) табуляции/оступа.
@@ -33,7 +33,19 @@ namespace HtmlGenerator
         /// <summary>
         /// Дочерние/вложеные элементы
         /// </summary>
-        public List<base_dom_root> Childs = new List<base_dom_root>();
+        protected internal List<base_dom_root> Childs = new List<base_dom_root>();
+
+        /// <summary>
+        /// Прямое добавление дочернего/вложеного элемента.
+        /// </summary>
+        /// <param name="child">Элемент для вложения</param>
+        public virtual void Add(base_dom_root child) => Childs.Add(child);
+
+        /// <summary>
+        /// Пакетное добавление дочерних/вложеных элементов.
+        /// </summary>
+        /// <param name="childs"></param>
+        public virtual void AddRange(List<base_dom_root> childs) => Childs.AddRange(childs);
 
         /// <summary>
         /// Пользовательские атрибуты текущего HTML элемента
@@ -295,5 +307,21 @@ namespace HtmlGenerator
                     return "application/x-www-form-urlencoded";
             }
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // Для определения избыточных вызовов
+
+        public void Dispose()
+        {
+            if (!disposedValue)
+            {
+                Childs = null;
+                CustomAttributes = null;
+                disposedValue = true;
+            }
+            // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

@@ -2,9 +2,10 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using HtmlGenerator.dom.collections;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.collections
+namespace HtmlGenerator.dom
 {
     /// <summary>
     /// Тег [select] позволяет создать элемент интерфейса в виде раскрывающегося списка, а также список с одним или множественным выбором.
@@ -74,6 +75,9 @@ namespace HtmlGenerator.DOM.collections
 
             if (size > 0)
                 SetAttribute("size", size);
+
+            Childs.Clear();
+            Childs.AddRange(Options);
 
             return base.GetHTML(deep);
         }

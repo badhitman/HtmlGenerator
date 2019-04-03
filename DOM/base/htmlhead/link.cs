@@ -5,7 +5,7 @@
 using HtmlGenerator.set;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.DOM.head
+namespace HtmlGenerator.dom.head
 {
     /// <summary>
     ///  Устанавливает связь с внешним документом вроде файла со стилями или со шрифтами. В отличие от тега [a], тег [link] размещается всегда внутри

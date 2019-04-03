@@ -3,7 +3,7 @@
 // Описание позаимствовано с сайтов http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.DOM.extended
+namespace HtmlGenerator.dom.extended
 {
     /// <summary>
     /// Тег [param] предназначен для передачи значений параметров Java-апплетам или объектам веб-страницы, созданным с помощью тегов [applet] или [object].

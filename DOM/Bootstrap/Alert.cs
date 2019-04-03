@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM;
-using HtmlGenerator.DOM.forms;
-using HtmlGenerator.DOM.textual;
-using HtmlGenerator.DOM.set.bootstrap_enum;
+using HtmlGenerator.dom;
+using HtmlGenerator.dom.forms;
+using HtmlGenerator.dom.textual;
+using HtmlGenerator.dom.set.bootstrap_enum;
 
 namespace HtmlGenerator.bootstrap
 {
@@ -49,7 +49,7 @@ namespace HtmlGenerator.bootstrap
                 button_close.SetAttribute("aria-label", "Close");
                 span my_span = new span() { InnerText = "&times;" };
                 my_span.SetAttribute("aria-hidden", "true");
-                button_close.Childs.Add(my_span);
+                button_close.Add(my_span);
                 Childs.Add(button_close);
             }
 

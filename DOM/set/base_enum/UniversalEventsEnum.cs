@@ -6,7 +6,7 @@
 namespace HtmlGenerator.set
 {
     /// <summary>
-    /// События HTML.DOM
+    /// События HTML.dom
     /// </summary>
     public enum UniversalEventsEnum
     {

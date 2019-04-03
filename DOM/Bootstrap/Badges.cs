@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM.set.bootstrap_enum;
-using HtmlGenerator.DOM.textual;
+using HtmlGenerator.dom.set.bootstrap_enum;
+using HtmlGenerator.dom.textual;
 
-namespace HtmlGenerator.DOM.Bootstrap
+namespace HtmlGenerator.dom.Bootstrap
 {
     /// <summary>
     /// Компонент Bootstrap для формирования небольшого значка

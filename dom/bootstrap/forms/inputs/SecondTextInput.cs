@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.DOM.forms;
+using HtmlGenerator.dom.forms;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.DOM.Bootstrap.TextInput
+namespace HtmlGenerator.dom.Bootstrap.TextInput
 {
     /// <summary>
     /// Миниминизированый [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.

@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.DOM.collections
+namespace HtmlGenerator.dom.collections
 {
     /// <summary>
     /// Тег [li] определяет отдельный элемент списка. Внешний тег [ul] или [ol] устанавливает тип списка — маркированный или нумерованный.
