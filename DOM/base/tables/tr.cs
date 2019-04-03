@@ -9,16 +9,18 @@ namespace HtmlGenerator.DOM.tables
     /// <summary>
     /// Тег [tr] служит контейнером для создания строки таблицы. Каждая ячейка в пределах такой строки может задаваться с помощью тега [th] или [td].
     /// </summary>
-    public class tr : thead
+    public class tr : base_dom_root
     {
-        public new List<td> Columns
+        /// <summary>
+        /// Колонки заголовочной части
+        /// </summary>
+        public List<th> Columns { get; private set; } = new List<th>();
+
+        public override string GetHTML(int deep = 0)
         {
-            get
-            {
-                List<td> cols = new List<td>();
-                base.Columns.ForEach(x => cols.Add((td)x));
-                return cols;
-            }
+            Childs.Clear();
+            Childs.AddRange(Columns);
+            return base.GetHTML(deep);
         }
     }
 }

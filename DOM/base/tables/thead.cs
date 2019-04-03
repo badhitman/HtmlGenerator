@@ -42,7 +42,7 @@ namespace HtmlGenerator.DOM.tables
         {
             Childs.Clear();
             tr my_tr = new tr();
-            Columns.ForEach(x => my_tr.Childs.Add(x));
+            Columns.ForEach(x => my_tr.Columns.Add(x));
             Childs.Add(my_tr);
             return base.GetHTML(deep);
         }

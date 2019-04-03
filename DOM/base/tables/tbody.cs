@@ -45,7 +45,8 @@ namespace HtmlGenerator.DOM.tables
         {
             tr my_tr = new tr();
             foreach (string s in td_cols)
-                my_tr.AddColumn(s);
+                my_tr.Columns.Add(new td() { InnerText = s });
+            Rows.Add(my_tr);
         }
 
         public override string GetHTML(int deep = 0)
