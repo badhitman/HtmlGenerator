@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set.entities
+namespace HtmlGenerator.set.entities
 {
     public class DataObjectItem : DataParticleItem
     {

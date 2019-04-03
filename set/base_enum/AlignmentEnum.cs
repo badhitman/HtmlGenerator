@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set
+namespace HtmlGenerator.set
 {
     /// <summary>
     /// Выравнивания

@@ -1,11 +1,11 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.html;
-using HtmlGenerator.dom.html.areas;
+using HtmlGenerator.html5;
+using HtmlGenerator.html5.areas;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.dom.bootstrap
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Карточки Bootstrap - предоставляют собой гибкий и расширяемый контейнер контента в различных вариантамах и с разными опциями.

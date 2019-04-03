@@ -1,10 +1,10 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.html;
-using HtmlGenerator.dom.html.collections;
-using HtmlGenerator.dom.html.forms;
-using HtmlGenerator.dom.set.entities;
+using HtmlGenerator.html5;
+using HtmlGenerator.html5.collections;
+using HtmlGenerator.html5.forms;
+using HtmlGenerator.set.entities;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ namespace HtmlGenerator
 {
     public static class Predefined_elements
     {
-        #region html.dom.select
+        #region html.select
         //public static select GetSelectDom(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true) => GetSelectDom(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
         public static select GetSelectDom(string name_dom_object, OptionList ListItems, string[] selected_option_values = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true)
         {
@@ -80,7 +80,7 @@ namespace HtmlGenerator
         }
         #endregion
 
-        #region html.dom.ul
+        #region html.ul
         public static ul GetTreeViewDom(string id_dom_element, string ul_class, string li_class, OptionList ListItems)
         {
             ul ret_ul = new ul();

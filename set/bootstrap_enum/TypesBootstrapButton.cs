@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set.bootstrap
+namespace HtmlGenerator.set.bootstrap
 {
     /// <summary>
     /// В Bootstrap 4.3 кнопки могут быть представлены в трёх различных типах: [button] [a] [input]

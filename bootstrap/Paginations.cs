@@ -1,17 +1,17 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.html.areas;
-using HtmlGenerator.dom.html.collections;
-using HtmlGenerator.dom.html.textual;
-using HtmlGenerator.dom.set;
-using HtmlGenerator.dom.set.bootstrap;
-using HtmlGenerator.dom.set.entities;
+using HtmlGenerator.html5.areas;
+using HtmlGenerator.html5.collections;
+using HtmlGenerator.html5.textual;
+using HtmlGenerator.set;
+using HtmlGenerator.set.bootstrap;
+using HtmlGenerator.set.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HtmlGenerator.dom.bootstrap
+namespace HtmlGenerator.bootstrap
 {
     public class Paginations : nav
     {

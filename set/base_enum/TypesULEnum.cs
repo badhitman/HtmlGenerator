@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set
+namespace HtmlGenerator.set
 {
     /// <summary>
     /// Для маркированного списка маркеры могут принимать один из трех видов: кружок (disc), окружность (circle) и квадрат (square).

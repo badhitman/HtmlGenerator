@@ -1,10 +1,9 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom;
-using HtmlGenerator.dom.html.areas;
+using HtmlGenerator.html5.areas;
 
-namespace HtmlGenerator.dom.bootstrap.forms
+namespace HtmlGenerator.bootstrap.forms
 {
     public class Select : div
     {

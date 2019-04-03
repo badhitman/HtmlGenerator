@@ -3,11 +3,11 @@
 ////////////////////////////////////////////////
 
 
-using HtmlGenerator.dom.bootstrap;
-using HtmlGenerator.dom.html.forms;
-using HtmlGenerator.dom.set;
+using HtmlGenerator.bootstrap;
+using HtmlGenerator.html5.forms;
+using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.bootstrap.forms
+namespace HtmlGenerator.bootstrap.forms
 {
     public class LoginForm : Card
     {

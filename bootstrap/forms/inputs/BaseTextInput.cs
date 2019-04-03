@@ -1,12 +1,12 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.html.areas;
-using HtmlGenerator.dom.html.forms;
-using HtmlGenerator.dom.html.textual;
-using HtmlGenerator.dom.set;
+using HtmlGenerator.html5.areas;
+using HtmlGenerator.html5.forms;
+using HtmlGenerator.html5.textual;
+using HtmlGenerator.set;
 
-namespace HtmlGenerator.dom.bootstrap.forms
+namespace HtmlGenerator.bootstrap.forms
 {
     /// <summary>
     /// Базовый [Input] в [div] обёртке. [Label] сверху над [Input]-ом и текст описания [InputInfoFooter] под [Input]-ом

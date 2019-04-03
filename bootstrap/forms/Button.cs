@@ -2,10 +2,10 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-using HtmlGenerator.dom.html.forms;
-using HtmlGenerator.dom.set.bootstrap;
+using HtmlGenerator.html5.forms;
+using HtmlGenerator.set.bootstrap;
 
-namespace HtmlGenerator.dom.bootstrap.forms
+namespace HtmlGenerator.bootstrap.forms
 {
     public class Button : button
     {

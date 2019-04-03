@@ -2,7 +2,7 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set.bootstrap
+namespace HtmlGenerator.set.bootstrap
 {
     public enum JustifyingContent
     {

@@ -1,11 +1,11 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.html.areas;
-using HtmlGenerator.dom.set.bootstrap;
+using HtmlGenerator.html5.areas;
+using HtmlGenerator.set.bootstrap;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.dom.bootstrap.forms
+namespace HtmlGenerator.bootstrap.forms
 {
     /// <summary>
     /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.

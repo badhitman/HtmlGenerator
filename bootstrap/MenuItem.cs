@@ -1,15 +1,15 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.dom.html;
-using HtmlGenerator.dom.html.areas;
-using HtmlGenerator.dom.html.collections;
-using HtmlGenerator.dom.html.textual;
-using HtmlGenerator.dom.set;
+using HtmlGenerator.html5;
+using HtmlGenerator.html5.areas;
+using HtmlGenerator.html5.collections;
+using HtmlGenerator.html5.textual;
+using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.dom.bootstrap
+namespace HtmlGenerator.bootstrap
 {
     public class MenuItem : li
     {

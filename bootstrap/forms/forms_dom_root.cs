@@ -3,10 +3,10 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-using HtmlGenerator.dom.html;
-using HtmlGenerator.dom.html.areas;
+using HtmlGenerator.html5;
+using HtmlGenerator.html5.areas;
 
-namespace HtmlGenerator.dom.bootstrap.forms
+namespace HtmlGenerator.bootstrap.forms
 {
     public class forms_dom_root : base_dom_root
     {

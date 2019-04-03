@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set
+namespace HtmlGenerator.set
 {
     /// <summary>
     /// Универсальный класс для задания размеров в HTML разметке

@@ -3,7 +3,7 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.dom.set
+namespace HtmlGenerator.set
 {
     /// <summary>
     /// Определяет способ кодирования данных формы при их отправке на сервер.
