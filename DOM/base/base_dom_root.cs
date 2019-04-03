@@ -12,6 +12,12 @@ namespace HtmlGenerator
     public abstract class base_dom_root
     {
         /// <summary>
+        /// Символ(ы) табуляции/оступа.
+        /// Рекомендуется \t или [два пробела]
+        /// </summary>
+        public static string TabString = "\t";
+
+        /// <summary>
         /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два коментария (непосредственно до и после DOM блока).
         /// Если указать только начальный/верхний коментарий, то он же будет использоваться и в нижнем.
         /// </summary>
@@ -112,9 +118,9 @@ namespace HtmlGenerator
             string ret_val = "";
 
             if (!string.IsNullOrEmpty(before_coment_block))
-                ret_val += GetTabPrefix("\t", deep) + "<!-- " + before_coment_block + " -->";
+                ret_val += GetTabPrefix(TabString, deep) + "<!-- " + before_coment_block + " -->";
 
-            ret_val += GetTabPrefix("\t", deep);
+            ret_val += GetTabPrefix(TabString, deep);
             if (!(this is text))
                 ret_val += "<" + (string.IsNullOrEmpty(tag_custom_name) ? GetType().Name.ToLower() : tag_custom_name);
 
@@ -163,17 +169,17 @@ namespace HtmlGenerator
                     ret_val += h.GetHTML(deep + 1);
 
             if (!string.IsNullOrEmpty(InnerText))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + InnerText;
+                ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + InnerText;
 
             if (need_end_tag && !(this is text))
-                ret_val += (inline ? "" : GetTabPrefix("\t", deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? this.GetType().Name.ToLower() : tag_custom_name) + ">";
+                ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? this.GetType().Name.ToLower() : tag_custom_name) + ">";
 
             after_coment_block = after_coment_block.Replace("<", "[").Replace(">", "]");
 
             if (!string.IsNullOrEmpty(after_coment_block))
-                ret_val += GetTabPrefix("\t", deep) + "<!-- " + after_coment_block + " /-->";
+                ret_val += GetTabPrefix(TabString, deep) + "<!-- " + after_coment_block + " /-->";
             else if (!string.IsNullOrEmpty(before_coment_block))
-                ret_val += GetTabPrefix("\t", deep) + "<!-- " + before_coment_block + " /-->";
+                ret_val += GetTabPrefix(TabString, deep) + "<!-- " + before_coment_block + " /-->";
             return ret_val;
         }
 

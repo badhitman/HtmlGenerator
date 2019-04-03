@@ -118,9 +118,6 @@ test_string = my_toolbar.GetHTML();
 </div>
 ```
 
-
-
-
 P.S.
 Bootstrap работет поверх низкоуровневого HTML генератора.
 Приведём пример низкоурвоневого HTML
@@ -138,103 +135,57 @@ my_table.Thead.AddColumn("Телефон");
 // далее заполняем данным таблицу
 my_table.Tbody.AddRow(new string[] { "1", "Иван", "Санду", "телефона нет" });
 my_table.Tbody.AddRow(new string[] { "2", "Игорь", "Фомин", "+79995552244" });
-my_table.Tbody.AddRow(new string[] { "3", "Павел", "Рыбин", "+78886667722" });
-my_table.Tbody.AddRow(new string[] { "4", "Евгений", "Шмидт", "+73334445599" });
-my_table.Tbody.AddRow(new string[] { "5", "Русалина", "Санду", "телефона нет" });
 // Получаем HTML
 test_s = my_table.GetHTML();
 ```
 Результат => HTML
 ```HTML
-
 <table>
-	<thead>
-		<tr>
-			<th>
-			№ п/п
-			</th>
-			<th>
-			Имя
-			</th>
-			<th>
-			Фамилия
-			</th>
-			<th>
-			Телефон
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-			1
-			</td>
-			<td>
-			Иван
-			</td>
-			<td>
-			Санду
-			</td>
-			<td>
-			телефона нет
-			</td>
-		</tr>
-		<tr>
-			<td>
-			2
-			</td>
-			<td>
-			Игорь
-			</td>
-			<td>
-			Фомин
-			</td>
-			<td>
-			+79995552244
-			</td>
-		</tr>
-		<tr>
-			<td>
-			3
-			</td>
-			<td>
-			Павел
-			</td>
-			<td>
-			Рыбин
-			</td>
-			<td>
-			+78886667722
-			</td>
-		</tr>
-		<tr>
-			<td>
-			4
-			</td>
-			<td>
-			Евгений
-			</td>
-			<td>
-			Шмидт
-			</td>
-			<td>
-			+73334445599
-			</td>
-		</tr>
-		<tr>
-			<td>
-			5
-			</td>
-			<td>
-			Русалина
-			</td>
-			<td>
-			Санду
-			</td>
-			<td>
-			телефона нет
-			</td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>
+      № п/п
+      </th>
+      <th>
+      Имя
+      </th>
+      <th>
+      Фамилия
+      </th>
+      <th>
+      Телефон
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      1
+      </td>
+      <td>
+      Иван
+      </td>
+      <td>
+      Санду
+      </td>
+      <td>
+      телефона нет
+      </td>
+    </tr>
+    <tr>
+      <td>
+      2
+      </td>
+      <td>
+      Игорь
+      </td>
+      <td>
+      Фомин
+      </td>
+      <td>
+      +79995552244
+      </td>
+    </tr>
+  </tbody>
 </table>
 ```
