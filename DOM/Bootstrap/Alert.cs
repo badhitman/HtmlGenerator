@@ -38,7 +38,7 @@ namespace HtmlGenerator.bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            css_class = "alert alert-" + StyleAlert.ToString("g").ToLower() + (isDismissible ? " alert-dismissible fade show" : "");
+            css_class = "alert alert-" + StyleAlert.ToString("g") + (isDismissible ? " alert-dismissible fade show" : "");
             css_style = "min-height: 50px;";
             SetAttribute("role", "alert");
 

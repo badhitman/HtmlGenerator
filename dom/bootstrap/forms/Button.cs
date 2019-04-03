@@ -42,7 +42,7 @@ namespace HtmlGenerator.dom.bootstrap.forms
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            css_class = "btn btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g").ToLower();
+            css_class = "btn btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g");
             tag_custom_name = TypeButton.ToString("g");
 
             switch (TypeButton)

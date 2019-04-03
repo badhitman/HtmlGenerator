@@ -93,7 +93,7 @@ namespace HtmlGenerator
             button ret_button = new button(text) { css_class = "btn", Id_DOM = id_button };
 
             if (!(style is null))
-                ret_button.css_class += " btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g").ToLower();
+                ret_button.css_class += " btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g");
 
             if (!(size is null))
                 ret_button.css_class += " btn-" + size?.ToString("g").ToLower();

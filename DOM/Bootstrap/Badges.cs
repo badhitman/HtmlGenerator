@@ -25,7 +25,7 @@ namespace HtmlGenerator.DOM.Bootstrap
         public override string GetHTML(int deep = 0)
         {
             if (!(StyleBadge is null))
-                css_class = (css_class + " badge-" + StyleBadge?.ToString("g").ToLower()).Trim();
+                css_class = (css_class + " badge-" + StyleBadge?.ToString("g")).Trim();
 
             return base.GetHTML(deep);
         }
