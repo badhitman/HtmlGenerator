@@ -79,7 +79,7 @@ namespace HtmlGenerator.DOM.forms
         /// <summary>
         /// Определяет окно или фрейм в которое будет загружаться результат, возвращаемый обработчиком формы, в виде HTML-документа.
         /// </summary>
-        public TargetsEnum? formtarget = TargetsEnum._self;
+        public TargetsEnum? formtarget = null;
 
         public button(string text_button, TypesButton type_button = TypesButton.button)
         {
