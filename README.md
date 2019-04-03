@@ -64,7 +64,7 @@ my_test_obj.Childs.Add(new Button("Middle", VisualBootstrapStylesEnum.secondary)
 my_test_obj.Childs.Add(new Button("Right", VisualBootstrapStylesEnum.secondary));
 string test_string = my_test_obj.GetHTML();
 ```
-Результат => HTML.Bootstrap [demo](https://getbootstrap.com/docs/4.3/components/button-group/#basic-example):
+Результат => HTML.Bootstrap [view original demo](https://getbootstrap.com/docs/4.3/components/button-group/#basic-example):
 ```HTML
 <div role="group" aria-label="Basic example group" class="btn-group">
 	<button type="button" class="btn btn-secondary">Left</button>
@@ -98,7 +98,7 @@ my_toolbar.Groups.Add(my_group);
 
 test_string = my_toolbar.GetHTML();
 ```
-Результат => HTML.Bootstrap:
+Результат => HTML.Bootstrap [view original demo](https://getbootstrap.com/docs/4.3/components/button-group/#button-toolbar):
 ```HTML
 <div role="toolbar" aria-label="Toolbar with button groups" class="btn-toolbar">
 	<div role="group" aria-label="First group" class="btn-group mr-2">
