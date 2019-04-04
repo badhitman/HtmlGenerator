@@ -15,6 +15,7 @@ namespace HtmlGenerator.html5
     /// </summary>
     public abstract class base_dom_root : IDisposable
     {
+        #region Поля
         /// <summary>
         /// Символ(ы) табуляции/оступа.
         /// Рекомендуется \t или [два пробела]
@@ -35,26 +36,6 @@ namespace HtmlGenerator.html5
         public string tag_custom_name = null;
 
         /// <summary>
-        /// Дочерние/вложеные элементы
-        /// </summary>
-        protected internal List<base_dom_root> Childs = new List<base_dom_root>();
-
-        /// <summary>
-        /// Прямое добавление дочернего/вложеного элемента.
-        /// </summary>
-        public virtual void Add(base_dom_root child) => Childs.Add(child);
-
-        /// <summary>
-        /// Пакетное добавление дочерних/вложеных элементов.
-        /// </summary>
-        public virtual void AddRange(List<base_dom_root> childs) => Childs.AddRange(childs);
-
-        /// <summary>
-        /// Пользовательские атрибуты текущего HTML элемента
-        /// </summary>
-        public Dictionary<string, string> CustomAttributes { get; private set; } = new Dictionary<string, string>();
-
-        /// <summary>
         /// Идентификатор/ID элемента в DOM
         /// </summary>
         public string Id_DOM = "";
@@ -68,11 +49,6 @@ namespace HtmlGenerator.html5
         /// Позволяет получить доступ к элементу с помощью заданного сочетания клавиш. Браузеры при этом используют различные комбинации клавиш.
         /// </summary>
         public string accesskey = null;
-
-        /// <summary>
-        /// Определяет имя класса, которое позволяет связать тег со стилевым оформлением.
-        /// </summary>
-        //public string css_class = "";
 
         /// <summary>
         /// Определяет "style" непосредственно для элемента
@@ -116,6 +92,7 @@ namespace HtmlGenerator.html5
         /// Если false, то тег закроется: />
         /// </summary>
         public bool need_end_tag = true;
+        #endregion
 
         /// <summary>
         /// HtmlController -> HTML (text)
@@ -214,6 +191,26 @@ namespace HtmlGenerator.html5
         }
 
         /// <summary>
+        /// Получить в виде строки тип кодирования отпарвляемых данных HTML формы
+        /// </summary>
+        public static string GetEnctypeHtmlForm(EncTypesEnum? EncType)
+        {
+            switch (EncType)
+            {
+                // Данные не кодируются. Это значение применяется при отправке файлов.
+                case EncTypesEnum.MultipartFormData:
+                    return "multipart/form-data";
+                // Пробелы заменяются знаком +, буквы и другие символы не кодируются.
+                case EncTypesEnum.Plain:
+                    return "text/plain";
+                // EncTypes.WwwFormUrlEncoded: Вместо пробелов ставится +, символы вроде русских букв кодируются их шестнадцатеричными значениями (например, %D0%9F%D0%B5%D1%82%D1%8F вместо Петя).
+                default:
+                    return "application/x-www-form-urlencoded";
+            }
+        }
+
+        #region Управление атрибутами (и событиями) объекта
+        /// <summary>
         /// Установить или добавить атрибут.
         /// </summary>
         /// <param name="attr_name">Имя атрибута dom объекта</param>
@@ -290,25 +287,29 @@ namespace HtmlGenerator.html5
             else
                 SetAttribute(my_event.ToString("g"), event_src);
         }
+        #endregion
+
+        #region Вложеные/Дочерние элементы
+        /// <summary>
+        /// Дочерние/вложеные элементы
+        /// </summary>
+        protected internal List<base_dom_root> Childs = new List<base_dom_root>();
 
         /// <summary>
-        /// Получить в виде строки тип кодирования отпарвляемых данных HTML формы
+        /// Прямое добавление дочернего/вложеного элемента.
         /// </summary>
-        public static string GetEnctypeHtmlForm(EncTypesEnum? EncType)
-        {
-            switch (EncType)
-            {
-                // Данные не кодируются. Это значение применяется при отправке файлов.
-                case EncTypesEnum.MultipartFormData:
-                    return "multipart/form-data";
-                // Пробелы заменяются знаком +, буквы и другие символы не кодируются.
-                case EncTypesEnum.Plain:
-                    return "text/plain";
-                // EncTypes.WwwFormUrlEncoded: Вместо пробелов ставится +, символы вроде русских букв кодируются их шестнадцатеричными значениями (например, %D0%9F%D0%B5%D1%82%D1%8F вместо Петя).
-                default:
-                    return "application/x-www-form-urlencoded";
-            }
-        }
+        public virtual void Add(base_dom_root child) => Childs.Add(child);
+
+        /// <summary>
+        /// Пакетное добавление дочерних/вложеных элементов.
+        /// </summary>
+        public virtual void AddRange(List<base_dom_root> childs) => Childs.AddRange(childs);
+
+        /// <summary>
+        /// Пользовательские атрибуты текущего HTML элемента
+        /// </summary>
+        public Dictionary<string, string> CustomAttributes { get; private set; } = new Dictionary<string, string>();
+        #endregion
 
         #region CSS классы стилей
         /// <summary>
@@ -324,13 +325,14 @@ namespace HtmlGenerator.html5
         /// <summary>
         /// Добавить CSS класс (если его нет у объекта)
         /// </summary>
-        public void AddCSS(string css_class, bool CheckSpices = true)
+        public void AddCSS(string css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
         {
+            if (low_and_trim_name_class)
+                css_class = css_class?.Trim().ToLower();
+
             if (CheckSpices && regex_spice.IsMatch(css_class))
-            {
                 foreach (string s in regex_spice.Split(css_class))
-                    AddCSS(s, false);
-            }
+                    AddCSS(s, false, false);
             else if (!string.IsNullOrEmpty(css_class) && !CSS.Contains(css_class))
                 CSS.Add(css_class);
         }
@@ -338,9 +340,14 @@ namespace HtmlGenerator.html5
         /// <summary>
         /// Удалить класс CSS
         /// </summary>
-        public void RemoveCSS(string css_class)
+        public void RemoveCSS(string css_class, bool CheckSpices = false)
         {
-            if (!string.IsNullOrEmpty(css_class))
+            if (CheckSpices && regex_spice.IsMatch(css_class))
+            {
+                foreach (string s in regex_spice.Split(css_class))
+                    RemoveCSS(s, false);
+            }
+            else if (!string.IsNullOrEmpty(css_class))
                 CSS.Remove(css_class);
         }
 

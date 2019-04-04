@@ -85,7 +85,7 @@ namespace HtmlGenerator
         {
             ul ret_ul = new ul();
             if (!string.IsNullOrEmpty(ul_class))
-                ret_ul.AddCSS(ul_class);
+                ret_ul.AddCSS(ul_class, true);
 
             WriteUl(ref ret_ul.Childs, ListItems.ListItems, li_class);
 
@@ -113,7 +113,7 @@ namespace HtmlGenerator
                     li_item.AddCSS("tree-" + (o_item.IsGroup ? "group" : "item"));
 
                 if (!string.IsNullOrEmpty(li_class))
-                    li_item.AddCSS(li_class);
+                    li_item.AddCSS(li_class, true);
 
                 if (o_item.Childs.Count > 0)
                     WriteUl(ref li_item.Childs, o_item.Childs, li_class);

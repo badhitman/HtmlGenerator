@@ -39,9 +39,9 @@ namespace HtmlGenerator.bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            AddCSS("alert alert-" + StyleAlert.ToString("g"));
+            AddCSS("alert alert-" + StyleAlert.ToString("g"), true);
             if (isDismissible)
-                AddCSS("alert-dismissible fade show");
+                AddCSS("alert-dismissible fade show", true);
 
             css_style = "min-height: 50px;";
             SetAttribute("role", "alert");
@@ -60,7 +60,7 @@ namespace HtmlGenerator.bootstrap
             }
 
             Childs.Add(new text(Message));
-            
+
             return base.GetHTML(deep);
         }
     }

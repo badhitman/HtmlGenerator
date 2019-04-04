@@ -43,8 +43,7 @@ namespace HtmlGenerator.bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            AddCSS("btn");
-            AddCSS("btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g"));
+            AddCSS("btn " + "btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g"), true);
 
             tag_custom_name = TypeButton.ToString("g");
 

@@ -137,7 +137,7 @@ namespace HtmlGenerator.bootstrap
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
                 a_tag.InnerText = "⁞";
                 a_tag.href = string.Empty;
-                li_tag.AddCSS(" disabled");
+                li_tag.AddCSS("disabled");
             }
             else if (i == 0)
             {
@@ -146,7 +146,7 @@ namespace HtmlGenerator.bootstrap
                 {
                     a_tag.tag_custom_name = typeof(span).Name.ToLower();
                     a_tag.href = string.Empty;
-                    li_tag.AddCSS(" disabled");
+                    li_tag.AddCSS("disabled");
                 }
                 else
                     a_tag.href = UrlTmpl + (PageNum - 1).ToString();

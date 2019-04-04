@@ -61,9 +61,9 @@ namespace HtmlGenerator.bootstrap
         {
             Childs.Clear();
 
-            AddCSS(li_class);
+            AddCSS(li_class, true);
             a a_dom_result = new a() { href = href_menu_item, target = TargetsEnum._self, InnerText = text_menu_item };
-            a_dom_result.AddCSS(a_class);
+            a_dom_result.AddCSS(a_class, true);
             if (SubItems.Count > 0)
             {
                 AddCSS("dropdown");

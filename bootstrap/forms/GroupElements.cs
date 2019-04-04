@@ -53,9 +53,7 @@ namespace HtmlGenerator.bootstrap
 
             GroupElements nested_group = new GroupElements() { aria_label = "nested group - " + id_node };
             button node_button = new button(title_node) { Id_DOM = id_node };
-            node_button.AddCSS("btn");
-            node_button.AddCSS("btn-" + default_style.ToString());
-            node_button.AddCSS("dropdown-toggle");
+            node_button.AddCSS("btn btn-" + default_style.ToString() + " dropdown-toggle", true);
             node_button.SetAttribute("data-toggle", "dropdown");
             node_button.SetAttribute("aria-haspopup", "true");
             node_button.SetAttribute("aria-expanded", "false");

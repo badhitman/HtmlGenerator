@@ -57,22 +57,20 @@ namespace HtmlGenerator.bootstrap
             Childs.Clear();
             AddCSS("card");
             if (!string.IsNullOrEmpty(adding_card_css_class))
-                AddCSS(adding_card_css_class);
+                AddCSS(adding_card_css_class, true);
 
             if (!string.IsNullOrEmpty(CardHeader))
             {
                 using (div card_header = new div() { InnerText = CardHeader })
                 {
-                    card_header.AddCSS("card-header");
-                    card_header.AddCSS(adding_header_css_class);
+                    card_header.AddCSS("card-header " + adding_header_css_class, true);
                     Childs.Add(card_header);
                 }
             }
 
             using (div card_body = new div())
             {
-                card_body.AddCSS("card-body");
-                card_body.AddCSS(adding_body_css_class);
+                card_body.AddCSS("card-body " + adding_body_css_class, true);
 
                 card_body.AddRange(CardBody);
                 Childs.Add(card_body);
@@ -80,8 +78,7 @@ namespace HtmlGenerator.bootstrap
             if (CardFooter.Count > 0)
                 using (div card_footer = new div())
                 {
-                    card_footer.AddCSS("card-footer");
-                    card_footer.AddCSS(adding_footer_css_class);
+                    card_footer.AddCSS("card-footer " + adding_footer_css_class, true);
                     card_footer.AddRange(CardFooter);
                     Childs.Add(card_footer);
                 }

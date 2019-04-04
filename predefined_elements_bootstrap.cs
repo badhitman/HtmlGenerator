@@ -19,7 +19,7 @@ namespace HtmlGenerator
         public static div GetBootstrapSelectList(string label, select select_body, string Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
         {
             div ret_dom = new div();
-            ret_dom.AddCSS(wrap_class);
+            ret_dom.AddCSS(wrap_class, true);
             if (!string.IsNullOrEmpty(label))
             {
                 using (div input_group_prepend = new div())
@@ -56,8 +56,7 @@ namespace HtmlGenerator
                 card_body.Add(he);
 
             div card_set = new div();
-            card_set.AddCSS("card");
-            card_set.AddCSS(css_card);
+            card_set.AddCSS("card "+css_card, true);
             card_set.Add(card_header);
             card_set.Add(card_body);
 
@@ -102,13 +101,14 @@ namespace HtmlGenerator
             ret_button.AddCSS("btn");
             if (!(style is null))
             {
-                ret_button.AddCSS(" btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g"));
+                ret_button.AddCSS("btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g"));
             }
             if (!(size is null))
-                ret_button.AddCSS(" btn-" + size?.ToString("g").ToLower());
+                ret_button.AddCSS("btn-" + size?.ToString("g").ToLower());
 
-            if(btn_block)
-            ret_button.AddCSS("btn-block");
+            if (btn_block)
+                ret_button.AddCSS("btn-block");
+
             ret_button.AddCSS("active");
             if (string.IsNullOrEmpty(href))
                 ret_button.SetAttribute("type", "button");
@@ -184,8 +184,7 @@ namespace HtmlGenerator
             modal_dialog_document.Add(modal_content);
             //
             div ModalDialog = new div() { Id_DOM = id_modal_dialog };
-            ModalDialog.AddCSS("modal");
-            ModalDialog.AddCSS("fade");
+            ModalDialog.AddCSS("modal fade", true);
             ModalDialog.CustomAttributes.Add("tabindex", "-1");
             ModalDialog.CustomAttributes.Add("role", "dialog");
             ModalDialog.CustomAttributes.Add("aria-labelledby", id_modal_dialog);
@@ -241,14 +240,10 @@ namespace HtmlGenerator
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Повтор";
 
-            textInput.AddCSS("panel-collapse");
-            textInput.AddCSS("collapse");
-            textInput.AddCSS(collapse_info_new_user_input_css);
+            textInput.AddCSS("panel-collapse collapse " + collapse_info_new_user_input_css, true);
             html_response.Add(textInput);
 
-            html_response.Childs[html_response.Childs.Count - 1].AddCSS("panel-collapse");
-            html_response.Childs[html_response.Childs.Count - 1].AddCSS("collapse");
-            html_response.Childs[html_response.Childs.Count - 1].AddCSS(collapse_info_new_user_input_css);
+            html_response.Childs[html_response.Childs.Count - 1].AddCSS("panel-collapse collapse " + collapse_info_new_user_input_css, true);
 
             html_response.Childs.Add(new CheckboxInput("Зарегистрироваться", reg_new_user_chekbox_id));
 
@@ -256,9 +251,7 @@ namespace HtmlGenerator
             reg_new_user_info.AddCSS("clearfix");
             using (ul panel_collapse = new ul())
             {
-                panel_collapse.AddCSS("panel-collapse");
-                panel_collapse.AddCSS("collapse");
-                panel_collapse.AddCSS(collapse_info_new_user_input_css);
+                panel_collapse.AddCSS("panel-collapse collapse " + collapse_info_new_user_input_css, true);
                 reg_new_user_info.Childs.Add(panel_collapse);
             }
 
@@ -288,7 +281,7 @@ namespace HtmlGenerator
         public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
         {
             table table = new table();
-            table.AddCSS(css_table_class);
+            table.AddCSS(css_table_class, true);
             foreach (string s in table_heads)
                 table.Thead.AddColumn(s);
 

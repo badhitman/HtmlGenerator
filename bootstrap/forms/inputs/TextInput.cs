@@ -43,8 +43,7 @@ namespace HtmlGenerator.bootstrap
 
         public override string GetHTML(int deep = 0)
         {
-            AddCSS("form-group");
-            AddCSS(ClassInputGroup);
+            AddCSS("form-group " + ClassInputGroup, true);
 
             if (!(LabelInput is null))
                 Childs.Add(LabelInput);
@@ -59,8 +58,7 @@ namespace HtmlGenerator.bootstrap
                 string input_info_id = Input.Name_DOM + "Help";
                 using (small info_text = new small(InputInfoFooter) { inline = true, Id_DOM = input_info_id })
                 {
-                    info_text.AddCSS("form-text");
-                    info_text.AddCSS("text-muted");
+                    info_text.AddCSS("form-text text-muted", true);
                     Childs.Add(info_text);
                 }
                 Input.SetAttribute("aria-describedby", input_info_id);

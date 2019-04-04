@@ -99,7 +99,7 @@ namespace HtmlGenerator.bootstrap
             {
                 button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.TypeButton = TypesButton.submit;
-                button_send_modal_footer.AddCSS(CssOkButton);
+                button_send_modal_footer.AddCSS(CssOkButton, true);
                 modal_footer.Add(button_send_modal_footer);
             }
             //
@@ -121,8 +121,7 @@ namespace HtmlGenerator.bootstrap
             modal_dialog_document.CustomAttributes.Add("role", "document");
             modal_dialog_document.Add(my_form);
             //
-            AddCSS("modal");
-            AddCSS("fade");
+            AddCSS("modal fade", true);
             CustomAttributes.Add("tabindex", "-1");
             CustomAttributes.Add("role", "dialog");
             CustomAttributes.Add("aria-labelledby", Id_DOM);
