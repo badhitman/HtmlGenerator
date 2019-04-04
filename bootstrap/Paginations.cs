@@ -127,17 +127,17 @@ namespace HtmlGenerator.bootstrap
         /// </summary>
         private li PaginationItem(int i)
         {
-            a a_tag = new a() { css_class = "page-link", href = UrlTmpl + i.ToString(), InnerText = i.ToString() };
-
-            li li_tag = new li() { css_class = "page-item" };
-
+            a a_tag = new a() { href = UrlTmpl + i.ToString(), InnerText = i.ToString() };
+            a_tag.AddCSS("page-link");
+            li li_tag = new li();
+            li_tag.AddCSS("page-item");
             if (i < 0)
             {
                 a_tag.tag_custom_name = typeof(span).Name.ToLower();
                 a_tag.css_style = "padding-left: 4px; padding-right: 4px;";
                 a_tag.InnerText = "⁞";
                 a_tag.href = string.Empty;
-                li_tag.css_class += " disabled";
+                li_tag.AddCSS(" disabled");
             }
             else if (i == 0)
             {
@@ -146,7 +146,7 @@ namespace HtmlGenerator.bootstrap
                 {
                     a_tag.tag_custom_name = typeof(span).Name.ToLower();
                     a_tag.href = string.Empty;
-                    li_tag.css_class += " disabled";
+                    li_tag.AddCSS(" disabled");
                 }
                 else
                     a_tag.href = UrlTmpl + (PageNum - 1).ToString();
@@ -156,7 +156,7 @@ namespace HtmlGenerator.bootstrap
                 if (i == PageNum)
                 {
                     a_tag.tag_custom_name = typeof(span).Name.ToLower();
-                    li_tag.css_class += " active";
+                    li_tag.AddCSS("active");
                     a_tag.href = string.Empty;
                 }
             }
@@ -167,7 +167,7 @@ namespace HtmlGenerator.bootstrap
                 {
                     a_tag.tag_custom_name = typeof(span).Name.ToLower();
                     a_tag.href = string.Empty;
-                    li_tag.css_class += " disabled";
+                    li_tag.AddCSS("disabled");
                 }
                 else
                     a_tag.href = UrlTmpl + (PageNum + 1).ToString();
@@ -188,18 +188,18 @@ namespace HtmlGenerator.bootstrap
                 goto end;
 
             SetAttribute("aria-label", "Page navigation");
-            ul ul_block = new ul { css_class = "pagination" };
-
+            ul ul_block = new ul();
+            ul_block.AddCSS("pagination");
             #region Formatting pagination (aligment + sizing)
             if (SiziePagination == SizingBootstrap.Lg)
-                ul_block.css_class += " pagination-lg";
+                ul_block.AddCSS("pagination-lg");
             else if (SiziePagination == SizingBootstrap.Sm)
-                ul_block.css_class += " pagination-sm";
+                ul_block.AddCSS("pagination-sm");
 
             if (AlignmentPagination == AlignmentEnum.center)
-                ul_block.css_class += "  justify-content-center";
+                ul_block.AddCSS("justify-content-center");
             else if (AlignmentPagination == AlignmentEnum.right)
-                ul_block.css_class += "  justify-content-end";
+                ul_block.AddCSS("justify-content-end");
             #endregion
 
             ul_block.Childs.Add(PaginationItem(0));

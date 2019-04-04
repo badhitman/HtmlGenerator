@@ -5,7 +5,7 @@
 using HtmlGenerator.html5.forms;
 using HtmlGenerator.set.bootstrap;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     public class Button : button
     {
@@ -43,7 +43,9 @@ namespace HtmlGenerator.bootstrap.forms
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            css_class = "btn btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g");
+            AddCSS("btn");
+            AddCSS("btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g"));
+
             tag_custom_name = TypeButton.ToString("g");
 
             switch (TypeButton)
@@ -53,7 +55,7 @@ namespace HtmlGenerator.bootstrap.forms
                     SetAttribute("role", "button");
                     if (disabled)
                     {
-                        css_class = (css_class + " disabled").Trim();
+                        AddCSS("disabled");
                         SetAttribute("aria-disabled", "true");
                         SetAttribute("tabindex", "-1");
                     }
@@ -75,7 +77,7 @@ namespace HtmlGenerator.bootstrap.forms
             }
 
             if (!(SizeButton is null))
-                css_class = (css_class + " btn-" + SizeButton?.ToString("g")).Trim();
+                AddCSS("btn-" + SizeButton?.ToString("g"));
 
             return base.GetHTML(deep);
         }

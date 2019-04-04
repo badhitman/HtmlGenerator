@@ -54,7 +54,7 @@ namespace HtmlGenerator.html5.forms
         public int size = 0;
 
         /// <summary>
-        /// Вложеные элементы списка
+        /// Элементы списка
         /// </summary>
         public List<option> Options = new List<option>();
 

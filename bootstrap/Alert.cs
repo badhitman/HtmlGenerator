@@ -39,13 +39,18 @@ namespace HtmlGenerator.bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            css_class = "alert alert-" + StyleAlert.ToString("g") + (isDismissible ? " alert-dismissible fade show" : "");
+            AddCSS("alert alert-" + StyleAlert.ToString("g"));
+            if (isDismissible)
+                AddCSS("alert-dismissible fade show");
+
             css_style = "min-height: 50px;";
             SetAttribute("role", "alert");
 
             if (isDismissible)
             {
-                button button_close = new button(null) { css_class = "close" };
+                button button_close = new button(null);
+                button_close.AddCSS("close");
+
                 button_close.SetAttribute("data-dismiss", "alert");
                 button_close.SetAttribute("aria-label", "Close");
                 span my_span = new span() { InnerText = "&times;" };

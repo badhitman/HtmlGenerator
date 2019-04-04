@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using HtmlGenerator.bootstrap.forms;
+using HtmlGenerator.bootstrap;
 using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.collections;
@@ -18,14 +18,18 @@ namespace HtmlGenerator
     {
         public static div GetBootstrapSelectList(string label, select select_body, string Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
         {
-            div ret_dom = new div() { css_class = wrap_class };
-
+            div ret_dom = new div();
+            ret_dom.AddCSS(wrap_class);
             if (!string.IsNullOrEmpty(label))
             {
-                ret_dom.Add(new div { css_class = "input-group-prepend" });
+                using (div input_group_prepend = new div())
+                {
+                    input_group_prepend.AddCSS("input-group-prepend");
+                    ret_dom.Add(input_group_prepend);
+                }
                 //ret_dom.Childs[0].Childs.Add(new label(label, select_body.Id_DOM) { css_class = "input-group-text" });
             }
-            select_body.css_class = (select_body.css_class.Trim() + " custom-select").Trim();
+            select_body.AddCSS("custom-select");
 
             if (!string.IsNullOrEmpty(Tooltip))
                 ret_dom.title = Tooltip;
@@ -44,14 +48,16 @@ namespace HtmlGenerator
         /// <returns>Готовая карточка информации</returns>
         public static div Get_DIV_Bootstrap_Card(string card_head, List<base_dom_root> body_elements, string css_card = "bg-light")
         {
-            div card_header = new div() { css_class = "card-header", InnerText = card_head };
-
-            div card_body = new div() { css_class = "card-body" };
+            div card_header = new div() { InnerText = card_head };
+            card_header.AddCSS("card-header");
+            div card_body = new div();
+            card_body.AddCSS("card-body");
             foreach (div he in body_elements)
                 card_body.Add(he);
 
-            div card_set = new div() { css_class = ("card " + css_card).Trim() };
-
+            div card_set = new div();
+            card_set.AddCSS("card");
+            card_set.AddCSS(css_card);
             card_set.Add(card_header);
             card_set.Add(card_body);
 
@@ -61,11 +67,13 @@ namespace HtmlGenerator
 
         public static div GetTextarea(string label_text, string value_input, string name_input, string placeholder, bool input_readonly = false, int rows = 2, bool required = false)
         {
-            div returned_input = new div() { css_class = "form-group" };
+            div returned_input = new div();
+            returned_input.AddCSS("form-group");
             if (!string.IsNullOrEmpty(label_text))
                 returned_input.Add(new label(label_text, name_input));
 
-            textarea ret_textarea = new textarea() { css_class = "form-control", InnerText = value_input, required = required, @readonly = input_readonly };
+            textarea ret_textarea = new textarea() { InnerText = value_input, required = required, @readonly = input_readonly };
+            ret_textarea.AddCSS("form-control");
             if (rows > 0)
                 ret_textarea.rows = rows;
 
@@ -90,16 +98,18 @@ namespace HtmlGenerator
         /// <param name="outline_style">Флаг отключения цвета фона. В этом режиме стиль оформления будет использован для рамки и цвета, но не для фона</param>
         public static button GetButton(string text, string id_button = null, string href = null, VisualBootstrapStylesEnum? style = null, SizingBootstrap? size = null, bool btn_block = false, bool outline_style = false)
         {
-            button ret_button = new button(text) { css_class = "btn", Id_DOM = id_button };
-
+            button ret_button = new button(text) { Id_DOM = id_button };
+            ret_button.AddCSS("btn");
             if (!(style is null))
-                ret_button.css_class += " btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g");
-
+            {
+                ret_button.AddCSS(" btn" + (outline_style ? "-outline-" : "-") + style?.ToString("g"));
+            }
             if (!(size is null))
-                ret_button.css_class += " btn-" + size?.ToString("g").ToLower();
+                ret_button.AddCSS(" btn-" + size?.ToString("g").ToLower());
 
-            ret_button.css_class += (btn_block ? " btn-block" : "") + " active";
-
+            if(btn_block)
+            ret_button.AddCSS("btn-block");
+            ret_button.AddCSS("active");
             if (string.IsNullOrEmpty(href))
                 ret_button.SetAttribute("type", "button");
             else
@@ -127,18 +137,21 @@ namespace HtmlGenerator
             span span_close_modal_header = new span("&times;");
             span_close_modal_header.SetAttribute("aria-hidden", "true");
             //
-            button button_close_modal_header = new button(null) { css_class = "close" };
+            button button_close_modal_header = new button(null);
+            button_close_modal_header.AddCSS("close");
             button_close_modal_header.SetAttribute("data-dismiss", "modal");
             button_close_modal_header.SetAttribute("aria-label", "Close");
             button_close_modal_header.Add(span_close_modal_header);
             //
-            h5 h5_modal_header = new h5(title) { css_class = "modal-title" };
-            div div_modal_header = new div() { css_class = "modal-header" };
+            h5 h5_modal_header = new h5(title);
+            h5_modal_header.AddCSS("modal-title");
+            div div_modal_header = new div();
+            div_modal_header.AddCSS("modal-header");
             div_modal_header.Add(h5_modal_header);
             div_modal_header.Add(button_close_modal_header);
             //
-            div modal_footer = new div() { css_class = "modal-footer" };
-
+            div modal_footer = new div();
+            modal_footer.AddCSS("modal-footer");
             if (!string.IsNullOrEmpty(text_cansel_button))
             {
                 button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.secondary);
@@ -153,23 +166,26 @@ namespace HtmlGenerator
                 modal_footer.Add(button_send_modal_footer);
             }
             //
-            div modal_content = new div() { css_class = "modal-content" };
+            div modal_content = new div();
+            modal_content.AddCSS("modal-content");
             modal_content.Add(div_modal_header);
             //
-            div modal_body = new div() { css_class = "modal-body" };
+            div modal_body = new div();
+            modal_body.AddCSS("modal-body");
             modal_body.Add(body_html);
             modal_content.Add(modal_body);
             //
             modal_content.Add(modal_footer);
             //
-            div modal_dialog_document = new div() { css_class = "modal-dialog" };
-
+            div modal_dialog_document = new div();
+            modal_dialog_document.AddCSS("modal-dialog");
 
             modal_dialog_document.CustomAttributes.Add("role", "document");
             modal_dialog_document.Add(modal_content);
             //
-            div ModalDialog = new div() { css_class = "modal fade", Id_DOM = id_modal_dialog };
-
+            div ModalDialog = new div() { Id_DOM = id_modal_dialog };
+            ModalDialog.AddCSS("modal");
+            ModalDialog.AddCSS("fade");
             ModalDialog.CustomAttributes.Add("tabindex", "-1");
             ModalDialog.CustomAttributes.Add("role", "dialog");
             ModalDialog.CustomAttributes.Add("aria-labelledby", id_modal_dialog);
@@ -205,36 +221,47 @@ namespace HtmlGenerator
             form html_response = new form()
             {
                 Id_DOM = "login_form_id",
-                css_class = "was-validated",
                 target = TargetsEnum._self,
                 method_form = MethodsFormEnum.POST
             };
+            html_response.AddCSS("was-validated");
             html_response.SetAttribute("novalidate", null);
 
-            BaseTextInput textInput = new BaseTextInput("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
+            TextInput textInput = new TextInput("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
             textInput.Input.placeholder = "Логин";
             textInput.Input.required = true;
             html_response.Add(textInput);
 
-            textInput = new BaseTextInput("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
+            textInput = new TextInput("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Пароль";
             html_response.Add(textInput);
 
-            textInput = new BaseTextInput("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
+            textInput = new TextInput("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Повтор";
-            textInput.css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
+
+            textInput.AddCSS("panel-collapse");
+            textInput.AddCSS("collapse");
+            textInput.AddCSS(collapse_info_new_user_input_css);
             html_response.Add(textInput);
 
+            html_response.Childs[html_response.Childs.Count - 1].AddCSS("panel-collapse");
+            html_response.Childs[html_response.Childs.Count - 1].AddCSS("collapse");
+            html_response.Childs[html_response.Childs.Count - 1].AddCSS(collapse_info_new_user_input_css);
 
-
-
-            html_response.Childs[html_response.Childs.Count - 1].css_class += " panel-collapse collapse " + collapse_info_new_user_input_css;
             html_response.Childs.Add(new CheckboxInput("Зарегистрироваться", reg_new_user_chekbox_id));
 
-            p reg_new_user_info = new p("") { css_class = "clearfix" };
-            reg_new_user_info.Childs.Add(new ul() { css_class = "panel-collapse collapse " + collapse_info_new_user_input_css });
+            p reg_new_user_info = new p("");
+            reg_new_user_info.AddCSS("clearfix");
+            using (ul panel_collapse = new ul())
+            {
+                panel_collapse.AddCSS("panel-collapse");
+                panel_collapse.AddCSS("collapse");
+                panel_collapse.AddCSS(collapse_info_new_user_input_css);
+                reg_new_user_info.Childs.Add(panel_collapse);
+            }
+
             reg_new_user_info.Childs[0].Childs.Add(new li() { InnerText = "Придумайте/запомните надёжный логин/пароль и входите" });
             reg_new_user_info.Childs[0].Childs.Add(new li() { InnerText = "Учётная запись будет создана автоматически" });
 
@@ -243,7 +270,8 @@ namespace HtmlGenerator
             {
                 html_response.Childs.Add(new hr());
                 html_response.Childs.Add(new h4("Пройдите проверку reCAPTCHA"));
-                div sitekey = new div() { css_class = "g-recaptcha" };
+                div sitekey = new div();
+                sitekey.AddCSS("g-recaptcha");
                 sitekey.SetAttribute("data-size", "compact");
                 sitekey.SetAttribute("data-sitekey", re_captcha_key);
                 html_response.Childs.Add(sitekey);
@@ -259,8 +287,8 @@ namespace HtmlGenerator
         /// </summary>
         public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
         {
-            table table = new table() { css_class = css_table_class.Trim() };
-
+            table table = new table();
+            table.AddCSS(css_table_class);
             foreach (string s in table_heads)
                 table.Thead.AddColumn(s);
 

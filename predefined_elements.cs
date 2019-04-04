@@ -61,7 +61,7 @@ namespace HtmlGenerator
                 {
                     option_set = new option.option_set
                     {
-                        TitleText = o_item.TreePrefix + o_item.Title,
+                        TitleText = o_item.Title,
                         Disabled = o_item.Disabled,
                         Value = o_item.Value
                     };
@@ -69,7 +69,7 @@ namespace HtmlGenerator
                     if (!(selected_option_values is null) && Array.IndexOf(selected_option_values, option_set.Value) > -1)
                         option_set.Selected = true;
                 }
-                option_dom.css_class += " tree-" + (o_item.IsGroup ? "group" : "item");
+                option_dom.AddCSS("tree-" + (o_item.IsGroup ? "group" : "item"));
                 WriteSelectDom(ref option_dom.Childs, o_item.Childs, selected_option_values, groups_only, groups_clickable);
 
                 if (!string.IsNullOrEmpty(o_item.Tag))
@@ -85,7 +85,7 @@ namespace HtmlGenerator
         {
             ul ret_ul = new ul();
             if (!string.IsNullOrEmpty(ul_class))
-                ret_ul.css_class = ul_class;
+                ret_ul.AddCSS(ul_class);
 
             WriteUl(ref ret_ul.Childs, ListItems.ListItems, li_class);
 
@@ -98,7 +98,7 @@ namespace HtmlGenerator
                 li li_item = new li() { InnerText = o_item.Title };
 
                 if (o_item.Disabled)
-                    li_item.css_class += " disabled";
+                    li_item.AddCSS("disabled");
 
                 if (!string.IsNullOrEmpty(o_item.Tag))
                     li_item.SetAttribute("tag", o_item.Tag);
@@ -110,10 +110,10 @@ namespace HtmlGenerator
                     li_item.Id_DOM = o_item.Value;
 
                 if (o_item.IsGroup)
-                    li_item.css_class += " tree-" + (o_item.IsGroup ? "group" : "item");
+                    li_item.AddCSS("tree-" + (o_item.IsGroup ? "group" : "item"));
 
                 if (!string.IsNullOrEmpty(li_class))
-                    li_item.css_class += " " + li_class;
+                    li_item.AddCSS(li_class);
 
                 if (o_item.Childs.Count > 0)
                     WriteUl(ref li_item.Childs, o_item.Childs, li_class);

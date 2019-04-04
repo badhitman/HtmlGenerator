@@ -14,11 +14,19 @@ namespace HtmlGenerator.html5.forms
     /// </summary>
     public class label : base_dom_root
     {
+        public string @for;
+
         public label(string i_text, string i_for)
         {
             inline = true;
             InnerText = i_text;
-            SetAttribute("for", i_for);
+            @for = i_for;
+        }
+
+        public override string GetHTML(int deep = 0)
+        {
+            SetAttribute("for", @for);
+            return base.GetHTML(deep);
         }
     }
 }

@@ -10,7 +10,7 @@ using HtmlGenerator.set.entities;
 using System;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Группировка кнопок вместе в единую линию
@@ -37,7 +37,7 @@ namespace HtmlGenerator.bootstrap.forms
         public GroupElements()
         {
             tag_custom_name = typeof(div).Name;
-            css_class = "btn-group";
+            AddCSS("btn-group");
             SetAttribute("role", "group");
         }
 
@@ -52,16 +52,26 @@ namespace HtmlGenerator.bootstrap.forms
                 id_node = Guid.NewGuid().ToString().Replace("-", "");
 
             GroupElements nested_group = new GroupElements() { aria_label = "nested group - " + id_node };
-            button node_button = new button(title_node) { Id_DOM = id_node, css_class = "btn btn-"+ default_style.ToString() + " dropdown-toggle" };
-            node_button.SetAttribute("data-toggle","dropdown");
+            button node_button = new button(title_node) { Id_DOM = id_node };
+            node_button.AddCSS("btn");
+            node_button.AddCSS("btn-" + default_style.ToString());
+            node_button.AddCSS("dropdown-toggle");
+            node_button.SetAttribute("data-toggle", "dropdown");
             node_button.SetAttribute("aria-haspopup", "true");
             node_button.SetAttribute("aria-expanded", "false");
             nested_group.Childs.Add(node_button);
 
-            div dropdown_node = new div() { css_class = "dropdown-menu" };
+            div dropdown_node = new div();
+            dropdown_node.AddCSS("dropdown-menu");
             dropdown_node.SetAttribute("aria-labelledby", id_node);
-            nesting.ForEach(x=> dropdown_node.Add(new a() { css_class = "dropdown-item", href = x.Value, InnerText = x.Title }));
-            
+            foreach (DataParticleItem item in nesting)
+            {
+                using (a a_item = new a() { href = item.Value, InnerText = item.Title })
+                {
+                    a_item.AddCSS("dropdown-item");
+                    dropdown_node.Add(a_item);
+                }
+            }
             Childs.Add(nested_group);
         }
 
@@ -70,10 +80,10 @@ namespace HtmlGenerator.bootstrap.forms
             SetAttribute("aria-label", string.IsNullOrEmpty(aria_label) ? "Basic group - " + Guid.NewGuid().ToString().Replace("-", "") : aria_label);
 
             if (!(Size is null))
-                css_class = (css_class + " btn-group-" + Size?.ToString("g")).Trim();
+                AddCSS("btn-group-" + Size?.ToString("g"));
 
             if (VerticalVariation)
-                css_class = (css_class + " btn-group-vertical").Trim();
+                AddCSS("btn-group-vertical");
 
             return base.GetHTML(deep);
         }

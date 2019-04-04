@@ -7,7 +7,7 @@ using HtmlGenerator.html5.forms;
 using HtmlGenerator.html5.textual;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Стандартный Checkbox в одну горизонтальную строку. Label - справа
@@ -19,7 +19,7 @@ namespace HtmlGenerator.bootstrap.forms
         /// </summary>
         public label LabelInput;
 
-        public input Input = new input() { css_class = "form-check-input", type = InputTypesEnum.checkbox };
+        public input Input = new input() { type = InputTypesEnum.checkbox };
 
         /// <summary>
         /// Текст, который будет выведен в случае установки Checkbox-а. (используется если Input.required = true)
@@ -35,12 +35,15 @@ namespace HtmlGenerator.bootstrap.forms
 
         public CheckboxInput(string Label, string InputID)
         {
+            Input.AddCSS("form-check-input");
             tag_custom_name = typeof(div).Name;
-            css_class = "form-check";
+            AddCSS("form-check");
 
             if (!string.IsNullOrEmpty(Label))
-                LabelInput = new label(Label, InputID) { css_class = "form-check-label" };
-
+            {
+                LabelInput = new label(Label, InputID);
+                LabelInput.AddCSS("form-check-label");
+            }
             Input.Id_DOM = InputID;
         }
 

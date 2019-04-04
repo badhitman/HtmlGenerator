@@ -6,6 +6,7 @@ using HtmlGenerator.set;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace HtmlGenerator.html5
 {
@@ -71,7 +72,7 @@ namespace HtmlGenerator.html5
         /// <summary>
         /// Определяет имя класса, которое позволяет связать тег со стилевым оформлением.
         /// </summary>
-        public string css_class = "";
+        //public string css_class = "";
 
         /// <summary>
         /// Определяет "style" непосредственно для элемента
@@ -146,8 +147,8 @@ namespace HtmlGenerator.html5
             if (!string.IsNullOrEmpty(title))
                 SetAttribute("title", title);
 
-            if (!string.IsNullOrEmpty(css_class?.Trim()))
-                SetAttribute("class", css_class.Trim());
+            if (CSS.Count > 0)
+                SetAttribute("class", StringCSS());
 
             if (!string.IsNullOrEmpty(css_style))
                 SetAttribute("style", css_style);
@@ -235,15 +236,15 @@ namespace HtmlGenerator.html5
         /// <param name="check_duplicates_attributes">если true - то дубли значений будут исключены из конечного составного значения</param>
         public void SetAttribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
         {
-            string media_as_string = "";
+            string attr_as_string = "";
             if (check_duplicates_attributes)
-                (from attr in attributes group attr by attr.ToString()).ToList().ForEach(e => media_as_string += " " + e.Key);
+                (from attr in attributes group attr by attr.ToString()).ToList().ForEach(e => attr_as_string += " " + e.Key);
             else
-                attributes.ForEach(e => media_as_string += " " + e.ToString());
+                attributes.ForEach(e => attr_as_string += " " + e.ToString());
 
-            media_as_string = media_as_string.Trim().Replace(" ", separator);
-            if (!string.IsNullOrEmpty(media_as_string))
-                SetAttribute(attr_name, media_as_string);
+            attr_as_string = attr_as_string.Trim().Replace(" ", separator);
+            if (!string.IsNullOrEmpty(attr_as_string))
+                SetAttribute(attr_name, attr_as_string);
         }
 
         /// <summary>
@@ -309,6 +310,65 @@ namespace HtmlGenerator.html5
             }
         }
 
+        #region CSS классы стилей
+        /// <summary>
+        /// Для поиска пробелов в передаваемых CSS классах
+        /// </summary>
+        private Regex regex_spice = new Regex(@"\s+", RegexOptions.Compiled);
+
+        /// <summary>
+        /// CSS стили для элемента
+        /// </summary>
+        private List<string> CSS = new List<string>();
+
+        /// <summary>
+        /// Добавить CSS класс (если его нет у объекта)
+        /// </summary>
+        public void AddCSS(string css_class, bool CheckSpices = true)
+        {
+            if (CheckSpices && regex_spice.IsMatch(css_class))
+            {
+                foreach (string s in regex_spice.Split(css_class))
+                    AddCSS(s, false);
+            }
+            else if (!string.IsNullOrEmpty(css_class) && !CSS.Contains(css_class))
+                CSS.Add(css_class);
+        }
+
+        /// <summary>
+        /// Удалить класс CSS
+        /// </summary>
+        public void RemoveCSS(string css_class)
+        {
+            if (!string.IsNullOrEmpty(css_class))
+                CSS.Remove(css_class);
+        }
+
+        /// <summary>
+        /// Если класса нет, то будет добавлен. Если класс есть, то будет удалён
+        /// </summary>
+        public void TogleCSS(string css_class)
+        {
+            if (!string.IsNullOrEmpty(css_class))
+            {
+                if (!CSS.Contains(css_class))
+                    CSS.Add(css_class);
+                else
+                    CSS.Remove(css_class);
+            }
+        }
+
+        /// <summary>
+        /// Получить CSS классы одной строкой (разделитель пробел)
+        /// </summary>
+        public string StringCSS()
+        {
+            string css_as_string = "";
+            CSS.ForEach(x => css_as_string += " " + x);
+            return css_as_string.Trim();
+        }
+        #endregion
+
         #region IDisposable Support
         private bool disposedValue = false; // Для определения избыточных вызовов
 
@@ -318,6 +378,7 @@ namespace HtmlGenerator.html5
             {
                 Childs = null;
                 CustomAttributes = null;
+                CSS = null;
                 disposedValue = true;
             }
             // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.

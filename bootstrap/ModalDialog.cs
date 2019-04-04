@@ -73,18 +73,21 @@ namespace HtmlGenerator.bootstrap
             span span_close_modal_header = new span("&times;");
             span_close_modal_header.SetAttribute("aria-hidden", "true");
             //
-            button button_close_modal_header = new button(null) { css_class = "close" };
+            button button_close_modal_header = new button(null);
+            button_close_modal_header.AddCSS("close");
             button_close_modal_header.SetAttribute("data-dismiss", "modal");
             button_close_modal_header.SetAttribute("aria-label", "Close");
             button_close_modal_header.Add(span_close_modal_header);
             //
-            h5 h5_modal_header = new h5(TitleDialog) { css_class = "modal-title" };
-            div div_modal_header = new div() { css_class = "modal-header" };
+            h5 h5_modal_header = new h5(TitleDialog);
+            h5_modal_header.AddCSS("modal-title");
+            div div_modal_header = new div();
+            div_modal_header.AddCSS("modal-header");
             div_modal_header.Add(h5_modal_header);
             div_modal_header.Add(button_close_modal_header);
             //
-            div modal_footer = new div() { css_class = "modal-footer" };
-
+            div modal_footer = new div();
+            modal_footer.AddCSS("modal-footer");
             if (!string.IsNullOrEmpty(TextCancelButton))
             {
                 button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
@@ -96,14 +99,16 @@ namespace HtmlGenerator.bootstrap
             {
                 button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.TypeButton = TypesButton.submit;
-                button_send_modal_footer.css_class += " " + CssOkButton;
+                button_send_modal_footer.AddCSS(CssOkButton);
                 modal_footer.Add(button_send_modal_footer);
             }
             //
-            div modal_content = new div() { css_class = "modal-content" };
+            div modal_content = new div();
+            modal_content.AddCSS("modal-content");
             modal_content.Add(div_modal_header);
             //
-            div modal_body = new div() { css_class = "modal-body" };
+            div modal_body = new div();
+            modal_body.AddCSS("modal-body");
             modal_body.AddRange(BodyElements);
             modal_content.Add(modal_body);
             //
@@ -111,11 +116,13 @@ namespace HtmlGenerator.bootstrap
             form my_form = new form() { EncType = EncTypesEnum.WwwFormUrlEncoded, method_form = MethodsFormEnum.POST, target = FormTarget, form_action = FormAction };
             my_form.Add(modal_content);
             //
-            div modal_dialog_document = new div() { css_class = "modal-dialog" };
+            div modal_dialog_document = new div();
+            modal_dialog_document.AddCSS("modal-dialog");
             modal_dialog_document.CustomAttributes.Add("role", "document");
             modal_dialog_document.Add(my_form);
             //
-            this.css_class = "modal fade";
+            AddCSS("modal");
+            AddCSS("fade");
             CustomAttributes.Add("tabindex", "-1");
             CustomAttributes.Add("role", "dialog");
             CustomAttributes.Add("aria-labelledby", Id_DOM);

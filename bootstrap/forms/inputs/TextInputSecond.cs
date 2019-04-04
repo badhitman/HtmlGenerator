@@ -6,32 +6,38 @@ using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Миниминизированый [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.
     /// К тому же тут Label прилеплен слева к [Input] образуя единый горизонтльный блок
     /// </summary>
-    public class SecondTextInput : forms_dom_root
+    public class TextInputSecond : forms_dom_root
     {
         public string LabelText;
-        public input Input = new input() { type = InputTypesEnum.text, css_class = "form-control" };
+        public input Input = new input() { type = InputTypesEnum.text };
 
-        public SecondTextInput(string Label, string InputID)
+        public TextInputSecond(string Label, string InputID)
         {
             tag_custom_name = typeof(div).Name;
             LabelText = Label;
 
             Input.Name_DOM = InputID;
             Input.Id_DOM = InputID;
-            css_class = "input-group";
+            Input.AddCSS("form-control");
+            AddCSS("input-group");
         }
 
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            div input_group_prepend = new div() { css_class = "input-group-prepend" };
-            input_group_prepend.Childs.Add(new div() { css_class = "input-group-text", InnerText = LabelText });
+            div input_group_prepend = new div();
+            input_group_prepend.AddCSS("input-group-prepend");
+            using (div input_group_text = new div() { InnerText = LabelText })
+            {
+                input_group_text.AddCSS("input-group-text");
+                input_group_prepend.Childs.Add(input_group_text);
+            }
             Childs.Add(input_group_prepend);
             Childs.Add(Input);
 

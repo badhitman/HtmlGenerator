@@ -32,7 +32,8 @@ namespace HtmlGenerator.bootstrap
         public override string GetHTML(int deep = 0)
         {
             Childs.Clear();
-            ol my_ol = new ol(ol.TypesOL.None) { css_class = "breadcrumb" };
+            ol my_ol = new ol(ol.TypesOL.None);
+            my_ol.AddCSS("breadcrumb");
 
             if (BreadcrumbsCol.Count == 0)
                 goto end;
@@ -41,10 +42,12 @@ namespace HtmlGenerator.bootstrap
             li my_li;
             foreach (BreadcrumbItem bi in BreadcrumbsCol)
             {
-                my_li = new li() { css_class = "breadcrumb-item" };
+                my_li = new li();
+                my_li.AddCSS("breadcrumb-item");
+
                 if (string.IsNullOrEmpty(bi.href))
                 {
-                    my_li.css_class += " active";
+                    my_li.AddCSS("active");
                     my_li.SetAttribute("aria-current", "page");
                     my_li.InnerText = bi.text;
                 }

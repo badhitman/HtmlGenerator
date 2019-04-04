@@ -20,13 +20,13 @@ namespace HtmlGenerator.bootstrap
             tag_custom_name = typeof(span).Name;
             InnerText = text_badge;
             StyleBadge = style_badge;
-            css_class = "badge";
+            AddCSS("badge");
         }
 
         public override string GetHTML(int deep = 0)
         {
             if (!(StyleBadge is null))
-                css_class = (css_class + " badge-" + StyleBadge?.ToString("g")).Trim();
+                AddCSS("badge-" + StyleBadge?.ToString("g"));
 
             return base.GetHTML(deep);
         }

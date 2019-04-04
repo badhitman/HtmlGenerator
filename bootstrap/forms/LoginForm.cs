@@ -7,7 +7,7 @@ using HtmlGenerator.bootstrap;
 using HtmlGenerator.html5.forms;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     public class LoginForm : Card
     {
@@ -17,13 +17,13 @@ namespace HtmlGenerator.bootstrap.forms
         public form html_form = new form()
         {
             Id_DOM = "login_form_id",
-            css_class = "was-validated",
             target = TargetsEnum._self,
             method_form = MethodsFormEnum.POST
         };
 
         public LoginForm()
         {
+            html_form.AddCSS("was-validated");
             CardHeader = "Вход/Регистрация";
             html_form.SetAttribute("novalidate", null);
         }

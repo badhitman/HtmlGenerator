@@ -6,19 +6,19 @@ using HtmlGenerator.html5.forms;
 using HtmlGenerator.html5.textual;
 using HtmlGenerator.set;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Базовый [Input] в [div] обёртке. [Label] сверху над [Input]-ом и текст описания [InputInfoFooter] под [Input]-ом
     /// </summary>
-    public class BaseTextInput : forms_dom_root
+    public class TextInput : forms_dom_root
     {
         /// <summary>
         /// Текстова метка для Input-а
         /// </summary>
         public label LabelInput;
 
-        public input Input = new input() { type = InputTypesEnum.text, css_class = "form-control" };
+        public input Input = new input() { type = InputTypesEnum.text };
 
         /// <summary>
         /// Текст подсказки, который отображается мелким шрифтом под Input-ом
@@ -30,8 +30,9 @@ namespace HtmlGenerator.bootstrap.forms
         /// </summary>
         public string ClassInputGroup = null;
 
-        public BaseTextInput(string Label, string InputID)
+        public TextInput(string Label, string InputID)
         {
+            Input.AddCSS("form-control");
             tag_custom_name = typeof(div).Name;
             if (!string.IsNullOrEmpty(Label))
                 LabelInput = new label(Label, InputID);
@@ -42,7 +43,8 @@ namespace HtmlGenerator.bootstrap.forms
 
         public override string GetHTML(int deep = 0)
         {
-            css_class = ("form-group " + ClassInputGroup).Trim();
+            AddCSS("form-group");
+            AddCSS(ClassInputGroup);
 
             if (!(LabelInput is null))
                 Childs.Add(LabelInput);
@@ -55,12 +57,12 @@ namespace HtmlGenerator.bootstrap.forms
             if (!string.IsNullOrEmpty(InputInfoFooter))
             {
                 string input_info_id = Input.Name_DOM + "Help";
-                Childs.Add(new small(InputInfoFooter)
+                using (small info_text = new small(InputInfoFooter) { inline = true, Id_DOM = input_info_id })
                 {
-                    inline = true,
-                    css_class = "form-text text-muted",
-                    Id_DOM = input_info_id
-                });
+                    info_text.AddCSS("form-text");
+                    info_text.AddCSS("text-muted");
+                    Childs.Add(info_text);
+                }
                 Input.SetAttribute("aria-describedby", input_info_id);
             }
             return base.GetHTML(deep);

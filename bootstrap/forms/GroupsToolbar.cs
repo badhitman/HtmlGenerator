@@ -6,7 +6,7 @@ using HtmlGenerator.html5.areas;
 using HtmlGenerator.set.bootstrap;
 using System.Collections.Generic;
 
-namespace HtmlGenerator.bootstrap.forms
+namespace HtmlGenerator.bootstrap
 {
     /// <summary>
     /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.
@@ -33,7 +33,7 @@ namespace HtmlGenerator.bootstrap.forms
         {
             tag_custom_name = typeof(div).Name;
 
-            css_class = "btn-toolbar";
+            AddCSS("btn-toolbar");
             SetAttribute("role", "toolbar");
         }
 
@@ -44,7 +44,7 @@ namespace HtmlGenerator.bootstrap.forms
             Groups.ForEach(x => Childs.Add(x));
 
             if (!(Justifying is null))
-                css_class = (css_class + " " + Justifying?.ToString("g").Replace("_", "-")).Trim();
+                AddCSS(Justifying?.ToString("g").Replace("_", "-"));
 
             return base.GetHTML(deep);
         }
