@@ -211,6 +211,11 @@ namespace HtmlGenerator.html5
 
         #region Управление атрибутами (и событиями) объекта
         /// <summary>
+        /// Пользовательские атрибуты текущего HTML элемента
+        /// </summary>
+        public Dictionary<string, string> CustomAttributes { get; private set; } = new Dictionary<string, string>();
+
+        /// <summary>
         /// Установить или добавить атрибут.
         /// </summary>
         /// <param name="attr_name">Имя атрибута dom объекта</param>
@@ -224,6 +229,7 @@ namespace HtmlGenerator.html5
         }
         public void SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
         public void SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
+        
         /// <summary>
         /// Установить DOM объекту составное значение атрибута
         /// </summary>
@@ -298,17 +304,17 @@ namespace HtmlGenerator.html5
         /// <summary>
         /// Прямое добавление дочернего/вложеного элемента.
         /// </summary>
-        public virtual void Add(base_dom_root child) => Childs.Add(child);
+        public virtual void AddDomNode(base_dom_root child) => Childs.Add(child);
 
         /// <summary>
         /// Пакетное добавление дочерних/вложеных элементов.
         /// </summary>
-        public virtual void AddRange(List<base_dom_root> childs) => Childs.AddRange(childs);
+        public virtual void AddRangeDomNode(List<base_dom_root> childs) => Childs.AddRange(childs);
 
         /// <summary>
-        /// Пользовательские атрибуты текущего HTML элемента
+        /// Удалить все ложеные DOM элементы
         /// </summary>
-        public Dictionary<string, string> CustomAttributes { get; private set; } = new Dictionary<string, string>();
+        public virtual void ClearNestedDom() => Childs.Clear();
         #endregion
 
         #region CSS классы стилей

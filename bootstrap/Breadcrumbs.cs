@@ -52,9 +52,9 @@ namespace HtmlGenerator.bootstrap
                     my_li.InnerText = bi.text;
                 }
                 else
-                    my_li.Add(new a() { href = bi.href, InnerText = bi.text });
+                    my_li.AddDomNode(new a() { href = bi.href, InnerText = bi.text });
 
-                my_ol.Add(my_li);
+                my_ol.AddDomNode(my_li);
             }
 
             end:

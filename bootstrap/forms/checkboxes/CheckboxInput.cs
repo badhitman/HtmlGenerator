@@ -64,16 +64,16 @@ namespace HtmlGenerator.bootstrap
             Childs.Add(new input() { type = InputTypesEnum.hidden, value = Input.@checked ? "on" : "off", Name_DOM = Id_DOM });
             //
             script my_script = new script();
-            my_script.Add(new text("jQuery(document).ready(function () {"));
-            my_script.Add(new text("  jQuery('#" + Input.Id_DOM + "').change(function () {"));
-            my_script.Add(new text("    if (jQuery(this).prop('checked')) {"));
-            my_script.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('on');"));
-            my_script.Add(new text("    }"));
-            my_script.Add(new text("    else {"));
-            my_script.Add(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('off');"));
-            my_script.Add(new text("    }"));
-            my_script.Add(new text("  });"));
-            my_script.Add(new text("});"));
+            my_script.AddDomNode(new text("jQuery(document).ready(function () {"));
+            my_script.AddDomNode(new text("  jQuery('#" + Input.Id_DOM + "').change(function () {"));
+            my_script.AddDomNode(new text("    if (jQuery(this).prop('checked')) {"));
+            my_script.AddDomNode(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('on');"));
+            my_script.AddDomNode(new text("    }"));
+            my_script.AddDomNode(new text("    else {"));
+            my_script.AddDomNode(new text("      jQuery('input[name=" + Input.Id_DOM + "').val('off');"));
+            my_script.AddDomNode(new text("    }"));
+            my_script.AddDomNode(new text("  });"));
+            my_script.AddDomNode(new text("});"));
             Childs.Add(my_script);
             ///////////////////////////////////////////////
             ///

@@ -8,28 +8,38 @@ using System.Collections.Generic;
 namespace HtmlGenerator.html5
 {
     /// <summary>
-    /// Перекрыты методы добавления вложеных объектов
+    /// Перекрыты методы управления вложеными объектами
     /// </summary>
     public class safe_base_dom_root : base_dom_root
     {
         /// <summary>
         /// ЗАПРЕЩЕНО!
-        /// В данный объект нельзя {напрямую/вручную} добавлять вложеные [dom] объекты.
+        /// В данном объекте нельзя {напрямую/вручную} манипулировать вложеными [dom] элементами.
         /// </summary>
-        public override void Add(base_dom_root child)
+        public override void AddDomNode(base_dom_root child)
         {
-            //base.Add(child);
             throw new NotImplementedException();
+            //base.Add(child);
         }
 
         /// <summary>
         /// ЗАПРЕЩЕНО!
-        /// В данный объект нельзя {напрямую/вручную} добавлять вложеные [dom] объекты
+        /// В данном объекте нельзя {напрямую/вручную} манипулировать вложеными [dom] элементами.
         /// </summary>
-        public override void AddRange(List<base_dom_root> childs)
+        public override void AddRangeDomNode(List<base_dom_root> childs)
         {
-            //base.AddRange(childs);
             throw new NotImplementedException();
+            //base.AddRange(childs);
+        }
+
+        /// <summary>
+        /// ЗАПРЕЩЕНО!
+        /// В данном объекте нельзя {напрямую/вручную} манипулировать вложеными [dom] элементами.
+        /// </summary>
+        public override void ClearNestedDom()
+        {
+            throw new NotImplementedException();
+            //base.ClearNestedDom();
         }
     }
 }

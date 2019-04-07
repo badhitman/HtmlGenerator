@@ -67,7 +67,7 @@ namespace HtmlGenerator.bootstrap
                 using (a a_item = new a() { href = item.Value, InnerText = item.Title })
                 {
                     a_item.AddCSS("dropdown-item");
-                    dropdown_node.Add(a_item);
+                    dropdown_node.AddDomNode(a_item);
                 }
             }
             Childs.Add(nested_group);

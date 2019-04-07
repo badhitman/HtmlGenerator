@@ -55,7 +55,7 @@ namespace HtmlGenerator.bootstrap
                 button_close.SetAttribute("aria-label", "Close");
                 span my_span = new span() { InnerText = "&times;" };
                 my_span.SetAttribute("aria-hidden", "true");
-                button_close.Add(my_span);
+                button_close.AddDomNode(my_span);
                 Childs.Add(button_close);
             }
 

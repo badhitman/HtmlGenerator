@@ -72,14 +72,14 @@ namespace HtmlGenerator.bootstrap
             {
                 card_body.AddCSS("card-body " + adding_body_css_class, true);
 
-                card_body.AddRange(CardBody);
+                card_body.AddRangeDomNode(CardBody);
                 Childs.Add(card_body);
             }
             if (CardFooter.Count > 0)
                 using (div card_footer = new div())
                 {
                     card_footer.AddCSS("card-footer " + adding_footer_css_class, true);
-                    card_footer.AddRange(CardFooter);
+                    card_footer.AddRangeDomNode(CardFooter);
                     Childs.Add(card_footer);
                 }
 

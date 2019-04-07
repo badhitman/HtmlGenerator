@@ -77,14 +77,14 @@ namespace HtmlGenerator.bootstrap
             button_close_modal_header.AddCSS("close");
             button_close_modal_header.SetAttribute("data-dismiss", "modal");
             button_close_modal_header.SetAttribute("aria-label", "Close");
-            button_close_modal_header.Add(span_close_modal_header);
+            button_close_modal_header.AddDomNode(span_close_modal_header);
             //
             h5 h5_modal_header = new h5(TitleDialog);
             h5_modal_header.AddCSS("modal-title");
             div div_modal_header = new div();
             div_modal_header.AddCSS("modal-header");
-            div_modal_header.Add(h5_modal_header);
-            div_modal_header.Add(button_close_modal_header);
+            div_modal_header.AddDomNode(h5_modal_header);
+            div_modal_header.AddDomNode(button_close_modal_header);
             //
             div modal_footer = new div();
             modal_footer.AddCSS("modal-footer");
@@ -92,7 +92,7 @@ namespace HtmlGenerator.bootstrap
             {
                 button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
                 button_close_modal_footer.SetAttribute("data-dismiss", "modal");
-                modal_footer.Add(button_close_modal_footer);
+                modal_footer.AddDomNode(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(TextOkButton))
@@ -100,26 +100,26 @@ namespace HtmlGenerator.bootstrap
                 button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.TypeButton = TypesButton.submit;
                 button_send_modal_footer.AddCSS(CssOkButton, true);
-                modal_footer.Add(button_send_modal_footer);
+                modal_footer.AddDomNode(button_send_modal_footer);
             }
             //
             div modal_content = new div();
             modal_content.AddCSS("modal-content");
-            modal_content.Add(div_modal_header);
+            modal_content.AddDomNode(div_modal_header);
             //
             div modal_body = new div();
             modal_body.AddCSS("modal-body");
-            modal_body.AddRange(BodyElements);
-            modal_content.Add(modal_body);
+            modal_body.AddRangeDomNode(BodyElements);
+            modal_content.AddDomNode(modal_body);
             //
-            modal_content.Add(modal_footer);
+            modal_content.AddDomNode(modal_footer);
             form my_form = new form() { EncType = EncTypesEnum.WwwFormUrlEncoded, method_form = MethodsFormEnum.POST, target = FormTarget, form_action = FormAction };
-            my_form.Add(modal_content);
+            my_form.AddDomNode(modal_content);
             //
             div modal_dialog_document = new div();
             modal_dialog_document.AddCSS("modal-dialog");
             modal_dialog_document.CustomAttributes.Add("role", "document");
-            modal_dialog_document.Add(my_form);
+            modal_dialog_document.AddDomNode(my_form);
             //
             AddCSS("modal fade", true);
             CustomAttributes.Add("tabindex", "-1");

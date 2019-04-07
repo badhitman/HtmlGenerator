@@ -25,7 +25,7 @@ namespace HtmlGenerator
                 using (div input_group_prepend = new div())
                 {
                     input_group_prepend.AddCSS("input-group-prepend");
-                    ret_dom.Add(input_group_prepend);
+                    ret_dom.AddDomNode(input_group_prepend);
                 }
                 //ret_dom.Childs[0].Childs.Add(new label(label, select_body.Id_DOM) { css_class = "input-group-text" });
             }
@@ -35,7 +35,7 @@ namespace HtmlGenerator
                 ret_dom.title = Tooltip;
 
             ret_dom.SetAttribute("data-toggle", "tooltip");
-            ret_dom.Add(select_body);
+            ret_dom.AddDomNode(select_body);
             return ret_dom;
         }
 
@@ -53,12 +53,12 @@ namespace HtmlGenerator
             div card_body = new div();
             card_body.AddCSS("card-body");
             foreach (div he in body_elements)
-                card_body.Add(he);
+                card_body.AddDomNode(he);
 
             div card_set = new div();
             card_set.AddCSS("card "+css_card, true);
-            card_set.Add(card_header);
-            card_set.Add(card_body);
+            card_set.AddDomNode(card_header);
+            card_set.AddDomNode(card_body);
 
             return card_set;
         }
@@ -69,7 +69,7 @@ namespace HtmlGenerator
             div returned_input = new div();
             returned_input.AddCSS("form-group");
             if (!string.IsNullOrEmpty(label_text))
-                returned_input.Add(new label(label_text, name_input));
+                returned_input.AddDomNode(new label(label_text, name_input));
 
             textarea ret_textarea = new textarea() { InnerText = value_input, required = required, @readonly = input_readonly };
             ret_textarea.AddCSS("form-control");
@@ -81,7 +81,7 @@ namespace HtmlGenerator
 
             ret_textarea.Name_DOM = name_input;
 
-            returned_input.Add(ret_textarea);
+            returned_input.AddDomNode(ret_textarea);
 
             return returned_input;
         }
@@ -141,14 +141,14 @@ namespace HtmlGenerator
             button_close_modal_header.AddCSS("close");
             button_close_modal_header.SetAttribute("data-dismiss", "modal");
             button_close_modal_header.SetAttribute("aria-label", "Close");
-            button_close_modal_header.Add(span_close_modal_header);
+            button_close_modal_header.AddDomNode(span_close_modal_header);
             //
             h5 h5_modal_header = new h5(title);
             h5_modal_header.AddCSS("modal-title");
             div div_modal_header = new div();
             div_modal_header.AddCSS("modal-header");
-            div_modal_header.Add(h5_modal_header);
-            div_modal_header.Add(button_close_modal_header);
+            div_modal_header.AddDomNode(h5_modal_header);
+            div_modal_header.AddDomNode(button_close_modal_header);
             //
             div modal_footer = new div();
             modal_footer.AddCSS("modal-footer");
@@ -156,32 +156,32 @@ namespace HtmlGenerator
             {
                 button button_close_modal_footer = GetButton(text_cansel_button, null, null, VisualBootstrapStylesEnum.secondary);
                 button_close_modal_footer.SetAttribute("data-dismiss", "modal");
-                modal_footer.Add(button_close_modal_footer);
+                modal_footer.AddDomNode(button_close_modal_footer);
             }
 
             if (!string.IsNullOrEmpty(text_ok_button))
             {
                 button button_send_modal_footer = GetButton(text_ok_button, null, "#", VisualBootstrapStylesEnum.primary);
                 button_send_modal_footer.Id_DOM = id_ok_button;
-                modal_footer.Add(button_send_modal_footer);
+                modal_footer.AddDomNode(button_send_modal_footer);
             }
             //
             div modal_content = new div();
             modal_content.AddCSS("modal-content");
-            modal_content.Add(div_modal_header);
+            modal_content.AddDomNode(div_modal_header);
             //
             div modal_body = new div();
             modal_body.AddCSS("modal-body");
-            modal_body.Add(body_html);
-            modal_content.Add(modal_body);
+            modal_body.AddDomNode(body_html);
+            modal_content.AddDomNode(modal_body);
             //
-            modal_content.Add(modal_footer);
+            modal_content.AddDomNode(modal_footer);
             //
             div modal_dialog_document = new div();
             modal_dialog_document.AddCSS("modal-dialog");
 
             modal_dialog_document.CustomAttributes.Add("role", "document");
-            modal_dialog_document.Add(modal_content);
+            modal_dialog_document.AddDomNode(modal_content);
             //
             div ModalDialog = new div() { Id_DOM = id_modal_dialog };
             ModalDialog.AddCSS("modal fade", true);
@@ -190,7 +190,7 @@ namespace HtmlGenerator
             ModalDialog.CustomAttributes.Add("aria-labelledby", id_modal_dialog);
             ModalDialog.CustomAttributes.Add("aria-hidden", "true");
 
-            ModalDialog.Add(modal_dialog_document);
+            ModalDialog.AddDomNode(modal_dialog_document);
             ModalDialog.before_coment_block = "Modal dialog";
             return ModalDialog;
         }
@@ -229,19 +229,19 @@ namespace HtmlGenerator
             TextInput textInput = new TextInput("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
             textInput.Input.placeholder = "Логин";
             textInput.Input.required = true;
-            html_response.Add(textInput);
+            html_response.AddDomNode(textInput);
 
             textInput = new TextInput("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Пароль";
-            html_response.Add(textInput);
+            html_response.AddDomNode(textInput);
 
             textInput = new TextInput("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
             textInput.Input.type = InputTypesEnum.password;
             textInput.Input.placeholder = "Повтор";
 
             textInput.AddCSS("panel-collapse collapse " + collapse_info_new_user_input_css, true);
-            html_response.Add(textInput);
+            html_response.AddDomNode(textInput);
 
             html_response.Childs[html_response.Childs.Count - 1].AddCSS("panel-collapse collapse " + collapse_info_new_user_input_css, true);
 

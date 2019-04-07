@@ -2,6 +2,9 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+using HtmlGenerator.html5.extended;
+using HtmlGenerator.set;
+using System.Collections.Generic;
 
 namespace HtmlGenerator.html5.headers
 {
@@ -14,16 +17,38 @@ namespace HtmlGenerator.html5.headers
     /// </summary>
     public class head : base_dom_root
     {
-        public head()
-        {
+        /// <summary>
+        /// Заголовок [title] вкладки браузера
+        /// </summary>
+        public string PageTitle;
 
-        }
+        /// <summary>
+        /// Элементы (по умолчанию). Т.е. элементы, которые будут в шапке при каждом построении
+        /// </summary>
+        public List<base_dom_root> defTags { get; private set; } = new List<base_dom_root>() { };
 
+        /// <summary>
+        /// Динамические (одноразовые) элементы. Т.е. элементы будут удалены после построения шапки
+        /// </summary>
+        public List<base_dom_root> dynTags { get; private set; } = new List<base_dom_root>() { };
+
+        /// <summary>
+        /// Базовый адрес (тег [base]) текущего документа
+        /// </summary>
         public @base Base = null;
 
         public override string GetHTML(int deep = 0)
         {
-            if (!(Base is null) && !Childs.Exists(x => x is @base))
+            ClearNestedDom();
+
+            if (!string.IsNullOrEmpty(PageTitle))
+                AddDomNode(new title(PageTitle));
+
+            Childs.AddRange(defTags);
+            Childs.AddRange(dynTags);
+            dynTags.Clear();
+
+            if (!(Base is null))
                 Childs.Add(Base);
 
             return base.GetHTML(deep);
