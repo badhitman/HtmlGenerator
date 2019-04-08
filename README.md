@@ -40,7 +40,7 @@ string test_s = mybox.GetHTML();
 
 Пример 2
 ```C#
-BaseTextInput my_text_input = new BaseTextInput("Email address", "exampleInputEmail1");
+TextInput my_text_input = new TextInput("Email address", "exampleInputEmail1");
 my_text_input.Input.type = InputTypesEnum.email;
 my_text_input.Input.placeholder = "Enter email";
 my_text_input.InputInfoFooter = "We'll never share your email with anyone else.";
@@ -59,9 +59,9 @@ string test_s = my_text_input.GetHTML();
 Пример 3:
 ```C#
 GroupElements my_test_obj = new GroupElements() { aria_label = "Basic example group" };
-my_test_obj.Childs.Add(new Button("Left", VisualBootstrapStylesEnum.secondary));
-my_test_obj.Childs.Add(new Button("Middle", VisualBootstrapStylesEnum.secondary));
-my_test_obj.Childs.Add(new Button("Right", VisualBootstrapStylesEnum.secondary));
+my_test_obj.AddDomNode(new Button("Left", VisualBootstrapStylesEnum.secondary));
+my_test_obj.AddDomNode(new Button("Middle", VisualBootstrapStylesEnum.secondary));
+my_test_obj.AddDomNode(new Button("Right", VisualBootstrapStylesEnum.secondary));
 string test_string = my_test_obj.GetHTML();
 ```
 Результат => HTML.Bootstrap [view original demo](https://getbootstrap.com/docs/4.3/components/button-group/#basic-example):
@@ -79,21 +79,21 @@ GroupElements my_group;
 
 GroupsToolbar my_toolbar = new GroupsToolbar() { aria_label = "Toolbar with button groups" };
 my_group = new GroupElements() { aria_label = "First group" };
-my_group.css_class += " mr-2";
+my_group.AddCSS("mr-2");
 for (int i = 1; i <= 4; i++)
-	my_group.Childs.Add(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
-            
+   my_group.AddDomNode(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
+
 my_toolbar.Groups.Add(my_group);
 //
 my_group = new GroupElements() { aria_label = "Second group" };
-my_group.css_class += " mr-2";
+my_group.AddCSS("mr-2");
 for (int i = 5; i <= 7; i++)
-	my_group.Childs.Add(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
+  my_group.AddDomNode(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
 
 my_toolbar.Groups.Add(my_group);
 //
 my_group = new GroupElements() { aria_label = "Third group" };
-my_group.Childs.Add(new Button("8", VisualBootstrapStylesEnum.secondary));
+my_group.AddDomNode(new Button("8", VisualBootstrapStylesEnum.secondary));
 my_toolbar.Groups.Add(my_group);
 
 test_string = my_toolbar.GetHTML();

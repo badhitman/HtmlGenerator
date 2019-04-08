@@ -15,7 +15,7 @@ namespace HtmlGenerator.bootstrap
     /// <summary>
     /// Группировка кнопок вместе в единую линию
     /// </summary>
-    public class GroupElements : safe_base_dom_root
+    public class GroupElements : base_dom_root
     {
         /// <summary>
         /// Группы и панели инструментов должны иметь явную метку, так как в противном случае большинство вспомогательных технологий не будут объявлять их, несмотря на наличие правильного атрибута роли.
