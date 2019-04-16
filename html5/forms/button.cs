@@ -84,6 +84,7 @@ namespace HtmlGenerator.html5.forms
         {
             InnerText = text_button;
             TypeButton = type_button;
+            inline = true;
         }
 
         public override string GetHTML(int deep = 0)
