@@ -16,6 +16,12 @@ namespace HtmlGenerator.bootstrap
     public class Breadcrumbs : safe_base_dom_root
     {
         public List<BreadcrumbItem> BreadcrumbsCol = new List<BreadcrumbItem>();
+        
+        /// <summary>
+        /// Меняем имя тега на nav
+        /// </summary>
+        public Breadcrumbs() => tag_custom_name = typeof(nav).Name;
+
         public void AddBreadcrumb(string in_text, string in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItem() { text = in_text, href = in_href });
 
         /// <summary>
@@ -23,11 +29,6 @@ namespace HtmlGenerator.bootstrap
         /// Для наполнения тела используется BreadcrumbsCol (например через метод AddBreadcrumb)
         /// </summary>
         public new List<base_dom_root> Childs { get => base.Childs; set => base.Childs = value; }
-
-        /// <summary>
-        /// Меняем имя тега на nav
-        /// </summary>
-        public Breadcrumbs() => tag_custom_name = typeof(nav).Name;
 
         public override string GetHTML(int deep = 0)
         {
@@ -39,6 +40,7 @@ namespace HtmlGenerator.bootstrap
                 goto end;
             else
                 BreadcrumbsCol[BreadcrumbsCol.Count - 1].href = null;
+
             li my_li;
             foreach (BreadcrumbItem bi in BreadcrumbsCol)
             {

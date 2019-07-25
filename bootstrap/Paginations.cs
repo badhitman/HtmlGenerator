@@ -54,6 +54,20 @@ namespace HtmlGenerator.bootstrap
         /// </summary>
         public int CountAllElements { get; private set; } = 0;
 
+        /// <summary>
+        /// Количество страниц в постраничном документе
+        /// </summary>
+        private int CountPages
+        {
+            get
+            {
+                if (CountAllElements <= 0 || PageSize <= 0)
+                    return 0;
+
+                return Convert.ToInt16(Math.Ceiling((double)CountAllElements / (double)PageSize));
+            }
+        }
+
         private int CheckPageNum(int page_num)
         {
             if (page_num <= 0)
@@ -64,6 +78,11 @@ namespace HtmlGenerator.bootstrap
 
             return page_num;
         }
+
+        /// <summary>
+        /// Вычислить количество строк данных, которые нужно пропустить исходя из номера текущей страницы
+        /// </summary>
+        public int Skip { get { return (PageNum - 1) * PageSize; } }
 
         private int CheckPageSize(int page_size)
         {
@@ -80,20 +99,6 @@ namespace HtmlGenerator.bootstrap
                 page_size = CountAllElements;
 
             return page_size;
-        }
-
-        /// <summary>
-        /// Количество страниц в постраничном документе
-        /// </summary>
-        private int CountPages
-        {
-            get
-            {
-                if (CountAllElements <= 0 || PageSize <= 0)
-                    return 0;
-
-                return Convert.ToInt16(Math.Ceiling((double)CountAllElements / (double)PageSize));
-            }
         }
 
         /// <summary>
@@ -116,11 +121,6 @@ namespace HtmlGenerator.bootstrap
             else
                 data_list = new List<T>(data_list.Skip(Skip).Take(PageSize));
         }
-
-        /// <summary>
-        /// Вычислить количество строк данных, которые нужно пропустить исходя из номера текущей страницы
-        /// </summary>
-        public int Skip { get { return (PageNum - 1) * PageSize; } }
 
         /// <summary>
         /// Получить навигационную кнопку-ссылку пагинатора.
@@ -190,6 +190,7 @@ namespace HtmlGenerator.bootstrap
             SetAttribute("aria-label", "Page navigation");
             ul ul_block = new ul();
             ul_block.AddCSS("pagination");
+            
             #region Formatting pagination (aligment + sizing)
             if (SiziePagination == SizingBootstrap.Lg)
                 ul_block.AddCSS("pagination-lg");
@@ -242,7 +243,7 @@ namespace HtmlGenerator.bootstrap
             ul_block.Childs.Add(PaginationItem(CountPages + 1));
             Childs.Add(ul_block);
 
-            end:
+        end:
             return base.GetHTML(deep);
         }
     }
