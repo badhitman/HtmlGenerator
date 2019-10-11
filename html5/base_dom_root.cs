@@ -94,6 +94,8 @@ namespace HtmlGenerator.html5
         public bool need_end_tag = true;
         #endregion
 
+
+
         /// <summary>
         /// HtmlController -> HTML (text)
         /// </summary>
@@ -209,6 +211,8 @@ namespace HtmlGenerator.html5
             }
         }
 
+
+
         #region Управление атрибутами (и событиями) объекта
         /// <summary>
         /// Пользовательские атрибуты текущего HTML элемента
@@ -229,7 +233,7 @@ namespace HtmlGenerator.html5
         }
         public void SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
         public void SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
-        
+
         /// <summary>
         /// Установить DOM объекту составное значение атрибута
         /// </summary>
@@ -295,6 +299,8 @@ namespace HtmlGenerator.html5
         }
         #endregion
 
+
+
         #region Вложеные/Дочерние элементы
         /// <summary>
         /// Дочерние/вложеные элементы
@@ -316,6 +322,8 @@ namespace HtmlGenerator.html5
         /// </summary>
         public virtual void ClearNestedDom() => Childs.Clear();
         #endregion
+
+
 
         #region CSS классы стилей
         /// <summary>
@@ -381,6 +389,8 @@ namespace HtmlGenerator.html5
             return css_as_string.Trim();
         }
         #endregion
+
+
 
         #region IDisposable Support
         private bool disposedValue = false; // Для определения избыточных вызовов
