@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// © https://github.com/badhitman - @fakegov 
+// https://github.com/badhitman 
 ////////////////////////////////////////////////
 using HtmlGenerator.html5;
 using HtmlGenerator.html5.collections;

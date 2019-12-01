@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// © https://github.com/badhitman - @fakegov 
+// https://github.com/badhitman 
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5.areas;
@@ -22,7 +22,7 @@ namespace HtmlGenerator.bootstrap
             tag_custom_name = typeof(div).Name;
             LabelText = Label;
 
-            Input.Name_DOM = InputID;
+            Input.Name = InputID;
             Input.Id_DOM = InputID;
             Input.AddCSS("form-control");
             AddCSS("input-group");
@@ -42,7 +42,7 @@ namespace HtmlGenerator.bootstrap
             Childs.Add(Input);
 
             if (Input.required)
-                Childs.AddRange(GetValidationAlerts(Input.Name_DOM));
+                Childs.AddRange(GetValidationAlerts(Input.Name));
 
             return base.GetHTML(deep);
         }

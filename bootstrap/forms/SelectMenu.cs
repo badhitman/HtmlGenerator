@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// © https://github.com/badhitman - @fakegov 
+// https://github.com/badhitman 
 ////////////////////////////////////////////////
 using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
@@ -44,9 +44,9 @@ namespace HtmlGenerator.bootstrap
         {
             if (string.IsNullOrEmpty(Select.Id_DOM))
             {
-                if (!string.IsNullOrEmpty(Select.Name_DOM))
+                if (!string.IsNullOrEmpty(Select.Name))
                 {
-                    Select.Id_DOM = Select.Name_DOM;
+                    Select.Id_DOM = Select.Name;
                 }
                 else
                 {

@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// © https://github.com/badhitman - @fakegov 
+// https://github.com/badhitman 
 ////////////////////////////////////////////////
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.extended;
@@ -61,7 +61,7 @@ namespace HtmlGenerator.bootstrap
             ////////////////////////////////////////////////
             // Фиксим проблему кроссбраузерности отправок формой чекбокса.
             // Разные браузеры могут по разному отправлять чекбокс. Для стандартизации этой процедуры с чекбоксом в паре держим его "тень" в виде скрытого input-а и контролируем значение теневого значения синхронизируя с основным
-            Childs.Add(new input() { type = InputTypesEnum.hidden, value = Input.@checked ? "on" : "off", Name_DOM = Id_DOM });
+            Childs.Add(new input() { type = InputTypesEnum.hidden, value = Input.@checked ? "on" : "off", Name = Id_DOM });
             //
             script my_script = new script();
             my_script.AddDomNode(new text("jQuery(document).ready(function () {"));

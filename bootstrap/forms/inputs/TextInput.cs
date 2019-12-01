@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// © https://github.com/badhitman - @fakegov 
+// https://github.com/badhitman 
 ////////////////////////////////////////////////
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
@@ -37,7 +37,7 @@ namespace HtmlGenerator.bootstrap
             if (!string.IsNullOrEmpty(Label))
                 LabelInput = new label(Label, InputID);
 
-            Input.Name_DOM = InputID;
+            Input.Name = InputID;
             Input.Id_DOM = InputID;
         }
 
@@ -51,11 +51,11 @@ namespace HtmlGenerator.bootstrap
             Childs.Add(Input);
 
             if (Input.required)
-                Childs.AddRange(GetValidationAlerts(Input.Name_DOM));
+                Childs.AddRange(GetValidationAlerts(Input.Name));
 
             if (!string.IsNullOrEmpty(InputInfoFooter))
             {
-                string input_info_id = Input.Name_DOM + "Help";
+                string input_info_id = Input.Name + "Help";
                 using (small info_text = new small(InputInfoFooter) { inline = true, Id_DOM = input_info_id })
                 {
                     info_text.AddCSS("form-text text-muted", true);
