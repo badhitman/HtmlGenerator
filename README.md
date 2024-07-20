@@ -20,22 +20,8 @@ string test_s = mybox.GetHTML();
 	<label for="customControlValidation1" class="custom-control-label">Check this custom checkbox</label>
 	<div id="invalid-tooltip-customControlValidation1" class="invalid-feedback">Пожалуйста, установите Checkbox</div>
 	<input type="hidden" value="off" >
-	<script type="text/javascript">
-		jQuery(document).ready(function () {
-			jQuery('#customControlValidation1').change(function () {
-				if (jQuery(this).prop('checked')) {
-					jQuery('input[name=customControlValidation1').val('on');
-				}
-				else {
-					jQuery('input[name=customControlValidation1').val('off');
-				}
-			});
-		});
-	</script>
 </div>
 ```
-*JS код не относится непосредственно к Bootstrap разметке, но добавляется ко всем Bootstrap [checkbox]-ам. В паре с этим добавлен [hidden] [input]-у со значением "off" или "on"*.
-*Это такой хак для кросс браузерной стандартизации отправки [checkbox]-а формой. Разные браузеры могут по разному отправлять значения [checkbox]-а. Использован приём, когда с [checkbox]-ом в паре существует его "тень" в виде скрытого [input]-а. Контролируется значение теневого [input]-а синхронизируя с основным, а на стороне сервера обрабатывается именно "теневой [input]"*
 
 Пример 2
 ```C#
