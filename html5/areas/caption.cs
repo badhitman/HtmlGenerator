@@ -17,7 +17,8 @@ public class caption : base_dom_root
     /// Определяет выравнивание заголовка. 
     /// </summary>
     public AlignmentEnum? align;
-
+    
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         List<AlignmentEnum?> AllowedAligned = [AlignmentEnum.left, AlignmentEnum.right, AlignmentEnum.bottom, AlignmentEnum.top];

@@ -12,8 +12,12 @@ using HtmlGenerator.set.entities;
 
 namespace HtmlGenerator.bootstrap;
 
+/// <summary>
+/// Paginations
+/// </summary>
 public class Paginations : safe_base_dom_root
 {
+    /// <inheritdoc/>
     public static List<DataTreeItem> GetListSizes
     {
         get
@@ -28,8 +32,10 @@ public class Paginations : safe_base_dom_root
         }
     }
 
+    /// <inheritdoc/>
     public AlignmentEnum AlignmentPagination = AlignmentEnum.right;
 
+    /// <inheritdoc/>
     public SizingBootstrap? SizePagination = null;
 
     /// <summary>
@@ -177,6 +183,8 @@ public class Paginations : safe_base_dom_root
         return li_tag;
     }
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

@@ -4,7 +4,11 @@
 
 namespace HtmlGenerator.set.entities;
 
+/// <summary>
+/// Option list
+/// </summary>
 public class OptionList
 {
-    public List<DataTreeItem> ListItems = new();
+    /// <inheritdoc/>
+    public List<DataTreeItem> ListItems = [];
 }

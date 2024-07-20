@@ -11,6 +11,7 @@ namespace HtmlGenerator.html5.textual;
 /// </summary>
 public class s : base_dom_root
 {
+    /// <inheritdoc/>
     public s()
     {
         inline = true;

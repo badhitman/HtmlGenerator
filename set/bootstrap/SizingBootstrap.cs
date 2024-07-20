@@ -4,6 +4,9 @@
 
 namespace HtmlGenerator.set.bootstrap;
 
+/// <summary>
+/// Sizing Bootstrap
+/// </summary>
 public enum SizingBootstrap
 {
     /// <summary>

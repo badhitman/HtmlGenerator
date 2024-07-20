@@ -31,6 +31,7 @@ public class fieldset : base_dom_root
     /// </summary>
     public string legend_text;
 
+    /// <inheritdoc/>
     public fieldset(string in_legend_text, string in_form, bool in_disabled = false)
     {
         form = in_form;
@@ -38,6 +39,7 @@ public class fieldset : base_dom_root
         legend_text = in_legend_text;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (!string.IsNullOrEmpty(form))

@@ -5,6 +5,9 @@
 
 namespace HtmlGenerator.set;
 
+/// <summary>
+/// Track kinds
+/// </summary>
 public enum TrackKindsEnum
 {
     /// <summary>

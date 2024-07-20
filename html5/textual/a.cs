@@ -42,7 +42,8 @@ public class a : base_dom_root
     /// При наличии атрибута [download] браузер не переходит по ссылке, а предложит скачать документ, указанный в адресе ссылки.
     /// </summary>
     public bool download = false;
-    
+
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (href is not null)

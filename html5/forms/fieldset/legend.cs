@@ -11,6 +11,7 @@ namespace HtmlGenerator.html5.forms;
 /// </summary>
 public class legend : base_dom_root
 {
+    /// <inheritdoc/>
     public legend(string text_legend)
     {
         InnerText = text_legend;

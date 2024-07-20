@@ -80,6 +80,9 @@ public class NativeSizingCSS
         /// </summary>
         fr,
 
+        /// <summary>
+        /// auto
+        /// </summary>
         auto
     }
 

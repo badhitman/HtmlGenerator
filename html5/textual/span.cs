@@ -14,6 +14,7 @@ namespace HtmlGenerator.html5.textual;
 /// </summary>
 public class span : base_dom_root
 {
+    /// <inheritdoc/>
     public span(string? inner_text = null)
     {
         if (!string.IsNullOrEmpty(inner_text))

@@ -9,10 +9,13 @@ using HtmlGenerator.set.entities;
 
 namespace HtmlGenerator;
 
+/// <summary>
+/// Predefined elements
+/// </summary>
 public static class Predefined_elements
 {
     #region html.select
-    //public static select GetSelectDom(string name_dom_object, OptionList ListItems, string selected_option_value = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true) => GetSelectDom(name_dom_object, ListItems, new string[] { selected_option_value }, input_readonly, required);
+    /// <inheritdoc/>
     public static select GetSelectDom(string name_dom_object, OptionList ListItems, string[]? selected_option_values = null, bool input_readonly = false, bool required = false, bool groups_only = true, bool groups_clickable = true)
     {
         select ret_select = new() { Name_DOM = name_dom_object };
@@ -82,6 +85,7 @@ public static class Predefined_elements
     #endregion
 
     #region html.ul
+    /// <inheritdoc/>
     public static ul GetTreeViewDom(string id_dom_element, string ul_class, string li_class, OptionList ListItems)
     {
         ul ret_ul = new() { Id_DOM = id_dom_element };

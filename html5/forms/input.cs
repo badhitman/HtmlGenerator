@@ -177,12 +177,14 @@ public class input : base_dom_root
     /// </summary>
     public double step = 0;
 
+    /// <inheritdoc/>
     public input()
     {
         inline = true;
         need_end_tag = false;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("type", type.ToString("g"));

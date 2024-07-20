@@ -22,6 +22,7 @@ public class th : safe_base_dom_root
     /// </summary>
     public int rowspan = 0;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (colspan > 0)

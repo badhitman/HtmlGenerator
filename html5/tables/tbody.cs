@@ -47,6 +47,8 @@ public class tbody : safe_base_dom_root
         Rows.Add(my_tr);
     }
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

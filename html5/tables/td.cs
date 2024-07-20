@@ -19,6 +19,7 @@ public class td : th
     /// </summary>
     public string? headers;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (!string.IsNullOrEmpty(headers))

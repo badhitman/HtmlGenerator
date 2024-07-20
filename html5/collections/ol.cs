@@ -5,6 +5,9 @@
 
 namespace HtmlGenerator.html5.collections;
 
+/// <summary>
+/// ol
+/// </summary>
 public class ol(ol.TypesOL in_TypeOL = ol.TypesOL.Numb) : base_dom_root
 {
     /// <summary>
@@ -48,6 +51,7 @@ public class ol(ol.TypesOL in_TypeOL = ol.TypesOL.Numb) : base_dom_root
     /// </summary>
     public TypesOL TypeOL = in_TypeOL;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (TypeOL == TypesOL.Numb)

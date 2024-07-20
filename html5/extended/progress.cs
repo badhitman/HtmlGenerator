@@ -20,6 +20,7 @@ public class progress : base_dom_root
     /// </summary>
     public int max = 100;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("value", value);

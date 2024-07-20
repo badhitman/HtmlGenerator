@@ -5,6 +5,9 @@
 
 namespace HtmlGenerator.set;
 
+/// <summary>
+/// Language codes
+/// </summary>
 public enum LanguageCodesEnum
 {
     /// <summary>

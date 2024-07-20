@@ -11,6 +11,7 @@ namespace HtmlGenerator.html5.areas;
 /// </summary>
 public class hr : base_dom_root
 {
+    /// <inheritdoc/>
     public hr()
     {
         inline = true;

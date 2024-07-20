@@ -47,11 +47,13 @@ public class meter : base_dom_root
     /// </summary>
     public double value = 0.5;
 
+    /// <inheritdoc/>
     public meter()
     {
         inline = true;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("high", high);

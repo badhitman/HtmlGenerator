@@ -18,6 +18,7 @@ public class col : safe_base_dom_root
     /// </summary>
     public int span = -1;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (span > 0)

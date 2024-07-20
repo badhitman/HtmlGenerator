@@ -15,15 +15,32 @@ namespace HtmlGenerator.html5.extended;
 /// </summary>
 public class script : base_dom_root
 {
-    public enum MimeTypes { JavaScript, VBScript }
+    /// <inheritdoc/>
+    public enum MimeTypes 
+    { 
+        /// <summary>
+        /// JavaScript
+        /// </summary>
+        JavaScript,
+
+        /// <summary>
+        /// VBScript
+        /// </summary>
+        VBScript 
+    }
 
     /// <summary>
     ///  Атрибут [defer] откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. 
     /// </summary>
     public bool defer = false;
+    
+    /// <inheritdoc/>
     public string? src;
+    
+    /// <inheritdoc/>
     public MimeTypes mimeType = MimeTypes.JavaScript;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (defer)

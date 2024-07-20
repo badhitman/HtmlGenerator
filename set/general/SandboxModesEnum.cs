@@ -5,6 +5,9 @@
 
 namespace HtmlGenerator.set;
 
+/// <summary>
+/// Sandbox modes
+/// </summary>
 public enum SandboxModesEnum
 {
     /// <summary>

@@ -4,6 +4,9 @@
 
 namespace HtmlGenerator.set.entities;
 
+/// <summary>
+/// Data object
+/// </summary>
 public class DataObjectItem : DataParticleItem
 {
     /// <summary>

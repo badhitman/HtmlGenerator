@@ -14,8 +14,10 @@ namespace HtmlGenerator.html5.forms;
 /// </summary>
 public class label : base_dom_root
 {
+    /// <inheritdoc/>
     public string? @for;
 
+    /// <inheritdoc/>
     public label(string i_text, string? i_for)
     {
         inline = true;
@@ -23,6 +25,7 @@ public class label : base_dom_root
         @for = i_for;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("for", @for);

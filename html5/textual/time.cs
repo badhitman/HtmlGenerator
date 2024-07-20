@@ -17,6 +17,7 @@ public class time : base_dom_root
     /// </summary>
     public DateTime datetime = DateTime.MinValue;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (datetime > DateTime.MinValue)

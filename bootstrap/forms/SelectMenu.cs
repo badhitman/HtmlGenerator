@@ -9,6 +9,9 @@ using HtmlGenerator.set.bootstrap;
 
 namespace HtmlGenerator.bootstrap;
 
+/// <summary>
+/// Select menu
+/// </summary>
 public class SelectMenu : safe_base_dom_root
 {
     /// <summary>
@@ -16,7 +19,10 @@ public class SelectMenu : safe_base_dom_root
     /// </summary>
     public label? LabelSelectMenu;
 
-    public select Select;
+    /// <summary>
+    /// Select
+    /// </summary>
+    public required select Select;
 
     /// <summary>
     /// Размер селектора
@@ -41,8 +47,15 @@ public class SelectMenu : safe_base_dom_root
         Select.AddCSS("form-control");
     }
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
+        if (Childs is null)
+            Childs = [];
+        else
+            Childs.Clear();
+
         if (string.IsNullOrEmpty(Select.Id_DOM))
         {
             if (!string.IsNullOrEmpty(Select.Name_DOM))
@@ -55,10 +68,6 @@ public class SelectMenu : safe_base_dom_root
                 Select.Name_DOM = Select.Id_DOM;
             }
         }
-        if (Childs is null)
-            Childs = [];
-        else
-            Childs.Clear();
 
         if (LabelSelectMenu is not null)
         {

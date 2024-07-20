@@ -7,6 +7,9 @@ using HtmlGenerator.set.bootstrap;
 
 namespace HtmlGenerator.bootstrap;
 
+/// <summary>
+/// Button
+/// </summary>
 public class Button : button
 {
     /// <summary>
@@ -34,12 +37,16 @@ public class Button : button
     /// </summary>
     public SizingBootstrap? SizeButton = null;
 
+    /// <summary>
+    /// Button
+    /// </summary>
     public Button(string text_button, VisualBootstrapStylesEnum style_button) : base(text_button)
     {
         StyleButton = style_button;
         inline = true;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         Childs = null;

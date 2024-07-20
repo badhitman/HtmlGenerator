@@ -55,6 +55,8 @@ public class Card : safe_base_dom_root
     /// </summary>
     public Card() => tag_custom_name = typeof(div).Name;
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

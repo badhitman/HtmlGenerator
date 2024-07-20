@@ -60,6 +60,7 @@ public class button : base_dom_root
     /// </summary>
     public TargetsEnum? formtarget;
 
+    /// <inheritdoc/>
     public button(string? text_button, TypesButton type_button = TypesButton.button)
     {
         InnerText = text_button;
@@ -67,6 +68,7 @@ public class button : base_dom_root
         inline = true;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (TypeButton is not null)

@@ -10,6 +10,9 @@ using HtmlGenerator.set;
 
 namespace HtmlGenerator.bootstrap;
 
+/// <summary>
+/// Menu item
+/// </summary>
 public class MenuItem : safe_base_dom_root
 {
     /// <summary>
@@ -48,6 +51,9 @@ public class MenuItem : safe_base_dom_root
     /// </summary>
     public string tool_tip = "";
 
+    /// <summary>
+    /// Menu item
+    /// </summary>
     public MenuItem(string in_text, string in_href, string in_tool_tip)
     {
         tag_custom_name = typeof(li).Name;
@@ -56,6 +62,8 @@ public class MenuItem : safe_base_dom_root
         tool_tip = in_tool_tip;
     }
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

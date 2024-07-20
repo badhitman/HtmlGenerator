@@ -38,11 +38,11 @@ public class audio : base_dom_root
     /// </summary>
     public string src = "#";
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
-        /// <summary>
-        /// Вложенные элементы могут быть только source
-        /// </summary>
+        // Вложенные элементы могут быть только source
         Childs = Childs?.Where(x => x is source).ToList();
         if (Childs?.Count < 1)
             SetAttribute("src", src);

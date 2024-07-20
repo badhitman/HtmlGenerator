@@ -29,11 +29,10 @@ public class source : base_dom_root
     /// </summary>
     public string? mimetype;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        /// <summary>
-        /// Вложенные элементы тут не допустимы
-        /// </summary>
+        // Вложенные элементы тут не допустимы
         Childs = null;
 
         SetAttribute("media", media, ", ");

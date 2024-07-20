@@ -10,7 +10,18 @@ namespace HtmlGenerator.set;
 /// </summary>
 public enum TypesULEnum
 {
+    /// <summary>
+    /// disc
+    /// </summary>
     disc,
+
+    /// <summary>
+    /// circle
+    /// </summary>
     circle,
+
+    /// <summary>
+    /// square
+    /// </summary>
     square
 }

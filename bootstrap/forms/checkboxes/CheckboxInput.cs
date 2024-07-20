@@ -51,6 +51,7 @@ public class CheckboxInput : forms_dom_root
     }
 
     /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

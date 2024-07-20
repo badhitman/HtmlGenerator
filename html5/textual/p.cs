@@ -12,6 +12,7 @@ namespace HtmlGenerator.html5.textual;
 /// </summary>
 public class p : base_dom_root
 {
+    /// <inheritdoc/>
     public p(string in_text)
     {
         InnerText = in_text;

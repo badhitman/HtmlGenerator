@@ -13,6 +13,7 @@ namespace HtmlGenerator.html5.collections;
 /// </summary>
 public class datalist : base_dom_root
 {
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         Childs = Childs?.Where(x => x is option).ToList();

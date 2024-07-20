@@ -17,6 +17,7 @@ public class li : base_dom_root
     /// </summary>
     public TypesULEnum TypeUL = TypesULEnum.disc;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("type", TypeUL.ToString("g"));

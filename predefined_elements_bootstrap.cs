@@ -14,8 +14,12 @@ using HtmlGenerator.set.bootstrap;
 
 namespace HtmlGenerator;
 
+/// <summary>
+/// predefined elements Bootstrap
+/// </summary>
 public static class predefined_elements_bootstrap
 {
+    /// <inheritdoc/>
     public static div GetBootstrapSelectList(string label, select select_body, string? Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
     {
         div ret_dom = new();
@@ -59,8 +63,9 @@ public static class predefined_elements_bootstrap
 
         return card_set;
     }
+    /// <inheritdoc/>
     public static div Get_DIV_Bootstrap_Card(string card_head, base_dom_root body_element, string css_card = "bg-light") => Get_DIV_Bootstrap_Card(card_head, [body_element], css_card);
-
+    /// <inheritdoc/>
     public static div GetTextarea(string label_text, string value_input, string name_input, string placeholder, bool input_readonly = false, int rows = 2, bool required = false)
     {
         div returned_input = new();
@@ -87,6 +92,7 @@ public static class predefined_elements_bootstrap
     /// Сформировать кнопку
     /// </summary>
     /// <param name="text">Текст кнопки</param>
+    /// <param name="id_button">dom id</param>
     /// <param name="href">Ссылка (если требуется кнопка-ссылка)</param>
     /// <param name="style">Стиль оформления кнопки</param>
     /// <param name="size">Размер кнопки</param>

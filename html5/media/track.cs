@@ -39,8 +39,10 @@ public class track : base_dom_root
     /// </summary>
     public bool @default;
 
+    /// <inheritdoc/>
     public track() => need_end_tag = false;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (kind is not null)

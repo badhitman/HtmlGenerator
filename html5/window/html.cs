@@ -66,6 +66,7 @@ public class html : base_dom_root
         #endregion
 
         #region XHTML 1.1
+        /// <inheritdoc/>
         XHTML11 // <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
         #endregion
     }
@@ -100,6 +101,7 @@ public class html : base_dom_root
     /// </summary>
     public body BodyHtml { get; private set; } = new body();
 
+    /// <inheritdoc/>
     public html()
     {
         HeadHtml.defTags.Add(new meta() { http_equiv = "content-type", content = "text/html; charset=UTF-8" });
@@ -107,6 +109,7 @@ public class html : base_dom_root
         HeadHtml.defTags.Add(new meta() { Name_DOM = "viewport", content = "width=device-width, initial-scale=1, maximum-scale=1" });
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         ClearNestedDom();

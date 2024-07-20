@@ -24,6 +24,8 @@ public class table : safe_base_dom_root
     /// </summary>
     public tbody TBody { get; private set; } = new tbody();
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

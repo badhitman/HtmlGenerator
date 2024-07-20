@@ -21,6 +21,7 @@ public class canvas : base_dom_root
     /// </summary>
     public int width = -1;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (height > 0)

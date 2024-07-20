@@ -30,6 +30,9 @@ public class Alert : safe_base_dom_root
     /// </summary>
     public bool isDismissible = false;
 
+    /// <summary>
+    /// Класс Web/DOM уведомления для пользователя.
+    /// </summary>
     public Alert(VisualBootstrapStylesEnum status_style, string text_msg)
     {
         tag_custom_name = typeof(div).Name;
@@ -37,6 +40,8 @@ public class Alert : safe_base_dom_root
         Message = text_msg;
     }
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

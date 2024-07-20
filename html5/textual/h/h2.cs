@@ -4,6 +4,7 @@
 
 namespace HtmlGenerator.html5.textual;
 
+/// <inheritdoc/>
 public class h2(string h_text) : h1(h_text)
 {
 

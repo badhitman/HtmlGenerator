@@ -19,6 +19,7 @@ public class ul(TypesULEnum in_TypeUL = TypesULEnum.disc) : base_dom_root
     /// </summary>
     public TypesULEnum TypeUL = in_TypeUL;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("type", TypeUL.ToString("g"));
@@ -38,6 +39,10 @@ public class ul(TypesULEnum in_TypeUL = TypesULEnum.disc) : base_dom_root
     /// получить li элемент того же типа (ul.type)
     /// </summary>
     /// <param name="value">value - Число, с которого будет начинаться нумерованный список.</param>
+    /// <param name="text_title">text</param>
+    /// <param name="tooltip">tooltip</param>
+    /// <param name="disable">disable</param>
+    /// <param name="tag">tag</param>
     public li GetLi(string value, string text_title, string tooltip, bool disable = false, string tag = "")
     {
         li ret_val = new()

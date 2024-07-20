@@ -25,6 +25,7 @@ public abstract partial class base_dom_root
     /// Если указать только начальный/верхний комментарий, то он же будет использоваться и в нижнем.
     /// </summary>
     public string before_comment_block = "";
+    /// <inheritdoc/>
     public string after_comment_block = "";
 
     /// <summary>
@@ -223,7 +224,9 @@ public abstract partial class base_dom_root
         if (!CustomAttributes.TryAdd(attr_name, attr_value))
             CustomAttributes[attr_name] = attr_value;
     }
+    /// <inheritdoc/>
     public void SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
+    /// <inheritdoc/>
     public void SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
 
     /// <summary>

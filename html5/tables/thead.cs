@@ -30,7 +30,6 @@ public class thead : safe_base_dom_root
     /// <summary>
     /// Пакетное добавление заголовков в таблицу
     /// </summary>
-    /// <param name="text">Пакет заголовков</param>
     public void AddColumn(string[] text, bool unique = false)
     {
         foreach (string s in text)
@@ -38,6 +37,7 @@ public class thead : safe_base_dom_root
     }
 
     /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

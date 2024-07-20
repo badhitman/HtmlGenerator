@@ -23,6 +23,7 @@ public class details : base_dom_root
     /// </summary>
     public bool open = false;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         Childs ??= [];

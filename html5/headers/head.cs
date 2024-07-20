@@ -34,6 +34,7 @@ public class head : base_dom_root
     /// </summary>
     public @base? Base;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         ClearNestedDom();

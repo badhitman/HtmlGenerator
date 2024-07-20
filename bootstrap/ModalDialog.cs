@@ -63,9 +63,8 @@ public class ModalDialog : safe_base_dom_root
     /// </summary>
     public ModalDialog() => tag_custom_name = typeof(div).Name;
 
-    /// <summary>
-    /// При вызове этого метода поле Childs очищается и заново заполняется
-    /// </summary>
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

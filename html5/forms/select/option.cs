@@ -13,19 +13,27 @@ namespace HtmlGenerator.html5.forms;
 /// </summary>
 public class option : optgroup
 {
+    /// <inheritdoc/>
     public class option_set : optgroup_set
     {
+        /// <inheritdoc/>
         public string? Value;
+
+        /// <inheritdoc/>
         public bool Selected = false;
     }
+
+    /// <inheritdoc/>
     public new option_set set;
 
+    /// <inheritdoc/>
     public option(option_set in_set) : base(new optgroup_set() { TitleText = in_set.TitleText, Disabled = in_set.Disabled })
     {
         set = in_set;
         inline = true;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (set is not null)

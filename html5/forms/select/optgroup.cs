@@ -5,8 +5,12 @@
 
 namespace HtmlGenerator.html5.forms;
 
+/// <summary>
+/// optgroup
+/// </summary>
 public class optgroup : base_dom_root
 {
+    /// <inheritdoc/>
     public class optgroup_set
     {
         /// <summary>
@@ -20,6 +24,7 @@ public class optgroup : base_dom_root
         public bool Disabled = false;
     }
 
+    /// <inheritdoc/>
     public optgroup_set set;
 
     /// <summary>
@@ -33,6 +38,7 @@ public class optgroup : base_dom_root
         inline = true;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (set is not null)

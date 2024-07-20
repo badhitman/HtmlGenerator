@@ -2,6 +2,7 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+
 using HtmlGenerator.set;
 
 namespace HtmlGenerator.html5.headers;
@@ -18,6 +19,7 @@ namespace HtmlGenerator.html5.headers;
 /// </summary>
 public class @base : base_dom_root
 {
+    /// <inheritdoc/>
     public @base()
     {
         inline = true;
@@ -37,6 +39,7 @@ public class @base : base_dom_root
     /// </summary>
     public TargetsEnum? target;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         Childs = null;

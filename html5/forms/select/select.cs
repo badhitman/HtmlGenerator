@@ -56,9 +56,16 @@ public class select : base_dom_root
     /// Элементы списка
     /// </summary>
     public List<option> Options = new List<option>();
-
+    
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
+        if (Childs is null)
+            Childs = [];
+        else
+            Childs.Clear();
+
         if (autofocus)
             SetAttribute("autofocus", null);
 
@@ -73,11 +80,6 @@ public class select : base_dom_root
 
         if (size > 0)
             SetAttribute("size", size);
-
-        if (Childs is null)
-            Childs = [];
-        else
-            Childs.Clear();
 
         Childs.AddRange(Options);
 

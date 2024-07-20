@@ -31,6 +31,7 @@ public class GroupElements : base_dom_root
     /// </summary>
     public bool VerticalVariation = false;
 
+    /// <inheritdoc/>
     public VisualBootstrapStylesEnum default_style = VisualBootstrapStylesEnum.secondary;
 
     /// <inheritdoc/>
@@ -45,6 +46,7 @@ public class GroupElements : base_dom_root
     /// Добавить вложенную группу, как dropdown menus
     /// </summary>
     /// <param name="nesting">Набор вложенной группы кнопок</param>
+    /// <param name="title_node">Title</param>
     /// <param name="id_node">Уникальный идентификатор вложенного узла. Если IsNullOrEmpty => будет сгенерирован guid</param>
     public void AddNestingDropdownGroup(List<DataParticleItem> nesting, string title_node, string? id_node = null)
     {
@@ -75,6 +77,7 @@ public class GroupElements : base_dom_root
         Childs.Add(nested_group);
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("aria-label", string.IsNullOrEmpty(aria_label) ? "Basic group - " + Guid.NewGuid().ToString().Replace("-", "") : aria_label);

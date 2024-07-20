@@ -4,7 +4,10 @@
 
 namespace HtmlGenerator.set.bootstrap;
 
-public enum JustifyingContent
+/// <summary>
+/// Justifying content mode`s enum
+/// </summary>
+public enum JustifyingContentModesEnum
 {
     /// <summary>
     /// Вначале

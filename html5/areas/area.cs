@@ -52,6 +52,7 @@ public class area : base_dom_root
     /// </summary>
     public TargetsEnum? target = null;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (alt is not null)

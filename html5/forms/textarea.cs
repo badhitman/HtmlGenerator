@@ -18,7 +18,23 @@ public class textarea : base_dom_root
     /// Если этот атрибут отсутствует, текст в поле набирается одной строкой, когда число введенных символов превышает ширину области, появляется горизонтальная полоса прокрутки.
     /// Нажатие кнопки Enter переносит текст на новую строку, и курсор устанавливается у левого края поля. 
     /// </summary>
-    public enum WrapsModesEnum { soft, hard, off }
+    public enum WrapsModesEnum
+    {
+        /// <summary>
+        /// soft
+        /// </summary>
+        soft,
+
+        /// <summary>
+        /// hard
+        /// </summary>
+        hard,
+
+        /// <summary>
+        /// off
+        /// </summary>
+        off
+    }
 
     /// <summary>
     /// Автоматическое получение фокуса.
@@ -90,6 +106,7 @@ public class textarea : base_dom_root
     /// </summary>
     public WrapsModesEnum wrap = WrapsModesEnum.soft;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("wrap", wrap.ToString("g"));

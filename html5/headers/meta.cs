@@ -39,12 +39,14 @@ public class meta : base_dom_root
     /// </summary>
     public string? http_equiv;
 
+    /// <inheritdoc/>
     public meta()
     {
         inline = true;
         need_end_tag = false;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (!string.IsNullOrEmpty(charset))

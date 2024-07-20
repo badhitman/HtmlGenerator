@@ -25,6 +25,7 @@ public class video : base_dom_root
     /// </summary>
     public string? poster;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (width > 0)

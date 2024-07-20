@@ -27,8 +27,12 @@ public class GroupsToolbar : safe_base_dom_root
     /// <summary>
     /// Выравнивание вложенных элементов
     /// </summary>
-    public JustifyingContent? Justifying = null;
+    public JustifyingContentModesEnum? Justifying = null;
 
+    /// <summary>
+    /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.
+    /// Используйте служебные классы по мере необходимости, чтобы выделить группы, кнопки и многое другое.
+    /// </summary>
     public GroupsToolbar()
     {
         tag_custom_name = typeof(div).Name;
@@ -37,6 +41,8 @@ public class GroupsToolbar : safe_base_dom_root
         SetAttribute("role", "toolbar");
     }
 
+    /// <inheritdoc/>
+    /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

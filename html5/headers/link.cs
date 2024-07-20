@@ -37,6 +37,7 @@ public class link : base_dom_root
     /// </summary>
     public string? mimetype = null;
 
+    /// <inheritdoc/>
     public link(Dictionary<string, string>? in_custom_attributes = null)
     {
         if (in_custom_attributes is not null)
@@ -46,6 +47,7 @@ public class link : base_dom_root
         need_end_tag = false;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("media", media, ", ");

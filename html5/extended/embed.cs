@@ -46,6 +46,7 @@ public class embed : base_dom_root
     /// </summary>
     public string? type;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         SetAttribute("height", height.ToString());

@@ -7,6 +7,9 @@ using HtmlGenerator.set;
 
 namespace HtmlGenerator.bootstrap;
 
+/// <summary>
+/// Login form
+/// </summary>
 public class LoginForm : Card
 {
     /// <summary>
@@ -19,6 +22,9 @@ public class LoginForm : Card
         method_form = MethodsFormEnum.POST
     };
 
+    /// <summary>
+    /// Login form
+    /// </summary>
     public LoginForm()
     {
         html_form.AddCSS("was-validated");

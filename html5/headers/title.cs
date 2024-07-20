@@ -11,6 +11,7 @@ namespace HtmlGenerator.html5.headers;
 /// </summary>
 public class title : base_dom_root
 {
+    /// <inheritdoc/>
     public title(string text_title)
     {
         inline = true;

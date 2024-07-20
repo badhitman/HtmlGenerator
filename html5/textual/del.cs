@@ -21,6 +21,7 @@ public class del : base_dom_root
     /// </summary>
     public string? datetime;
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (!string.IsNullOrEmpty(cite))
