@@ -2,44 +2,40 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
+namespace HtmlGenerator.html5;
 
-namespace HtmlGenerator.html5
+/// <summary>
+/// Перекрыты методы управления вложенными объектами
+/// </summary>
+public class safe_base_dom_root : base_dom_root
 {
     /// <summary>
-    /// Перекрыты методы управления вложеными объектами
+    /// ЗАПРЕЩЕНО!
+    /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
     /// </summary>
-    public class safe_base_dom_root : base_dom_root
+    public override void AddDomNode(base_dom_root child)
     {
-        /// <summary>
-        /// ЗАПРЕЩЕНО!
-        /// В данном объекте нельзя {напрямую/вручную} манипулировать вложеными [dom] элементами.
-        /// </summary>
-        public override void AddDomNode(base_dom_root child)
-        {
-            throw new NotImplementedException();
-            //base.Add(child);
-        }
+        throw new NotImplementedException();
+        //base.Add(child);
+    }
 
-        /// <summary>
-        /// ЗАПРЕЩЕНО!
-        /// В данном объекте нельзя {напрямую/вручную} манипулировать вложеными [dom] элементами.
-        /// </summary>
-        public override void AddRangeDomNode(List<base_dom_root> childs)
-        {
-            throw new NotImplementedException();
-            //base.AddRange(childs);
-        }
+    /// <summary>
+    /// ЗАПРЕЩЕНО!
+    /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
+    /// </summary>
+    public override void AddRangeDomNode(List<base_dom_root> children)
+    {
+        throw new NotImplementedException();
+        //base.AddRange(children);
+    }
 
-        /// <summary>
-        /// ЗАПРЕЩЕНО!
-        /// В данном объекте нельзя {напрямую/вручную} манипулировать вложеными [dom] элементами.
-        /// </summary>
-        public override void ClearNestedDom()
-        {
-            throw new NotImplementedException();
-            //base.ClearNestedDom();
-        }
+    /// <summary>
+    /// ЗАПРЕЩЕНО!
+    /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
+    /// </summary>
+    public override void ClearNestedDom()
+    {
+        throw new NotImplementedException();
+        //base.ClearNestedDom();
     }
 }

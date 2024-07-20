@@ -3,35 +3,35 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.html5.collections
+namespace HtmlGenerator.html5.collections;
+
+/// <summary>
+/// Элемент [details] (от англ. details — подробности, данные) используется для хранения информации, которую можно скрыть или показать по требованию пользователя.
+/// По умолчанию содержимое элемента не отображается, для изменения статуса применяется атрибут [open].
+/// 
+/// Исходно содержимое [details] скрыто, вместо него выводится текст «Подробнее», щелчок по которому прячет или показывает содержимое элемента.
+/// </summary>
+public class details : base_dom_root
 {
     /// <summary>
-    /// Элемент [details] (от англ. details — подробности, данные) используется для хранения информации, которую можно скрыть или показать по требованию пользователя.
-    /// По умолчанию содержимое элемента не отображается, для изменения статуса применяется атрибут [open].
-    /// 
-    /// Исходно содержимое [details] скрыто, вместо него выводится текст «Подробнее», щелчок по которому прячет или показывает содержимое элемента.
+    /// Указывает заголовок для тега [details], по которому можно щелкать для разворачивания/сворачивания информации. Тег [summary] должен идти первым внутри [details].
     /// </summary>
-    public class details : base_dom_root
+    public summary? Summary;
+
+    /// <summary>
+    /// Признак - показывать информацию внутри элемента или нет
+    /// </summary>
+    public bool open = false;
+
+    public override string GetHTML(int deep = 0)
     {
-        /// <summary>
-        /// Указывает заголовок для тега [details], по которому можно щелкать для разворачивания/сворачивания информации. Тег [summary] должен идти первым внутри [details].
-        /// </summary>
-        public summary Summary = null;
+        Childs ??= [];
+        if (Summary is not null)
+            Childs.Insert(0, Summary);
 
-        /// <summary>
-        /// Признак - показывать информацию внутри элемента или нет
-        /// </summary>
-        public bool open = false;
+        if (open)
+            SetAttribute("open", null);
 
-        public override string GetHTML(int deep = 0)
-        {
-            if (!(Summary is null))
-                Childs.Insert(0, Summary);
-
-            if (open)
-                SetAttribute("open", null);
-
-            return base.GetHTML(deep);
-        }
+        return base.GetHTML(deep);
     }
 }

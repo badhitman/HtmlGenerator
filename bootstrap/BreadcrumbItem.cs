@@ -2,9 +2,10 @@
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.set.entities;
+namespace HtmlGenerator.bootstrap;
 
-public class OptionList
+public class BreadcrumbItem
 {
-    public List<DataTreeItem> ListItems = new();
+    public required string text;
+    public string? href;
 }

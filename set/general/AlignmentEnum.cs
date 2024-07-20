@@ -2,36 +2,35 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.set
+namespace HtmlGenerator.set;
+
+/// <summary>
+/// Выравнивания
+/// </summary>
+public enum AlignmentEnum
 {
     /// <summary>
-    /// Выравнивания
+    /// Левое выравнивание
     /// </summary>
-    public enum AlignmentEnum
-    {
-        /// <summary>
-        /// Левое выравнивание
-        /// </summary>
-        left,
+    left,
 
-        /// <summary>
-        /// Правое выравнивание
-        /// </summary>
-        right,
+    /// <summary>
+    /// Правое выравнивание
+    /// </summary>
+    right,
 
-        /// <summary>
-        /// Верхнее выравнивание
-        /// </summary>
-        top,
+    /// <summary>
+    /// Верхнее выравнивание
+    /// </summary>
+    top,
 
-        /// <summary>
-        /// Нижнее выравнивание
-        /// </summary>
-        bottom,
+    /// <summary>
+    /// Нижнее выравнивание
+    /// </summary>
+    bottom,
 
-        /// <summary>
-        /// Выравнивание по центру
-        /// </summary>
-        center
-    }
+    /// <summary>
+    /// Выравнивание по центру
+    /// </summary>
+    center
 }

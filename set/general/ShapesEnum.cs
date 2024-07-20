@@ -3,31 +3,30 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.set
+namespace HtmlGenerator.set;
+
+/// <summary>
+///  Определяет форму «горячей области», координаты которой задаются с помощью атрибута [coords]. 
+/// </summary>
+public enum ShapesEnum
 {
     /// <summary>
-    ///  Определяет форму «горячей области», координаты которой задаются с помощью атрибута [coords]. 
+    /// Область в виде окружности.
     /// </summary>
-    public enum ShapesEnum
-    {
-        /// <summary>
-        /// Область в виде окружности.
-        /// </summary>
-        circle,
+    circle,
 
-        /// <summary>
-        /// Указывает всю область.
-        /// </summary>
-        @default,
+    /// <summary>
+    /// Указывает всю область.
+    /// </summary>
+    @default,
 
-        /// <summary>
-        /// Область в виде полигона (многоугольника).
-        /// </summary>
-        poly,
+    /// <summary>
+    /// Область в виде полигона (многоугольника).
+    /// </summary>
+    poly,
 
-        /// <summary>
-        /// Прямоугольная область.
-        /// </summary>
-        rect
-    }
+    /// <summary>
+    /// Прямоугольная область.
+    /// </summary>
+    rect
 }

@@ -1,15 +1,13 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
-using System.Collections.Generic;
 
-namespace HtmlGenerator.set.entities
+namespace HtmlGenerator.set.entities;
+
+public class DataTreeItem : DataObjectItem
 {
-    public class DataTreeItem : DataObjectItem
-    {
-        /// <summary>
-        /// Дочерние/Вложеные элементы
-        /// </summary>
-        public List<DataTreeItem> Childs = new List<DataTreeItem>();
-    }
+    /// <summary>
+    /// Дочерние/Вложенные элементы
+    /// </summary>
+    public List<DataTreeItem> Childs = new List<DataTreeItem>();
 }

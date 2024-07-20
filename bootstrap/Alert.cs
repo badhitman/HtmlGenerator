@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////
 // © https://github.com/badhitman - @fakegov 
 ////////////////////////////////////////////////
+
 using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
@@ -38,7 +39,11 @@ namespace HtmlGenerator.bootstrap
 
         public override string GetHTML(int deep = 0)
         {
-            Childs.Clear();
+            if (Childs is null)
+                Childs = [];
+            else
+                Childs.Clear();
+
             AddCSS("alert alert-" + StyleAlert.ToString("g"), true);
             if (isDismissible)
                 AddCSS("alert-dismissible fade show", true);
@@ -48,12 +53,12 @@ namespace HtmlGenerator.bootstrap
 
             if (isDismissible)
             {
-                button button_close = new button(null);
+                button button_close = new(null);
                 button_close.AddCSS("close");
 
                 button_close.SetAttribute("data-dismiss", "alert");
                 button_close.SetAttribute("aria-label", "Close");
-                span my_span = new span() { InnerText = "&times;" };
+                span my_span = new() { InnerText = "&times;" };
                 my_span.SetAttribute("aria-hidden", "true");
                 button_close.AddDomNode(my_span);
                 Childs.Add(button_close);

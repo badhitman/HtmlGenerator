@@ -2,29 +2,28 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
-using HtmlGenerator.set;
-using System.Collections.Generic;
 
-namespace HtmlGenerator.html5.areas
+using HtmlGenerator.set;
+
+namespace HtmlGenerator.html5.areas;
+
+/// <summary>
+///  Тег [caption] предназначен для создания заголовка к таблице и может размещаться только внутри контейнера [table], причем сразу после открывающего тега.
+///  Такой заголовок представляет собой текст, по умолчанию отображаемый перед таблицей и описывающий ее содержание. 
+/// </summary>
+public class caption : base_dom_root
 {
     /// <summary>
-    ///  Тег [caption] предназначен для создания заголовка к таблице и может размещаться только внутри контейнера [table], причем сразу после открывающего тега.
-    ///  Такой заголовок представляет собой текст, по умолчанию отображаемый перед таблицей и описывающий ее содержание. 
+    /// Определяет выравнивание заголовка. 
     /// </summary>
-    public class caption : base_dom_root
+    public AlignmentEnum? align;
+
+    public override string GetHTML(int deep = 0)
     {
-        /// <summary>
-        /// Определяет выравнивание заголовка. 
-        /// </summary>
-        AlignmentEnum? align = null;
+        List<AlignmentEnum?> AllowedAligned = [AlignmentEnum.left, AlignmentEnum.right, AlignmentEnum.bottom, AlignmentEnum.top];
+        if (AllowedAligned.Contains(align))
+            SetAttribute("align", align?.ToString("g"));
 
-        public override string GetHTML(int deep = 0)
-        {
-            List<AlignmentEnum?> AllowedAligned = new List<AlignmentEnum?>() { AlignmentEnum.left, AlignmentEnum.right, AlignmentEnum.bottom, AlignmentEnum.top };
-            if (AllowedAligned.Contains(align))
-                SetAttribute("align", align?.ToString("g"));
-
-            return base.GetHTML(deep);
-        }
+        return base.GetHTML(deep);
     }
 }

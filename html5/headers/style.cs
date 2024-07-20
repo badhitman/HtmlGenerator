@@ -2,8 +2,8 @@
 // © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
+
 using HtmlGenerator.set;
-using System.Collections.Generic;
 
 namespace HtmlGenerator.html5.headers
 {

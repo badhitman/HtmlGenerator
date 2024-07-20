@@ -2,51 +2,50 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-namespace HtmlGenerator.set.bootstrap
+namespace HtmlGenerator.set.bootstrap;
+
+/// <summary>
+/// Стили оформления Bootstrap
+/// </summary>
+public enum VisualBootstrapStylesEnum
 {
     /// <summary>
-    /// Стили оформления Bootstrap
+    /// Тёмное
     /// </summary>
-    public enum VisualBootstrapStylesEnum
-    {
-        /// <summary>
-        /// Тёмное
-        /// </summary>
-        dark,
+    dark,
 
-        /// <summary>
-        /// Светлое
-        /// </summary>
-        light,
+    /// <summary>
+    /// Светлое
+    /// </summary>
+    light,
 
-        /// <summary>
-        /// Первоочередное
-        /// </summary>
-        primary,
+    /// <summary>
+    /// Первоочередное
+    /// </summary>
+    primary,
 
-        /// <summary>
-        /// Второстепенное
-        /// </summary>
-        secondary,
+    /// <summary>
+    /// Второстепенное
+    /// </summary>
+    secondary,
 
-        /// <summary>
-        /// Информирование
-        /// </summary>
-        info,
+    /// <summary>
+    /// Информирование
+    /// </summary>
+    info,
 
-        /// <summary>
-        /// Успешно
-        /// </summary>
-        success,
+    /// <summary>
+    /// Успешно
+    /// </summary>
+    success,
 
-        /// <summary>
-        /// Внимание
-        /// </summary>
-        warning,
+    /// <summary>
+    /// Внимание
+    /// </summary>
+    warning,
 
-        /// <summary>
-        /// Опасно
-        /// </summary>
-        danger
-    }
+    /// <summary>
+    /// Опасно
+    /// </summary>
+    danger
 }
