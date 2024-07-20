@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman 
+// © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5.areas;
@@ -19,6 +19,9 @@ public class TextInput : forms_dom_root
     /// </summary>
     public label? LabelInput;
 
+    /// <summary>
+    /// Input
+    /// </summary>
     public input Input = new() { type = InputTypesEnum.text };
 
     /// <summary>
@@ -43,6 +46,7 @@ public class TextInput : forms_dom_root
         Input.Id_DOM = InputID;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         AddCSS("form-group " + ClassInputGroup, true);

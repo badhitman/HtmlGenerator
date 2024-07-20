@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman 
+// © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5;
@@ -24,6 +24,7 @@ public class Badge : safe_base_dom_root
         AddCSS("badge");
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (StyleBadge is not null)

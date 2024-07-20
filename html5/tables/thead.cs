@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman
+// © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
@@ -37,6 +37,7 @@ public class thead : safe_base_dom_root
             AddColumn(s, unique);
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)

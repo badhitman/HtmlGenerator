@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman
+// © https://github.com/badhitman - @fakegov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
@@ -13,8 +13,9 @@ public class tr : safe_base_dom_root
     /// <summary>
     /// Колонки заголовочной части
     /// </summary>
-    public List<th> Columns { get; private set; } = new List<th>();
+    public List<th> Columns { get; private set; } = [];
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         Childs ??= [];

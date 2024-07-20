@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman
+// © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
-///
+
 namespace HtmlGenerator.html5.textual;
 
 public class h4(string h_text) : h3(h_text)

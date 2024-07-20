@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman 
+// © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5.areas;
@@ -14,9 +14,20 @@ namespace HtmlGenerator.bootstrap;
 /// </summary>
 public class TextInputSecond : forms_dom_root
 {
+    /// <summary>
+    /// LabelText
+    /// </summary>
     public string LabelText;
+
+    /// <summary>
+    /// Input
+    /// </summary>
     public input Input = new() { type = InputTypesEnum.text };
 
+    /// <summary>
+    /// Минимизированный [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.
+    /// К тому же тут Label прилеплен слева к [Input] образуя единый горизонтальный блок
+    /// </summary>
     public TextInputSecond(string Label, string InputID)
     {
         tag_custom_name = typeof(div).Name;
@@ -28,6 +39,7 @@ public class TextInputSecond : forms_dom_root
         AddCSS("input-group");
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         Childs ??= [];

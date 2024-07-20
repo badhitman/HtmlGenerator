@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////
-// https://github.com/badhitman 
+// © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5.areas;
@@ -18,6 +18,9 @@ public class CheckboxInput : forms_dom_root
     /// </summary>
     public label? LabelInput;
 
+    /// <summary>
+    /// Input
+    /// </summary>
     public input Input = new() { type = InputTypesEnum.checkbox };
 
     /// <summary>
@@ -47,6 +50,7 @@ public class CheckboxInput : forms_dom_root
         Input.Id_DOM = InputID;
     }
 
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
         if (Childs is null)
