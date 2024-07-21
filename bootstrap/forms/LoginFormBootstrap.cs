@@ -10,7 +10,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Login form
 /// </summary>
-public class LoginForm : Card
+public class LoginFormBootstrap : CardBootstrap
 {
     /// <summary>
     /// Форма отправки данных
@@ -25,7 +25,7 @@ public class LoginForm : Card
     /// <summary>
     /// Login form
     /// </summary>
-    public LoginForm()
+    public LoginFormBootstrap()
     {
         html_form.AddCSS("was-validated");
         CardHeader = "Вход/Регистрация";

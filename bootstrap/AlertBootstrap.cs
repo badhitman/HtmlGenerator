@@ -13,7 +13,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Класс Web/DOM уведомления для пользователя.
 /// </summary>
-public class Alert : safe_base_dom_root
+public class AlertBootstrap : safe_base_dom_root
 {
     /// <summary>
     /// Стиль оформления уведомления
@@ -33,7 +33,7 @@ public class Alert : safe_base_dom_root
     /// <summary>
     /// Класс Web/DOM уведомления для пользователя.
     /// </summary>
-    public Alert(VisualBootstrapStylesEnum status_style, string text_msg)
+    public AlertBootstrap(VisualBootstrapStylesEnum status_style, string text_msg)
     {
         tag_custom_name = typeof(div).Name;
         StyleAlert = status_style;

@@ -12,7 +12,7 @@ namespace HtmlGenerator.bootstrap;
 /// Минимизированный [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.
 /// К тому же тут Label прилеплен слева к [Input] образуя единый горизонтальный блок
 /// </summary>
-public class TextInputSecond : forms_dom_root
+public class TextInputSecondBootstrap : forms_dom_root_bootstrap
 {
     /// <summary>
     /// LabelText
@@ -28,7 +28,7 @@ public class TextInputSecond : forms_dom_root
     /// Минимизированный [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.
     /// К тому же тут Label прилеплен слева к [Input] образуя единый горизонтальный блок
     /// </summary>
-    public TextInputSecond(string Label, string InputID)
+    public TextInputSecondBootstrap(string Label, string InputID)
     {
         tag_custom_name = typeof(div).Name;
         LabelText = Label;

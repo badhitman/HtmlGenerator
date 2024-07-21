@@ -13,7 +13,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Menu item
 /// </summary>
-public class MenuItem : safe_base_dom_root
+public class MenuItemBootstrap : safe_base_dom_root
 {
     /// <summary>
     /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот список пере-заполняется.
@@ -24,7 +24,7 @@ public class MenuItem : safe_base_dom_root
     /// <summary>
     /// Вложенные элементы пунктов меню
     /// </summary>
-    public List<MenuItem> SubItems = [];
+    public List<MenuItemBootstrap> SubItems = [];
 
     /// <summary>
     /// CSS класс для [LI] контейнера
@@ -54,7 +54,7 @@ public class MenuItem : safe_base_dom_root
     /// <summary>
     /// Menu item
     /// </summary>
-    public MenuItem(string in_text, string in_href, string in_tool_tip)
+    public MenuItemBootstrap(string in_text, string in_href, string in_tool_tip)
     {
         tag_custom_name = typeof(li).Name;
         text_menu_item = in_text;
@@ -88,7 +88,7 @@ public class MenuItem : safe_base_dom_root
             div submenu = new();
             submenu.AddCSS("dropdown-menu");
             submenu.CustomAttributes.Add("aria-labelledby", id_a_parent);
-            foreach (MenuItem i in SubItems)
+            foreach (MenuItemBootstrap i in SubItems)
             {
                 a dropdown_item = new a() { inline = true, href = i.href_menu_item, target = TargetsEnum._blank, InnerText = i.text_menu_item };
                 dropdown_item.AddCSS("dropdown-item");

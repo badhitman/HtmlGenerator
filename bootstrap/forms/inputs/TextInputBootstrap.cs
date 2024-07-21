@@ -2,9 +2,9 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
+using HtmlGenerator.html5.textual;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
-using HtmlGenerator.html5.textual;
 using HtmlGenerator.set;
 
 namespace HtmlGenerator.bootstrap;
@@ -12,7 +12,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Базовый [Input] в [div] обёртке. [Label] сверху над [Input]-ом и текст описания [InputInfoFooter] под [Input]-ом
 /// </summary>
-public class TextInput : forms_dom_root
+public class TextInputBootstrap : forms_dom_root_bootstrap
 {
     /// <summary>
     /// Текстовая метка для Input-а
@@ -35,7 +35,7 @@ public class TextInput : forms_dom_root
     public string? ClassInputGroup;
 
     /// <inheritdoc/>
-    public TextInput(string Label, string InputID)
+    public TextInputBootstrap(string Label, string InputID)
     {
         Input.AddCSS("form-control");
         tag_custom_name = typeof(div).Name;

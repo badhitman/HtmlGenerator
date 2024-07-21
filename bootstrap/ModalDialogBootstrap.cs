@@ -14,7 +14,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Модальный диалог
 /// </summary>
-public class ModalDialog : safe_base_dom_root
+public class ModalDialogBootstrap : safe_base_dom_root
 {
     /// <summary>
     /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот список пере-заполняется.
@@ -61,7 +61,7 @@ public class ModalDialog : safe_base_dom_root
     /// <summary>
     /// Меняем имя тега на div
     /// </summary>
-    public ModalDialog() => tag_custom_name = typeof(div).Name;
+    public ModalDialogBootstrap() => tag_custom_name = typeof(div).Name;
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
@@ -92,14 +92,14 @@ public class ModalDialog : safe_base_dom_root
         modal_footer.AddCSS("modal-footer");
         if (!string.IsNullOrEmpty(TextCancelButton))
         {
-            button button_close_modal_footer = predefined_elements_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
+            button button_close_modal_footer = deno_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
             button_close_modal_footer.SetAttribute("data-dismiss", "modal");
             modal_footer.AddDomNode(button_close_modal_footer);
         }
 
         if (!string.IsNullOrEmpty(TextOkButton))
         {
-            button button_send_modal_footer = predefined_elements_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
+            button button_send_modal_footer = deno_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
             button_send_modal_footer.TypeButton = TypesButton.submit;
             button_send_modal_footer.AddCSS(CssOkButton, true);
             modal_footer.AddDomNode(button_send_modal_footer);

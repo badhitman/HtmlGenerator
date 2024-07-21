@@ -10,7 +10,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Button
 /// </summary>
-public class Button : button
+public class ButtonBootstrap : button
 {
     /// <summary>
     /// Тип контейнера, который выполняет роль "носителя" кнопки в Bootstrap
@@ -40,7 +40,7 @@ public class Button : button
     /// <summary>
     /// Button
     /// </summary>
-    public Button(string text_button, VisualBootstrapStylesEnum style_button) : base(text_button)
+    public ButtonBootstrap(string text_button, VisualBootstrapStylesEnum style_button) : base(text_button)
     {
         StyleButton = style_button;
         inline = true;

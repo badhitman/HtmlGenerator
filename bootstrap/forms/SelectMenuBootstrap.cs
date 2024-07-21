@@ -12,7 +12,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Select menu
 /// </summary>
-public class SelectMenu : safe_base_dom_root
+public class SelectMenuBootstrap : safe_base_dom_root
 {
     /// <summary>
     /// Текстовая метка для [select]-а
@@ -36,7 +36,7 @@ public class SelectMenu : safe_base_dom_root
     public bool isCustomBootstrapSelect = false;
 
     /// <inheritdoc/>
-    public SelectMenu(string Label, select my_select)
+    public SelectMenuBootstrap(string Label, select my_select)
     {
         if (!string.IsNullOrEmpty(Label))
             LabelSelectMenu = new label(Label, my_select.Id_DOM);

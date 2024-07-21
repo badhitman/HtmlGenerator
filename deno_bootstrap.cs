@@ -15,9 +15,9 @@ using HtmlGenerator.set.bootstrap;
 namespace HtmlGenerator;
 
 /// <summary>
-/// predefined elements Bootstrap
+/// Примеры использования (Bootstrap)
 /// </summary>
-public static class predefined_elements_bootstrap
+public static class deno_bootstrap
 {
     /// <inheritdoc/>
     public static div GetBootstrapSelectList(string label, select select_body, string? Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
@@ -229,17 +229,17 @@ public static class predefined_elements_bootstrap
         html_response.AddCSS("was-validated");
         html_response.SetAttribute("novalidate", null);
 
-        TextInput textInput = new("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
+        TextInputBootstrap textInput = new("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
         textInput.Input.placeholder = "Логин";
         textInput.Input.required = true;
         html_response.AddDomNode(textInput);
 
-        textInput = new TextInput("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
+        textInput = new TextInputBootstrap("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
         textInput.Input.type = InputTypesEnum.password;
         textInput.Input.placeholder = "Пароль";
         html_response.AddDomNode(textInput);
 
-        textInput = new TextInput("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
+        textInput = new TextInputBootstrap("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
         textInput.Input.type = InputTypesEnum.password;
         textInput.Input.placeholder = "Повтор";
 
@@ -248,7 +248,7 @@ public static class predefined_elements_bootstrap
 
         html_response.Childs![^1].AddCSS("panel-collapse collapse " + collapse_info_new_user_input_css, true);
 
-        html_response.Childs.Add(new CheckboxInput("Зарегистрироваться", reg_new_user_checkbox_id));
+        html_response.Childs.Add(new CheckboxInputBootstrap("Зарегистрироваться", reg_new_user_checkbox_id));
 
         p reg_new_user_info = new("");
         reg_new_user_info.AddCSS("clearfix");

@@ -11,7 +11,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// form`s
 /// </summary>
-public class forms_dom_root : safe_base_dom_root
+public class forms_dom_root_bootstrap : safe_base_dom_root
 {
     /// <inheritdoc/>
     public static div[] GetValidationAlerts(string? validation_input_id, string? invalid_text = "Укажите значение", string? valid_text = null)

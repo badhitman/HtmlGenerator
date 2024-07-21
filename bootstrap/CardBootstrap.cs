@@ -13,7 +13,7 @@ namespace HtmlGenerator.bootstrap;
 /// Если вы знакомы с Bootstrap 3, карточки заменяют наши старые панели, колодцы и эскизы.
 /// Аналогичная функциональность этих компонентов доступна в качестве классов модификаторов для карточек.
 /// </summary>
-public class Card : safe_base_dom_root
+public class CardBootstrap : safe_base_dom_root
 {
     /// <summary>
     /// Дополнительный CSS класс для карточки
@@ -53,7 +53,7 @@ public class Card : safe_base_dom_root
     /// <summary>
     /// Card
     /// </summary>
-    public Card() => tag_custom_name = typeof(div).Name;
+    public CardBootstrap() => tag_custom_name = typeof(div).Name;
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>

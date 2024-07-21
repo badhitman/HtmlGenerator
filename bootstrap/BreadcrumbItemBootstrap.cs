@@ -7,7 +7,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Breadcrumb item
 /// </summary>
-public class BreadcrumbItem
+public class BreadcrumbItemBootstrap
 {
     /// <summary>
     /// text

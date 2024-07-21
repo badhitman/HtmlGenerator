@@ -11,7 +11,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Стандартный Checkbox в одну горизонтальную строку. Label - справа
 /// </summary>
-public class CheckboxInput : forms_dom_root
+public class CheckboxInputBootstrap : forms_dom_root_bootstrap
 {
     /// <summary>
     /// Текстовая метка для Input-а
@@ -36,7 +36,7 @@ public class CheckboxInput : forms_dom_root
     public string invalid_feedback_text = "Пожалуйста, установите Checkbox";
 
     /// <inheritdoc/>
-    public CheckboxInput(string Label, string InputID)
+    public CheckboxInputBootstrap(string Label, string InputID)
     {
         Input.AddCSS("form-check-input");
         tag_custom_name = typeof(div).Name;

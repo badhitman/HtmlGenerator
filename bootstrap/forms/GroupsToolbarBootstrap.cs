@@ -12,7 +12,7 @@ namespace HtmlGenerator.bootstrap;
 /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.
 /// Используйте служебные классы по мере необходимости, чтобы выделить группы, кнопки и многое другое.
 /// </summary>
-public class GroupsToolbar : safe_base_dom_root
+public class GroupsToolbarBootstrap : safe_base_dom_root
 {
     /// <summary>
     /// Группы и панели инструментов должны иметь явную метку, так как в противном случае большинство вспомогательных технологий не будут объявлять их, несмотря на наличие правильного атрибута роли.
@@ -22,7 +22,7 @@ public class GroupsToolbar : safe_base_dom_root
     /// <summary>
     /// Группы элементов, которые будут размещены внутри
     /// </summary>
-    public List<GroupElements> Groups { get; private set; } = [];
+    public List<GroupElementsBootstrap> Groups { get; private set; } = [];
 
     /// <summary>
     /// Выравнивание вложенных элементов
@@ -33,7 +33,7 @@ public class GroupsToolbar : safe_base_dom_root
     /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.
     /// Используйте служебные классы по мере необходимости, чтобы выделить группы, кнопки и многое другое.
     /// </summary>
-    public GroupsToolbar()
+    public GroupsToolbarBootstrap()
     {
         tag_custom_name = typeof(div).Name;
 

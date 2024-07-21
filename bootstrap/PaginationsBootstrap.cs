@@ -15,7 +15,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Paginations
 /// </summary>
-public class Paginations : safe_base_dom_root
+public class PaginationsBootstrap : safe_base_dom_root
 {
     /// <inheritdoc/>
     public static List<DataTreeItem> GetListSizes

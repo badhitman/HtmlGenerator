@@ -14,7 +14,7 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Группировка кнопок вместе в единую линию
 /// </summary>
-public class GroupElements : base_dom_root
+public class GroupElementsBootstrap : base_dom_root
 {
     /// <summary>
     /// Группы и панели инструментов должны иметь явную метку, так как в противном случае большинство вспомогательных технологий не будут объявлять их, несмотря на наличие правильного атрибута роли.
@@ -35,7 +35,7 @@ public class GroupElements : base_dom_root
     public VisualBootstrapStylesEnum default_style = VisualBootstrapStylesEnum.secondary;
 
     /// <inheritdoc/>
-    public GroupElements()
+    public GroupElementsBootstrap()
     {
         tag_custom_name = typeof(div).Name;
         AddCSS("btn-group");
@@ -53,7 +53,7 @@ public class GroupElements : base_dom_root
         if (string.IsNullOrEmpty(id_node))
             id_node = Guid.NewGuid().ToString().Replace("-", "");
 
-        GroupElements nested_group = new() { aria_label = "nested group - " + id_node, Childs = [] };
+        GroupElementsBootstrap nested_group = new() { aria_label = "nested group - " + id_node, Childs = [] };
         button node_button = new(title_node) { Id_DOM = id_node };
         node_button.AddCSS("btn btn-" + default_style.ToString() + " dropdown-toggle", true);
         node_button.SetAttribute("data-toggle", "dropdown");

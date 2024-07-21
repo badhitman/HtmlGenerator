@@ -13,18 +13,18 @@ namespace HtmlGenerator.bootstrap;
 /// Указывает местоположение текущей страницы в навигационной иерархии, которая автоматически добавляет разделители через CSS.
 /// https://getbootstrap.com/docs/4.3/components/breadcrumb/
 /// </summary>
-public class Breadcrumbs : safe_base_dom_root
+public class BreadcrumbsBootstrap : safe_base_dom_root
 {
     /// <inheritdoc/>
-    public List<BreadcrumbItem> BreadcrumbsCol = [];
+    public List<BreadcrumbItemBootstrap> BreadcrumbsCol = [];
 
     /// <summary>
     /// Меняем имя тега на nav
     /// </summary>
-    public Breadcrumbs() => tag_custom_name = typeof(nav).Name;
+    public BreadcrumbsBootstrap() => tag_custom_name = typeof(nav).Name;
 
     /// <inheritdoc/>
-    public void AddBreadcrumb(string in_text, string? in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItem() { text = in_text, href = in_href });
+    public void AddBreadcrumb(string in_text, string? in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItemBootstrap() { text = in_text, href = in_href });
 
     /// <summary>
     /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот список пере-заполняется.
@@ -50,7 +50,7 @@ public class Breadcrumbs : safe_base_dom_root
             BreadcrumbsCol[^1].href = null;
 
         li my_li;
-        foreach (BreadcrumbItem bi in BreadcrumbsCol)
+        foreach (BreadcrumbItemBootstrap bi in BreadcrumbsCol)
         {
             my_li = new li();
             my_li.AddCSS("breadcrumb-item");

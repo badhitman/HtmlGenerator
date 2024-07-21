@@ -10,9 +10,9 @@ using HtmlGenerator.set.entities;
 namespace HtmlGenerator;
 
 /// <summary>
-/// Predefined elements
+/// Примеры использования (HTML only)
 /// </summary>
-public static class Predefined_elements
+public static class demo
 {
     #region html.select
     /// <inheritdoc/>
