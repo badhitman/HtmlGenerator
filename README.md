@@ -177,3 +177,6 @@ test_s = my_table.GetHTML();
     </tbody>
 </table>
 ```
+
+> [!NOTE]
+> Больше примеров можно увидеть в demo файлах: для простого [html](./demo.cs); для [Bootstrap](./demo_bootstrap.cs).
