@@ -5,6 +5,7 @@
 using HtmlGenerator.html5;
 using HtmlGenerator.html5.collections;
 using HtmlGenerator.html5.forms;
+using HtmlGenerator.html5.tables;
 using HtmlGenerator.set.entities;
 
 namespace HtmlGenerator;
@@ -129,4 +130,20 @@ public static class demo
         }
     }
     #endregion
+
+    /// <summary>
+    /// Сформировать таблицу
+    /// </summary>
+    public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
+    {
+        table table = new();
+        table.AddCSS(css_table_class, true);
+        foreach (string s in table_heads)
+            table.THead.AddColumn(s);
+
+        foreach (string[] row_item in table_data)
+            table.TBody.AddRow(row_item);
+
+        return table;
+    }
 }

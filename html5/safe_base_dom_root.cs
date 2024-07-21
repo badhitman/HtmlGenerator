@@ -13,7 +13,7 @@ public class safe_base_dom_root : base_dom_root
     /// ЗАПРЕЩЕНО!
     /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
     /// </summary>
-    public override void AddDomNode(base_dom_root child)
+    public override safe_base_dom_root AddDomNode(base_dom_root child)
     {
         throw new NotSupportedException("В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.");
         //base.Add(child);
@@ -23,7 +23,7 @@ public class safe_base_dom_root : base_dom_root
     /// ЗАПРЕЩЕНО!
     /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
     /// </summary>
-    public override void AddRangeDomNode(List<base_dom_root> children)
+    public override safe_base_dom_root AddRangeDomNode(List<base_dom_root> children)
     {
         throw new NotSupportedException("В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.");
         //base.AddRange(children);
