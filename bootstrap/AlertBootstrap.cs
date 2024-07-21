@@ -35,7 +35,7 @@ public class AlertBootstrap : safe_base_dom_root
     /// </summary>
     public AlertBootstrap(VisualBootstrapStylesEnum status_style, string text_msg)
     {
-        tag_custom_name = typeof(div).Name;
+        tag_custom_name = typeof(div).Name.ToLower();
         StyleAlert = status_style;
         Message = text_msg;
     }

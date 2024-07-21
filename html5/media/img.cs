@@ -91,7 +91,7 @@ public class img : base_dom_root
     public img()
     {
         inline = true;
-        need_end_tag = false;
+        NeedEndTagSection = false;
     }
 
     /// <inheritdoc/>

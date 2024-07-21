@@ -56,7 +56,7 @@ public class MenuItemBootstrap : safe_base_dom_root
     /// </summary>
     public MenuItemBootstrap(string in_text, string in_href, string in_tool_tip)
     {
-        tag_custom_name = typeof(li).Name;
+        tag_custom_name = typeof(li).Name.ToLower();
         text_menu_item = in_text;
         href_menu_item = in_href;
         tool_tip = in_tool_tip;

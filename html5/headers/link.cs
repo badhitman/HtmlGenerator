@@ -44,7 +44,7 @@ public class link : base_dom_root
             SetAttribute(in_custom_attributes);
 
         inline = true;
-        need_end_tag = false;
+        NeedEndTagSection = false;
     }
 
     /// <inheritdoc/>

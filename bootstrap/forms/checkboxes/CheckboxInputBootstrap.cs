@@ -39,7 +39,7 @@ public class CheckboxInputBootstrap : forms_dom_root_bootstrap
     public CheckboxInputBootstrap(string Label, string InputID)
     {
         Input.AddCSS("form-check-input");
-        tag_custom_name = typeof(div).Name;
+        tag_custom_name = typeof(div).Name.ToLower();
         AddCSS("form-check");
 
         if (!string.IsNullOrEmpty(Label))

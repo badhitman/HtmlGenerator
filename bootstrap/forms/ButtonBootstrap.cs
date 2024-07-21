@@ -52,7 +52,7 @@ public class ButtonBootstrap : button
         Childs = null;
         AddCSS("btn " + "btn" + (isOutlineStyle ? "-outline" : "") + "-" + StyleButton.ToString("g"), true);
 
-        tag_custom_name = TypeButton.ToString("g");
+        tag_custom_name = TypeButton.ToString("g").ToLower();
 
         switch (TypeButton)
         {

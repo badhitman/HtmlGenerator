@@ -53,7 +53,7 @@ public class CardBootstrap : safe_base_dom_root
     /// <summary>
     /// Card
     /// </summary>
-    public CardBootstrap() => tag_custom_name = typeof(div).Name;
+    public CardBootstrap() => tag_custom_name = typeof(div).Name.ToLower();
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>

@@ -16,6 +16,6 @@ public class br : base_dom_root
     public br()
     {
         inline = true;
-        need_end_tag = false;
+        NeedEndTagSection = false;
     }
 }

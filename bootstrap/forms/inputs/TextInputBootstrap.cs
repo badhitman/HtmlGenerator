@@ -78,7 +78,7 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
     public TextInputBootstrap(string label, string inputID)
     {
         Input.AddCSS("form-control");
-        tag_custom_name = typeof(div).Name;
+        tag_custom_name = typeof(div).Name.ToLower();
         if (!string.IsNullOrEmpty(label))
             LabelInput = new label(label, inputID);
 

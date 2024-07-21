@@ -88,9 +88,9 @@ public abstract partial class base_dom_root
 
     /// <summary>
     /// Флаг/метка необходимости парного/закрывающего тега для элемента
-    /// Если false, то тег закроется: />
+    /// Если false, то тег не будет иметь завершающую/парную часть, а закроется в первой/открывающей части. В противном случае тег будет иметь и открывающую и закрывающую часть.
     /// </summary>
-    public bool need_end_tag = true;
+    public bool NeedEndTagSection = true;
     #endregion
 
     /// <summary>
@@ -145,7 +145,7 @@ public abstract partial class base_dom_root
             if (!string.IsNullOrEmpty(kvp.Key))
                 ret_val += " " + kvp.Key + (kvp.Value is null ? "" : "=\"" + kvp.Value + "\"");
 
-        if (!need_end_tag && this is not text)
+        if (!NeedEndTagSection && this is not text)
             ret_val += " >";
         else if (this is text)
         {
@@ -161,7 +161,7 @@ public abstract partial class base_dom_root
         if (!string.IsNullOrEmpty(InnerText))
             ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + InnerText;
 
-        if (need_end_tag && this is not text)
+        if (NeedEndTagSection && this is not text)
             ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? this.GetType().Name.ToLower() : tag_custom_name) + ">";
 
         after_comment_block = after_comment_block.Replace("<", "[").Replace(">", "]");

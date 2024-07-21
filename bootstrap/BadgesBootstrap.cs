@@ -23,7 +23,7 @@ public class Badge : safe_base_dom_root
     /// </summary>
     public Badge(string text_badge, VisualBootstrapStylesEnum? style_badge = null)
     {
-        tag_custom_name = typeof(span).Name;
+        tag_custom_name = typeof(span).Name.ToLower();
         InnerText = text_badge;
         StyleBadge = style_badge;
         AddCSS("badge");

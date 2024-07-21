@@ -43,7 +43,7 @@ public class meta : base_dom_root
     public meta()
     {
         inline = true;
-        need_end_tag = false;
+        NeedEndTagSection = false;
     }
 
     /// <inheritdoc/>

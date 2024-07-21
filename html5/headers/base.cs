@@ -23,7 +23,7 @@ public class @base : base_dom_root
     public @base()
     {
         inline = true;
-        need_end_tag = false;
+        NeedEndTagSection = false;
     }
 
     /// <summary>

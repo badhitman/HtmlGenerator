@@ -40,7 +40,7 @@ public class track : base_dom_root
     public bool @default;
 
     /// <inheritdoc/>
-    public track() => need_end_tag = false;
+    public track() => NeedEndTagSection = false;
 
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)

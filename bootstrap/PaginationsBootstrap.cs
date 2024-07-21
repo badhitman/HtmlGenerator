@@ -192,7 +192,7 @@ public class PaginationsBootstrap : safe_base_dom_root
         else
             Childs.Clear();
 
-        tag_custom_name = typeof(nav).Name;
+        tag_custom_name = typeof(nav).Name.ToLower();
         before_comment_block = "pagination";
         if (CountAllElements == 0)
             goto end;

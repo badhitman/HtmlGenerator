@@ -37,7 +37,7 @@ public class GroupElementsBootstrap : base_dom_root
     /// <inheritdoc/>
     public GroupElementsBootstrap()
     {
-        tag_custom_name = typeof(div).Name;
+        tag_custom_name = typeof(div).Name.ToLower();
         AddCSS("btn-group");
         SetAttribute("role", "group");
     }

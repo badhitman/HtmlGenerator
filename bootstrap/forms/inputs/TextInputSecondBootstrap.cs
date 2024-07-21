@@ -30,7 +30,7 @@ public class TextInputSecondBootstrap : forms_dom_root_bootstrap
     /// </summary>
     public TextInputSecondBootstrap(string Label, string InputID)
     {
-        tag_custom_name = typeof(div).Name;
+        tag_custom_name = typeof(div).Name.ToLower();
         LabelText = Label;
 
         Input.Name_DOM = InputID;

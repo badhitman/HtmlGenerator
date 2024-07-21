@@ -35,7 +35,7 @@ public class GroupsToolbarBootstrap : safe_base_dom_root
     /// </summary>
     public GroupsToolbarBootstrap()
     {
-        tag_custom_name = typeof(div).Name;
+        tag_custom_name = typeof(div).Name.ToLower();
 
         AddCSS("btn-toolbar");
         SetAttribute("role", "toolbar");

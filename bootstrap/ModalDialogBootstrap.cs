@@ -61,7 +61,7 @@ public class ModalDialogBootstrap : safe_base_dom_root
     /// <summary>
     /// Меняем имя тега на div
     /// </summary>
-    public ModalDialogBootstrap() => tag_custom_name = typeof(div).Name;
+    public ModalDialogBootstrap() => tag_custom_name = typeof(div).Name.ToLower();
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>

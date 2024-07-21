@@ -181,7 +181,7 @@ public class input : base_dom_root
     public input()
     {
         inline = true;
-        need_end_tag = false;
+        NeedEndTagSection = false;
     }
 
     /// <inheritdoc/>
