@@ -15,7 +15,7 @@ public class LoginFormBootstrap : CardBootstrap
     /// <summary>
     /// Форма отправки данных
     /// </summary>
-    public form html_form = new form()
+    public form html_form = new()
     {
         Id_DOM = "login_form_id",
         target = TargetsEnum._self,

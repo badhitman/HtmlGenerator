@@ -2,12 +2,12 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-using HtmlGenerator.html5;
+using HtmlGenerator.set.bootstrap;
+using HtmlGenerator.html5.textual;
 using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
-using HtmlGenerator.html5.textual;
+using HtmlGenerator.html5;
 using HtmlGenerator.set;
-using HtmlGenerator.set.bootstrap;
 
 namespace HtmlGenerator.bootstrap;
 
@@ -92,14 +92,14 @@ public class ModalDialogBootstrap : safe_base_dom_root
         modal_footer.AddCSS("modal-footer");
         if (!string.IsNullOrEmpty(TextCancelButton))
         {
-            button button_close_modal_footer = deno_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
+            button button_close_modal_footer = demo_bootstrap.GetButton(TextCancelButton, null, null, VisualBootstrapStylesEnum.secondary);
             button_close_modal_footer.SetAttribute("data-dismiss", "modal");
             modal_footer.AddDomNode(button_close_modal_footer);
         }
 
         if (!string.IsNullOrEmpty(TextOkButton))
         {
-            button button_send_modal_footer = deno_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
+            button button_send_modal_footer = demo_bootstrap.GetButton(TextOkButton, null, null, VisualBootstrapStylesEnum.primary);
             button_send_modal_footer.TypeButton = TypesButton.submit;
             button_send_modal_footer.AddCSS(CssOkButton, true);
             modal_footer.AddDomNode(button_send_modal_footer);

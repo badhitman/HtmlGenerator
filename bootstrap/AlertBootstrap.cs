@@ -2,11 +2,11 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-using HtmlGenerator.html5;
-using HtmlGenerator.html5.areas;
-using HtmlGenerator.html5.forms;
 using HtmlGenerator.html5.textual;
 using HtmlGenerator.set.bootstrap;
+using HtmlGenerator.html5.areas;
+using HtmlGenerator.html5.forms;
+using HtmlGenerator.html5;
 
 namespace HtmlGenerator.bootstrap;
 

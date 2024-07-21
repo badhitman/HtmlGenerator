@@ -20,9 +20,49 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
     public label? LabelInput;
 
     /// <summary>
+    /// Текстовая метка для Input-а
+    /// </summary>
+    public TextInputBootstrap SetLabelInput(string label)
+    {
+        if (LabelInput is null)
+            LabelInput = new(label, Id_DOM);
+        else
+            LabelInput.InnerText = label;
+
+        return this;
+    }
+
+    /// <summary>
     /// Input
     /// </summary>
     public input Input = new() { type = InputTypesEnum.text };
+
+    /// <summary>
+    /// Установка html атрибута <c>type</c> для дочернего/подчинённого <c>input</c>`а
+    /// </summary>
+    public TextInputBootstrap SetTypeForInput(InputTypesEnum type)
+    {
+        Input.type = type;
+        return this;
+    }
+
+    /// <summary>
+    /// Установка html атрибута <c>placeholder</c> для дочернего/подчинённого <c>input</c>`а
+    /// </summary>
+    public TextInputBootstrap SetPlaceholderForInput(string placeholder)
+    {
+        Input.placeholder = placeholder;
+        return this;
+    }
+
+    /// <summary>
+    /// Установка html атрибута <c>placeholder</c> для дочернего/подчинённого <c>input</c>`а
+    /// </summary>
+    public TextInputBootstrap SetInputInfoFooter(string inputInfoFooter)
+    {
+        InputInfoFooter = inputInfoFooter;
+        return this;
+    }
 
     /// <summary>
     /// Текст подсказки, который отображается мелким шрифтом под Input-ом
@@ -35,15 +75,17 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
     public string? ClassInputGroup;
 
     /// <inheritdoc/>
-    public TextInputBootstrap(string Label, string InputID)
+    public TextInputBootstrap(string label, string inputID)
     {
         Input.AddCSS("form-control");
         tag_custom_name = typeof(div).Name;
-        if (!string.IsNullOrEmpty(Label))
-            LabelInput = new label(Label, InputID);
+        if (!string.IsNullOrEmpty(label))
+            LabelInput = new label(label, inputID);
 
-        Input.Name_DOM = InputID;
-        Input.Id_DOM = InputID;
+        Id_DOM = inputID;
+
+        Input.Name_DOM = inputID;
+        Input.Id_DOM = inputID;
     }
 
     /// <inheritdoc/>

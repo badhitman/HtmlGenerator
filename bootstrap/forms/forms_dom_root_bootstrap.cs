@@ -3,8 +3,8 @@
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
-using HtmlGenerator.html5;
 using HtmlGenerator.html5.areas;
+using HtmlGenerator.html5;
 
 namespace HtmlGenerator.bootstrap;
 

@@ -5,7 +5,7 @@ HTML Generator - .Net Core.
 Пример 1:
 ```C#
 // Создаём объект передаём первым параметром текст Label-а, а вторым идентификатор Input-а
-CheckboxCustomInput mybox = new CheckboxCustomInput("Check this custom checkbox", "customControlValidation1");
+CheckboxCustomInputBootstrap mybox = new ("Check this custom checkbox", "customControlValidation1");
 // указываем, что поле обязательно для заполенния (если это необходимо).
 // От этого зависит наличие у CheckBox-а реакционных уведомлений (invalid-feedback и/или valid-feedback), 
 // текст которых устанавливается через соответсвующие поля mybox.valid_feedback_text и mybox.invalid_feedback_text
@@ -25,10 +25,11 @@ string test_s = mybox.GetHTML();
 
 Пример 2
 ```C#
-TextInput my_text_input = new TextInput("Email address", "exampleInputEmail1");
-my_text_input.Input.type = InputTypesEnum.email;
-my_text_input.Input.placeholder = "Enter email";
-my_text_input.InputInfoFooter = "We'll never share your email with anyone else.";
+TextInputBootstrap my_text_input = new ("Email address", "exampleInputEmail1")
+    .SetTypeForInput(InputTypesEnum.email)
+    .SetPlaceholderForInput("Enter email")
+    .SetInputInfoFooter("We'll never share your email with anyone else.");
+
 string test_s = my_text_input.GetHTML();
 ```
 Результат => HTML.Bootstrap:
@@ -39,14 +40,14 @@ string test_s = my_text_input.GetHTML();
 	<small id="exampleInputEmail1Help" class="form-text text-muted">We'll never share your email with anyone else.</small>
 </div>
 ```
-*Тут C# кода как-буд-то больше чем HTML кода на выходе, но это от подробных настроек Input-a*
 
 Пример 3:
 ```C#
-GroupElements my_test_obj = new GroupElements() { aria_label = "Basic example group" };
-my_test_obj.AddDomNode(new Button("Left", VisualBootstrapStylesEnum.secondary));
-my_test_obj.AddDomNode(new Button("Middle", VisualBootstrapStylesEnum.secondary));
-my_test_obj.AddDomNode(new Button("Right", VisualBootstrapStylesEnum.secondary));
+GroupElementsBootstrap my_test_obj = new () { aria_label = "Basic example group" }
+    .AddDomNode(new Button("Left", VisualBootstrapStylesEnum.secondary))
+    .AddDomNode(new Button("Middle", VisualBootstrapStylesEnum.secondary))
+    .AddDomNode(new Button("Right", VisualBootstrapStylesEnum.secondary));
+
 string test_string = my_test_obj.GetHTML();
 ```
 Результат => HTML.Bootstrap [view original demo](https://getbootstrap.com/docs/4.3/components/button-group/#basic-example):
@@ -60,25 +61,25 @@ string test_string = my_test_obj.GetHTML();
 Пример 4:
 ```C#
 string test_string;
-GroupElements my_group;
+GroupElementsBootstrap my_group;
 
-GroupsToolbar my_toolbar = new GroupsToolbar() { aria_label = "Toolbar with button groups" };
-my_group = new GroupElements() { aria_label = "First group" };
+GroupsToolbarBootstrap my_toolbar = new () { aria_label = "Toolbar with button groups" };
+my_group = new () { aria_label = "First group" };
 my_group.AddCSS("mr-2");
 for (int i = 1; i <= 4; i++)
    my_group.AddDomNode(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
 
 my_toolbar.Groups.Add(my_group);
 //
-my_group = new GroupElements() { aria_label = "Second group" };
+my_group = new () { aria_label = "Second group" };
 my_group.AddCSS("mr-2");
 for (int i = 5; i <= 7; i++)
-  my_group.AddDomNode(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
+  my_group.AddDomNode(new ButtonBootstrap(i.ToString(), VisualBootstrapStylesEnum.secondary));
 
 my_toolbar.Groups.Add(my_group);
 //
-my_group = new GroupElements() { aria_label = "Third group" };
-my_group.AddDomNode(new Button("8", VisualBootstrapStylesEnum.secondary));
+my_group = new () { aria_label = "Third group" };
+my_group.AddDomNode(new ButtonBootstrap("8", VisualBootstrapStylesEnum.secondary));
 my_toolbar.Groups.Add(my_group);
 
 test_string = my_toolbar.GetHTML();
@@ -113,10 +114,10 @@ string test_s;
 table my_table = new table();
 ////////////////////////////////////////////
 // Формируем колонки и заголовки к ним
-my_table.Thead.AddColumn("№ п/п");
-my_table.Thead.AddColumn("Имя");
-my_table.Thead.AddColumn("Фамилия");
-my_table.Thead.AddColumn("Телефон");
+my_table.Thead.AddColumn("№ п/п")
+    .AddColumn("Имя")
+    .AddColumn("Фамилия")
+    .AddColumn("Телефон");
 // далее заполняем данным таблицу
 my_table.Tbody.AddRow(new string[] { "1", "Иван", "Санду", "телефона нет" });
 my_table.Tbody.AddRow(new string[] { "2", "Игорь", "Фомин", "+79995552244" });

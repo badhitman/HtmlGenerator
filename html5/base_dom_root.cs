@@ -297,19 +297,21 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Прямое добавление дочернего/вложенного элемента.
     /// </summary>
-    public virtual void AddDomNode(base_dom_root child)
+    public virtual base_dom_root AddDomNode(base_dom_root child)
     {
         Childs ??= [];
         Childs.Add(child);
+        return this;
     }
 
     /// <summary>
     /// Пакетное добавление дочерних/вложенных элементов.
     /// </summary>
-    public virtual void AddRangeDomNode(List<base_dom_root> children)
+    public virtual base_dom_root AddRangeDomNode(List<base_dom_root> children)
     {
         Childs ??= [];
         Childs.AddRange(children);
+        return this;
     }
 
     /// <summary>

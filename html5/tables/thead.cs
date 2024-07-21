@@ -21,10 +21,12 @@ public class thead : safe_base_dom_root
     /// </summary>
     /// <param name="text">Текст заголовка колонки</param>
     /// <param name="unique">Проверять или нет - уникальность заголовков таблицы</param>
-    public void AddColumn(string text, bool unique = false)
+    public thead AddColumn(string text, bool unique = false)
     {
         if (!unique || !Columns.Exists(x => x.InnerText?.ToLower() == text.ToLower()))
             Columns.Add(new th() { InnerText = text });
+
+        return this;
     }
 
     /// <summary>

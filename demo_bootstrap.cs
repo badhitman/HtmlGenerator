@@ -2,22 +2,22 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
+using HtmlGenerator.html5.collections;
+using HtmlGenerator.set.bootstrap;
+using HtmlGenerator.html5.textual;
+using HtmlGenerator.html5.tables;
+using HtmlGenerator.html5.areas;
+using HtmlGenerator.html5.forms;
 using HtmlGenerator.bootstrap;
 using HtmlGenerator.html5;
-using HtmlGenerator.html5.areas;
-using HtmlGenerator.html5.collections;
-using HtmlGenerator.html5.forms;
-using HtmlGenerator.html5.tables;
-using HtmlGenerator.html5.textual;
 using HtmlGenerator.set;
-using HtmlGenerator.set.bootstrap;
 
 namespace HtmlGenerator;
 
 /// <summary>
 /// Примеры использования (Bootstrap)
 /// </summary>
-public static class deno_bootstrap
+public static class demo_bootstrap
 {
     /// <inheritdoc/>
     public static div GetBootstrapSelectList(string label, select select_body, string? Tooltip = null, string wrap_class = "input-group mb-4 col-auto")
