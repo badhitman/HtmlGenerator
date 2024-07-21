@@ -44,9 +44,9 @@ string test_s = my_text_input.GetHTML();
 Пример 3:
 ```C#
 GroupElementsBootstrap my_test_obj = new () { aria_label = "Basic example group" }
-    .AddDomNode(new Button("Left", VisualBootstrapStylesEnum.secondary))
-    .AddDomNode(new Button("Middle", VisualBootstrapStylesEnum.secondary))
-    .AddDomNode(new Button("Right", VisualBootstrapStylesEnum.secondary));
+    .AddDomNode(new ButtonBootstrap("Left", VisualBootstrapStylesEnum.secondary))
+    .AddDomNode(new ButtonBootstrap("Middle", VisualBootstrapStylesEnum.secondary))
+    .AddDomNode(new ButtonBootstrap("Right", VisualBootstrapStylesEnum.secondary));
 
 string test_string = my_test_obj.GetHTML();
 ```
@@ -67,7 +67,7 @@ GroupsToolbarBootstrap my_toolbar = new () { aria_label = "Toolbar with button g
 my_group = new () { aria_label = "First group" };
 my_group.AddCSS("mr-2");
 for (int i = 1; i <= 4; i++)
-   my_group.AddDomNode(new Button(i.ToString(), VisualBootstrapStylesEnum.secondary));
+   my_group.AddDomNode(new ButtonBootstrap(i.ToString(), VisualBootstrapStylesEnum.secondary));
 
 my_toolbar.Groups.Add(my_group);
 //
