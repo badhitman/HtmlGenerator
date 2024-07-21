@@ -114,13 +114,15 @@ string test_s;
 table my_table = new table();
 ////////////////////////////////////////////
 // Формируем колонки и заголовки к ним
-my_table.Thead.AddColumn("№ п/п")
+my_table.Thead
+    .AddColumn("№ п/п")
     .AddColumn("Имя")
     .AddColumn("Фамилия")
     .AddColumn("Телефон");
 // далее заполняем данным таблицу
-my_table.Tbody.AddRow(new string[] { "1", "Иван", "Санду", "телефона нет" });
-my_table.Tbody.AddRow(new string[] { "2", "Игорь", "Фомин", "+79995552244" });
+my_table.Tbody
+    .AddRow(new string[] { "1", "Иван", "Санду", "телефона нет" })
+    .AddRow(new string[] { "2", "Игорь", "Фомин", "+79995552244" });
 // Получаем HTML
 test_s = my_table.GetHTML();
 ```

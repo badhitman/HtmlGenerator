@@ -39,12 +39,13 @@ public class tbody : safe_base_dom_root
     /// Добавить строку в таблицу
     /// </summary>
     /// <param name="td_cols">значения ячеек в строке</param>
-    public void AddRow(string[] td_cols)
+    public tbody AddRow(string[] td_cols)
     {
         tr my_tr = new();
         foreach (string s in td_cols)
             my_tr.Columns.Add(new td() { InnerText = s });
         Rows.Add(my_tr);
+        return this;
     }
 
     /// <inheritdoc/>
