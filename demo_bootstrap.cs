@@ -277,5 +277,21 @@ public static class demo_bootstrap
 
         dom_elements.Add(Get_DIV_Bootstrap_Card("Вход/Регистрация", html_response));
         return dom_elements;
-    }    
+    }
+
+    /// <summary>
+    /// Сформировать таблицу
+    /// </summary>
+    public static table GetTable(string[] table_heads, List<string[]> table_data, string css_table_class = "table table-hover")
+    {
+        table table = new();
+        table.AddCSS(css_table_class, true);
+        foreach (string s in table_heads)
+            table.THead.AddColumn(s);
+
+        foreach (string[] row_item in table_data)
+            table.TBody.AddRow(row_item);
+
+        return table;
+    }
 }
