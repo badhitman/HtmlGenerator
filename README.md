@@ -114,13 +114,13 @@ string test_s;
 table my_table = new table();
 ////////////////////////////////////////////
 // Формируем колонки и заголовки к ним
-my_table.Thead
+my_table.THead
     .AddColumn("№ п/п")
     .AddColumn("Имя")
     .AddColumn("Фамилия")
     .AddColumn("Телефон");
 // далее заполняем данным таблицу
-my_table.Tbody
+my_table.TBody
     .AddRow(new string[] { "1", "Иван", "Санду", "телефона нет" })
     .AddRow(new string[] { "2", "Игорь", "Фомин", "+79995552244" });
 // Получаем HTML
