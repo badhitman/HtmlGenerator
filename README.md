@@ -129,51 +129,51 @@ test_s = my_table.GetHTML();
 Результат => HTML
 ```HTML
 <table>
-  <thead>
-    <tr>
-      <th>
-      № п/п
-      </th>
-      <th>
-      Имя
-      </th>
-      <th>
-      Фамилия
-      </th>
-      <th>
-      Телефон
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-      1
-      </td>
-      <td>
-      Иван
-      </td>
-      <td>
-      Санду
-      </td>
-      <td>
-      телефона нет
-      </td>
-    </tr>
-    <tr>
-      <td>
-      2
-      </td>
-      <td>
-      Игорь
-      </td>
-      <td>
-      Фомин
-      </td>
-      <td>
-      +79995552244
-      </td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th>
+                № п/п
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Телефон
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                Иван
+            </td>
+            <td>
+                Санду
+            </td>
+            <td>
+                телефона нет
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2
+            </td>
+            <td>
+                Игорь
+            </td>
+            <td>
+                Фомин
+            </td>
+            <td>
+                +79995552244
+            </td>
+        </tr>
+    </tbody>
 </table>
 ```
