@@ -27,7 +27,7 @@ public class TextInputSecondBootstrap : forms_dom_root_bootstrap
     /// <summary>
     /// div
     /// </summary>
-    public override string? tag_custom_name => "div";
+    public override string tag_custom_name => "div";
 
     /// <summary>
     /// Минимизированный [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.

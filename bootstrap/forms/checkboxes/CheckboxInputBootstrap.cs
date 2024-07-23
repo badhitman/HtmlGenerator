@@ -38,7 +38,7 @@ public class CheckboxInputBootstrap : forms_dom_root_bootstrap
     /// <summary>
     /// div
     /// </summary>
-    public override string? tag_custom_name => "div";
+    public override string tag_custom_name => "div";
 
     /// <inheritdoc/>
     public CheckboxInputBootstrap(string Label, string InputID)

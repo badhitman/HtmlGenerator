@@ -36,7 +36,7 @@ public class AlertBootstrap(VisualBootstrapStylesEnum status_style, string text_
     /// <summary>
     /// div
     /// </summary>
-    public override string? tag_custom_name => "div";
+    public override string tag_custom_name => "div";
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>

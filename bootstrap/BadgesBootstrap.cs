@@ -20,7 +20,7 @@ public class Badge : safe_base_dom_root
     /// <summary>
     /// span
     /// </summary>
-    public override string? tag_custom_name => "span";
+    public override string tag_custom_name => "span";
 
     /// <summary>
     /// Компонент Bootstrap для формирования небольшого значка

@@ -21,7 +21,7 @@ public class BreadcrumbsBootstrap : safe_base_dom_root
     /// <summary>
     /// nav
     /// </summary>
-    public override string? tag_custom_name => "nav";
+    public override string tag_custom_name => "nav";
 
     /// <inheritdoc/>
     public void AddBreadcrumb(string in_text, string? in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItemBootstrap() { text = in_text, href = in_href });
