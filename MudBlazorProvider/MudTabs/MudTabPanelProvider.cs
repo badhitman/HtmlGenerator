@@ -9,7 +9,7 @@ namespace HtmlGenerator;
 /// <summary>
 /// MudTabPanel - MudBlazor provider
 /// </summary>
-public class MudTabPanelProvider : safe_base_dom_root
+public class MudTabPanelProvider : base_dom_root
 {
     /// <summary>
     /// Text for Tab
