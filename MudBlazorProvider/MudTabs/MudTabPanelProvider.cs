@@ -12,7 +12,12 @@ namespace HtmlGenerator;
 public class MudTabPanelProvider : safe_base_dom_root
 {
     /// <summary>
-    /// MudTabs
+    /// Text for Tab
+    /// </summary>
+    public required string Text { get; set; }
+
+    /// <summary>
+    /// MudTabPanel
     /// </summary>
     public override string tag_custom_name => "MudTabPanel";
 }

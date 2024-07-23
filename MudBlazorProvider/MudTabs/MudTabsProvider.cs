@@ -20,4 +20,17 @@ public class MudTabsProvider : safe_base_dom_root
     /// MudTabs
     /// </summary>
     public override string tag_custom_name => "MudTabs";
+
+    /// <inheritdoc/>
+    public override string GetHTML(int deep = 0)
+    {
+        if (Childs is null)
+            Childs = [];
+        else
+            Childs.Clear();
+
+        Childs.AddRange(TabsPanels);
+
+        return base.GetHTML(deep);
+    }
 }
