@@ -37,7 +37,7 @@ public abstract partial class base_dom_root
     /// Ручное указание имени/типа элемента/тэга
     /// По умолчанию имя/тип определяется по имени типа класса, но в случае необходимости его можно изменить на собственный
     /// </summary>
-    public virtual string tag_custom_name { get; set; }
+    public virtual string? tag_custom_name { get; set; }
 
     /// <summary>
     /// Идентификатор/ID элемента в DOM
@@ -309,7 +309,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Дочерние/вложенные элементы
     /// </summary>
-    public List<base_dom_root>? Childs;
+    protected internal List<base_dom_root>? Childs;
 
     /// <summary>
     /// Прямое добавление дочернего/вложенного элемента.
