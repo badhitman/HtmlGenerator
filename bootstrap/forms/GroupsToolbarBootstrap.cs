@@ -30,13 +30,16 @@ public class GroupsToolbarBootstrap : safe_base_dom_root
     public JustifyingContentModesEnum? Justifying = null;
 
     /// <summary>
+    /// div
+    /// </summary>
+    public override string? tag_custom_name => "div";
+
+    /// <summary>
     /// Объедините наборы групп кнопок в панели инструментов кнопок для более сложных компонентов.
     /// Используйте служебные классы по мере необходимости, чтобы выделить группы, кнопки и многое другое.
     /// </summary>
     public GroupsToolbarBootstrap()
     {
-        tag_custom_name = typeof(div).Name.ToLower();
-
         AddCSS("btn-toolbar");
         SetAttribute("role", "toolbar");
     }

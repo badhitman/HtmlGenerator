@@ -33,9 +33,12 @@ public class safe_base_dom_root : base_dom_root
     /// ЗАПРЕЩЕНО!
     /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
     /// </summary>
-    public override void ClearNestedDom()
+    public override base_dom_root ClearNestedDom()
     {
         throw new NotSupportedException("В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.");
         //base.ClearNestedDom();
     }
+
+    /// <inheritdoc/>
+    public override bool TagNameToLower { get; set; } = false;
 }

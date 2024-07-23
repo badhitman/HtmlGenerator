@@ -51,9 +51,9 @@ public class CardBootstrap : safe_base_dom_root
     public List<base_dom_root> CardFooter = [];
 
     /// <summary>
-    /// Card
+    /// div
     /// </summary>
-    public CardBootstrap() => tag_custom_name = typeof(div).Name.ToLower();
+    public override string tag_custom_name => "div";
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>

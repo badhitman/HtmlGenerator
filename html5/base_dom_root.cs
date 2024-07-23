@@ -21,6 +21,11 @@ public abstract partial class base_dom_root
     public static string TabString { get; set; } = "\t";
 
     /// <summary>
+    /// имя тега автоматически переводится в нижний регистр
+    /// </summary>
+    public virtual bool TagNameToLower { get; set; } = true;
+
+    /// <summary>
     /// HTML Комментирование блока/элемента. Оборачивает текущий блок в два комментария (непосредственно до и после DOM блока).
     /// Если указать только начальный/верхний комментарий, то он же будет использоваться и в нижнем.
     /// </summary>
@@ -32,7 +37,7 @@ public abstract partial class base_dom_root
     /// Ручное указание имени/типа элемента/тэга
     /// По умолчанию имя/тип определяется по имени типа класса, но в случае необходимости его можно изменить на собственный
     /// </summary>
-    public string? tag_custom_name;
+    public virtual string? tag_custom_name { get; set; }
 
     /// <summary>
     /// Идентификатор/ID элемента в DOM
@@ -112,7 +117,7 @@ public abstract partial class base_dom_root
 
         ret_val += GetTabPrefix(TabString, deep);
         if (this is not text)
-            ret_val += "<" + (string.IsNullOrEmpty(tag_custom_name) ? GetType().Name.ToLower() : tag_custom_name);
+            ret_val += "<" + (string.IsNullOrEmpty(tag_custom_name) ? (TagNameToLower ? GetType().Name.ToLower() : GetType().Name) : tag_custom_name);
 
         if (!string.IsNullOrEmpty(Id_DOM))
             SetAttribute("id", Id_DOM);
@@ -162,7 +167,7 @@ public abstract partial class base_dom_root
             ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + InnerText;
 
         if (NeedEndTagSection && this is not text)
-            ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? this.GetType().Name.ToLower() : tag_custom_name) + ">";
+            ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? (TagNameToLower ? GetType().Name.ToLower() : GetType().Name) : tag_custom_name) + ">";
 
         after_comment_block = after_comment_block.Replace("<", "[").Replace(">", "]");
 
@@ -219,15 +224,17 @@ public abstract partial class base_dom_root
     /// </summary>
     /// <param name="attr_name">Имя атрибута dom объекта</param>
     /// <param name="attr_value">Если значение атрибута IS NULL, то генератор объявит имя атрибута у объекта, но не будет указывать значение этого атрибута (т.е. будет пропущен знак = и его значение)</param>
-    public void SetAttribute(string attr_name, string? attr_value)
+    public base_dom_root SetAttribute(string attr_name, string? attr_value)
     {
         if (!CustomAttributes.TryAdd(attr_name, attr_value))
             CustomAttributes[attr_name] = attr_value;
+
+        return this;
     }
     /// <inheritdoc/>
-    public void SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
+    public base_dom_root SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
     /// <inheritdoc/>
-    public void SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
+    public base_dom_root SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
 
     /// <summary>
     /// Установить DOM объекту составное значение атрибута
@@ -236,7 +243,7 @@ public abstract partial class base_dom_root
     /// <param name="attributes">Список значений атрибутов, которые нужно объединить в одно составное значение</param>
     /// <param name="separator">Символ-разделитель значений в составном значении атрибута</param>
     /// <param name="check_duplicates_attributes">если true - то дубли значений будут исключены из конечного составного значения</param>
-    public void SetAttribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
+    public base_dom_root SetAttribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
     {
         string attr_as_string = "";
         if (check_duplicates_attributes)
@@ -247,15 +254,19 @@ public abstract partial class base_dom_root
         attr_as_string = attr_as_string.Trim().Replace(" ", separator);
         if (!string.IsNullOrEmpty(attr_as_string))
             SetAttribute(attr_name, attr_as_string);
+
+        return this;
     }
 
     /// <summary>
     /// Пакетная установка атрибутов
     /// </summary>
-    public void SetAttribute(Dictionary<string, string> in_custom_attributes)
+    public base_dom_root SetAttribute(Dictionary<string, string> in_custom_attributes)
     {
         foreach (KeyValuePair<string, string> kvp in in_custom_attributes)
             SetAttribute(kvp.Key, kvp.Value);
+
+        return this;
     }
 
     /// <summary>
@@ -272,19 +283,25 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Удалить атрибут (если существует)
     /// </summary>
-    public void RemoveAttribute(string attr_name)
-        => CustomAttributes.Remove(attr_name);
+    public base_dom_root RemoveAttribute(string attr_name)
+    {
+        CustomAttributes.Remove(attr_name);
+
+        return this;
+    }
 
     /// <summary>
     /// Установить DOM элементу обработчик события.
     /// Если "event_src" IsNullOrEmpty, то событие удаляется
     /// </summary>
-    public void SetEvent(UniversalEventsEnum my_event, string event_src)
+    public base_dom_root SetEvent(UniversalEventsEnum my_event, string event_src)
     {
         if (string.IsNullOrEmpty(event_src))
             CustomAttributes.Remove(my_event.ToString("g"));
         else
             SetAttribute(my_event.ToString("g"), event_src);
+
+        return this;
     }
     #endregion
 
@@ -317,10 +334,12 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Удалить все вложенные DOM элементы
     /// </summary>
-    public virtual void ClearNestedDom()
+    public virtual base_dom_root ClearNestedDom()
     {
         Childs ??= [];
         Childs.Clear();
+
+        return this;
     }
     #endregion
 
@@ -338,7 +357,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Добавить CSS класс (если его нет у объекта)
     /// </summary>
-    public void AddCSS(string css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
+    public base_dom_root AddCSS(string css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
     {
         if (low_and_trim_name_class)
             css_class = css_class.Trim().ToLower();
@@ -348,12 +367,14 @@ public abstract partial class base_dom_root
                 AddCSS(s, false, false);
         else if (!string.IsNullOrEmpty(css_class) && !CSS.Contains(css_class))
             CSS.Add(css_class);
+
+        return this;
     }
 
     /// <summary>
     /// Удалить класс CSS
     /// </summary>
-    public void RemoveCSS(string css_class, bool CheckSpices = false)
+    public base_dom_root RemoveCSS(string css_class, bool CheckSpices = false)
     {
         if (CheckSpices && regex_spice.IsMatch(css_class))
         {
@@ -362,18 +383,22 @@ public abstract partial class base_dom_root
         }
         else if (!string.IsNullOrEmpty(css_class))
             CSS.Remove(css_class);
+
+        return this;
     }
 
     /// <summary>
     /// Если класса нет, то будет добавлен. Если класс есть, то будет удалён
     /// </summary>
-    public void ToggleCSS(string css_class)
+    public base_dom_root ToggleCSS(string css_class)
     {
         if (!string.IsNullOrEmpty(css_class))
         {
             if (!CSS.Remove(css_class))
                 CSS.Add(css_class);
         }
+
+        return this;
     }
 
     /// <summary>

@@ -74,11 +74,16 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
     /// </summary>
     public string? ClassInputGroup;
 
+    /// <summary>
+    /// div
+    /// </summary>
+    public override string? tag_custom_name => "div";
+
     /// <inheritdoc/>
     public TextInputBootstrap(string label, string inputID)
     {
         Input.AddCSS("form-control");
-        tag_custom_name = typeof(div).Name.ToLower();
+        
         if (!string.IsNullOrEmpty(label))
             LabelInput = new label(label, inputID);
 

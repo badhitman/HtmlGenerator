@@ -183,6 +183,11 @@ public class PaginationsBootstrap : safe_base_dom_root
         return li_tag;
     }
 
+    /// <summary>
+    /// nav
+    /// </summary>
+    public override string tag_custom_name => "nav";
+
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
     public override string GetHTML(int deep = 0)
@@ -192,7 +197,6 @@ public class PaginationsBootstrap : safe_base_dom_root
         else
             Childs.Clear();
 
-        tag_custom_name = typeof(nav).Name.ToLower();
         before_comment_block = "pagination";
         if (CountAllElements == 0)
             goto end;

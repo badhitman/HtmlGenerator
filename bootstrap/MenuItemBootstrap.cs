@@ -13,7 +13,10 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Menu item
 /// </summary>
-public class MenuItemBootstrap : safe_base_dom_root
+/// <remarks>
+/// Menu item
+/// </remarks>
+public class MenuItemBootstrap(string in_text, string in_href, string in_tool_tip) : safe_base_dom_root
 {
     /// <summary>
     /// НЕ ИСПОЛЬЗУЙ ЭТО! При формировании HTML(int deep = 0) - этот список пере-заполняется.
@@ -39,28 +42,22 @@ public class MenuItemBootstrap : safe_base_dom_root
     /// <summary>
     /// Ссылка пункта меню
     /// </summary>
-    public string href_menu_item = "#";
+    public string href_menu_item = in_href;
 
     /// <summary>
     /// Текст пункта меню
     /// </summary>
-    public string text_menu_item;
+    public string text_menu_item = in_text;
 
     /// <summary>
     /// Подсказка для пункта меню
     /// </summary>
-    public string tool_tip = "";
+    public string tool_tip = in_tool_tip;
 
     /// <summary>
-    /// Menu item
+    /// li
     /// </summary>
-    public MenuItemBootstrap(string in_text, string in_href, string in_tool_tip)
-    {
-        tag_custom_name = typeof(li).Name.ToLower();
-        text_menu_item = in_text;
-        href_menu_item = in_href;
-        tool_tip = in_tool_tip;
-    }
+    public override string tag_custom_name => "li";
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
@@ -90,7 +87,7 @@ public class MenuItemBootstrap : safe_base_dom_root
             submenu.CustomAttributes.Add("aria-labelledby", id_a_parent);
             foreach (MenuItemBootstrap i in SubItems)
             {
-                a dropdown_item = new a() { inline = true, href = i.href_menu_item, target = TargetsEnum._blank, InnerText = i.text_menu_item };
+                a dropdown_item = new() { inline = true, href = i.href_menu_item, target = TargetsEnum._blank, InnerText = i.text_menu_item };
                 dropdown_item.AddCSS("dropdown-item");
                 submenu.Childs ??= [];
                 submenu.Childs.Add(dropdown_item);

@@ -35,11 +35,15 @@ public class CheckboxInputBootstrap : forms_dom_root_bootstrap
     /// </summary>
     public string invalid_feedback_text = "Пожалуйста, установите Checkbox";
 
+    /// <summary>
+    /// div
+    /// </summary>
+    public override string? tag_custom_name => "div";
+
     /// <inheritdoc/>
     public CheckboxInputBootstrap(string Label, string InputID)
     {
         Input.AddCSS("form-check-input");
-        tag_custom_name = typeof(div).Name.ToLower();
         AddCSS("form-check");
 
         if (!string.IsNullOrEmpty(Label))

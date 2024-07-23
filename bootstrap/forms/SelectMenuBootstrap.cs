@@ -35,13 +35,17 @@ public class SelectMenuBootstrap : safe_base_dom_root
     /// </summary>
     public bool isCustomBootstrapSelect = false;
 
+    /// <summary>
+    /// div
+    /// </summary>
+    public override string tag_custom_name => "div";
+
     /// <inheritdoc/>
     public SelectMenuBootstrap(string Label, select my_select)
     {
         if (!string.IsNullOrEmpty(Label))
             LabelSelectMenu = new label(Label, my_select.Id_DOM);
 
-        tag_custom_name = typeof(div).Name.ToLower();
         AddCSS("form-group");
         Select = my_select;
         Select.AddCSS("form-control");

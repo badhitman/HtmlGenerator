@@ -18,12 +18,16 @@ public class Badge : safe_base_dom_root
     public VisualBootstrapStylesEnum? StyleBadge = null;
 
     /// <summary>
+    /// span
+    /// </summary>
+    public override string? tag_custom_name => "span";
+
+    /// <summary>
     /// Компонент Bootstrap для формирования небольшого значка
     /// https://getbootstrap.com/docs/4.3/components/badge/
     /// </summary>
     public Badge(string text_badge, VisualBootstrapStylesEnum? style_badge = null)
     {
-        tag_custom_name = typeof(span).Name.ToLower();
         InnerText = text_badge;
         StyleBadge = style_badge;
         AddCSS("badge");

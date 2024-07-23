@@ -59,9 +59,9 @@ public class ModalDialogBootstrap : safe_base_dom_root
     public string TextCancelButton = "Cancel";
 
     /// <summary>
-    /// Меняем имя тега на div
+    /// div
     /// </summary>
-    public ModalDialogBootstrap() => tag_custom_name = typeof(div).Name.ToLower();
+    public override string tag_custom_name => "div";
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>

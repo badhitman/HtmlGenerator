@@ -25,12 +25,16 @@ public class TextInputSecondBootstrap : forms_dom_root_bootstrap
     public input Input = new() { type = InputTypesEnum.text };
 
     /// <summary>
+    /// div
+    /// </summary>
+    public override string? tag_custom_name => "div";
+
+    /// <summary>
     /// Минимизированный [Input]. В отличии от базового [Input]-а, у него нет подсказки снизу.
     /// К тому же тут Label прилеплен слева к [Input] образуя единый горизонтальный блок
     /// </summary>
     public TextInputSecondBootstrap(string Label, string InputID)
     {
-        tag_custom_name = typeof(div).Name.ToLower();
         LabelText = Label;
 
         Input.Name_DOM = InputID;

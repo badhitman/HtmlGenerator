@@ -34,10 +34,14 @@ public class GroupElementsBootstrap : base_dom_root
     /// <inheritdoc/>
     public VisualBootstrapStylesEnum default_style = VisualBootstrapStylesEnum.secondary;
 
+    /// <summary>
+    /// div
+    /// </summary>
+    public override string? tag_custom_name => "div";
+
     /// <inheritdoc/>
     public GroupElementsBootstrap()
     {
-        tag_custom_name = typeof(div).Name.ToLower();
         AddCSS("btn-group");
         SetAttribute("role", "group");
     }
@@ -70,7 +74,6 @@ public class GroupElementsBootstrap : base_dom_root
 
             a_item.AddCSS("dropdown-item");
             dropdown_node.AddDomNode(a_item);
-
         }
 
         Childs ??= [];

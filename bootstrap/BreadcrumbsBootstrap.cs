@@ -19,9 +19,9 @@ public class BreadcrumbsBootstrap : safe_base_dom_root
     public List<BreadcrumbItemBootstrap> BreadcrumbsCol = [];
 
     /// <summary>
-    /// Меняем имя тега на nav
+    /// nav
     /// </summary>
-    public BreadcrumbsBootstrap() => tag_custom_name = typeof(nav).Name.ToLower();
+    public override string? tag_custom_name => "nav";
 
     /// <inheritdoc/>
     public void AddBreadcrumb(string in_text, string? in_href = null) => BreadcrumbsCol.Add(new BreadcrumbItemBootstrap() { text = in_text, href = in_href });

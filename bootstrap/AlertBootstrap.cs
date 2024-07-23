@@ -13,17 +13,20 @@ namespace HtmlGenerator.bootstrap;
 /// <summary>
 /// Класс Web/DOM уведомления для пользователя.
 /// </summary>
-public class AlertBootstrap : safe_base_dom_root
+/// <remarks>
+/// Класс Web/DOM уведомления для пользователя.
+/// </remarks>
+public class AlertBootstrap(VisualBootstrapStylesEnum status_style, string text_msg) : safe_base_dom_root
 {
     /// <summary>
     /// Стиль оформления уведомления
     /// </summary>
-    public VisualBootstrapStylesEnum StyleAlert;
+    public VisualBootstrapStylesEnum StyleAlert = status_style;
 
     /// <summary>
     /// Текст уведомления
     /// </summary>
-    public string Message;
+    public string Message = text_msg;
 
     /// <summary>
     /// Флаг/Признак наличия у Alert-а кнопки закрытия
@@ -31,14 +34,9 @@ public class AlertBootstrap : safe_base_dom_root
     public bool isDismissible = false;
 
     /// <summary>
-    /// Класс Web/DOM уведомления для пользователя.
+    /// div
     /// </summary>
-    public AlertBootstrap(VisualBootstrapStylesEnum status_style, string text_msg)
-    {
-        tag_custom_name = typeof(div).Name.ToLower();
-        StyleAlert = status_style;
-        Message = text_msg;
-    }
+    public override string? tag_custom_name => "div";
 
     /// <inheritdoc/>
     /// <remarks>При вызове этого метода поле Childs очищается и заново заполняется</remarks>
