@@ -292,7 +292,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Дочерние/вложенные элементы
     /// </summary>
-    protected internal List<base_dom_root>? Childs;
+    public List<base_dom_root>? Childs;
 
     /// <summary>
     /// Прямое добавление дочернего/вложенного элемента.
