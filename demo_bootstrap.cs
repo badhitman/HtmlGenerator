@@ -229,17 +229,17 @@ public static class demo_bootstrap
         html_response.AddCSS("was-validated");
         html_response.SetAttribute("novalidate", null);
 
-        TextInputBootstrap textInput = new("Ваш логин", user_login_input_id) { InputInfoFooter = "Введите логин для входа" };
+        TextInputBootstrap textInput = new("Ваш логин", user_login_input_id) { Hint = "Введите логин для входа" };
         textInput.Input.placeholder = "Логин";
         textInput.Input.required = true;
         html_response.AddDomNode(textInput);
 
-        textInput = new TextInputBootstrap("Ваш пароль", user_password_input_id) { InputInfoFooter = "Пароль для входа" };
+        textInput = new TextInputBootstrap("Ваш пароль", user_password_input_id) { Hint = "Пароль для входа" };
         textInput.Input.type = InputTypesEnum.password;
         textInput.Input.placeholder = "Пароль";
         html_response.AddDomNode(textInput);
 
-        textInput = new TextInputBootstrap("Повторите пароль", user_password_repeat_input_id) { InputInfoFooter = "Повторно введите пароль" };
+        textInput = new TextInputBootstrap("Повторите пароль", user_password_repeat_input_id) { Hint = "Повторно введите пароль" };
         textInput.Input.type = InputTypesEnum.password;
         textInput.Input.placeholder = "Повтор";
 

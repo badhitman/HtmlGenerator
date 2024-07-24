@@ -59,14 +59,14 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
     /// </summary>
     public TextInputBootstrap SetInputInfoFooter(string inputInfoFooter)
     {
-        InputInfoFooter = inputInfoFooter;
+        Hint = inputInfoFooter;
         return this;
     }
 
     /// <summary>
     /// Текст подсказки, который отображается мелким шрифтом под Input-ом
     /// </summary>
-    public string? InputInfoFooter;
+    public string? Hint;
 
     /// <summary>
     /// Добавочный CSS класс для родительского блока в который будет помещён Input со всеми своими сопутствующими элементами (Label, InfoFooter)
@@ -105,10 +105,10 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
         if (Input.required)
             Childs.AddRange(GetValidationAlerts(Input.Name_DOM));
 
-        if (!string.IsNullOrEmpty(InputInfoFooter))
+        if (!string.IsNullOrEmpty(Hint))
         {
             string input_info_id = Input.Name_DOM + "Help";
-            small info_text = new(InputInfoFooter) { inline = true, Id_DOM = input_info_id };
+            small info_text = new(Hint) { inline = true, Id_DOM = input_info_id };
 
             info_text.AddCSS("form-text text-muted", true);
             Childs.Add(info_text);
