@@ -357,8 +357,11 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Добавить CSS класс (если его нет у объекта)
     /// </summary>
-    public base_dom_root AddCSS(string css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
+    public base_dom_root AddCSS(string? css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
     {
+        if (css_class is null)
+            return this;
+
         if (low_and_trim_name_class)
             css_class = css_class.Trim().ToLower();
 

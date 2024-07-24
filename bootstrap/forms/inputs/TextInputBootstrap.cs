@@ -3,7 +3,6 @@
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5.textual;
-using HtmlGenerator.html5.areas;
 using HtmlGenerator.html5.forms;
 using HtmlGenerator.set;
 

@@ -1,6 +1,6 @@
 # HtmlGenerator
-HTML Generator - .Net Core.
-Построение DOM в виде C# объектов и генерация HTML разметки (в том числе Bootstrap 4.3).
+HTML Generator - .Net Core. (используется в [конструкторе](https://github.com/badhitman/DesignerApp/tree/constructor))
+Построение DOM в виде C# объектов и генерация HTML разметки (в том числе Bootstrap).
 
 Пример 1:
 ```C#
