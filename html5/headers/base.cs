@@ -20,11 +20,12 @@ namespace HtmlGenerator.html5.headers;
 public class @base : base_dom_root
 {
     /// <inheritdoc/>
-    public @base()
-    {
-        inline = true;
-        NeedEndTagSection = false;
-    }
+    /// <remarks>false</remarks>
+    public override bool NeedEndTagSection => false;
+
+    /// <inheritdoc/>
+    /// <remarks>true</remarks>
+    public override bool inline => true;
 
     /// <summary>
     ///  Адрес, который должен использоваться для указания полного пути к файлам.

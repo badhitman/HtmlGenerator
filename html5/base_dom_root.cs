@@ -89,13 +89,13 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Флаг/метка необходимости формировать HTML для элемента в одну строку
     /// </summary>
-    public bool inline = false;
+    public virtual bool inline { get; set; } = false;
 
     /// <summary>
     /// Флаг/метка необходимости парного/закрывающего тега для элемента
     /// Если false, то тег не будет иметь завершающую/парную часть, а закроется в первой/открывающей части. В противном случае тег будет иметь и открывающую и закрывающую часть.
     /// </summary>
-    public bool NeedEndTagSection = true;
+    public virtual bool NeedEndTagSection { get; set; } = true;
     #endregion
 
     /// <summary>

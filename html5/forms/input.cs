@@ -178,11 +178,12 @@ public class input : base_dom_root
     public double step = 0;
 
     /// <inheritdoc/>
-    public input()
-    {
-        inline = true;
-        NeedEndTagSection = false;
-    }
+    /// <remarks>false</remarks>
+    public override bool NeedEndTagSection => false;
+
+    /// <inheritdoc/>
+    /// <remarks>true</remarks>
+    public override bool inline => true;
 
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
