@@ -63,6 +63,7 @@ public class CardBootstrap : safe_base_dom_root
             Childs = [];
         else
             Childs.Clear();
+
         AddCSS("card");
         if (!string.IsNullOrEmpty(adding_card_css_class))
             AddCSS(adding_card_css_class, true);
