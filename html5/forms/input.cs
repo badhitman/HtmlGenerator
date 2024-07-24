@@ -183,7 +183,7 @@ public class input : base_dom_root
 
     /// <inheritdoc/>
     /// <remarks>true</remarks>
-    public override bool inline => true;
+    public override bool Inline => true;
 
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)

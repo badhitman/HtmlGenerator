@@ -30,7 +30,7 @@ public class option : optgroup
     public option(option_set in_set) : base(new optgroup_set() { TitleText = in_set.TitleText, Disabled = in_set.Disabled })
     {
         set = in_set;
-        inline = true;
+        Inline = true;
     }
 
     /// <inheritdoc/>

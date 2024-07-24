@@ -108,7 +108,7 @@ public class TextInputBootstrap : forms_dom_root_bootstrap
         if (!string.IsNullOrEmpty(Hint))
         {
             string input_info_id = Input.Name_DOM + "Help";
-            small info_text = new(Hint) { inline = true, Id_DOM = input_info_id };
+            small info_text = new(Hint) { Inline = true, Id_DOM = input_info_id };
 
             info_text.AddCSS("form-text text-muted", true);
             Childs.Add(info_text);

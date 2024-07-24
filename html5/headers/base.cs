@@ -25,7 +25,7 @@ public class @base : base_dom_root
 
     /// <inheritdoc/>
     /// <remarks>true</remarks>
-    public override bool inline => true;
+    public override bool Inline => true;
 
     /// <summary>
     ///  Адрес, который должен использоваться для указания полного пути к файлам.

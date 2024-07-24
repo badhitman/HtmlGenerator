@@ -12,7 +12,7 @@ public class h1 : base_dom_root
     /// <inheritdoc/>
     public h1(string h_text)
     {
-        inline = true;
+        Inline = true;
         InnerText = h_text;
     }
 }

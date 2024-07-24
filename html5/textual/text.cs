@@ -12,7 +12,7 @@ public class text : base_dom_root
     /// <inheritdoc/>
     public text(string i_html_text)
     {
-        inline = true;
+        Inline = true;
         InnerText = i_html_text;
     }
 

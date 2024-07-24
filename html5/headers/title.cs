@@ -14,7 +14,7 @@ public class title : base_dom_root
     /// <inheritdoc/>
     public title(string text_title)
     {
-        inline = true;
+        Inline = true;
         InnerText = text_title;
     }
 }

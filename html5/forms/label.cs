@@ -20,7 +20,7 @@ public class label : base_dom_root
     /// <inheritdoc/>
     public label(string i_text, string? i_for)
     {
-        inline = true;
+        Inline = true;
         InnerText = i_text;
         @for = i_for;
     }

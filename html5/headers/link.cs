@@ -43,7 +43,7 @@ public class link : base_dom_root
         if (in_custom_attributes is not null)
             SetAttribute(in_custom_attributes);
 
-        inline = true;
+        Inline = true;
         NeedEndTagSection = false;
     }
 

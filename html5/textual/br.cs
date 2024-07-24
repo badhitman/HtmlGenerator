@@ -15,7 +15,7 @@ public class br : base_dom_root
     /// <inheritdoc/>
     public br()
     {
-        inline = true;
+        Inline = true;
         NeedEndTagSection = false;
     }
 }

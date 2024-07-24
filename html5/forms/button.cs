@@ -65,7 +65,7 @@ public class button : base_dom_root
     {
         InnerText = text_button;
         TypeButton = type_button;
-        inline = true;
+        Inline = true;
     }
 
     /// <inheritdoc/>

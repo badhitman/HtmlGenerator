@@ -50,7 +50,7 @@ public class meter : base_dom_root
     /// <inheritdoc/>
     public meter()
     {
-        inline = true;
+        Inline = true;
     }
 
     /// <inheritdoc/>

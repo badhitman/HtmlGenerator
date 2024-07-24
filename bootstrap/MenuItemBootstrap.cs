@@ -87,7 +87,7 @@ public class MenuItemBootstrap(string in_text, string in_href, string in_tool_ti
             submenu.CustomAttributes.Add("aria-labelledby", id_a_parent);
             foreach (MenuItemBootstrap i in SubItems)
             {
-                a dropdown_item = new() { inline = true, href = i.href_menu_item, target = TargetsEnum._blank, InnerText = i.text_menu_item };
+                a dropdown_item = new() { Inline = true, href = i.href_menu_item, target = TargetsEnum._blank, InnerText = i.text_menu_item };
                 dropdown_item.AddCSS("dropdown-item");
                 submenu.Childs ??= [];
                 submenu.Childs.Add(dropdown_item);

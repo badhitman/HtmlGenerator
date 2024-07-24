@@ -43,7 +43,7 @@ public class ButtonBootstrap : button
     public ButtonBootstrap(string text_button, VisualBootstrapStylesEnum style_button) : base(text_button)
     {
         StyleButton = style_button;
-        inline = true;
+        Inline = true;
     }
 
     /// <inheritdoc/>

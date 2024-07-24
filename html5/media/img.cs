@@ -90,7 +90,7 @@ public class img : base_dom_root
     /// <inheritdoc/>
     public img()
     {
-        inline = true;
+        Inline = true;
         NeedEndTagSection = false;
     }
 

@@ -14,6 +14,6 @@ public class s : base_dom_root
     /// <inheritdoc/>
     public s()
     {
-        inline = true;
+        Inline = true;
     }
 }

@@ -89,7 +89,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Флаг/метка необходимости формировать HTML для элемента в одну строку
     /// </summary>
-    public virtual bool inline { get; set; } = false;
+    public virtual bool Inline { get; set; } = false;
 
     /// <summary>
     /// Флаг/метка необходимости парного/закрывающего тега для элемента
@@ -164,10 +164,10 @@ public abstract partial class base_dom_root
                 ret_val += h.GetHTML(deep + 1);
 
         if (!string.IsNullOrEmpty(InnerText))
-            ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + InnerText;
+            ret_val += (Inline ? "" : GetTabPrefix(TabString, deep)) + InnerText;
 
         if (NeedEndTagSection && this is not text)
-            ret_val += (inline ? "" : GetTabPrefix(TabString, deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? (TagNameToLower ? GetType().Name.ToLower() : GetType().Name) : tag_custom_name) + ">";
+            ret_val += (Inline ? "" : GetTabPrefix(TabString, deep)) + "</" + (string.IsNullOrEmpty(tag_custom_name) ? (TagNameToLower ? GetType().Name.ToLower() : GetType().Name) : tag_custom_name) + ">";
 
         after_comment_block = after_comment_block.Replace("<", "[").Replace(">", "]");
 

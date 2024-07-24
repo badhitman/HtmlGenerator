@@ -35,7 +35,7 @@ public class optgroup : base_dom_root
     public optgroup(optgroup_set in_set)
     {
         set = in_set;
-        inline = true;
+        Inline = true;
     }
 
     /// <inheritdoc/>
