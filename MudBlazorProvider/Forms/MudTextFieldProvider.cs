@@ -25,7 +25,7 @@ public class MudTextFieldProvider : MudBaseFieldProvider
     /// <inheritdoc/>   
     public override string GetHTML(int deep = 0)
     {
-        SetAttribute("T", $"{DescriptorType}{(IsNullable && !DescriptorType.EndsWith("?") ? "?" : "")}");
+        _ = SetAttribute("T", $"{DescriptorType}{(IsNullable && !DescriptorType.EndsWith('?') ? "?" : "")}");
         return base.GetHTML(deep);
     }
 }

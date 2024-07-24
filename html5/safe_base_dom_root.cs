@@ -7,7 +7,7 @@ namespace HtmlGenerator.html5;
 /// <summary>
 /// Перекрыты методы управления вложенными объектами
 /// </summary>
-public class safe_base_dom_root : base_dom_root
+public abstract class safe_base_dom_root : base_dom_root
 {
     /// <summary>
     /// ЗАПРЕЩЕНО!

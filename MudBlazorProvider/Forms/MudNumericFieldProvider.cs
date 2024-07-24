@@ -10,7 +10,7 @@ namespace HtmlGenerator.mud;
 public class MudNumericFieldProvider : MudBaseFieldProvider
 {
     /// <summary>
-    /// is double
+    /// is double (if false - then: int)
     /// </summary>
     public bool IsDouble { get; set; } = false;
 
