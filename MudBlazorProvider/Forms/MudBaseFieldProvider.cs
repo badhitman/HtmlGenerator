@@ -3,7 +3,6 @@
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5;
-using System;
 using System.Globalization;
 
 namespace HtmlGenerator.mud;
@@ -49,34 +48,43 @@ public abstract class MudBaseFieldProvider : safe_base_dom_root
     public bool IsNullable { get; set; }
 
     /// <inheritdoc/>
+    /// <remarks>true</remarks>
+    public override bool Inline => true;
+
+    /// <inheritdoc/>
+    /// <remarks>true</remarks>
+    public override bool NeedEndTagSection => false;
+
+
+    /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        SetAttribute("Immediate", Immediate.ToString().ToLower());
+        SetAttribute("Immediate", Immediate.ToString());
 
-        if (!string.IsNullOrEmpty(Label))
-            SetAttribute("Label", Label);
-        else
+        if (string.IsNullOrEmpty(Label))
             RemoveAttribute("Label");
-
-        if (!string.IsNullOrWhiteSpace(Format))
-            SetAttribute("Format", Format);
         else
+            SetAttribute("Label", Label);
+
+        if (string.IsNullOrWhiteSpace(Format))
             RemoveAttribute("Format");
-
-        if (CultureInfoField is not null)
-            SetAttribute("Culture", $"@(CultureInfo.GetCultureInfo(\"{CultureInfoField}\"))");
         else
+            SetAttribute("Format", Format);
+
+        if (CultureInfoField is null)
             RemoveAttribute("Culture");
-
-        if (!string.IsNullOrEmpty(Hint))
-            SetAttribute("HelperText", Hint);
         else
+            SetAttribute("Culture", $"@(CultureInfo.GetCultureInfo(\"{CultureInfoField}\"))");
+
+        if (string.IsNullOrEmpty(Hint))
             RemoveAttribute("HelperText");
-
-        if (!string.IsNullOrWhiteSpace(BindValue))
-            SetAttribute("@bind-Value", BindValue);
         else
+            SetAttribute("HelperText", Hint);
+
+        if (string.IsNullOrWhiteSpace(BindValue))
             RemoveAttribute("@bind-Value");
+        else
+            SetAttribute("@bind-Value", BindValue);
 
         return base.GetHTML(deep);
     }
