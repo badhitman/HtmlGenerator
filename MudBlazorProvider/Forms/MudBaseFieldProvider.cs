@@ -48,7 +48,7 @@ public abstract class MudBaseFieldProvider : MudBaseFieldLowProvider
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        SetAttribute("Immediate", Immediate.ToString());
+        SetAttribute("Immediate", Immediate.ToString().ToLower());
 
         if (string.IsNullOrEmpty(Label))
             RemoveAttribute("Label");

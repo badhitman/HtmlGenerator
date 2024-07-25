@@ -151,7 +151,7 @@ public abstract partial class base_dom_root
                 ret_val += " " + kvp.Key + (kvp.Value is null ? "" : "=\"" + kvp.Value + "\"");
 
         if (!NeedEndTagSection && this is not text)
-            ret_val += " >";
+            ret_val += " />";
         else if (this is text)
         {
             // * * *
