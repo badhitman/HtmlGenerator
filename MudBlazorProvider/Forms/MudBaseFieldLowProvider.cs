@@ -11,12 +11,10 @@ namespace HtmlGenerator.mud;
 /// </summary>
 public abstract class MudBaseFieldLowProvider : safe_base_dom_root
 {
-
     /// <summary>
     /// Label
     /// </summary>
     public string? Label { get; set; }
-
 
     /// <summary>
     /// Helper text
