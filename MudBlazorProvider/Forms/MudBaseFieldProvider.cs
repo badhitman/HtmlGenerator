@@ -2,7 +2,6 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
-using HtmlGenerator.html5;
 using System.Globalization;
 
 namespace HtmlGenerator.mud;
@@ -10,7 +9,7 @@ namespace HtmlGenerator.mud;
 /// <summary>
 /// MudBaseFieldProvider
 /// </summary>
-public abstract class MudBaseFieldProvider : safe_base_dom_root
+public abstract class MudBaseFieldProvider : MudBaseFieldLowProvider
 {
     /// <summary>
     /// @bind-Value
@@ -23,11 +22,6 @@ public abstract class MudBaseFieldProvider : safe_base_dom_root
     public string? Format { get; set; }
 
     /// <summary>
-    /// Label
-    /// </summary>
-    public string? Label { get; set; }
-
-    /// <summary>
     /// Immediate
     /// </summary>
     public bool Immediate { get; set; }
@@ -36,11 +30,6 @@ public abstract class MudBaseFieldProvider : safe_base_dom_root
     /// CultureInfo - field
     /// </summary>
     public CultureInfo? CultureInfoField { get; set; }
-
-    /// <summary>
-    /// Helper text
-    /// </summary>
-    public string? Hint { get; set; }
 
     /// <summary>
     /// Allow NULL value

@@ -9,17 +9,12 @@ namespace HtmlGenerator.mud;
 /// <summary>
 /// MudSelect (for Enum)
 /// </summary>
-public class MudSelectProvider : safe_base_dom_root
+public class MudSelectProvider : MudBaseFieldLowProvider
 {
     /// <summary>
     /// Options
     /// </summary>
     public required IEnumerable<(int id, string name)> Options { get; set; }
-
-    /// <summary>
-    /// Text
-    /// </summary>
-    public required string Label { get; set; }
 
     /// <inheritdoc/>
     public override bool Inline => false;
@@ -36,13 +31,10 @@ public class MudSelectProvider : safe_base_dom_root
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        if (Childs is null)
-            Childs = [];
-        else
-            Childs.Clear();
+        base.GetHTML();
+        Childs = [];
 
         SetAttribute("T", "EntryModel");
-        SetAttribute("Label", Label);
 
         foreach ((int id, string name) in Options)
             Childs.Add(new MudSelectItemProvider() { Id = id, Label = name });
