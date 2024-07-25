@@ -217,14 +217,14 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Пользовательские атрибуты текущего HTML элемента
     /// </summary>
-    public Dictionary<string, string?> CustomAttributes { get; private set; } = [];
+    protected internal virtual Dictionary<string, string?> CustomAttributes { get; private set; } = [];
 
     /// <summary>
     /// Установить или добавить атрибут.
     /// </summary>
     /// <param name="attr_name">Имя атрибута dom объекта</param>
     /// <param name="attr_value">Если значение атрибута IS NULL, то генератор объявит имя атрибута у объекта, но не будет указывать значение этого атрибута (т.е. будет пропущен знак = и его значение)</param>
-    public base_dom_root SetAttribute(string attr_name, string? attr_value)
+    public virtual base_dom_root SetAttribute(string attr_name, string? attr_value)
     {
         if (!CustomAttributes.TryAdd(attr_name, attr_value))
             CustomAttributes[attr_name] = attr_value;
@@ -232,9 +232,9 @@ public abstract partial class base_dom_root
         return this;
     }
     /// <inheritdoc/>
-    public base_dom_root SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
+    public virtual base_dom_root SetAttribute(string attr_name, int attr_value) => SetAttribute(attr_name, attr_value.ToString());
     /// <inheritdoc/>
-    public base_dom_root SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
+    public virtual base_dom_root SetAttribute(string attr_name, double attr_value) => SetAttribute(attr_name, attr_value.ToString());
 
     /// <summary>
     /// Установить DOM объекту составное значение атрибута
@@ -243,7 +243,7 @@ public abstract partial class base_dom_root
     /// <param name="attributes">Список значений атрибутов, которые нужно объединить в одно составное значение</param>
     /// <param name="separator">Символ-разделитель значений в составном значении атрибута</param>
     /// <param name="check_duplicates_attributes">если true - то дубли значений будут исключены из конечного составного значения</param>
-    public base_dom_root SetAttribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
+    public virtual base_dom_root SetAttribute<T>(string attr_name, List<T> attributes, string separator, bool check_duplicates_attributes = true)
     {
         string attr_as_string = "";
         if (check_duplicates_attributes)
@@ -261,7 +261,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Пакетная установка атрибутов
     /// </summary>
-    public base_dom_root SetAttribute(Dictionary<string, string> in_custom_attributes)
+    public virtual base_dom_root SetAttribute(Dictionary<string, string> in_custom_attributes)
     {
         foreach (KeyValuePair<string, string> kvp in in_custom_attributes)
             SetAttribute(kvp.Key, kvp.Value);
@@ -283,7 +283,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Удалить атрибут (если существует)
     /// </summary>
-    public base_dom_root RemoveAttribute(string attr_name)
+    public virtual base_dom_root RemoveAttribute(string attr_name)
     {
         CustomAttributes.Remove(attr_name);
 
@@ -294,7 +294,7 @@ public abstract partial class base_dom_root
     /// Установить DOM элементу обработчик события.
     /// Если "event_src" IsNullOrEmpty, то событие удаляется
     /// </summary>
-    public base_dom_root SetEvent(UniversalEventsEnum my_event, string event_src)
+    public virtual base_dom_root SetEvent(UniversalEventsEnum my_event, string event_src)
     {
         if (string.IsNullOrEmpty(event_src))
             CustomAttributes.Remove(my_event.ToString("g"));
@@ -309,7 +309,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Дочерние/вложенные элементы
     /// </summary>
-    protected internal List<base_dom_root>? Childs;
+    protected internal virtual List<base_dom_root>? Childs { get; set; }
 
     /// <summary>
     /// Прямое добавление дочернего/вложенного элемента.
@@ -357,9 +357,9 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Добавить CSS класс (если его нет у объекта)
     /// </summary>
-    public base_dom_root AddCSS(string? css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
+    public virtual base_dom_root AddCSS(string? css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
     {
-        if (css_class is null)
+        if (string.IsNullOrWhiteSpace(css_class))
             return this;
 
         if (low_and_trim_name_class)
@@ -377,7 +377,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Удалить класс CSS
     /// </summary>
-    public base_dom_root RemoveCSS(string css_class, bool CheckSpices = false)
+    public virtual base_dom_root RemoveCSS(string css_class, bool CheckSpices = false)
     {
         if (CheckSpices && regex_spice.IsMatch(css_class))
         {
@@ -393,7 +393,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Если класса нет, то будет добавлен. Если класс есть, то будет удалён
     /// </summary>
-    public base_dom_root ToggleCSS(string css_class)
+    public virtual base_dom_root ToggleCSS(string css_class)
     {
         if (!string.IsNullOrEmpty(css_class))
         {
@@ -407,7 +407,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Получить CSS классы одной строкой (разделитель пробел)
     /// </summary>
-    public string StringCSS()
+    public virtual string StringCSS()
     {
         string css_as_string = "";
         CSS.ForEach(x => css_as_string += " " + x);

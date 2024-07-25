@@ -2,6 +2,8 @@
 // © https://github.com/badhitman - @fakegov
 ////////////////////////////////////////////////
 
+using HtmlGenerator.html5;
+
 namespace HtmlGenerator.mud;
 
 /// <summary>
@@ -25,6 +27,24 @@ public class MudSelectProvider : MudBaseFieldLowProvider
     /// Имя типа данных (перечисление)
     /// </summary>
     public required string TypeNameEnum { get; set; }
+
+    /// <summary>
+    /// запрещено
+    /// </summary>
+    public override base_dom_root AddCSS(string? css_class, bool CheckSpices = false, bool low_and_trim_name_class = true)
+        => throw new Exception();
+
+    /// <summary>
+    /// запрещено
+    /// </summary>
+    public override base_dom_root RemoveCSS(string css_class, bool CheckSpices = false)
+        => throw new Exception();
+
+    /// <summary>
+    /// запрещено
+    /// </summary>
+    public override base_dom_root ToggleCSS(string css_class)
+        => throw new Exception();
 
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
