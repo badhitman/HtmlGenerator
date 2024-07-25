@@ -14,7 +14,7 @@ public class MudSelectProvider : MudBaseFieldLowProvider
     /// <summary>
     /// Options
     /// </summary>
-    public required IEnumerable<(int id, string name)> Options { get; set; }
+    public required IEnumerable<(string id, string name)> Options { get; set; }
 
     /// <inheritdoc/>
     public override bool Inline => false;
@@ -36,8 +36,8 @@ public class MudSelectProvider : MudBaseFieldLowProvider
 
         SetAttribute("T", "EntryModel");
 
-        foreach ((int id, string name) in Options)
-            Childs.Add(new MudSelectItemProvider() { Id = id, Label = name });
+        foreach ((string id, string name) in Options)
+            Childs.Add(new MudSelectItemProvider() { Value = id,  Title = name });
 
         return base.GetHTML(deep);
     }

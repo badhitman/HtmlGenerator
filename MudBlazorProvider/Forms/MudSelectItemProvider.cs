@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////
 
 using HtmlGenerator.html5;
+using HtmlGenerator.html5.textual;
 
 namespace HtmlGenerator.mud;
 
@@ -16,22 +17,34 @@ public class MudSelectItemProvider : safe_base_dom_root
     public override string tag_custom_name => "MudSelectItem";
 
     /// <summary>
-    /// Id
+    /// Value
     /// </summary>
-    public required int Id { get; set; }
+    public required string Value { get; set; }
 
     /// <summary>
-    /// Text
+    /// Title
     /// </summary>
-    public required string Label { get; set; }
+    public required string Title { get; set; }
+
+    /// <inheritdoc/>
+    /// <remarks>false</remarks>
+    public override bool Inline => false;
+
+    /// <inheritdoc/>
+    /// <remarks>true</remarks>
+    public override bool NeedEndTagSection => true;
 
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        Childs = null;
-        SetAttribute("T", "EntryModel");
-        SetAttribute("Label", Label);
-        SetAttribute("Value", Id);
+        if (Childs is null)
+            Childs = [];
+        else
+            Childs.Clear();
+
+        Childs.Add(new text(Title));
+
+        SetAttribute("Value", Value);
 
         return base.GetHTML(deep);
     }
