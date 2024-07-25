@@ -49,7 +49,6 @@ public class MudSelectProvider : MudBaseFieldLowProvider
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        base.GetHTML();
         Childs = [];
 
         SetAttribute("T", "EntryModel");

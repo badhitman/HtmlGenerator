@@ -24,7 +24,6 @@ public abstract class MudBaseFieldLowProvider : safe_base_dom_root
     /// <inheritdoc/>
     public override string GetHTML(int deep = 0)
     {
-        Childs = null;
         SetAttribute("Label", Label);
 
         return base.GetHTML(deep);
