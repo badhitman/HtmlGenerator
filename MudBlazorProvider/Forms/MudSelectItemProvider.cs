@@ -28,7 +28,7 @@ public class MudSelectItemProvider : safe_base_dom_root
 
     /// <inheritdoc/>
     /// <remarks>false</remarks>
-    public override bool Inline => false;
+    public override bool Inline => true;
 
     /// <inheritdoc/>
     /// <remarks>true</remarks>
