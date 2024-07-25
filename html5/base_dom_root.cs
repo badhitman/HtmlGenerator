@@ -161,7 +161,13 @@ public abstract partial class base_dom_root
 
         if (this is not text && Childs is not null)
             foreach (base_dom_root h in Childs)
-                ret_val += h.GetHTML(deep + 1);
+            {
+                string _s = h.GetHTML(deep + 1);
+                if(Inline)
+                    _s = _s.Trim();
+
+                ret_val += _s;
+            }
 
         if (!string.IsNullOrEmpty(InnerText))
             ret_val += (Inline ? "" : GetTabPrefix(TabString, deep)) + InnerText;
