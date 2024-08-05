@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////
-// © https://github.com/badhitman - @fakegov
+// © https://github.com/badhitman - @FakeGov
 // Описание HTML объектов позаимствовано с сайта http://htmlbook.ru
 ////////////////////////////////////////////////
 
