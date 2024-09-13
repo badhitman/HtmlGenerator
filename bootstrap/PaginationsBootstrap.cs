@@ -121,9 +121,9 @@ public class PaginationsBootstrap : safe_base_dom_root
         PageNum = CheckPageNum(page_num);
 
         if (PageNum == 1)
-            data_list = new List<T>(data_list.Take(PageSize));
+            data_list = new List<T>(data_list.OrderBy(x => x?.ToString()).Take(PageSize));
         else
-            data_list = new List<T>(data_list.Skip(Skip).Take(PageSize));
+            data_list = new List<T>(data_list.OrderBy(x => x?.ToString()).Skip(Skip).Take(PageSize));
     }
 
     /// <summary>
