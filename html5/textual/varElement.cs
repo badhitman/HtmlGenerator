@@ -9,7 +9,8 @@ namespace HtmlGenerator.html5.textual;
 /// Тег [var] используется для выделения переменных компьютерных программ.
 /// Браузеры обычно помечают текст в контейнере [var] курсивным начертанием. 
 /// </summary>
-public class var : base_dom_root
+public class varElement : base_dom_root
 {
-
+    /// <inheritdoc/>
+    public override string? tag_custom_name { get => "var";  }
 }

@@ -330,7 +330,7 @@ public abstract partial class base_dom_root
     /// <summary>
     /// Пакетное добавление дочерних/вложенных элементов.
     /// </summary>
-    public virtual base_dom_root AddRangeDomNode(IEnumerable<base_dom_root> children)
+    public virtual base_dom_root AddRangeDomNodes(IEnumerable<base_dom_root> children)
     {
         Childs ??= [];
         Childs.AddRange(children);

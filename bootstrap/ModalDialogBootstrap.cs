@@ -111,7 +111,7 @@ public class ModalDialogBootstrap : safe_base_dom_root
         //
         div modal_body = new();
         modal_body.AddCSS("modal-body");
-        modal_body.AddRangeDomNode(BodyElements);
+        modal_body.AddRangeDomNodes(BodyElements);
         modal_content.AddDomNode(modal_body);
         //
         modal_content.AddDomNode(modal_footer);

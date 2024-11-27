@@ -23,7 +23,7 @@ public abstract class safe_base_dom_root : base_dom_root
     /// ЗАПРЕЩЕНО!
     /// В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.
     /// </summary>
-    public override safe_base_dom_root AddRangeDomNode(IEnumerable<base_dom_root> children)
+    public override safe_base_dom_root AddRangeDomNodes(IEnumerable<base_dom_root> children)
     {
         throw new NotSupportedException("В данном объекте нельзя {напрямую/вручную} манипулировать вложенными [dom] элементами.");
         //base.AddRange(children);

@@ -77,14 +77,14 @@ public class CardBootstrap : safe_base_dom_root
 
         div card_body = new();
         card_body.AddCSS("card-body " + adding_body_css_class, true);
-        card_body.AddRangeDomNode(CardBody);
+        card_body.AddRangeDomNodes(CardBody);
         Childs.Add(card_body);
 
         if (CardFooter.Count > 0)
         {
             div card_footer = new();
             card_footer.AddCSS("card-footer " + adding_footer_css_class, true);
-            card_footer.AddRangeDomNode(CardFooter);
+            card_footer.AddRangeDomNodes(CardFooter);
             Childs.Add(card_footer);
         }
         return base.GetHTML(deep);
