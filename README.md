@@ -1,5 +1,5 @@
 # HtmlGenerator
-HTML Generator - .Net Core. (используется в [конструкторе](https://github.com/badhitman/BlankCRM/tree/main/ConstructorService))
+HTML Generator - .Net Core. (используется в [конструкторе](https://github.com/badhitman/BlankCRM/tree/main/micro-services/ConstructorService))
 Построение DOM в виде C# объектов и генерация HTML разметки (в том числе Bootstrap).
 
 Пример 1:
